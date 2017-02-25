@@ -1,0 +1,264 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+:---
+title: "S3"
+author: "Manu"
+date: "20 February 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(permutations)
+library(igraph)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## S3 Group
+
+The S3 group is the group of permutation on 3 elements. It has 6 elements. It is the group of all the automorphism on the set {1, 2, 3}.
+
+Here is the full list of the elements of S3:
+
+```{r elements, echo = FALSE}
+e <- as.cycle()
+
+a <- as.cycle(c(1,2))
+b <- as.cycle(c(1,3))
+c <- as.cycle(c(2,3))
+
+p <- as.cycle(c(1,2,3))
+p2 <- as.cycle(c(1,3,2))
+
+cat(
+  'e: ', as.character(e), '\r\n',
+  'a: ', as.character(a), '\r\n',
+  'b: ', as.character(b), '\r\n',
+  'c: ', as.character(c), '\r\n',
+  'p: ', as.character(p), '\r\n',
+  'p^2: ', as.character(p2), '\r\n', sep = ''
+  )
+```
+The group \<p\> = {e, p, p2} is normal in S3:
+
+```{r normal}
+all(p^a == p2, p^b == p2, p^c == p2)
+```
+
+The classes of \<p\> in S3 are:
+
+{e, p, p2}, {a, b, c}
+
+The action of a on \<p\>: (p p2)
+
+## Subgroups of S3
+
+<p> is isomorphic to Z/3Z and it has no non-trivial subgroups.
+
+If G is a subgroup of S3 containing <p> then G*<p> is a subgroup of S3/<p>. S3/<p> is a group of order 2 so it is isomorphic to Z/2Z and it has no non trivial subgroup. The only subgroups containing p are {e} and S3.
+
+If G is a sub-group not including <p>. Then inter(G, <p>) is {e}. because inter(G, <p>) is a subgroup of <p> and it cannot be <p> because G does no include <p>.
+
+So G is included in {e, a, b, c}. G cannot contain more than 2 elements because any of products ab, bc, ... will yield an element of <p>.
+So G is either {e, a}, {e, b}, {e, c}.
+
+Conclusion: Here is the full list of the subgroups of S3:
+{e}, {e, a}, {e, b}, {e, c}, {e, p, p2}, {e, a, b, c, p, p2}
+
+
+```{r normal-lattice, echo = FALSE}
+g <- make_empty_graph() + 
+vertex('S3') + 
+vertex('{e}') +
+vertex('<p>') + 
+path('{e}', '<p>', 'S3')
+
+plot(g)
+```
+
+```{r all-lattice, echo = FALSE}
+g <- make_empty_graph() +
+  vertex('S3') + 
+  vertex('{e}') +
+  vertex('<p>') + 
+  vertex('<a>') +
+  vertex('<b>') +
+  vertex('<c>') +
+  path('{e}', '<p>', 'S3') +
+  path('{e}', '<a>', 'S3') +
+  path('{e}', '<b>', 'S3') +
+  path('{e}', '<c>', 'S3')
+
+plot(g)
+```
+
+## Action of the group
+
+* \<p\> Act on the 'edges' of a triangle {1, 2, 3}: {{1, 2}, {1, 3}, {2, 3}}
+
+```{r p-action, echo=FALSE}
+p_f <- as.function(p)
+all(
+  p_f(c(1, 2)) == c(2, 3),
+  p_f(c(1,3)) == c(2, 1),
+  p_f(c(2, 3)) == c(3, 1))
+```
+
+The action of a can also be defined:
+a({1, 2}) == {1, 2}
+a{1, 3} == {2, 3}
+a{2, 3} == {1, 3}
+
+Since a and p generate S3 we deduce that S3 acts on the edges. And the action is faithfull.
+
+* The natural action of S3 on {1, 2, 3} is also faithfull.
+
+* The action of S3 on S3/\<p\> is not faithfull.
+S3/\<p\> = {{e, p, p2}, {a, b, c}}
+Any element of \<p\> is sent to the identity.
+Any other element is sent to ({e, p, p2} {a, b, c})
+
+* There is also an action of S3 on {a, b, c}.
+
+* And an action of S3 on \<p\>
+
+### How to see if 2 actions are isomorphic?
+An action is a group morphism phi1: $G \rightarrow Aut(S)$ where S is some set.
+Let phi2: $G \rightarrow Aut(S2)$ be another group action.
+2 action are isomorphic if there exist a set isomorphism $f: S \rightarrow S2$
+such that $$\forall g \in G, f(phi1(g)(x)) = phi2(g)(f(x))$$
+
+f(phi1(g1*g2)(x)) = f(phi1(g1)(phi1(g2)(x)))
+= phi2(g1)(f(phi1(g2)x)) = phi2(g1)(phi2(g2)(fx))
+= phi2(g1g2)(fx)
+
+### 
+Let's show that the action on {1, 2, 3} is isomorphic to the action on {{1, 2}, {1, 3}, {2, 3}} by taking 
+f: 1 -> {2, 3}
+f: 2 -> {1, 3}
+f: 3 -> {1, 2}
+
+f(p.1) = f(2) = {1, 3}
+p.f(1) = p.{2, 3} = {1, 3}
+
+f(p.2) = f(3) = {1, 2}
+p.f(2) = p.{1, 3} = {1, 2}
+
+f(a.1) = f(2) = {1, 3}
+a.f(1) = a.{2, 3} = {1, 3}
+
+f(a.3) = f(3) = a.f(3)
+=> f(3) = {1, 2}
+
+f(b.2) = f(2) = b.f(2)
+=> f(2) = {1, 3}
+
+f(c.1) = f(1) = c.f(1)
+=> f(1) = {2, 3}
+
+So f is an isomorphism of actions.
+
+# Automorphism group of S3
+
+## Inner automorphisms
+
+Conjugation by an element creates an automorphism.
+The conjugation by p has the following effect:
+```{r conjugation, echo = FALSE}
+cat(
+  'a^p: ', a^p %>% as.cycle %>% as.character, '\r\n',
+  'b^p: ', b^p %>% as.cycle %>% as.character, '\r\n',
+  'c^p: ', c^p %>% as.cycle %>% as.character, '\r\n',
+  'p^p: ', p^p %>% as.cycle %>% as.character, '\r\n',
+  'p2^p: ', (p*p)^p %>% as.cycle %>% as.character, '\r\n', sep = ''
+)
+```
+
+So conj(p) = (a c b)
+
+Here is the conjugation by p2:
+
+```{r conjugation-p2, echo = FALSE}
+cat(
+  'a^p2: ', a^(p*p) %>% as.cycle %>% as.character, '\r\n',
+  'b^p2: ', b^(p*p) %>% as.cycle %>% as.character, '\r\n',
+  'c^p2: ', c^(p*p) %>% as.cycle %>% as.character, '\r\n',
+  'p^p2: ', p^(p*p) %>% as.cycle %>% as.character, '\r\n',
+  'p2^p2: ', (p*p)^(p*p) %>% as.cycle %>% as.character, '\r\n', sep = ''
+)
+```
+
+So conj(p2) = (a b c)
+
+Here is the conjugation by a:
+```{r conjugation-a, echo = FALSE}
+cat(
+  'a^a: ', a^a %>% as.cycle %>% as.character, '\r\n',
+  'b^a: ', b^a %>% as.cycle %>% as.character, '\r\n',
+  'c^a: ', c^a %>% as.cycle %>% as.character, '\r\n',
+  'p^a: ', p^a %>% as.cycle %>% as.character, '\r\n',
+  'p2^a: ', (p*p)^a %>% as.cycle %>% as.character, '\r\n', sep = ''
+)
+```
+
+So conj(a) = (b c) (p p2)
+
+Here is the conjugation by b:
+
+```{r conjugation-b, echo = FALSE}
+cat(
+  'a^b: ', a^b %>% as.cycle %>% as.character, '\r\n',
+  'b^b: ', b^b %>% as.cycle %>% as.character, '\r\n',
+  'c^b: ', c^b %>% as.cycle %>% as.character, '\r\n',
+  'p^b: ', p^b %>% as.cycle %>% as.character, '\r\n',
+  'p2^b: ', (p*p)^b %>% as.cycle %>% as.character, '\r\n', sep = ''
+)
+```
+
+So conj(b) = (a c) (p p2)
+
+Here is the conjugation by c:
+```{r conjugation-c, echo = FALSE}
+cat(
+  'a^c: ', a^c %>% as.cycle %>% as.character, '\r\n',
+  'b^c: ', b^c %>% as.cycle %>% as.character, '\r\n',
+  'c^c: ', c^c %>% as.cycle %>% as.character, '\r\n',
+  'p^c: ', p^c %>% as.cycle %>% as.character, '\r\n',
+  'p2^c: ', (p*p)^c %>% as.cycle %>% as.character, '\r\n', sep = ''
+)
+```
+
+So conj(c) = (a b)(p p2)
+
+So together with the identity there are 6 inner automorphisms.
+
+### Structure of the automorphism group
+
+We will show that Inner(S3) = S3
+conj(a)^2 = e
+conj(p)^3 = e
+conj(p)^conj(a) = conj a-1 o conj p o conj a = conj a-1pa = conj p2 = conj(p)^2
+
+Since the generators of Inner(S3) have the same relations as those of S3 we know the 2 groups are isomorphic.
+
+## Total group or isomorphism
+
+We can show that there are no outer isomorphism. Indeed an automorphism maps elements to elements of the same order. There are thus 2 possibilities for mapping p and 3 possibilities for mapping a. Since a and p generate S3 this 2 images will define uniquely a mapping. There are at most 3*2 automorphisms and according to the previous paragraphs we already have 6 inner automorphisms. So all the automorphism are inner.
+
+## Matrix representation of an automorphism
+
+Since an automorphism is uniquely defined by its image of the generators a and p we might be able to write them as a matrix. Indeed the reason we are able to write linear operators as matrix is because they are defined by their action on a basis which is a generator set of the whole vector space.
+
+First lets try to write elements of S3 as vectors:
+we note a = (1, 0) and p = (0, 1)
+(0, x) \* (1, m)  = p^x \* a \* p^m = a \* a p^x \* a p^m = (1, 2*x+m)
+
+(g1, n1) \* (g2, n2) = g1n1g2n2 = g1g2inv(g2)n1g2n2 = g1g2n1^g2n2 
+= (g1g2, n1^g2\*n2)
+
+inv(g1) \* (g2, n2) \* g1 = inv(g1) \* (g2*g1, n2^g1) = (g2^g1, n2^g1)
+conj(g1) = 
+g1      e
+e       g1

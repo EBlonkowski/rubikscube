@@ -1,0 +1,63 @@
+---
+title: "2x2x2 Rubik's cube"
+author: "Manu"
+date: "16 February 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 2x2x2 Rubik's cube
+This Rubik's cube has 8 small cubes. We give them a number like this:
+
+
+```{r cube-def}
+cat('Front face \r\n')
+matrix(1:4, nrow = 2, byrow = T)
+cat('Back face \r\n')
+matrix(5:8, nrow = 2, byrow = T)
+
+```
+
+## Moves
+
+Solving a Rubik's cube consist of turning the Rubik's cube in different ways.
+Each way to transform the Rubik's cube is called a move. We can see that there
+are 6 basic moves: spin top, spin bottom, topple left, topple right, wash front and wash back.
+
+```{r basic-moves}
+bg <- cyc(c(1, 5, 7, 3)) %>% as.cycle
+bd <- cyc(c(2, 6, 8, 4)) %>% as.cycle
+th <- cyc(c(1, 2, 6, 5)) %>% as.cycle
+tb <- cyc(c(3, 4, 8, 7)) %>% as.cycle
+wf <- cyc(c(1, 2, 4, 3)) %>% as.cycle
+wb <- cyc(c(5, 6, 8, 7)) %>% as.cycle
+cat(' Toggle left', as.character(bg), '\r\n',
+    'Toggle right', as.character(bd), '\r\n',
+    'Spin top', as.character(th), '\r\n',
+    'Spin bottom', as.character(tb), '\r\n',
+    'Wash front', as.character(wf), '\r\n',
+    'Wash back', as.character(wb))
+
+```
+
+## Invariants
+
+Rotating the whole cube left, right, up or down intuitively doesn't change
+the problem. H
+
+Let r be an element of R that maps to the identity by the group action. 
+Conjugation of a basic move by a global rotation yields a basic move, or the inverse of a basic move.
+
+```{r commutativity}
+gen <- c(bg, bd, th, tb, wf, wb)
+rot_up * gen / rot_up == c(bg, bd, wf^-1, wb^-1, tb, th)
+rot_right * gen / rot_right == c(wb, wf, th, tb, bg^-1, bd^-1)
+rot_cck * gen / rot_cck == c(tb^-1, th^-1, bg, bd, wf, wb)
+
+
+
+```
+
