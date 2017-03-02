@@ -1,0 +1,141 @@
+---
+title: "Group of a set function"
+author: "Manu"
+date: "28 February 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition of the fixed group of a function
+
+Let $\mathcal{A}$ and $\mathcal{B}$ be finite sets. Let 
+$f:\mathcal{A} \rightarrow \mathcal{B}$
+
+We define $Fx(f) \in \mathrm{Aut(A)}$ as a subgroup of **Aut(A)** with the following property:
+
+$$g \in Fx(f) \iff \forall a \in \mathcal{A}, f(g.a) = f(a)$$
+
+
+Proof that **Fx(f)** is a subgroup of **Aut(A)**
+
+> Let g1, g2 in **Fx(f)**. We want to show that $g1 \circ g2 \in Fx(f)$
+> 
+> $$g1 \circ g2 \in Fx(f) \iff \forall a \in \mathcal{A}, f(g1 \circ g2(a)) = f(a)
+\iff f(g1 \circ g2(a)) = f(g2(a))$$
+>
+>
+> Which is true since g1 is in **Fx(f)**
+
+## Examples
+
+1. $id:\{1, 2, 3\} \rightarrow \{1, 2, 3\}$
+    $$g \in Fx(id) \iff \forall a \in \{1, 2, 3\}, id(g(a)) = id(a) \iff
+g(a) = a \iff g = e$$
+
+    So Fx(id) = {e}
+
+    This is the same for every injective function.
+
+2. $c:\{1, 2, 3\} \rightarrow \{1\}$
+    Let g in Aut({1, 2, 3})
+    $$g \in Fx(f) \iff \forall a \in \{1, 2, 3\}, f(g.a) = f(a) \iff 1 = 1$$
+    So Fx(c) = S3
+
+3. $f:\{1, 2, 3, 10, 11\} \rightarrow \{1, 10\}$  
+    f:
+  
+
+    | 1  |  2 | 3  |  10 |  11 |
+    |----|----|----|-----|-----|
+    | 1  | 1  |  1 | 10  |  10 |
+
+    Let $Fx(f)_1$ be the subgroup of Fx(f) consisting of the automorphisms who keep {10, 11} fixed. Similarly we write $Fx(f)_{10}$ for the subgroup of automorphisms that keep {1, 2, 3} fixed. We want to show that:
+    1. $Fx(f)_1$ and $Fx(f)_{10}$ are groups and are isomorphic respectively to S2 and S3.
+    2. Fx(f) is a direct product of $Fx(f)_1$ and $Fx(f)_{10}$
+    
+    **Part 1**
+    
+    Let $g_1, h_1 \in Fx(f)_1$ let's show that $g_1 \circ f_1 \in Fx(f)_1$. $g_1, h_1 \in Fx(f)$ so 
+    1. $\forall a \in \{1, 2, 3\}, g_1(a) \in \{1, 2, 3\}$
+    2. $\forall a \in \{1, 2, 3\}, h_1(a) \in \{1, 2, 3\}$
+    Hence, $\forall a \in \{1, 2, 3\}, g_1(h_1(a)) \in \{1, 2, 3\}$
+    And $g_1 \circ f_1 \in Fx(f)_1$
+    Let's show that $Fx(f)_1 \sim S3$. We need just show that $$\begin{array}{ll}
+                  \phi : S3 \rightarrow Fx(f)_1\\
+                  \phi(g)(x) = \left\{\begin{array}{ll}
+                        g(x), x \in \{1, 2, 3\}\\
+                        x, x \notin \{1, 2, 3\}
+                      \end{array}\right.
+                \end{array}$$
+    $\phi$ is an isomorphism. It is one because 
+    $$\phi(a) = \phi(b) \implies \forall x \in \{1, 2, 3\}, a(x) = b(x)$$
+    So we have shown that Fx(f)_1 is isomorphic to S({1, 2, 3}). Similarly we show that Fx(f)_10 is isomorphic to S({10, 11}).
+    
+    **Part 2**
+    
+    We want to show that $Fx(f) = Fx(f)_1 \times Fx(f)_{10}$. For this we need to show that their intersection is {id}, that they commute and that they generate the whole group.
+    If g belongs in $Fx(f)_1 \cap Fx(f)_{10}$ then g fixes element in {1, 2, 3} and elements in {10, 11} as well. So g must be the identity.
+    Now let's show that they commute. Let $g_1 \in Fx(f)_1, g_{10} \in Fx(f)_{10}$. Let $x \in \{1, 2, 3\}$ then $g_1(g_{10}(x)) = g_1(x)$. Similarly $g_{10}(g_1(x)) = g_1(x)$ since $g_1(x) \in \{1, 2, 3\}$. We show similarly that they commute for x in {10, 11}. So we have shown the commutativity.
+    Now we shown that for any $g \in Fx(f)$ can be written as a product of the 2 groups. We let $$g_1(x) = \left\{\begin{array}{ll}
+      g(x), x \in \{1, 2, 3\}\\
+      x, x \notin \{1, 2, 3\}
+    \end{array}\right.$$
+    Similarly we define $g_{10}$. Let's show that $g = g_1 \circ g_{10}$. Let $x \in \{1, 2, 3\}$ We have $g_{10}(x) = x$ so $g_1  \circ g_{10} (x) = g_1(x) = g(x)$
+    If $x \in \{10, 11\}$, $g_{10}(x) = g(x) \in \{10, 11\}$ so $g_1  \circ g_{10} (x) = g_{10}(x) = g(x)$.
+    
+    **Conclusion** We have shown that Fx(f) ~ S({1, 2, 3})xS({10, 11})
+  
+## Fixed group of any function
+The goal of this part is to show that the fixed group of any function is equal to a direct product of permutation groups. More precisely the Fixed group is the direct product of the permutation groups of each equivalence class by the function.
+For this we will proceed like this:
+
+1. We will prove the result for functions that have only one class of equivalence (constant functions)
+2. We will define an operator that allows to build any function from constant function. More specifically, if we have $f: \mathcal{A} \rightarrow \mathcal{B}$ then we want to be able to write 
+$$ f = f_{|C_1} \sqcup f_{|C_2} \sqcup ... \sqcup f_{|C_n}$$ Where $C_1, ... C_n$ are the distinct equivalence classes according to f.
+3. We will show that for any 2 functions $Fx(f \sqcup g) = Fx(f) \times Fx(g)$
+
+Together these 3 points will show the result.
+
+### Part 1: Fixed group of a constant function
+Let $f: \mathcal{A} \rightarrow \mathcal{B}$ be constant. Then Fx(f) = S(A).
+
+Proof
+
+> Since we already know that $Fx(f) \subseteq S(\mathcal{A})$ we need just show
+> that $S(\mathcal{A}) \subseteq Fx(f)$
+> Let $g \in S(\mathcal{A})$, $\forall a \in \mathcal{A}, f(g(a)) = f(a)$ since f is constant. And $g \in Fx(f)$, so $S(\mathcal{A}) \subseteq Fx(f)$ and finally
+> Fx(f) = S(A)
+
+### Part 2: Disjoint union of functions $\sqcup$
+Let $f_1: \mathcal{A_1} \rightarrow \mathcal{B_1}$ and
+$f_2: \mathcal{A_2} \rightarrow \mathcal{B_2}$
+We assume $\mathcal{A_1} \cap \mathcal{A_2} = \emptyset$ and 
+$\mathcal{B_1} \cap \mathcal{B2} = \emptyset$
+
+We can define a function 
+$$f_1 \sqcup f_2: \mathcal{A_1} \sqcup \mathcal{A_2} \rightarrow 
+\mathcal{B_1} \sqcup \mathcal{B_2}$$
+
+
+
+By $$f_1 \sqcup f_2: x \mapsto \left\{\begin{array}{ll}
+    f_1(x), x \in \mathcal{A_1}\\
+    f_2(x), x \in \mathcal{A_2}
+    \end{array}\right.
+    $$
+    
+    
+    
+### Part 3: $\mathrm{Fx}(f_1 \sqcup f_2)$
+Throughout this part we pose: $f = f_1 \sqcup f_2$.
+In this part we need to show:
+
+1. A group injection $i_1: \mathrm{Fx}(f_1) \hookrightarrow \mathrm{Fx}(f)$
+(same for $f_2$)
+2. $i_1(\mathrm{Fx}(f_1)) \cap i_2(\mathrm{Fx}(f_2)) = \{e\}$
+3. $i_1(\mathrm{Fx}(f_1))$ and $i_2(\mathrm{Fx}(f_2))$ commute.
+4. $i_1(\mathrm{Fx}(f_1))$ and $i_2(\mathrm{Fx}(f_2))$ generate $i_1(\mathrm{Fx}(f))$
+

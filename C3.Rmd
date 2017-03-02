@@ -1,0 +1,57 @@
+---
+title: "C3"
+author: "Manu"
+date: "28 February 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(magrittr)
+library(permutations)
+source('test.R')
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## C3 definition
+
+We define C3 as a subgroup of R.
+
+```{r, echo = FALSE}
+rot_up <- cyc(c(1, 5, 7, 3), c(2, 6, 8, 4)) %>% as.cycle
+rot_right <- cyc(c(1, 2, 6, 5), c(3, 4, 8, 7)) %>% as.cycle
+rot_cck <- cyc(c(1, 2, 4, 3), c(5, 6, 8, 7)) %>% as.cycle
+u <- rot_up
+r <- rot_right
+c <- rot_cck# elements
+rr <- rot_right * rot_right
+uu <- rot_up * rot_up
+cc <- rot_cck * rot_cck
+# all the group elements
+SQ2 <- c(as.word(rr/rr), rr, uu, cc)
+C3 <- c(SQ2,
+  r*u*SQ2,
+  (r*u)^2*SQ2)
+C3
+```
+
+So C3 is a group with 12 elements. Including:
+
+```{r}
+cat('3 elements of order 2: \r\n')
+C3[c(2, 3, 4)]
+cat('8 elements of order 3: \r\n')
+C3[5:12]
+```
+
+Since $C3 \subset R$ and SQ2 normal in R we deduce that SQ2 also normal in C3.
+
+It has 3 classes: [e], [ru], [ru]^2 so it is isomorphic to Z/3Z. And $1 \mapsto ru$
+defines an injection $Z/3Z \hookrightarrow C3$. So $C3 \sim Z/3Z \rtimes (Z/2Z)^2$.
+We note Vx45 the subgroup {e, ru, (ru)^2}.
+
+The action of Z/3Z on SQ2 can be defined by the action of ru on uu and rr, since ru generates Vx45, and uu and rr generates SQ2.
+
+```{r}
+all(uu^(r*u) == rr, rr^(r*u) == cc)
+```
+

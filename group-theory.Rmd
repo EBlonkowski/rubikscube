@@ -1,0 +1,69 @@
+---
+title: "Group theory general"
+author: "Manu"
+date: "28 February 2017"
+output:
+  html_document: default
+  pdf_document: default
+header-includes: \usepackage{bbm}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Group decomposition
+
+
+Let G be a group, we assume
+
+1. **H** is a normal subgroup.
+2. $\kappa$ in **G/H** is normal in **G/H**
+
+We write **K** be $\pi_H^{-1}\{\kappa\}$
+
+
+Then
+
+1. **K** is a normal subgroup of **G**
+2. $G/K \sim \frac{G/H}{\kappa}$ or $\frac{G}{\kappa H} \sim \frac{G/H}{\kappa}$
+
+## Other formulations
+
+### Number 1: using $\kappa$
+We have
+
+$$ 0 \rightarrow H \rightarrow G \rightarrow G/H \rightarrow 0 $$
+
+
+$$ 0 \rightarrow \kappa \rightarrow G/H \rightarrow \frac{G/H}{\kappa} \rightarrow 0 $$
+
+then we can deduce
+
+
+$$ 0 \rightarrow \pi_H^{-1}\{\kappa\} \rightarrow G \rightarrow \frac{G/H}{\kappa} \rightarrow 0 $$
+
+### Number 2: using **K**
+
+$$ 0 \rightarrow H \rightarrow G \rightarrow G/H \rightarrow 0 $$
+
+
+$$ 0 \rightarrow KH \rightarrow G/H \rightarrow \frac{G/H}{KH} \rightarrow 0 $$
+
+then we can deduce
+
+$$ 0 \rightarrow K \rightarrow G \rightarrow \frac{G/H}{KH} \rightarrow 0 $$
+
+## Proof
+
+### Proof that **K** is normal in **G**
+
+Let g \in **G** and k \in **K**
+We want to show that $g^{-1}kg \in K$
+$K=\pi_H^{-1}\{\kappa\}$ so we have
+$$g^{-1}kg \in \pi_H^{-1}\{\kappa\} \iff \pi_H(g^{-1}kg) \in \kappa \iff \pi_H(g^{-1})\pi_H(k)\pi_H(g) \in \kappa$$
+
+
+But $\pi_H(k) \in \kappa$ and since $\kappa$ is normal in **G/H** the last inclusion is true and we have proved that **K** is normal in **G**.
+
+## Examples
