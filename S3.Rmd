@@ -41,6 +41,19 @@ cat(
   'p^2: ', as.character(p2), '\r\n', sep = ''
   )
 ```
+
+Table of S3:
+
+| S3 | e  | p  | p2 | a  | b  | c  |
+|----|----|----|----|----|----|----|
+| e  | e  | p  | p2 | a  | b  | c  |
+| p  | p  | p2 | e  | c  | a  | b  |
+| p2 | p2 | e  | p  | b  | c  | a  |
+| a  | a  | b  | c  | e  | p  | p2 |
+| b  | b  | c  | a  | p2 | e  | p  |
+| c  | c  | a  | b  | p  | p2 | e  |
+
+
 The group \<p\> = {e, p, p2} is normal in S3:
 
 ```{r normal}
@@ -53,30 +66,32 @@ The classes of \<p\> in S3 are:
 
 The action of a on \<p\>: (p p2)
 
+More detailed action of the group on \<p\>:
+
+|S3|{e, p, p2}| {a, b, c}|
+|--|----------|----------|
+|e |{e, p, p2}|{a, b, c} |
+|a |{a, b, c} |{e, p, p2}|
+|b |{b, c, a} |{p2, e, p}|
+|c |{c, a, b} |{p, p2, e}|
+|p |{p, p2, e}|{c, a, b} |
+|p2|{p2, e, p}|{b, c, a} |
+
 ## Subgroups of S3
 
-<p> is isomorphic to Z/3Z and it has no non-trivial subgroups.
+\<p\> is isomorphic to Z/3Z and it has no non-trivial subgroups.
 
-If G is a subgroup of S3 containing <p> then G*<p> is a subgroup of S3/<p>. S3/<p> is a group of order 2 so it is isomorphic to Z/2Z and it has no non trivial subgroup. The only subgroups containing p are {e} and S3.
+If G is a subgroup of S3 containing \<p\> then G*\<p\> is a subgroup of S3/\<p\>. S3/\<p\> is a group of order 2 so it is isomorphic to Z/2Z and it has no non trivial subgroup. The only subgroups containing p are {e} and S3.
 
-If G is a sub-group not including <p>. Then inter(G, <p>) is {e}. because inter(G, <p>) is a subgroup of <p> and it cannot be <p> because G does no include <p>.
+If G is a sub-group not including \<p\>. Then inter(G, \<p\>) is {e}. because inter(G, \<p\>) is a subgroup of \<p\> and it cannot be \<p\> because G does no include \<p\>.
 
-So G is included in {e, a, b, c}. G cannot contain more than 2 elements because any of products ab, bc, ... will yield an element of <p>.
+So G is included in {e, a, b, c}. G cannot contain more than 2 elements because any of products ab, bc, ... will yield an element of \<p\>.
 So G is either {e, a}, {e, b}, {e, c}.
 
 Conclusion: Here is the full list of the subgroups of S3:
 {e}, {e, a}, {e, b}, {e, c}, {e, p, p2}, {e, a, b, c, p, p2}
 
-
-```{r normal-lattice, echo = FALSE}
-g <- make_empty_graph() + 
-vertex('S3') + 
-vertex('{e}') +
-vertex('<p>') + 
-path('{e}', '<p>', 'S3')
-
-plot(g)
-```
+**Lattice of all the subgroups**
 
 ```{r all-lattice, echo = FALSE}
 g <- make_empty_graph() +
@@ -94,26 +109,89 @@ g <- make_empty_graph() +
 plot(g)
 ```
 
-## Action of the group
+**Normal subgroups**
 
-* \<p\> Act on the 'edges' of a triangle {1, 2, 3}: {{1, 2}, {1, 3}, {2, 3}}
+```{r normal-lattice, echo = FALSE}
+g <- make_empty_graph() + 
+vertex('S3') + 
+vertex('{e}') +
+vertex('<p>') + 
+path('{e}', '<p>', 'S3')
+
+plot(g)
+```
+
+
+## Actions of the group
+
+### The natural action of S3 on {1, 2, 3}
+This is a faithful action.
+
+```{r, echo = FALSE}
+a_f <- as.word(a, n = 3) %>% as.function
+b_f <- as.word(b, n = 3) %>% as.function
+c_f <- as.word(c, n = 3) %>% as.function
+p_f <- as.function(p)
+
+```
+
+We can compute the orbits:
+
+|S3| Orbits    |
+|--|-----------|
+|e |{1} {2} {3}|
+|a |{1, 2} {3} |
+|b |{1, 3} {2} |
+|c |{1} {2, 3} |
+|p |{1, 2, 3}  |
+|p2|{1, 2, 3}  |
+
+We can also compute the stabilizers:
+
+|{1, 2, 3}|Stabilizer|
+|---------|----------|
+|1        |\<c\>       |
+|2        |\<b\>       |
+|3        |\<a\>       |
+
+### Action on the 'edges'
+
+We consider the action of S3 on this set: {{1, 2}, {1, 3}, {2, 3}}
+
+* Action of \<p\>
 
 ```{r p-action, echo=FALSE}
-p_f <- as.function(p)
 all(
   p_f(c(1, 2)) == c(2, 3),
   p_f(c(1,3)) == c(2, 1),
   p_f(c(2, 3)) == c(3, 1))
 ```
 
-The action of a can also be defined:
-a({1, 2}) == {1, 2}
-a{1, 3} == {2, 3}
-a{2, 3} == {1, 3}
+* Action of a:
+```{r}
+all(
+  a_f(c(1, 2)) == c(2, 1),
+  a_f(c(1,3)) == c(2, 3),
+  a_f(c(2, 3)) == c(1, 3))
+```
 
-Since a and p generate S3 we deduce that S3 acts on the edges. And the action is faithfull.
+Since a and p generate S3 we deduce that the action is *faithfull*.
 
-* The natural action of S3 on {1, 2, 3} is also faithfull.
+Orbits
+
+|S3| Orbits          |
+|--|-----------------|
+|e |{1_2} {1_3} {2_3}|
+|a |{1_2} {1_3, 2_3} |
+|b |{1_2, 2_3} {1_3} |
+|c |{1_2, 1_3} {2, 3}|
+|p |{1_2, 2_3, 1_3}  |
+|p2|{1_2, 2_3, 1_3}  |
+
+Stabilizers
+
+### Other actions
+
 
 * The action of S3 on S3/\<p\> is not faithfull.
 S3/\<p\> = {{e, p, p2}, {a, b, c}}
@@ -124,17 +202,37 @@ Any other element is sent to ({e, p, p2} {a, b, c})
 
 * And an action of S3 on \<p\>
 
+### All the transitive, faithfull actions of S3
+
+Let $\phi$ be a transitive, faithfull set action $S3 \rightarrow S(\mathcal{A})$. Where $\mathcal{A}$ is any set.
+We note: $g \bullet x = \phi(g)(x)$ for $g \in S3, a \in \mathcal{A}$
+
+First we would like to show that $\mathcal{A}$ has 6 elements.
+
+Let $a_0 \in \mathcal{A}$, we let $f_{a_0}: S3 \rightarrow \mathcal{A}$ defined by $f_{a_0}(g) = g \bullet a_0$
+
+Since the action is transitive $f_{a_0}$ is surjective.
+Let's $g_1, g_2 \in \mathrm{S3}$. 
+$$f_{a_0}(g_1) = f_{a_0}(g_2) \iff g_1 \bullet a_0 = g_2 \bullet a_0 \iff g_1 g_2^{-1} \bullet a_0 = a_0$$
+
+
 ### How to see if 2 actions are isomorphic?
-An action is a group morphism phi1: $G \rightarrow Aut(S)$ where S is some set.
-Let phi2: $G \rightarrow Aut(S2)$ be another group action.
-2 action are isomorphic if there exist a set isomorphism $f: S \rightarrow S2$
-such that $$\forall g \in G, f(phi1(g)(x)) = phi2(g)(f(x))$$
+In all this file G is a finite group and S is a set.
 
-f(phi1(g1*g2)(x)) = f(phi1(g1)(phi1(g2)(x)))
-= phi2(g1)(f(phi1(g2)x)) = phi2(g1)(phi2(g2)(fx))
-= phi2(g1g2)(fx)
+An action is a group morphism $\phi_1: G \rightarrow Aut(S)$ where S is some set.
+Let $\phi_2: G \rightarrow Aut(S2)$ be another group action.
+2 action are isomorphic iff there exist a set isomorphism $f: S \rightarrow S2$
+such that $$\forall g \in G, f(\phi_1(g)(x)) = \phi_2(g)(f(x))$$
 
-### 
+The next property shows that if we have verified the property on f for $g_1, g_2 \in G$, then the property holds for $g_1g_2$.
+$$f(\phi_1(g_1g_2)(x)) = f(\phi_1(g_1)(\phi_1(g_2)(x)))
+= \phi_2(g_1)(f(\phi_1(g_2)x)) = \phi_2(g_1)(\phi_2(g_2)(fx))
+= \phi_2(g_1g_2)(fx)$$
+
+That means that we only need to verify the property on a set of generators for G.
+
+
+### Example
 Let's show that the action on {1, 2, 3} is isomorphic to the action on {{1, 2}, {1, 3}, {2, 3}} by taking 
 f: 1 -> {2, 3}
 f: 2 -> {1, 3}
@@ -159,6 +257,30 @@ f(c.1) = f(1) = c.f(1)
 => f(1) = {2, 3}
 
 So f is an isomorphism of actions.
+
+
+
+### Sub-actions
+
+If H is a subgroup of G. Then H also act on S by $h \bullet_H x = h \bullet_G x$.
+
+### Orbits
+
+Definition
+
+The orbits form a partition of S.
+
+We can define the orbits for any subgroup of G.
+
+We can define the orbits for an element g of G as being the orbits of the subgroup generated by g.
+
+### Stabilizers
+
+### Transitive actions
+
+A G-action is said to be **transitive** iff it has only one orbit by G.
+
+### Faithful actions
 
 # Automorphism group of S3
 

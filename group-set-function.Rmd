@@ -2,7 +2,9 @@
 title: "Group of a set function"
 author: "Manu"
 date: "28 February 2017"
-output: html_document
+output: 
+  html_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -138,4 +140,47 @@ In this part we need to show:
 2. $i_1(\mathrm{Fx}(f_1)) \cap i_2(\mathrm{Fx}(f_2)) = \{e\}$
 3. $i_1(\mathrm{Fx}(f_1))$ and $i_2(\mathrm{Fx}(f_2))$ commute.
 4. $i_1(\mathrm{Fx}(f_1))$ and $i_2(\mathrm{Fx}(f_2))$ generate $i_1(\mathrm{Fx}(f))$
+
+**Let's go**
+
+1. Let $g_1 \in \mathrm{Fx(f_1)}$, we write:
+
+$$\forall x \in \mathcal{A_1} \cup \mathcal{A_2}, i_1(g_1)(x) \mapsto \left\{\begin{array}{ll}
+    g_1(x), x \in \mathcal{A_1}\\
+    x, x \in \mathcal{A_2}
+    \end{array}\right.
+    $$
+    
+We show that $i_1$ is injective, that it's image is in Fx(f) and that it is a group morphism.
+Let's $x \in \mathcal{A_1}, f(i_1(g_1)(x)) = f(g_1(x)) = f_1(g_1(x)) = f_1(x) = f(x)$
+Similarly for $x \in \mathcal{A_2}$ so we have proved that the image of $i_1$ is in Fx(f).
+
+Let's $g_1, g_2 \in \mathrm{Fx(f1)}$,
+$i_1(g_1) = i_1(g2) \implies \forall x \in \mathcal{A_1}, i_1(g_1)(x) = i_1(g_2)(x) \implies g_1(x) = g_2(x) \implies g_1 = g_2$
+So $i_1 is injective$ and
+$\forall x \in \mathcal{A_1}, i_1(g_1 \circ g_2))(x) = g_1 \circ g2 (x) = g_1(g_2(x)) = g_1(i_1(g_2)(x)) = i_1(g_1) \circ i_1(g2) (x)$
+We have the same equality for $x \in \mathcal{A_2}$ so we have shown that $i_1$ is a group homorphism.
+
+Simlilarly we show that:
+$$\forall x \in \mathcal{A_1} \cup \mathcal{A_2}, i_2(g_2)(x) \mapsto \left\{\begin{array}{ll}
+    x, x \in \mathcal{A_1}\\
+    g_2(x), x \in \mathcal{A_2}
+    \end{array}\right.
+    $$
+
+Is a group injection $\mathrm{Fx}(f_2) \rightarrow \mathrm{Fx}(f)$.
+
+
+2. Now we want to show that $i_1(\mathrm{Fx}(f_1)) \cap i_2(\mathrm{Fx}(f_2)) = \{e\}$.
+Let $g_1 \in \mathrm{Fx}(f_1), g_2 \in \mathrm{Fx}(f_2)$. We have
+$$i_1(g_1) = i_2(g_2) \implies \forall x \in \mathcal{A_1}, i_1(g_1)(x) = i_2(g_2)(x) \implies g_1(x) = x \implies g_1 = id_{|\mathcal{A_1}}$$
+Similarly $g_2 = id|{\mathcal{A_2}}$ and we have shown that: $i_1(\mathrm{Fx}(f_1)) \cap i_2(\mathrm{Fx}(f_2)) = \{e\}$
+
+
+## The dad beat example
+
+[Hear the dad beat here:](https://splice.com/sounds/beatmaker/113f4f7166b1)
+
+
+![The dad beat](dad_beat.png)
 

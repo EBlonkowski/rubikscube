@@ -1,0 +1,35 @@
+---
+title: "List of Finite Groups"
+author: "Manu"
+date: "3 March 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## hi
+
+|Order|Factorisation|Groups||
+|---|---|---|
+|1|1|{e}||
+|2|2|Z/2Z||
+|3|3|Z/3Z||
+|4|2*2|Z/4Z||
+|5|5|Z/5Z||
+|6|2*3|Z/6Z, S3||
+|7|7|Z/7Z||
+|8|2\*2\*2|Z/8Z||
+|9|3*3|Z/9Z||
+|10|2*5|Z/10Z||
+|11|11|Z/11Z||
+|12|2\*2\*3|Z/12Z, C3||
+|13|13|Z/13Z||
+|14|2*7|Z/14Z||
+|15|3*5|Z/15Z||
+|16|2\*2\*2\*2|Z/16Z||
+|17|17|Z/17Z||
+|18|2\*3\*3|Z/18Z||
+|19|19|Z/19Z||
+|20|2\*2\*5|Z/20Z||

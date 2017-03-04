@@ -1,0 +1,26 @@
+---
+title: "Hearing groups"
+author: "Manu"
+date: "3 March 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition of a beat
+
+* A beat always loop on itself. We define the count of a beat as the minimum number of rhythms or notes that repeat itself.
+
+* A beat can be composed of several instruments or drums. Usually we note 0 for the silence. Then we note different drums with numbers 1, 2... For example a beat with 2 druns 1 and 2 is said to be a beat played with {0, 1, 2} since it is also possible to have silence (not play any instruments).
+
+* A beat can play several instruments at once, or 0. But for simplification we consider that a beat can only play **one instrument at a time**. This is not a big restriction because we can alway consider that a combination of 2 instrument at the same time is a new instrument? This is still to explore.
+
+* We say that 2 beat are the same if they produce the same sound. That means that one beat and the same but shifted in time are considered the same (they sound the same).
+
+## Examples
+
+[Dad beat](https://splice.com/sounds/beatmaker/e54120e49581)
+
+
