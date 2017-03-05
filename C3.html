@@ -130,8 +130,21 @@ $(document).ready(function () {
 <pre><code>##  [1] ()               (16)(25)(38)(47) (17)(28)(35)(46) (14)(23)(58)(67)
 ##  [5] (167)(283)       (235)(476)       (146)(385)       (174)(258)      
 ##  [9] (176)(238)       (147)(285)       (253)(467)       (164)(358)</code></pre>
+<p>So C3 is a group with 12 elements. Including:</p>
+<pre class="r"><code>cat('3 elements of order 2: \r\n')</code></pre>
+<pre><code>## 3 elements of order 2: </code></pre>
+<pre class="r"><code>C3[c(2, 3, 4)]</code></pre>
+<pre><code>## [1] (16)(25)(38)(47) (17)(28)(35)(46) (14)(23)(58)(67)</code></pre>
+<pre class="r"><code>cat('8 elements of order 3: \r\n')</code></pre>
+<pre><code>## 8 elements of order 3: </code></pre>
+<pre class="r"><code>C3[5:12]</code></pre>
+<pre><code>## [1] (167)(283) (235)(476) (146)(385) (174)(258) (176)(238) (147)(285)
+## [7] (253)(467) (164)(358)</code></pre>
 <p>Since <span class="math inline">\(C3 \subset R\)</span> and SQ2 normal in R we deduce that SQ2 also normal in C3.</p>
-<p>It has 3 classes: [e], [ru], [ru]^2 so it is isomorphic to Z/3Z. And <span class="math inline">\(1 \mapsto ru\)</span> defines an injection <span class="math inline">\(Z/3Z \hookrightarrow C3\)</span>. So <span class="math inline">\(C3 \sim Z/3Z \rtimes (Z/2Z)^2\)</span></p>
+<p>It has 3 classes: [e], [ru], [ru]^2 so it is isomorphic to Z/3Z. And <span class="math inline">\(1 \mapsto ru\)</span> defines an injection <span class="math inline">\(Z/3Z \hookrightarrow C3\)</span>. So <span class="math inline">\(C3 \sim Z/3Z \rtimes (Z/2Z)^2\)</span>. We note Vx45 the subgroup {e, ru, (ru)^2}.</p>
+<p>The action of Z/3Z on SQ2 can be defined by the action of ru on uu and rr, since ru generates Vx45, and uu and rr generates SQ2.</p>
+<pre class="r"><code>all(uu^(r*u) == rr, rr^(r*u) == cc)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 
 

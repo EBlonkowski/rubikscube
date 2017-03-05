@@ -19,8 +19,142 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * We say that 2 beat are the same if they produce the same sound. That means that one beat and the same but shifted in time are considered the same (they sound the same).
 
+## Strategy to understand beats
+
+1. Understand all the beat with 1 instrument for 2 counts, 3 counts, 4 counts and 5 counts.
+2. List and understand all the beats with 1 instrument
+3. Same 2 steps but considering the additional symmetry on instruments
+4. Same 2 steps but considering the additional symmetry on scale
+5. Same 2 steps but considering the additional symmetry of time-reversal
+6. Combination of the additional symmetry together
+
 ## Examples
 
+![The unique dad beat](dad_beat.png)
 [Dad beat](https://splice.com/sounds/beatmaker/e54120e49581)
 
+
+## Let's try something
+
+![Simplest beat](just_beat_16.png)
+
+What are the subsets of Z/16Z that leave this beat unchanged?
+
+We note 0 for the silence and 1 for the bass sound. Then we have:
+
+| **1** | 2 | 3 | 4 | **5** | 6 | 7 | 8 | **9** | 10 | 11 | 12 | **13** | 14 | 15 | 16 |
+|-------|---|---|---|-------|---|---|---|-------|----|----|----|--------|----|----|----|
+| 1     | 0 | 0 | 0 | 1     | 0 | 0 | 0 | 1     | 0  | 0  | 0  | 1      | 0  | 0  | 0  |
+
+We call this function f. $f: \{1, \dots, 16\} \rightarrow \{0, 1\}$
+
+We note Fx(f, Z/16Z):
+$$\left\{g \in \mathrm{Z/16Z} | \forall x \in \{1 \dots 16\}, f(g \bullet x) = f(x)\right\}$$
+
+**Necessary condition**
+
+Let $g \in \mathrm{Fx(f, Z/16Z)}$, g is uniquely determined by it's image of 1. $f(g \bullet 1) = f(1) = 1$, so we know that $g \bullet 1 \in \{1, 5, 9, 13\}$.
+
+**Sufficient condition**
+
+Let's show that $g: x \mapsto x+4$ is in $\mathrm{Fx(f, Z/16Z)}$.
+
+| Beat          | **1** | 2 | 3 | 4 | **5** | 6 | 7 | 8 | **9** | 10 | 11 | 12 | **13** | 14 | 15 | 16 |
+|---------------|-------|---|---|---|-------|---|---|---|-------|----|----|----|--------|----|----|----|
+| **f(beat)**   | 1     | 0 | 0 | 0 | 1     | 0 | 0 | 0 | 1     | 0  | 0  | 0  | 1      | 0  | 0  | 0  |
+| **f(5+beat)** | 1     | 0 | 0 | 0 | 1     | 0 | 0 | 0 | 1     | 0  | 0  | 0  | 1      | 0  | 0  | 0  |
+
+So $g \in \mathrm{Fx(f, Z/16Z)}$. And g has order 4 so
+$$\mathrm{Fx(f, Z/16Z)} = \{+0, +4, +8, +12\} \sim \mathrm{Z/4Z}$$
+
+Let's do the same but with half of the basic beat:
+
+| **1** | 2 | 3 | 4 | **5** | 6 | 7 | 8 |
+|-------|---|---|---|-------|---|---|---|
+| 1     | 0 | 0 | 0 | 1     | 0 | 0 | 0 | 
+
+We are now looking for Fx(f, Z/8Z). As before the necessary condition is that $g \bullet 1 \in \{1, 5\}$ and we show that this condition is sufficient. So this time $\mathrm{Fx(f, Z/8Z)} = {+0, +2} \sim \mathrm{Z/2Z}$
+
+We observe that
+
+## Beats on 4 counts with 1 instrument
+
+Each beat is a function $f: \{1, \dots 4\} \rightarrow \{0, 1\}$
+We say that 2 functions f, g define the same beat iff there exist $a \in Z/4Z, \forall x \in \{1, \dots 4\}, f(x) = g(a \bullet x)$.
+
+We verify that 'defining the same beat' is an equivalence relation on the functions $\{1, \dots 4\} \rightarrow \{0, 1\}$.
+
+**Property**
+If 2 functions define the same beat then the equivalent classes each of them define have the same cardinal. And a the associated mapping.
+
+*Proof*
+
+> Let f, g define the same beat
+> $|f^{-1}\{0\}| = |\{x \in \{1, \dots 4\}/ f(x) = 0\}| = |\{x \in \{1, \dots 4\}/ g(a + x) = 0\}| = |\{x \in \{1, \dots 4\}/ g(x) = 0\}|$
+> Since $x \mapsto a + x$ is an isomorphism of \{1, \dots 4\}
+
+**Reformulation of the problem**
+We can define an action Z/4Z on $\{1, \dots 4\} \rightarrow \{0, 1\}$ by $a \bullet f = x \mapsto f(a \bullet x)$ for $a \in Z/4Z$.
+
+*proof*
+
+> $0 \bullet f = f$  
+> $(a+b) \bullet f = a \bullet (b \bullet f)$
+
+And 2 functions define the same beat iff there exists a such that  $a \bullet f = g$, said differently if they belong to the same orbit by the action just defined. So we are trying to find all the orbits of this action.
+
+### Intuition
+
+1. Beats with 1-cardinal 0
+
+| Beat | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+| f    | 0 | 0 | 0 | 0 |
+
+2. Beats with 1-cardinal 1
+
+| Beat | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+| f    | 1 | 0 | 0 | 0 |
+
+3. Beats with 1-cardinal 2
+
+| Beat | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+| f    | 1 | 0 | 1 | 0 |
+
+4. Beats with 1-cardinal 3
+
+| Beat | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+| f    | 1 | 1 | 1 | 0 |
+
+5. Beast with 1-cardinal 4
+
+| Beat | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+| f    | 1 | 1 | 1 | 1 |
+
+So our intuition tells us that there are 6 beats using 1 instrument on a count of 4.
+
+### Demonstration
+
+1. First let's take care of the easy cases. If the 1-cardinal of f is 0 or 4 the f is the constant function equal to 0 or 1 respectively. So there is exactly one beat of 1 cardinal 0 and one beat of 1 cardinal 4.
+
+2. Now let's assume the the 1-cardinal of f is in {1, 2, 3}. We want to show that there exists a function g defining the same beat as f that starts with 0 and 1.
+* If f starts with 01 the result is true already.
+* If f starts with 00 then there must be i in {3, 4 such that} f(i) = 1 and f(i-1) = 0. (otherwise the function would be constant = 0 and its 1 cardinal would be 0). We verify that the function 
+$g = (i-1) \bullet f$ starts with 01. Indeed $g(0) = f(i - 1) = 0$ and
+$g(1) = f(i) = 1$.
+* If f starts with 1 there is one i in {2, 3, 4} such that f(i) = 0 otherwise the 1-cardinal of f would be 4. By posing $g = i \bullet f$ we go back to one of the preceding case.
+
+If f has 1-cardinal 1 then it has only one 1. Since there is one g defining the same beat as f starting with 01 we know that it has to be 0100. So there is only one beat with 1 cardinal 1.
+
+Similarly there is only one beat with 1-cardinal 3.
+
+And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we showed in the intuition part). We need to show that these 2 beats are not the same.
 

@@ -27,5 +27,25 @@ Putting the subgroup {0, 2} first:
 | 1    | 1 | 3 | 2 | 0 |
 | 3    | 3 | 1 | 0 | 2 |
 
+## Automorphism group
+
+Since Z/4Z is abelian the inner automorphism are all trivial.
+
+Let $\phi \in \mathrm{Aut{Z/4Z}}$, $\phi$ is uniquely determined by it's image of a generator of Z/4Z, for example 1.
+
+And we have $\phi(2) = \phi(1+1) = \phi(1) + \phi(1)$
+
+Let $n \in \mathrm(Z), g \in \mathrm{A}$ where A is any Abelian group. We write:
+$$\begin{array}{ll}
+  n \cdot g = g + g + \dots + g, (\mathrm{n \times}), n > 0\\
+  0 \cdot g = 0_{\mathrm{A}}\\
+  n \cdot g = -g - g - \dots -g, (\mathrm{-n \times}), n < 0
+  \end{array}$$
+
+We show that $g \mapsto n \cdot g$ is a group morphism $Z \rightarrow \mathrm{A}$.
+
+For $\phi$ to be an automorphism, it musts map generators to generators so $\phi(1) \in \{1, 3\}$.
+
+We show that each of those define an automorphism so the automorphism group is isomorphic to Z/2Z.
 
 

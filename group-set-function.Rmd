@@ -184,3 +184,29 @@ Similarly $g_2 = id|{\mathcal{A_2}}$ and we have shown that: $i_1(\mathrm{Fx}(f_
 
 ![The dad beat](dad_beat.png)
 
+We can write the beat as a function $f: 1:16 \rightarrow {0, 1, 2}$ where 1, ..., 16 represent the beat and {0, 1, 2} represent the instruments. We choose the following mapping for the instruments.
+
+| Silence | Bass | Clap |
+|---------|------|------|
+| 0       | 1    | 2    |
+
+And this is the function f:
+
+| Beat | **1** | 2 | 3 | 4 | **5** | 6 | 7 | 8 | **9** | 10 | 11 | 12 | **13** | 14 | 15 | 16 |
+|------|-------|---|---|---|-------|---|---|---|-------|----|----|----|--------|----|----|----|
+| f    | 1     | 0 | 2 | 0 | 1     | 2 | 2 | 0 | 1     | 0  | 2  | 2  | 1      | 0  | 2  | 0  |
+
+
+As we can see the classes by f are
+
+| Element | Class               |
+|---------|---------------------|
+| 0       | 2, 4, 8, 10, 14, 16 |
+| 1       | 1, 5, 9, 13         |
+| 2       | 3, 6, 7, 11, 12, 15 |
+
+And according to the theorem we have $\mathrm{Fx(f)} = \mathrm{S\{2, 4, 8, 10, 14, 16\}} \times \mathrm{S\{1, 5, 9, 13\}} \times \mathrm{S\{3, 6, 7, 11, 12, 15\}}$
+
+This group has cardinal: `r factorial(6)*factorial(4)*factorial(6)`
+
+This group doesn't seem to express much about the beat itself. For example we can exchange exchange the position of the first bass and put it in 2 and put the silence in 2 in 0. And we will get an isomorphic fixed group. But the beats will sound completely different! Basically the fixed group is uniquely determined by the number of each sounds, and not at all by their position. Said another way the fixed group fails to capture the idea of rhythm.

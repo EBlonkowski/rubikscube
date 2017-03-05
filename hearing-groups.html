@@ -132,9 +132,184 @@ $(document).ready(function () {
 <li><p>We say that 2 beat are the same if they produce the same sound. That means that one beat and the same but shifted in time are considered the same (they sound the same).</p></li>
 </ul>
 </div>
+<div id="strategy-to-understand-beats" class="section level2">
+<h2>Strategy to understand beats</h2>
+<ol style="list-style-type: decimal">
+<li>Understand all the beat with 1 instrument for 2 counts, 3 counts, 4 counts and 5 counts.</li>
+<li>List and understand all the beats with 1 instrument</li>
+<li>Same 2 steps but considering the additional symmetry on instruments</li>
+<li>Same 2 steps but considering the additional symmetry on scale</li>
+</ol>
+</div>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
-<p><a href="https://splice.com/sounds/beatmaker/e54120e49581">Dad beat</a></p>
+<p><img src="data:image/png;base64,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" alt="The unique dad beat" /> <a href="https://splice.com/sounds/beatmaker/e54120e49581">Dad beat</a></p>
+</div>
+<div id="lets-try-something" class="section level2">
+<h2>Let’s try something</h2>
+<div class="figure">
+<img src="data:image/png;base64,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" alt="Simplest beat" />
+<p class="caption">Simplest beat</p>
+</div>
+<p>What are the subsets of Z/16Z that leave this beat unchanged?</p>
+<p>We note 0 for the silence and 1 for the bass sound. Then we have:</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>1</strong></th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th><strong>5</strong></th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th><strong>9</strong></th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th><strong>13</strong></th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>We call this function f. <span class="math inline">\(f: \{1, \dots, 16\} \rightarrow \{0, 1\}\)</span></p>
+<p>We note Fx(f, Z/16Z): <span class="math display">\[\left\{g \in \mathrm{Z/16Z} | \forall x \in \{1 \dots 16\}, f(g \bullet x) = f(x)\right\}\]</span></p>
+<p><strong>Necessary condition</strong></p>
+<p>Let <span class="math inline">\(g \in \mathrm{Fx(f, Z/16Z)}\)</span>, g is uniquely determined by it’s image of 1. <span class="math inline">\(f(g \bullet 1) = f(1) = 1\)</span>, so we know that <span class="math inline">\(g \bullet 1 \in \{1, 5, 9, 13\}\)</span>.</p>
+<p><strong>Sufficient condition</strong></p>
+<p>Let’s show that <span class="math inline">\(g: x \mapsto x+4\)</span> is in <span class="math inline">\(\mathrm{Fx(f, Z/16Z)}\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th><strong>1</strong></th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th><strong>5</strong></th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th><strong>9</strong></th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th><strong>13</strong></th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>f(beat)</strong></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><strong>f(5+beat)</strong></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>So <span class="math inline">\(g \in \mathrm{Fx(f, Z/16Z)}\)</span>. And g has order 4 so <span class="math display">\[\mathrm{Fx(f, Z/16Z)} = \{+0, +4, +8, +12\} \sim \mathrm{Z/4Z}\]</span></p>
+<p>Let’s do the same but with half of the basic beat:</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>1</strong></th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th><strong>5</strong></th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>We are now looking for Fx(f, Z/8Z). As before the necessary condition is that <span class="math inline">\(g \bullet 1 \in \{1, 5\}\)</span> and we show that this condition is sufficient. So this time <span class="math inline">\(\mathrm{Fx(f, Z/8Z)} = {+0, +2} \sim \mathrm{Z/2Z}\)</span></p>
+<p>We observe that</p>
+</div>
+<div id="beats-on-4-counts-with-1-instrument" class="section level2">
+<h2>Beats on 4 counts with 1 instrument</h2>
+<p>Each beat is a function <span class="math inline">\(f: \{1, \dots 4\} \rightarrow \{0, 1\}\)</span> We say that 2 functions f, g define the same beat iff there exist <span class="math inline">\(a \in Z/4Z, \forall x \in \{1, \dots 4\}, f(x) = g(a \bullet x)\)</span>.</p>
+<p>We verify that ‘defining the same beat’ is an equivalence relation on the functions <span class="math inline">\(\{1, \dots 4\} \rightarrow \{0, 1\}\)</span>.</p>
+<p><strong>Property</strong> If 2 functions define the same beat then the equivalent classes each of them define have the same cardinal. And a the associated mapping.</p>
+<p><em>Proof</em></p>
+<blockquote>
+<p>Let f, g define the same beat <span class="math inline">\(|f^{-1}\{0\}| = |\{x \in \{1, \dots 4\}/ f(x) = 0\}| = |\{x \in \{1, \dots 4\}/ g(a + x) = 0\}| = |\{x \in \{1, \dots 4\}/ g(x) = 0\}|\)</span> Since <span class="math inline">\(x \mapsto a + x\)</span> is an isomorphism of {1, 4}</p>
+</blockquote>
+<p><strong>Reformulation of the problem</strong> We can define an action Z/4Z on <span class="math inline">\(\{1, \dots 4\} \rightarrow \{0, 1\}\)</span> by <span class="math inline">\(a \bullet f = x \mapsto f(a \bullet x)\)</span> for <span class="math inline">\(a \in Z/4Z\)</span>.</p>
+<p><em>proof</em></p>
+<blockquote>
+<p><span class="math inline">\(0 \bullet f = f\)</span><br />
+<span class="math inline">\(a+b \bullet f = a \bullet (b \bullet f)\)</span></p>
+</blockquote>
 </div>
 
 
