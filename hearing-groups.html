@@ -139,6 +139,9 @@ $(document).ready(function () {
 <li>List and understand all the beats with 1 instrument</li>
 <li>Same 2 steps but considering the additional symmetry on instruments</li>
 <li>Same 2 steps but considering the additional symmetry on scale</li>
+<li>Same 2 steps but considering the additional symmetry of time-reversal</li>
+<li>Combination of the additional symmetry together</li>
+<li>Define the fixed group of a beat as a subset of Z/4Z (if 4 counts)</li>
 </ol>
 </div>
 <div id="examples" class="section level2">
@@ -308,8 +311,1062 @@ $(document).ready(function () {
 <p><em>proof</em></p>
 <blockquote>
 <p><span class="math inline">\(0 \bullet f = f\)</span><br />
-<span class="math inline">\(a+b \bullet f = a \bullet (b \bullet f)\)</span></p>
+<span class="math inline">\((a+b) \bullet f = a \bullet (b \bullet f)\)</span></p>
 </blockquote>
+<p>And 2 functions define the same beat iff there exists a such that <span class="math inline">\(a \bullet f = g\)</span>, said differently if they belong to the same orbit by the action just defined. So we are trying to find all the orbits of this action.</p>
+<div id="intuition" class="section level3">
+<h3>Intuition</h3>
+<ol style="list-style-type: decimal">
+<li>Beats with 1-cardinal 0</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: decimal">
+<li>Beats with 1-cardinal 1</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Beats with 1-cardinal 2</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol start="4" style="list-style-type: decimal">
+<li>Beats with 1-cardinal 3</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol start="5" style="list-style-type: decimal">
+<li>Beast with 1-cardinal 4</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>So our intuition tells us that there are 6 beats using 1 instrument on a count of 4.</p>
+</div>
+<div id="demonstration" class="section level3">
+<h3>Demonstration</h3>
+<ol style="list-style-type: decimal">
+<li><p>First let’s take care of the easy cases. If the 1-cardinal of f is 0 or 4 the f is the constant function equal to 0 or 1 respectively. So there is exactly one beat of 1 cardinal 0 and one beat of 1 cardinal 4.</p></li>
+<li>Now let’s assume the the 1-cardinal of f is in {1, 2, 3}. We want to show that there exists a function g defining the same beat as f that starts with 0 and 1.</li>
+</ol>
+<ul>
+<li>If f starts with 01 the result is true already.</li>
+<li>If f starts with 00 then there must be i in {3, 4 such that} f(i) = 1 and f(i-1) = 0. (otherwise the function would be constant = 0 and its 1 cardinal would be 0). We verify that the function <span class="math inline">\(g = (i-1) \bullet f\)</span> starts with 01. Indeed <span class="math inline">\(g(0) = f(i - 1) = 0\)</span> and <span class="math inline">\(g(1) = f(i) = 1\)</span>.</li>
+<li>If f starts with 1 there is one i in {2, 3, 4} such that f(i) = 0 otherwise the 1-cardinal of f would be 4. By posing <span class="math inline">\(g = i \bullet f\)</span> we go back to one of the preceding case.</li>
+</ul>
+<p>If f has 1-cardinal 1 then it has only one 1. Since there is one g defining the same beat as f starting with 01 we know that it has to be 0100. So there is only one beat with 1 cardinal 1.</p>
+<p>Similarly there is only one beat with 1-cardinal 3.</p>
+<p>And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we showed in the intuition part). We need to show that these 2 beats are not the same.</p>
+</div>
+</div>
+<div id="beats-on-3-counts" class="section level2">
+<h2>Beats on 3 counts</h2>
+<ul>
+<li>1-cardinal is 0</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 1</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 2</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 3</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="beats-on-2-counts" class="section level2">
+<h2>Beats on 2 counts</h2>
+<ul>
+<li>1-cardinal is 0</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 1</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 2</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="beats-on-5-counts" class="section level2">
+<h2>Beats on 5 counts</h2>
+<ul>
+<li>1-cardinal is 0</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 1</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 2</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 3</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 4</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 5</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Total is 8 beats</p>
+</div>
+<div id="beats-on-6-counts" class="section level2">
+<h2>Beats on 6 counts</h2>
+<ul>
+<li>1-cardinal is 0</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 1</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 2</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 3</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Total is 14</p>
+</div>
+<div id="beats-on-7-counts" class="section level2">
+<h2>Beats on 7 counts</h2>
+<ul>
+<li>1-cardinal is 0</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 1</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 2</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>1-cardinal is 3</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Total is (1+1+3+5)*2 = 20</p>
+</div>
+<div id="some-general-results" class="section level2">
+<h2>Some general results</h2>
+<p>Let <span class="math inline">\(f: \{1 \dots n\} \rightarrow \{0, 1\}\)</span>. We have the following results:</p>
+<ul>
+<li>There is exactly one beat of 1-cardinal 0</li>
+<li>There is exactly one beat of 1-cardinal 1</li>
+<li>There is a bijection between all the beats of 1-cardinal k and all the beats of 1-cardinal n-k</li>
+</ul>
+<p><strong>Proof</strong></p>
+<blockquote>
+<p>The first point is obvious.<br />
+For the second point take any function of 1-cardinal 1. Let i the unique element in {0, n} that g(i) = 1. Then <span class="math inline">\(g_2 = i \bullet g\)</span> is the function 1000…0. Which shows that any function g belong in the class of 100…0. So there is only one class.<br />
+For the last point. Let f be a function of cardinal k. Where <span class="math inline">\(k \in {0, n}\)</span>. We introduce the function <span class="math inline">\(\phi: Rec(n) \rightarrow Rec(n)\)</span> where Rec is the set of all recordings on one instrument: i.e the set of all functions <span class="math inline">\(\{1 \dots n\} \rightarrow \{0, 1\}\)</span>. We define <span class="math inline">\(\phi(f) : x \mapsto 1 - f(x)\)</span> Basically <span class="math inline">\(\phi\)</span> inverts the silence with the moments when the instruments play.<br />
+First we will show that <span class="math inline">\(\phi(a \bullet f) = a \bullet \phi(f)\)</span>. <span class="math inline">\(\phi(a \bullet f)(x) = 1 - f(x+a) = a \bullet \phi(f)\)</span>. From this we can deduce that the image of a beat is another beat.<br />
+Furthermore, <span class="math inline">\(\phi\)</span> is an isomorphism on Rec. As a function on beats <span class="math inline">\(\phi\)</span> is also surjective, so it is also an isomorphism since the sets of all beats is finite. And we see that <span class="math inline">\(\phi\)</span> maps the beats of 1-cardinal k to the beats of 1-cardinal n-k.</p>
+</blockquote>
+<div id="understanding-the-beats-of-1-cardinal-2" class="section level3">
+<h3>Understanding the beats of 1-cardinal 2</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Beats with 1-cardinal = 2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
