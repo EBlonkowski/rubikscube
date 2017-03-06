@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = TRUE)
 4. Same 2 steps but considering the additional symmetry on scale
 5. Same 2 steps but considering the additional symmetry of time-reversal
 6. Combination of the additional symmetry together
+7. Define the fixed group of a beat as a subset of Z/4Z (if 4 counts)
 
 ## Examples
 
@@ -158,3 +159,263 @@ Similarly there is only one beat with 1-cardinal 3.
 
 And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we showed in the intuition part). We need to show that these 2 beats are not the same.
 
+## Beats on 3 counts
+
+* 1-cardinal is 0
+
+| Beat | 1 | 2 | 3 |
+|------|---|---|---|
+| f    | 0 | 0 | 0 |
+
+* 1-cardinal is 1
+
+| Beat | 1 | 2 | 3 |
+|------|---|---|---|
+| f    | 1 | 0 | 0 |
+
+* 1-cardinal is 2
+
+| Beat | 1 | 2 | 3 |
+|------|---|---|---|
+| f    | 1 | 1 | 0 |
+
+* 1-cardinal is 3
+
+| Beat | 1 | 2 | 3 |
+|------|---|---|---|
+| f    | 1 | 1 | 1 |
+
+## Beats on 2 counts
+
+* 1-cardinal is 0
+
+| Beat | 1 | 2 |
+|------|---|---|
+| f    | 0 | 0 |
+
+* 1-cardinal is 1
+
+| Beat | 1 | 2 |
+|------|---|---|
+| f    | 1 | 0 |
+
+* 1-cardinal is 2
+
+| Beat | 1 | 2 |
+|------|---|---|
+| f    | 1 | 1 |
+
+## Beats on 5 counts
+
+* 1-cardinal is 0
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 0 | 0 | 0 | 0 | 0 |
+
+* 1-cardinal is 1
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 1 | 0 | 0 | 0 | 0 |
+
+* 1-cardinal is 2
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 1 | 0 | 1 | 0 | 0 |
+
+* 1-cardinal is 3
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 0 | 0 | 1 | 1 | 1 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 0 | 1 | 0 | 1 | 1 |
+
+* 1-cardinal is 4
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 1 | 1 | 1 | 1 | 0 |
+
+* 1-cardinal is 5
+
+| Beat | 1 | 2 | 3 | 4 | 5 |
+|------|---|---|---|---|---|
+| f    | 1 | 1 | 1 | 1 | 1 |
+
+Total is 8 beats
+
+## Beats on 6 counts
+
+* 1-cardinal is 0
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 0 | 0 | 0 | 0 | 0 | 0 |
+
+* 1-cardinal is 1
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 0 | 0 | 0 | 0 | 0 |
+
+* 1-cardinal is 2
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 0 | 1 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 0 | 0 | 1 | 0 | 0 |
+
+* 1-cardinal is 3
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 1 | 1 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 1 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 | 1 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 1 | 0 | 1 | 0 | 1 | 0 |
+
+Total is 14
+
+## Beats on 7 counts
+
+* 1-cardinal is 0
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+* 1-cardinal is 1
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+* 1-cardinal is 2
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 0 | 1 | 0 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
+
+* 1-cardinal is 3
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 1 | 0 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 | 1 | 0 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 1 | 0 | 0 | 0 | 1 | 0 |
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 1 | 0 | 1 | 0 | 1 | 0 | 0 |
+
+Total is (1+1+3+5)*2 = 20
+
+
+## Some general results
+
+Let $f: \{1 \dots n\} \rightarrow \{0, 1\}$. 
+We have the following results:
+
+* There is exactly one beat of 1-cardinal 0
+* There is exactly one beat of 1-cardinal 1
+* There is a bijection between all the beats of 1-cardinal k and all the beats of 1-cardinal n-k
+
+**Proof**
+
+> The first point is obvious.  
+> For the second point take any function of 1-cardinal 1. Let i the unique element in {0, n} that g(i) = 1. Then $g_2 = i \bullet g$ is the function 1000...0. Which shows that any function g belong in the class of 100...0. So there is only one class.  
+> For the last point. Let f be a function of cardinal k. Where $k \in {0, n}$. We introduce the function $\phi: Rec(n) \rightarrow Rec(n)$ where Rec is the set of all recordings on one instrument: i.e the set of all functions $\{1 \dots n\} \rightarrow \{0, 1\}$. We define $\phi(f) : x \mapsto 1 - f(x)$ Basically $\phi$ inverts the silence with the moments when the instruments play.  
+> First we will show that $\phi(a \bullet f) = a \bullet \phi(f)$.
+> $\phi(a \bullet f)(x) = 1 - f(x+a) = a \bullet \phi(f)$. From this we can deduce that the image of a beat is another beat.  
+> Furthermore, $\phi$ is an isomorphism on Rec. As a function on beats $\phi$ is also surjective, so it is also an isomorphism since the sets of all beats is finite. And we see that $\phi$ maps the beats of 1-cardinal k to the beats of 1-cardinal n-k.
+
+### Understanding the beats of 1-cardinal 2
+
+| Beat                      | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---------------------------|---|---|---|---|---|---|---|
+| Beats with 1-cardinal = 2 | 0 | 1 | 1 | 2 | 2 | 3 | 3 |
+
+**Conjecture** The number of beats of 1-cardinal 2 is n div 2 where div is the integer division.
+
+Let f be a n-recording with one instrument, with 1-cardinal equal to 2. Let m = n div 2. A.k.a the biggest integer such that m*2 is smaller than n. We want to show that there is another recording g of the same beat as f, such that g(1) = 1 and g(i) = 1, and all other equal 0, for $i \in {1 \dots m+1}$.
+
+We know that there is a recording defining the same beat as f but starting with a 1. So we can assume f(1) = 1. Let j > 1 such that f(j) = 1. If j <= m+1 then we have nothing to prove we can take g = f. Let's now assume j > m+1. We are going to move j to the first position using the action of -(n-j+1).
+We let $g = -(n-j+1) \bullet f = (j-1) \bullet f$
+
+We have $-(n-j+1) \bullet f (1) = f(1-n+j-1) = f(j-n) = f(j) = 1$ and 
+$-(n-j+1) \bullet f(1+n-j+1) = f(2+n-j-n+j-1) = f(1) = 1$
+
+We have $g(1) = j-1 \bullet f (1) = f(1+j-1) = f(j) = 1$ and 
+$g(2+n-j) = j-1 \bullet f(2+n-j) = f(2+n-j+j-1) = f(1) = 1$
+
+And j > m+2 so j-2 > m so 2-j < -m so 2+n-j < n-m <= m+1. And g verifies the properties.
+
+Now we still need to prove that to recordings verifying the above properties cannot share the same class.
+
+
+### Run-length encoding of a recording
+
+We consider the following product:
+$$\sum_{a \in Z/nZ}f(1+a)$$
+This one is none other than the 1-cardinal.
+
+$$\sum_{a \in Z/nZ}f(1+a) \times f(2+a)$$
+
+And also:
+
+$$\sum_{a \in Z/nZ}f(1+a) \times f(2+a) \times f(3+a)$$
+
+We have such a product for any k <= n.
+
+Let f be a recording that starts with a 1 and ends with a 0.
+
+
+
+### Understanding the beats of 1-cardinal 3
+
+| Beat                      | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---------------------------|---|---|---|---|---|---|---|
+| Beats with 1-cardinal = 3 | 0 | 0 | 1 | 1 | 2 | 4 | 5 |
