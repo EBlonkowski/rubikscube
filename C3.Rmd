@@ -36,7 +36,7 @@ C3
 
 So C3 is a group with 12 elements. Including:
 
-```{r}
+```{r, echo = FALSE}
 cat('3 elements of order 2: \r\n')
 C3[c(2, 3, 4)]
 cat('8 elements of order 3: \r\n')

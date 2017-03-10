@@ -2,7 +2,9 @@
 title: "Hearing groups"
 author: "Manu"
 date: "3 March 2017"
-output: html_document
+output: 
+  html_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -80,6 +82,8 @@ We observe that
 
 ## Beats on 4 counts with 1 instrument
 
+![Recording space with the beats classes](beats_4_counts.png)
+
 Each beat is a function $f: \{1, \dots 4\} \rightarrow \{0, 1\}$
 We say that 2 functions f, g define the same beat iff there exist $a \in Z/4Z, \forall x \in \{1, \dots 4\}, f(x) = g(a \bullet x)$.
 
@@ -120,15 +124,22 @@ And 2 functions define the same beat iff there exists a such that  $a \bullet f 
 
 3. Beats with 1-cardinal 2
 
+$P_2 = 1$
+
 | Beat | 1 | 2 | 3 | 4 |
 |------|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 |
+
+$P_2 = 0$
 
 | Beat | 1 | 2 | 3 | 4 |
 |------|---|---|---|---|
 | f    | 1 | 0 | 1 | 0 |
 
 4. Beats with 1-cardinal 3
+
+$P_2 = 2$
+$P_3 = 1$
 
 | Beat | 1 | 2 | 3 | 4 |
 |------|---|---|---|---|
@@ -161,6 +172,8 @@ And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we
 
 ## Beats on 3 counts
 
+![Recording space with the beats classes](beats_3_counts.png)
+
 * 1-cardinal is 0
 
 | Beat | 1 | 2 | 3 |
@@ -185,7 +198,11 @@ And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we
 |------|---|---|---|
 | f    | 1 | 1 | 1 |
 
+Total 4
+
 ## Beats on 2 counts
+
+![Recording space with the beats classes](beats_2_counts.png)
 
 * 1-cardinal is 0
 
@@ -221,9 +238,13 @@ And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we
 
 * 1-cardinal is 2
 
+$P_2 = 1$
+
 | Beat | 1 | 2 | 3 | 4 | 5 |
 |------|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 | 0 |
+
+$P_2 = 0$
 
 | Beat | 1 | 2 | 3 | 4 | 5 |
 |------|---|---|---|---|---|
@@ -231,9 +252,13 @@ And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we
 
 * 1-cardinal is 3
 
+$P_3 = 1, P_2 = 2$
+
 | Beat | 1 | 2 | 3 | 4 | 5 |
 |------|---|---|---|---|---|
 | f    | 0 | 0 | 1 | 1 | 1 |
+
+$P_3 = 0, P_2 = 1$
 
 | Beat | 1 | 2 | 3 | 4 | 5 |
 |------|---|---|---|---|---|
@@ -241,11 +266,14 @@ And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we
 
 * 1-cardinal is 4
 
+$P_4 = 1, P_3 = 2, P_2 = 3, P_1 = 4$
 | Beat | 1 | 2 | 3 | 4 | 5 |
 |------|---|---|---|---|---|
 | f    | 1 | 1 | 1 | 1 | 0 |
 
 * 1-cardinal is 5
+
+$P_5 = 5, P_4 = 5, P_3 = 5, P_2 = 5, P_1 = 5$
 
 | Beat | 1 | 2 | 3 | 4 | 5 |
 |------|---|---|---|---|---|
@@ -269,13 +297,19 @@ Total is 8 beats
 
 * 1-cardinal is 2
 
+$P_2 = 1$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 | 0 | 0 |
 
+$P_2 = 0$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
 | f    | 1 | 0 | 1 | 0 | 0 | 0 |
+
+$P_2 = 0$
 
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
@@ -283,23 +317,54 @@ Total is 8 beats
 
 * 1-cardinal is 3
 
+$P_3 = 1, P_2 = 2$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
 | f    | 1 | 1 | 1 | 0 | 0 | 0 |
+
+$P_3 = 0, P_2 = 1$
 
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 1 | 0 | 0 |
 
+$P_3 = 0, P_2 = 1$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 | 1 | 0 |
+
+$P_3 = 0, P_2 = 0$
 
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
 | f    | 1 | 0 | 1 | 0 | 1 | 0 |
 
 Total is 14
+
+Those are just the 'opposite beats'. We can check them out:
+
+* 1-cardinal is 4
+
+$P_4 = 1, P_3 = 2, P_2 = 3$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 0 | 0 | 1 | 1 | 1 | 1 |
+
+$P_4 = 0, P_3 = 1, P_2 = 2$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 0 | 1 | 0 | 1 | 1 | 1 |
+
+$P_4 = 0, P_3 = 0, P_2 = 2$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+| f    | 0 | 1 | 1 | 0 | 1 | 1 |
+
 
 ## Beats on 7 counts
 
@@ -317,13 +382,19 @@ Total is 14
 
 * 1-cardinal is 2
 
+$P_3 = 0, P_2 = 1, P_1 = 2$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
 
+$P_2 = 0, P_1 = 2$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 0 | 1 | 0 | 0 | 0 | 0 |
+
+$P_2 = 0, P_1 = 2$
 
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
@@ -331,27 +402,77 @@ Total is 14
 
 * 1-cardinal is 3
 
+$P_4 = 0, P_3 = 1, P_2 = 2, P_1 = 3$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
+
+$P_3 = 0, P_2 = 1, P_1 = 3$
 
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 1 | 0 | 0 | 0 |
 
+$P_3 = 0, P_2 = 1, P_1 = 3$
+
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 | 1 | 0 | 0 |
+
+$P_3 = 0, P_2 = 1, P_1 = 3$
 
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 1 | 0 | 0 | 0 | 1 | 0 |
 
+$P_2 = 0, P_1 = 3$
 | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |------|---|---|---|---|---|---|---|
 | f    | 1 | 0 | 1 | 0 | 1 | 0 | 0 |
 
 Total is (1+1+3+5)*2 = 20
+
+The next ones we get by symmetry:
+
+* 1-cardinal is 4
+
+$P_5 = 0, P_4 = 1, P_3 = 2, P_2 = 3, P_1 = 4$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
+
+$P_4 = 0, P_3 = 1, P_2 = 2, P_1 = 4$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 0 | 0 | 1 | 0 | 1 | 1 | 1 |
+
+$P_3 = 0, P_2 = 2, P_1 = 4$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
+
+$P_4 = 0, P_3 = 1, P_2 = 2, P_1 = 4$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 0 | 0 | 1 | 1 | 1 | 0 | 1 |
+
+$P_3 = 0, P_2 = 1, P_1 = 4$
+
+| Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|------|---|---|---|---|---|---|---|
+| f    | 0 | 1 | 0 | 1 | 0 | 1 | 1 |
+
+## Summary of exploration
+
+| Measure size         | 1 | 2 | 3 | 4  | 5  | 6  | 7   |
+|----------------------|---|---|---|----|----|----|-----|
+| Number of recordings | 2 | 4 | 8 | 16 | 32 | 64 | 128 |
+| Number of beats      | 2 | 3 | 4 | 6  | 8  | 14 | 20  |
 
 
 ## Some general results
@@ -398,6 +519,8 @@ Now we still need to prove that to recordings verifying the above properties can
 
 ### Run-length encoding of a recording
 
+We can write the beat 1001 as bs2b. Is it a group? It seems like it is not possible to invert elements. What is the invert of b? What is the identity? Identity should be the silence maybe. But then what to add to a bass to get silence? Or maybe we could consider the 2 constant beat to be the 'no beat'?
+
 We consider the following product:
 $$\sum_{a \in Z/nZ}f(1+a)$$
 This one is none other than the 1-cardinal.
@@ -410,8 +533,22 @@ $$\sum_{a \in Z/nZ}f(1+a) \times f(2+a) \times f(3+a)$$
 
 We have such a product for any k <= n.
 
-Let f be a recording that starts with a 1 and ends with a 0.
+Let's see that such products are the same for 2 recordings of the same beat.
 
+> Let $g = b \bullet f$. Then
+> $$P_k(g) = \sum_{a \in Z/nZ}g(1+a) \times \dots \times g(k+a) = \sum_{a \in Z/nZ} f(1+a+b) \times \dot \times f(k+a+b) \\ = \sum_{c \in Z/nZ} f(1+c) \times \dot \times f(k+c) = P_k(f)$$
+
+### Properties of products or moments
+
+For any $k, n \in \mathcal{N}, k <= n$ and n-recordings, we have:
+
+* $P_k <= P_1$
+* $k > 1 P_{k-1} >= P_k$
+* $k > 1, P_k > 0 \implies P_{k-1} > P_{k}$
+
+
+We can see that for any recording f of 1-cardinal 3 $\forall k > 3, P_k(f) = 0$.
+And also we have $P_3(f) <= 1$
 
 
 ### Understanding the beats of 1-cardinal 3
@@ -419,3 +556,12 @@ Let f be a recording that starts with a 1 and ends with a 0.
 | Beat                      | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---------------------------|---|---|---|---|---|---|---|
 | Beats with 1-cardinal = 3 | 0 | 0 | 1 | 1 | 2 | 4 | 5 |
+
+We necessarily have $P_4 = 0$ and $P_3 <= 1$
+
+If $P_3 = 1$. Then there is exactly one way to have the beat start with 111 and after that is all zerose.
+
+If $P_3 = 0$. Then $P_2 \in \{0, 1, 2\}$ because $P_2 = 3 \implies P_1 > 3$
+
+*   If $P_2 = 2$, since $P_3 = 0$ we can deduce that $P_1 > 3$ absurd
+*   If $P_2 = 1$, there
