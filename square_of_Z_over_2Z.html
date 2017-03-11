@@ -164,7 +164,7 @@ $(document).ready(function () {
 <li><span class="math inline">\(\phi(1, 0) = (0, 1)\)</span>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(\phi(0, 1) = (1, 0)\)</span></li>
-<li><span class="math inline">\(\phi(0, 1) = (1, 1)\)</span></li>
+<li><span class="math inline">\(\phi(0, 1) = (1, 1)\)</span> We have by definition <span class="math inline">\(\phi(1, 1) = \phi((1, 0)+(0, 1)) = (0, 1) + (1, 1) = (1, 0)\)</span> Now let’s check the properties: <span class="math inline">\(\phi((1, 0) + (1, 1)) = \phi(0, 1) = (1, 1) = (0, 1) + (1, 0) = \phi(1, 0) + \phi(1, 1)\)</span> OK and <span class="math inline">\(\phi((0, 1) + (1, 1)) = \phi(1,0) = (0, 1) = (1, 1) + (1, 0) = \phi(0,1) + \phi(1, 1)\)</span></li>
 </ol></li>
 <li><span class="math inline">\(\phi(1, 0) = (1, 1)\)</span>
 <ol style="list-style-type: decimal">
@@ -172,6 +172,15 @@ $(document).ready(function () {
 <li><span class="math inline">\(\phi(0, 1) = (0, 1)\)</span></li>
 </ol></li>
 </ol>
+<p>We can see that <span class="math inline">\(\phi_{1.2} = \alpha\)</span> has order 2. And that <span class="math inline">\(\phi_{2.2} = \gamma\)</span> has order 3. And <span class="math inline">\(6 | (|&lt;\alpha, \gamma&gt;|)\)</span> and <span class="math inline">\(&lt;\alpha, \gamma&gt; \subset \mathrm{Aut} \implies |&lt;\alpha, \gamma&gt;| = 6\)</span> and <span class="math inline">\(\implies \mathrm{Aut} = &lt;\alpha, \gamma&gt;\)</span> The generators verify the following relations: <span class="math display">\[\left\{
+\begin{array}{ll}
+  \alpha^2 = e \\
+  \gamma^3 = e \\
+  \gamma^\alpha = \gamma^2
+\end{array}
+\right\}\]</span></p>
+<p>Since <span class="math inline">\(\alpha \circ \gamma \circ \alpha^{-1} (1, 0) = (1, 1)\)</span> and <span class="math inline">\(\alpha \circ \gamma \circ \alpha^{-1} (0, 1) = (1, 0)\)</span></p>
+<p>So Aut ~ S3</p>
 </div>
 
 

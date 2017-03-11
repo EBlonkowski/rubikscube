@@ -565,3 +565,27 @@ If $P_3 = 0$. Then $P_2 \in \{0, 1, 2\}$ because $P_2 = 3 \implies P_1 > 3$
 
 *   If $P_2 = 2$, since $P_3 = 0$ we can deduce that $P_1 > 3$ absurd
 *   If $P_2 = 1$, there
+
+### Fixed group of a recording on 1 instrument
+
+Let $f: \{1 \dots n\} \rightarrow \{0, 1\}$
+
+Example:
+
+| 1 | 2 | 3 | 4 |
+|---|---|---|---|
+| 1 | 0 | 0 | 0 |
+
+Stab(f) = {id}, $|\mathrm{Orb(f)}| = 4$
+
+| 1 | 2 | 3 | 4 |
+|---|---|---|---|
+| 1 | 0 | 1 | 0 |
+
+Stab(f) = {0, 2}, $|\mathrm{Orb(f)}| = 2$
+
+| 1 | 2 | 3 | 4 |
+|---|---|---|---|
+| 1 | 1 | 1 | 1 |
+
+Stab(f) = {0, 1, 2, 4}, $|\mathrm{Orb(f)}| = 1$

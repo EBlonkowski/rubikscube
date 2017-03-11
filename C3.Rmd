@@ -26,6 +26,7 @@ c <- rot_cck# elements
 rr <- rot_right * rot_right
 uu <- rot_up * rot_up
 cc <- rot_cck * rot_cck
+ru <- r*u
 # all the group elements
 SQ2 <- c(as.word(rr/rr), rr, uu, cc)
 C3 <- c(SQ2,

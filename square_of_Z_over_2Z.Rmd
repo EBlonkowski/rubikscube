@@ -49,6 +49,27 @@ Let's just check out all the possibilities:
 2. $\phi(1, 0) = (0, 1)$
       1. $\phi(0, 1) = (1, 0)$
       2. $\phi(0, 1) = (1, 1)$
+        We have by definition $\phi(1, 1) = \phi((1, 0)+(0, 1)) = (0, 1) + (1, 1) = (1, 0)$
+        Now let's check the properties:
+        $\phi((1, 0) + (1, 1)) = \phi(0, 1) = (1, 1) = (0, 1) + (1, 0) = \phi(1, 0) + \phi(1, 1)$ OK
+        and $\phi((0, 1) + (1, 1)) = \phi(1,0) = (0, 1) = (1, 1) + (1, 0) = \phi(0,1) + \phi(1, 1)$
 3. $\phi(1, 0) = (1, 1)$
       1. $\phi(0, 1) = (1, 0)$
       2. $\phi(0, 1) = (0, 1)$
+      
+      
+We can see that $\phi_{1.2} = \alpha$ has order 2.
+And that $\phi_{2.2} = \gamma$ has order 3. And $6 | (|<\alpha, \gamma>|)$ and $<\alpha, \gamma> \subset \mathrm{Aut} \implies |<\alpha, \gamma>| = 6$ and $\implies \mathrm{Aut} = <\alpha, \gamma>$
+The generators verify the following relations:
+$$\left\{
+\begin{array}{ll}
+  \alpha^2 = e \\
+  \gamma^3 = e \\
+  \gamma^\alpha = \gamma^2
+\end{array}
+\right\}$$
+
+
+Since $\alpha \circ \gamma \circ \alpha^{-1} (1, 0) = (1, 1)$ and $\alpha \circ \gamma \circ \alpha^{-1} (0, 1) = (1, 0)$
+
+So Aut ~ S3
