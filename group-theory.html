@@ -123,7 +123,124 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#group-definition">Group definition</a><ul>
+<li><a href="#opposite-group">Opposite group</a></li>
+<li><a href="#conjugation">Conjugation</a><ul>
+<li><a href="#as-a-homomorphism-g-into-augg">As a homomorphism G into Aug(G)</a></li>
+<li><a href="#what-is-not-homomorphism">What is not homomorphism</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#symmetric-group">Symmetric group</a></li>
+<li><a href="#semidirect-product">Semidirect product</a><ul>
+<li><a href="#ways-to-write-the-semidirect-product">2 ways to write the semidirect product</a></li>
+<li><a href="#definition">Definition</a></li>
+</ul></li>
+<li><a href="#group-decomposition">Group decomposition</a><ul>
+<li><a href="#other-formulations">Other formulations</a><ul>
+<li><a href="#number-1-using-kappa">Number 1: using <span class="math inline">\(\kappa\)</span></a></li>
+<li><a href="#number-2-using-k">Number 2: using <strong>K</strong></a></li>
+</ul></li>
+<li><a href="#proof">Proof</a><ul>
+<li><a href="#proof-that-k-is-normal-in-g">Proof that <strong>K</strong> is normal in <strong>G</strong></a></li>
+</ul></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#more-group-decomposition">More group decomposition</a></li>
+<li><a href="#subset-of-sn-given-by-generators">Subset of Sn given by generators</a><ul>
+<li><a href="#examples-1">Examples</a></li>
+</ul></li>
+<li><a href="#other-examples-of-decompositions">Other examples of decompositions</a></li>
+</ul></li>
+</ul>
+</div>
 
+<div id="group-definition" class="section level1">
+<h1>Group definition</h1>
+<p>Let G be a finite set with an application <span class="math inline">\(\cdot: G\times G \rightarrow G\)</span>. <span class="math inline">\((G, \cdot)\)</span> is a group iff:</p>
+<ul>
+<li><strong>Identity</strong> There exists an element we call e such that <span class="math inline">\(\forall g \in G, e \cdot g = g \cdot e = g\)</span></li>
+<li><strong>Transitivity</strong> <span class="math inline">\(\forall g, h, k \in G, (g \cdot h) \cdot k = g \cdot (h \cdot k)\)</span></li>
+<li><strong>Inverse</strong> <span class="math inline">\(\forall g \in G, \exists h \in G / gh = hg = e\)</span></li>
+</ul>
+<p>We easily show that if there is an identity it must be unique, and that the inverse of an element is also unique.</p>
+<div id="opposite-group" class="section level2">
+<h2>Opposite group</h2>
+<p>If <span class="math inline">\((G, \cdot)\)</span> is a group then we can construct the opposite group <span class="math inline">\((G, \cdot_{op})\)</span> the following way:</p>
+<p><span class="math display">\[g \cdot_{op} k \mapsto k \cdot g\]</span></p>
+<p>And the isomorphism <span class="math inline">\(G \rightarrow G^{op}\)</span> is given by the identity?</p>
+<p><span class="math inline">\(id(g \cdot k) = g \cdot k\)</span> and <span class="math inline">\(id(g \cdot k) = id(g) \cdot_{op} id(k) = k \cdot g\)</span></p>
+<p>Nope it is not.</p>
+<p>The isomorphism is given by the map <span class="math inline">\(g \mapsto g^{-1}\)</span> :</p>
+<p><span class="math inline">\((g \cdot k)^-1 = k^{-1} \cdot g^{-1}\)</span> and <span class="math inline">\((g \cdot k)^-1 = g^{-1} \cdot_{op} k^{-1} = k^{-1} \cdot g^{-1}\)</span></p>
+</div>
+<div id="conjugation" class="section level2">
+<h2>Conjugation</h2>
+<p>For any g in G we can define: <span class="math inline">\(h^g \mapsto ghg^{-1}\)</span> and <span class="math inline">\(h^{*g} \mapsto g^{-1}hg\)</span></p>
+<p>Let’s show that both are automorphisms:</p>
+<p><span class="math display">\[h^gk^g = ghg^{-1}gkg^{-1} = ghkg^{-1} = (hk)^g\]</span> So the conjugation is an automorphism.</p>
+<p><span class="math display">\[h^{*g}k^{*g} = g^{-1}hgg^{-1}kg = g^{-1}hkg = (hk)^{*g}\]</span> So the opposite conjugation is also an automorphism.</p>
+<div id="as-a-homomorphism-g-into-augg" class="section level3">
+<h3>As a homomorphism G into Aug(G)</h3>
+<p>We also get 2 mappings</p>
+<p><span class="math display">\[\begin{array}{ll}
+conj: G \rightarrow Aut(G) \\
+g \mapsto (x \mapsto x^g)
+\end{array}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\begin{array}{ll}
+conj_{op}: G \rightarrow Aut^{op}(G) \\
+g \mapsto (x \mapsto x^{*g})
+\end{array}\]</span></p>
+<p>We can check that they are both homomorphisms:</p>
+<p><span class="math display">\[conj(g_1) \circ conj(g_2)(x) = conj(g_1)(g_2x{g_2}^{-1}) = g_1g_2x{g_2}^{-1}{g_1}^{-1} = g_1g_2x(g_1g_2)^{-1} = conj(g_1g_2)(x)\]</span></p>
+<p>And similarly for <span class="math inline">\(conj_{op}\)</span>:</p>
+<p><span class="math display">\[conj_{op}(g_1) \circ conj_{op}(g_2)(x) = conj_{op}(g_2)(conj_{op}(g_1)(x)) = conj(g_2)({g_1}^{-1}xg_1) = {g_2}^{-1}{g_1}^{-1}xg_1g_2 = {g_1g_2}^{-1}xg_1g_2 = conj_{op}(g_1g_2)(x)\]</span></p>
+</div>
+<div id="what-is-not-homomorphism" class="section level3">
+<h3>What is not homomorphism</h3>
+<p>This is the proof that <span class="math inline">\(conj_{op}\)</span> is not a homomorphism into Aut(G) <span class="math display">\[conj_{op}(g_1) \circ conj_{op}(g_2)(x) = conj(g_1)({g_2}^{-1}xg_2) = {g_1}^{-1}{g_2}^{-1}xg_2g_1 = {g_2g_1}^{-1}xg_2g_1 = conj(g_2g_1)(x)\]</span></p>
+<p>Similarly we show that <span class="math inline">\(conj\)</span> is not a homomorphism into <span class="math inline">\(Aut_{op}(G)\)</span></p>
+</div>
+</div>
+</div>
+<div id="symmetric-group" class="section level1">
+<h1>Symmetric group</h1>
+<p>Let A be any finite set. We define Aut(A) to be the group of all bijection <span class="math inline">\(A \rightarrow A\)</span></p>
+<p>And we can define <span class="math inline">\(\forall f, g \in \mathrm{Aut(A)}, \forall a \in A, f \circ g (a) = f(g(a))\)</span> and <span class="math inline">\(f \circ_{op} g(a) = g(f(a))\)</span>. These 2 groups are opposite of each other,</p>
+</div>
+<div id="semidirect-product" class="section level1">
+<h1>Semidirect product</h1>
+<p>Let G be a group, N a normal subgroup, K another subgroup such that <span class="math inline">\(G = K \rtimes N\)</span></p>
+<div id="ways-to-write-the-semidirect-product" class="section level2">
+<h2>2 ways to write the semidirect product</h2>
+<p>Let <span class="math inline">\(n \in N, k \in k, g \in G\)</span> Should we write g as nk or as kn?</p>
+<p>if we write <strong>g = nk</strong> then: <span class="math inline">\(g_1 \cdot g_2 = n_1k_1 \cdot n_2k_2 = n_1k_1n_2k_1^{-1}k_1k_2 = n_1(k_1n_2k_1^{-1}) \cdot k_1k_2\)</span></p>
+<p><span class="math display">\[(k_1, n_1) \cdot (k_2, n_2) = (k_1k_2, n_1k_1n_2k_1^{-1}) = (k_1k_2, n_1n_2^{k_1})\]</span></p>
+<p>if we write <strong>g = kn</strong> then: <span class="math inline">\(g_1 \cdot g_2 = k_1n_1 \cdot k_2n_2 = k_1k_2(k_2^{-1}n_1k_2) \cdot n_2\)</span></p>
+<p><span class="math display">\[(k_1, n_1) \cdot (k_2, n_2) = (k_1k_2, ({k_2}^{-1}n_1k_2)n_2) = (k_1k_2, {n_1}^{*k2}n_2)\]</span></p>
+<p>Lot of possibilities:</p>
+<ul>
+<li>2 ways to define the conjugation</li>
+<li>2 ways to define the composition of functions</li>
+<li>2 ways to define the semi-direct product</li>
+</ul>
+<p>Are all those definition compatible?</p>
+<p>We will show that once we choose an order for the composition of functions there is only one way to define composition and the semi-direct product such that</p>
+<ol style="list-style-type: decimal">
+<li>The map <span class="math inline">\(g \mapsto conj(g)\)</span> is a homomorphism</li>
+<li>The semi-direct product read that way (g1g2, n1 conj(g1)(n2))</li>
+</ol>
+</div>
+<div id="definition" class="section level2">
+<h2>Definition</h2>
+<p>Since the package <em>permutations</em> that I use uses the definition of composition corresponding to the group <span class="math inline">\(Aut_{op}\)</span> then:</p>
+<ul>
+<li><p>We define the conjugation as <span class="math inline">\(conj_{op}(g)(x) = g^{-1}xg\)</span> because that way the conjugation is a group homomorphism into <span class="math inline">\(Aut_{op}(G)\)</span></p></li>
+<li><p>We define the semidirect product as kn (normal term comes second) so that the map from k to Aut(N) is a group homomorphism.</p></li>
+</ul>
+</div>
+</div>
 <div id="group-decomposition" class="section level1">
 <h1>Group decomposition</h1>
 <p>Let G be a group, we assume</p>
@@ -175,6 +292,11 @@ $(document).ready(function () {
 <li>N has a normal subgroup, G/N is simple</li>
 <li>Both have normal subgroups</li>
 </ol>
+</div>
+<div id="subset-of-sn-given-by-generators" class="section level2">
+<h2>Subset of Sn given by generators</h2>
+<p>Let’s say that I have <span class="math inline">\(g_1, \dots, g_k \in \mathrm{Sn}\)</span> and I want to know the subgroup of Sn that they generate. That is I want to have a list of all the elements in <span class="math inline">\(&lt;g_1, \dots, g_k&gt;\)</span>.</p>
+<p>Finding a normal subgroup is useful for determining the number of elements in a group when we only know the generators. It is also useful for determining all the elements of said group. For example let’s say that I have a group generated by g, h. If I want to find all the elements one solution is to first take all the simple products: e, g, h then compute g2, gh, hg, h2 compare each with the first step (4<em>3 = 12 comparisons) if they are all inside the previous step then e, g, h forms a group. if not then commpute g3, g2h, ghg, gh2, hg2, hgh, h3g, h3 if they are all in the previous steps (8</em>7 = 56 comparisons) then</p>
 <div id="examples-1" class="section level3">
 <h3>Examples</h3>
 <ul>
@@ -221,7 +343,6 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>Finding a normal subgroup is useful for determining the number of elements in a group when we only know the generators. It is also useful for determining all the elements of said group. For example let’s say that I have a group generated by g, h. If I want to find all the elements one solution is to first take all the simple products: e, g, h then compute g2, gh, hg, h2 compare each with the first step (4<em>3 = 12 comparisons) if they are all inside the previous step then e, g, h forms a group. if not then commpute g3, g2h, ghg, gh2, hg2, hgh, h3g, h3 if they are all in the previous steps (8</em>7 = 56 comparisons) then</p>
 </div>
 </div>
 

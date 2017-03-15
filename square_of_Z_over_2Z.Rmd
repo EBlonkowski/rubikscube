@@ -73,3 +73,7 @@ $$\left\{
 Since $\alpha \circ \gamma \circ \alpha^{-1} (1, 0) = (1, 1)$ and $\alpha \circ \gamma \circ \alpha^{-1} (0, 1) = (1, 0)$
 
 So Aut ~ S3
+
+Let's try to construct the isomorphism S3 -> Aut
+
+We map $\Gamma: a^ip^j \mapsto \alpha^i\gamma^j$ 

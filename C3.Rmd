@@ -56,3 +56,24 @@ The action of Z/3Z on SQ2 can be defined by the action of ru on uu and rr, since
 all(uu^(r*u) == rr, rr^(r*u) == cc)
 ```
 
+## Other Semi-directs products $Z/3Z \rtimes (Z/2Z)^2$
+
+We know that $\mathrm{Aut((Z/2Z)^2)} \sim S3 \sim Z/2Z \rtimes Z/3Z$
+
+### Morphisms $Z/3Z \rightarrow S3$
+
+Let $\phi: Z/3Z \rightarrow S3$. 
+
+1. If $\phi$ is not injective then its kernel must be a normal subgroup of Z/3Z: $ker(\phi) = Z/3Z$ and $\forall a \in Z/3Z, \phi(a) = e_{S3}$
+
+2. If $\phi is injective$
+$\phi(1)$ is mapped to an element of order 3 in S3: either p or p2. We can verify that both give valid morphisms.
+
+**Conlusion** We have 3 morphisms given respectively by $\phi(1) = e_{S3}, \phi(1) = p, \phi(1) = p^2$
+
+### The semi-direct products
+
+1. $\phi = e_{S3}$ and it gives the direct product $Z/3Z \times Z/2Z \times Z/2Z$
+2. $\phi(1) = p$ gives the morphism $\phi(1)(1,0) = (0, 1)$ and $\phi(1)(0, 1) = (1, 1)$
+And the semi-direct product is given by $p^iu^kv^n \cdot p^{i'}u^{k'}v^{n'} = p^{i+i'} \cdot u^nv^{k+n} \cdot u^{k'}v^{n'} = p^{i+i'} \cdot u^{n+k'}v^{k+n+n'}$
+3. $\phi(1) = p2$ gives the morphism $\phi(1)(1, 0) = (1, 1)$ and $\phi(0, 1) = (1, 0)$

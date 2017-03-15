@@ -3,7 +3,8 @@ title: "Group theory general"
 author: "Manu"
 date: "28 February 2017"
 output:
-  html_document: default
+  html_document:
+    toc: true
   pdf_document: default
 header-includes: \usepackage{bbm}
 ---
@@ -12,8 +13,118 @@ header-includes: \usepackage{bbm}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Group decomposition
+# Group definition
 
+Let G be a finite set with an application $\cdot: G\times G \rightarrow G$. $(G,  \cdot)$ is a group iff:
+
+* **Identity** There exists an element we call e such that $\forall g \in G, e \cdot g = g \cdot e = g$
+* **Transitivity** $\forall g, h, k \in G, (g \cdot h) \cdot k = g \cdot (h \cdot k)$
+* **Inverse** $\forall g \in G, \exists h \in G / gh = hg = e$
+
+We easily show that if there is an identity it must be unique, and that the inverse of an element is also unique.
+
+## Opposite group
+
+If $(G, \cdot)$ is a group then we can construct the opposite group $(G, \cdot_{op})$ the following way:
+
+$$g \cdot_{op} k \mapsto k \cdot g$$
+
+And the isomorphism $G \rightarrow G^{op}$ is given by the identity?
+
+$id(g \cdot k) = g \cdot k$ and $id(g \cdot k) = id(g) \cdot_{op} id(k) = k \cdot g$
+
+Nope it is not.
+
+The isomorphism is given by the map $g \mapsto g^{-1}$ :
+
+$(g \cdot k)^-1 = k^{-1} \cdot g^{-1}$ and $(g \cdot k)^-1 = g^{-1} \cdot_{op} k^{-1} = k^{-1} \cdot g^{-1}$
+
+## Conjugation
+
+For any g in G we can define: $h^g \mapsto ghg^{-1}$ and $h^{*g} \mapsto g^{-1}hg$
+
+Let's show that both are automorphisms:
+
+$$h^gk^g = ghg^{-1}gkg^{-1} = ghkg^{-1} = (hk)^g$$
+So the conjugation is an automorphism.
+
+$$h^{*g}k^{*g} = g^{-1}hgg^{-1}kg = g^{-1}hkg = (hk)^{*g}$$
+So the opposite conjugation is also an automorphism.
+
+### As a homomorphism G into Aug(G)
+We also get 2 mappings
+
+$$\begin{array}{ll}
+conj: G \rightarrow Aut(G) \\
+g \mapsto (x \mapsto x^g)
+\end{array}$$
+
+and 
+
+$$\begin{array}{ll}
+conj_{op}: G \rightarrow Aut^{op}(G) \\
+g \mapsto (x \mapsto x^{*g})
+\end{array}$$
+
+We can check that they are both homomorphisms:
+
+$$conj(g_1) \circ conj(g_2)(x) = conj(g_1)(g_2x{g_2}^{-1}) = g_1g_2x{g_2}^{-1}{g_1}^{-1} = g_1g_2x(g_1g_2)^{-1} = conj(g_1g_2)(x)$$
+
+And similarly for $conj_{op}$:
+
+$$conj_{op}(g_1) \circ conj_{op}(g_2)(x) = conj_{op}(g_2)(conj_{op}(g_1)(x)) = conj(g_2)({g_1}^{-1}xg_1) = {g_2}^{-1}{g_1}^{-1}xg_1g_2 = {g_1g_2}^{-1}xg_1g_2 = conj_{op}(g_1g_2)(x)$$
+
+### What is not homomorphism
+
+This is the proof that $conj_{op}$ is not a homomorphism into Aut(G)
+$$conj_{op}(g_1) \circ conj_{op}(g_2)(x) = conj(g_1)({g_2}^{-1}xg_2) = {g_1}^{-1}{g_2}^{-1}xg_2g_1 = {g_2g_1}^{-1}xg_2g_1 = conj(g_2g_1)(x)$$
+
+Similarly we show that $conj$ is not a homomorphism into $Aut_{op}(G)$
+
+# Symmetric group
+
+Let A be any finite set. We define Aut(A) to be the group of all bijection $A \rightarrow A$
+
+And we can define $\forall f, g \in \mathrm{Aut(A)}, \forall a \in A, f \circ g (a) = f(g(a))$ and $f \circ_{op} g(a) = g(f(a))$. These 2 groups are opposite of each other,
+
+# Semidirect product
+
+Let G be a group, N a normal subgroup, K another subgroup such that $G = K \rtimes N$
+
+## 2 ways to write the semidirect product
+
+Let $n \in N, k \in k, g \in G$ Should we write g as nk or as kn?
+
+if we write **g = nk** then: $g_1 \cdot g_2 = n_1k_1 \cdot n_2k_2 = n_1k_1n_2k_1^{-1}k_1k_2 = n_1(k_1n_2k_1^{-1}) \cdot k_1k_2$
+
+$$(k_1, n_1) \cdot (k_2, n_2) = (k_1k_2, n_1k_1n_2k_1^{-1}) = (k_1k_2, n_1n_2^{k_1})$$
+
+if we write **g = kn** then: $g_1 \cdot g_2 = k_1n_1 \cdot k_2n_2 = k_1k_2(k_2^{-1}n_1k_2) \cdot n_2$
+
+$$(k_1, n_1) \cdot (k_2, n_2) = (k_1k_2, ({k_2}^{-1}n_1k_2)n_2) = (k_1k_2, {n_1}^{*k2}n_2)$$
+
+Lot of possibilities:
+
+* 2 ways to define the conjugation
+* 2 ways to define the composition of functions
+* 2 ways to define the semi-direct product
+
+Are all those definition compatible?
+
+We will show that once we choose an order for the composition of functions there is only one way to define composition and the semi-direct product such that
+
+1. The map $g \mapsto conj(g)$ is a homomorphism
+2. The semi-direct product read that way (g1g2, n1 conj(g1)(n2))
+
+## Definition
+
+Since the package *permutations* that I use uses the definition of composition corresponding to the group $Aut_{op}$ then:
+
+* We define the conjugation as $conj_{op}(g)(x) = g^{-1}xg$ because that way the conjugation is a group homomorphism into $Aut_{op}(G)$
+
+* We define the semidirect product as kn (normal term comes second) so that the map from k to Aut(N) is a group homomorphism.
+
+# Group decomposition
 
 Let G be a group, we assume
 

@@ -11,25 +11,40 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## hi
 
-|Order|Factorisation|Groups||
-|---|---|---|
-|1|1|{e}||
-|2|2|Z/2Z||
-|3|3|Z/3Z||
-|4|2*2|Z/4Z, Z/2Z^2||
-|5|5|Z/5Z||
+|Order|Factorisation|Groups|Complete|
+|---|---|---|------|
+|1|1|{e}|Yes|
+|2|2|Z/2Z|Yes|
+|3|3|Z/3Z|Yes|
+|4|2*2|Z/4Z, Z/2Z^2|Yes|
+|5|5|Z/5Z|Yes|
 |6|2*3|Z/6Z, S3||
-|7|7|Z/7Z||
-|8|2\*2\*2|Z/8Z||
-|9|3*3|Z/9Z||
+|7|7|Z/7Z|Yes|
+|8|2\*2\*2|Z/8Z, Z/4Z x Z/2Z, Z/2Z^3||
+|9|3*3|Z/9Z, Z/2Z^2||
 |10|2*5|Z/10Z||
-|11|11|Z/11Z||
+|11|11|Z/11Z|Yes|
 |12|2\*2\*3|Z/12Z, C3||
-|13|13|Z/13Z||
+|13|13|Z/13Z|Yes|
 |14|2*7|Z/14Z||
 |15|3*5|Z/15Z||
 |16|2\*2\*2\*2|Z/16Z||
-|17|17|Z/17Z||
+|17|17|Z/17Z|Yes|
 |18|2\*3\*3|Z/18Z||
-|19|19|Z/19Z||
+|19|19|Z/19Z|Yes|
 |20|2\*2\*5|Z/20Z||
+|21|3*7|Z/21Z||
+|22|2*11|Z/22Z||
+|23|23|Z/23Z|Yes|
+|24|2\*2\*2\*3|Z/24Z, S4, R||
+
+## All groups of order 4
+
+Let G be a group of order 4. If g has an element of order 4 then G is isomorphic to Z/4Z. Let's assume G doesn't have an element of order 4. All the elements of G must have order 1 or 2. That means all the elements of G exept the identity have order 2.
+We write G = {e, a, b, c} where e is the identity and a,b and c have order 2.
+$ab = ba \iff abab = e \iff (ab)^2 = e$ which is true since all elements of G have order 2. So we have shown that a and b commute. Furthermore 
+
+* $<a> \cap <b> = {e}$ and
+* ab = c because $ab=a \implies b = e$ so they generate G
+
+Conclusion G is a direct-product $<a> \times <b> \sim (Z/2Z)^2$
