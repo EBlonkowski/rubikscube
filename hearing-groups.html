@@ -131,8 +131,11 @@ $(document).ready(function () {
 <li><a href="#beats-on-4-counts-with-1-instrument">Beats on 4 counts with 1 instrument</a><ul>
 <li><a href="#intuition">Intuition</a></li>
 <li><a href="#demonstration">Demonstration</a></li>
+<li><a href="#orbit-size-stabilizer-analysis">Orbit size &amp; stabilizer analysis</a></li>
 </ul></li>
-<li><a href="#beats-on-3-counts">Beats on 3 counts</a></li>
+<li><a href="#beats-on-3-counts">Beats on 3 counts</a><ul>
+<li><a href="#orbit-and-stabilizer-analysis">Orbit and stabilizer analysis</a></li>
+</ul></li>
 <li><a href="#beats-on-2-counts">Beats on 2 counts</a></li>
 <li><a href="#beats-on-5-counts">Beats on 5 counts</a></li>
 <li><a href="#beats-on-6-counts">Beats on 6 counts</a></li>
@@ -141,7 +144,10 @@ $(document).ready(function () {
 <li><a href="#some-general-results">Some general results</a><ul>
 <li><a href="#understanding-the-beats-of-1-cardinal-2">Understanding the beats of 1-cardinal 2</a></li>
 <li><a href="#run-length-encoding-of-a-recording">Run-length encoding of a recording</a></li>
+<li><a href="#properties-of-products-or-moments">Properties of products or moments</a></li>
 <li><a href="#understanding-the-beats-of-1-cardinal-3">Understanding the beats of 1-cardinal 3</a></li>
+<li><a href="#fixed-group-of-a-recording-on-1-instrument">Fixed group of a recording on 1 instrument</a></li>
+<li><a href="#number-of-beats-in-recp-for-p-prime">Number of beats in Rec(p) for p prime</a></li>
 </ul></li>
 </ul>
 </div>
@@ -392,6 +398,7 @@ $(document).ready(function () {
 <ol start="3" style="list-style-type: decimal">
 <li>Beats with 1-cardinal 2</li>
 </ol>
+<p><span class="math inline">\(P_2 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -412,6 +419,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_2 = 0\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -435,6 +443,7 @@ $(document).ready(function () {
 <ol start="4" style="list-style-type: decimal">
 <li>Beats with 1-cardinal 3</li>
 </ol>
+<p><span class="math inline">\(P_2 = 2\)</span> <span class="math inline">\(P_3 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -494,6 +503,43 @@ $(document).ready(function () {
 <p>If f has 1-cardinal 1 then it has only one 1. Since there is one g defining the same beat as f starting with 01 we know that it has to be 0100. So there is only one beat with 1 cardinal 1.</p>
 <p>Similarly there is only one beat with 1-cardinal 3.</p>
 <p>And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we showed in the intuition part). We need to show that these 2 beats are not the same.</p>
+</div>
+<div id="orbit-size-stabilizer-analysis" class="section level3">
+<h3>Orbit size &amp; stabilizer analysis</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Orbit size</th>
+<th>1</th>
+<th>2</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stabilizer size</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Number</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>Comment pourrait-on retrouver ces resultat par un raisonemment ?</p>
+<ul>
+<li><p>Let’s count all the beats of <strong>orbit size 1</strong>: they have a stabilizer size of 4 that means that <span class="math inline">\(\forall a \in C(4), f(1+a) = f(1)\)</span> So those beats are entirely defined by f(1) so there are 2 of them: f(1) = 1 and f(1) = 0</p></li>
+<li>Let’s count all the beats of <strong>orbit size 2</strong>: they have a stabilizer size of 2.
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(\phi: Rec(4) \rightarrow Rec(2)\)</span> such that <span class="math display">\[(a, b, c, d) \mapsto (a, b)\]</span>. Then <span class="math inline">\(\phi\)</span> restricted to the beats of orbits 2 is an isomorphism into the beats of orbits 2 in Rec(2). We have <span class="math inline">\(\phi(f+a) = \phi(f) + [a]_2\)</span>.</li>
+</ol>
+<p>Let f of orbit size 2. That means that <span class="math inline">\(\forall a \in \{0, 2\}, f(3) = f(1), f(4) = f(2)\)</span>. But also they do not have a orbit size of 1 that means that they cannot have f(1) = f(2) otherwise we would have f(1) = f(2) = f(3) = f(4) and they would have stabilizer size equal to 4. Reciprocally</p>
+<p>So we can write f = (a, b, a, b) where ab = 0. And <span class="math inline">\(\phi(f) + 1 = (a, b) + 1 = (b, a) = \phi(f + 1)\)</span> Since 1 generates C(4) we have proven that <span class="math inline">\(\phi(f+a) = \phi(f) + [a]_2\)</span> forall f of orbit 2. This show that on the recordings of orbit 2. <span class="math inline">\(\phi\)</span> maps beats to beats. Furthermore since a is not equal to b we can see that the image beat is also of orbit 2.</p></li>
+</ul>
 </div>
 </div>
 <div id="beats-on-3-counts" class="section level2">
@@ -587,6 +633,32 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p>Total 4</p>
+<div id="orbit-and-stabilizer-analysis" class="section level3">
+<h3>Orbit and stabilizer analysis</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Orbit size</th>
+<th>1</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stabilizer size</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Number</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>We can easily count the beats of orbit size 1. Let f be a recording of of orbit size 1. Then <span class="math inline">\(\forall a, f(1+a) = f(1)\)</span> so f is uniquely determined by f(1). So we have 2 recordings (1, 1, 1) and (0, 0, 0). They define different beats so we know they are all the beats of orbit 1.</p>
+<p>In total we have <span class="math inline">\(2^3 = 8\)</span> recordings. We have shown that 2 have orbit 1. That leaves 6 recording with orbit size = 3. And <span class="math inline">\(6/3 = 2\)</span> so we have 2 beats of orbit size 3.</p>
+</div>
 </div>
 <div id="beats-on-2-counts" class="section level2">
 <h2>Beats on 2 counts</h2>
@@ -707,6 +779,7 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 2</li>
 </ul>
+<p><span class="math inline">\(P_2 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -729,6 +802,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_2 = 0\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -754,6 +828,7 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 3</li>
 </ul>
+<p><span class="math inline">\(P_3 = 1, P_2 = 2\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -776,6 +851,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -801,31 +877,11 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 4</li>
 </ul>
-<table>
-<thead>
-<tr class="header">
-<th>Beat</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>f</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
+<p><span class="math inline">\(P_4 = 1, P_3 = 2, P_2 = 3, P_1 = 4\)</span> | Beat | 1 | 2 | 3 | 4 | 5 | |——|—|—|—|—|—| | f | 1 | 1 | 1 | 1 | 0 |</p>
 <ul>
 <li>1-cardinal is 5</li>
 </ul>
+<p><span class="math inline">\(P_5 = 5, P_4 = 5, P_3 = 5, P_2 = 5, P_1 = 5\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -909,6 +965,7 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 2</li>
 </ul>
+<p><span class="math inline">\(P_2 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -933,6 +990,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_2 = 0\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -957,6 +1015,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_2 = 0\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -984,6 +1043,7 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 3</li>
 </ul>
+<p><span class="math inline">\(P_3 = 1, P_2 = 2\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1008,6 +1068,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1032,6 +1093,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1056,6 +1118,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 0\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1081,6 +1144,85 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p>Total is 14</p>
+<p>Those are just the ‘opposite beats’. We can check them out:</p>
+<ul>
+<li>1-cardinal is 4</li>
+</ul>
+<p><span class="math inline">\(P_4 = 1, P_3 = 2, P_2 = 3\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(P_4 = 0, P_3 = 1, P_2 = 2\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(P_4 = 0, P_3 = 0, P_2 = 2\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="beats-on-7-counts" class="section level2">
 <h2>Beats on 7 counts</h2>
@@ -1145,6 +1287,7 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 2</li>
 </ul>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1, P_1 = 2\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1171,6 +1314,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_2 = 0, P_1 = 2\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1197,6 +1341,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_2 = 0, P_1 = 2\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1226,6 +1371,7 @@ $(document).ready(function () {
 <ul>
 <li>1-cardinal is 3</li>
 </ul>
+<p><span class="math inline">\(P_4 = 0, P_3 = 1, P_2 = 2, P_1 = 3\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1252,6 +1398,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1, P_1 = 3\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1278,6 +1425,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1, P_1 = 3\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1304,6 +1452,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1, P_1 = 3\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -1330,33 +1479,147 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr class="header">
-<th>Beat</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>f</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
+<p><span class="math inline">\(P_2 = 0, P_1 = 3\)</span> | Beat | 1 | 2 | 3 | 4 | 5 | 6 | 7 | |——|—|—|—|—|—|—|—| | f | 1 | 0 | 1 | 0 | 1 | 0 | 0 |</p>
 <p>Total is (1+1+3+5)*2 = 20</p>
+<p>The next ones we get by symmetry:</p>
+<ul>
+<li>1-cardinal is 4</li>
+</ul>
+<p><span class="math inline">\(P_5 = 0, P_4 = 1, P_3 = 2, P_2 = 3, P_1 = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(P_4 = 0, P_3 = 1, P_2 = 2, P_1 = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 2, P_1 = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(P_4 = 0, P_3 = 1, P_2 = 2, P_1 = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(P_3 = 0, P_2 = 1, P_1 = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="summary-of-exploration" class="section level2">
 <h2>Summary of exploration</h2>
@@ -1451,6 +1714,7 @@ Furthermore, <span class="math inline">\(\phi\)</span> is an isomorphism on Rec.
 </div>
 <div id="run-length-encoding-of-a-recording" class="section level3">
 <h3>Run-length encoding of a recording</h3>
+<p>We can write the beat 1001 as bs2b. Is it a group? It seems like it is not possible to invert elements. What is the invert of b? What is the identity? Identity should be the silence maybe. But then what to add to a bass to get silence? Or maybe we could consider the 2 constant beat to be the ‘no beat’?</p>
 <p>We consider the following product: <span class="math display">\[\sum_{a \in Z/nZ}f(1+a)\]</span> This one is none other than the 1-cardinal.</p>
 <p><span class="math display">\[\sum_{a \in Z/nZ}f(1+a) \times f(2+a)\]</span></p>
 <p>And also:</p>
@@ -1458,10 +1722,18 @@ Furthermore, <span class="math inline">\(\phi\)</span> is an isomorphism on Rec.
 <p>We have such a product for any k &lt;= n.</p>
 <p>Let’s see that such products are the same for 2 recordings of the same beat.</p>
 <blockquote>
-<p>Let <span class="math inline">\(g = b \bullet f\)</span>. Then <span class="math display">\[P_k(g) = \sum_{a \in Z/nZ}g(1+a) \times \dots \times g(k+a) = \sum_{a \in Z/nZ} f(1+a+b) \times \dot \times f(k+a+b) \\ = \sum_{c \in Z/nZ} f(1+c) \times \dot \times f(k+c) = P_k(f)\]</span></p>
+<p>Let <span class="math inline">\(g = b \bullet f\)</span>. Then <span class="math display">\[P_k(g) = \sum_{a \in Z/nZ}g(1+a) \times \dots \times g(k+a) = \sum_{a \in  Z/nZ} f(1+a+b) \times \dot \times f(k+a+b) = \sum_{c \in Z/nZ} f(1+c) \times \dot \times f(k+c) = P_k(f)\]</span></p>
 </blockquote>
+</div>
+<div id="properties-of-products-or-moments" class="section level3">
+<h3>Properties of products or moments</h3>
+<p>For any <span class="math inline">\(k, n \in \mathcal{N}, k &lt;= n\)</span> and n-recordings, we have:</p>
+<ul>
+<li><span class="math inline">\(P_k &lt;= P_1\)</span></li>
+<li><span class="math inline">\(k &gt; 1 P_{k-1} &gt;= P_k\)</span></li>
+<li><span class="math inline">\(k &gt; 1, P_k &gt; 0 \implies P_{k-1} &gt; P_{k}\)</span></li>
+</ul>
 <p>We can see that for any recording f of 1-cardinal 3 <span class="math inline">\(\forall k &gt; 3, P_k(f) = 0\)</span>. And also we have <span class="math inline">\(P_3(f) &lt;= 1\)</span></p>
-<p>Let f be a recording that starts with a 1 and ends with a 0.</p>
 </div>
 <div id="understanding-the-beats-of-1-cardinal-3" class="section level3">
 <h3>Understanding the beats of 1-cardinal 3</h3>
@@ -1491,6 +1763,102 @@ Furthermore, <span class="math inline">\(\phi\)</span> is an isomorphism on Rec.
 </tr>
 </tbody>
 </table>
+<p>We necessarily have <span class="math inline">\(P_4 = 0\)</span> and <span class="math inline">\(P_3 &lt;= 1\)</span></p>
+<p>If <span class="math inline">\(P_3 = 1\)</span>. Then there is exactly one way to have the beat start with 111 and after that is all zerose.</p>
+<p>If <span class="math inline">\(P_3 = 0\)</span>. Then <span class="math inline">\(P_2 \in \{0, 1, 2\}\)</span> because <span class="math inline">\(P_2 = 3 \implies P_1 &gt; 3\)</span></p>
+<ul>
+<li>If <span class="math inline">\(P_2 = 2\)</span>, since <span class="math inline">\(P_3 = 0\)</span> we can deduce that <span class="math inline">\(P_1 &gt; 3\)</span> absurd</li>
+<li>If <span class="math inline">\(P_2 = 1\)</span>, there</li>
+</ul>
+</div>
+<div id="fixed-group-of-a-recording-on-1-instrument" class="section level3">
+<h3>Fixed group of a recording on 1 instrument</h3>
+<p>Let <span class="math inline">\(f: \{1 \dots n\} \rightarrow \{0, 1\}\)</span></p>
+<p>Example:</p>
+<table>
+<thead>
+<tr class="header">
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Stab(f) = {id}, <span class="math inline">\(|\mathrm{Orb(f)}| = 4\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Stab(f) = {0, 2}, <span class="math inline">\(|\mathrm{Orb(f)}| = 2\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Stab(f) = {0, 1, 2, 4}, <span class="math inline">\(|\mathrm{Orb(f)}| = 1\)</span></p>
+</div>
+<div id="number-of-beats-in-recp-for-p-prime" class="section level3">
+<h3>Number of beats in Rec(p) for p prime</h3>
+<p>We know that the orbit size of any element divides p. Since p is prime the orbit size is either 1 or p.</p>
+<ul>
+<li>Total number of orbit of <em>orbit size 1</em>. If the orbit size is 1 it means that <span class="math inline">\(\forall a \in C(p), f(1+a) = f(1)\)</span> so f is constant either 1 or 0. And these 2 recordings have different beat and both have orbit size of 1. Conclusion: 2 beats of orbit size 1</li>
+<li>Total number of beats of <em>orbit size p</em>. The total number of recordings is <span class="math inline">\(2^p\)</span>. Amongst those, 2 have orbit 1 and all the rest have orbit size p. So the total number of recordings of Orbit p is <span class="math inline">\(2^p - 2\)</span> and the total number of beats of orbit p is <span class="math inline">\({2^p - 2} \over p\)</span>.</li>
+</ul>
+<p><strong>Conclusion</strong> The total number of beats in Rec(p) is: <span class="math inline">\({{2^p - 2} \over p} + 2\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Orbit size</th>
+<th>1</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of beats</td>
+<td>2</td>
+<td><span class="math inline">\({2^p - 2} \over p\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bonus</strong></p>
+<p>We have proven that <span class="math inline">\({2^p - 2}\)</span> divides p for all prime p.</p>
 </div>
 </div>
 

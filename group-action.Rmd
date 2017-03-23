@@ -13,32 +13,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 In all this article **G** is a finite group and $\mathcal{S}$ is a finite set.
 
-A set **action** is a group morphism $\phi: G \rightarrow \mathrm{Aut(S)}$.
+A set **action** is a group morphism $\phi: G \rightarrow \mathrm{Aut^{op}(S)}$.
 
 *Equivalent definition*:
-A set action is an application $\bullet: G \times \mathcal{S} \rightarrow S$ such that:
+A set action is an application $\bullet_{op}: \mathcal{S} \times G  \rightarrow S$ such that:
 
-* $\forall x \in \mathcal{S}, e_G \bullet x = x$
-* $\forall x \in \mathcal{S}, \forall g_1, g_2 \in G, g_1 g_2 \bullet x = g_1 \bullet (g_2 \bullet x)$
+* $\forall x \in \mathcal{S}, x \bullet e_G = x$
+* $\forall x \in \mathcal{S}, \forall g_1, g_2 \in G, x \bullet g_1 g_2 = (x \bullet g_1) \bullet g_2$
 
 Proof the equivalence
 
 1st direction: from $\phi$ construct $\bullet$
 
-> We have $\phi: G \rightarrow \mathrm{Aut(S)}$
-> We define $\forall g \in G, x \in \mathcal{S}, g \bullet x = \phi(g)(x)$
-> We have $\forall x, e \bullet x = \phi(e)(x) = id(x) = x$
-> And $g_1 g_2 \bullet x = \phi(g_1 \cdot g_2)(x) = \phi(g_1) \circ \phi(g_2) (x) =\phi(g_1)(\phi(g_2)(x)) = g_1 \bullet (g_2 \bullet x)$
+> We have $\phi: G \rightarrow \mathrm{Aut^{op}(S)}$
+> We define $\forall g \in G, x \in \mathcal{S}, x \bullet g = \phi(g)(x)$
+> We have $\forall x, x \bullet e = \phi(e)(x) = id(x) = x$
+> And $x \bullet g_1 g_2 = \phi(g_1 \cdot g_2)(x) = \phi(g_1) \circ_{op} \phi(g_2) (x) = \phi(g_2)(\phi(g_1)(x)) = (x \bullet g_1) \bullet g_2)$
 
 2nd direction: from $\bullet$ construct $\phi$
 
-> We let $\forall g \in G, \phi(g) : x \mapsto g \bullet x$
+> We let $\forall g \in G, \phi(g) : x \mapsto x \bullet g$
 > Let's show that \phi is a group homomorphism
-> First let's show that $\phi(g_1 \cdot g_2) = \phi(g_1) \circ \phi(g_2)$
-> We have $\forall x, \phi(g_1 \cdot g_2)(x) = g_1 \cdot g_2 \bullet x = g_1 \bullet g_2 \bullet x = \phi(g_1)(\phi(g_2)(x)) = \phi(g_1) \circ \phi(g_2) (x)$
-> Second we have $\phi(e)(x) = e \bullet x = x$ so $\phi(e) = id$
+> First let's show that $\phi(g_1 \cdot g_2) = \phi(g_1) \circ_{op} \phi(g_2)$
+> We have $\forall x, \phi(g_1 \cdot g_2)(x) = x \bullet g_1 \cdot g_2  = x \bullet g_1 \bullet g_2 = \phi(g_2)(\phi(g_1)(x)) = \phi(g_1) \circ_{op} \phi(g_2) (x)$
+> Second we have $\phi(e)(x) = x \bullet e = x$ so $\phi(e) = id$
 > Finally we need just show that $\phi(g)$ is a bijection. It is indeed because
-> $\phi(g \cdot g^{-1}) = \phi(g) \circ \phi(g^-1)$ and
+> $\phi(g \cdot g^{-1}) = \phi(g) \circ_op \phi(g^-1)$ and
 > $\phi(g \cdot g^{-1}) = \phi(e) = id$
 > And same for $\phi(g^{-1} \cdot g)$. So \phi(g) is in Aut(S)
 
@@ -48,19 +48,21 @@ Let $\phi, \gamma$ be 2 G-actions on $\mathcal{S_1}$ and $\mathcal{S_2}$ respect
 
 $f: \mathcal{S1} \rightarrow \mathcal{S2}$ is a G-action morphism iff
 
-$\forall g \in G, \forall x \in \mathcal{S1}, f(g\bullet_{\phi}x) = g \bullet_{\gamma}f(x)$
+$\forall g \in G, \forall x \in \mathcal{S1}, f(x\bullet_{\phi}g) = f(x) \bullet_{\gamma}g$
 
 ### Sub-actions
 
-If H is a subgroup of G. Then H also act on S by $h \bullet_H x = h \bullet_G x$.
+If H is a subgroup of G. Then H also act on S by $x \bullet_H h = x \bullet_G h$.
 
 ### Orbits
 
 **Definition**
 
-We define $\mathrm{Orb_G(S)} = \{O \subset P(S) | \exists x \in S, O = G \bullet x\}$
-Where $\forall H \subset G, H \bullet x = \{g \in H, g \bullet x\}$ where H can be any subset of H not necessarily a subgroup.
-We can also write $\mathrm{Orb_G(S)} = \{G \bullet x, x \in \mathcal{S}\}$
+We define $\mathrm{Orb_G(S)} = \{O \subset P(S) | \exists x \in S, O = x \bullet G\}$
+Where $\forall H \subset G, x \bullet H = \{x \bullet g/ g \in H \}$ where H can be any subset of H not necessarily a subgroup.
+
+
+We can also write $\mathrm{Orb_G(S)} = \{x \bullet G / x \in \mathcal{S}\}$
 
 The orbits form a partition of S.
 To show that the orbits form a partition of S we need to show that:
@@ -70,19 +72,19 @@ To show that the orbits form a partition of S we need to show that:
 
 **Proof**
 
-1. Is clear since x is always in $G \bullet x$
-2. We can show the 'contrapose'. Let $G \bullet x_1, G \bullet x_2$ such that
-their intersection is not empty. Let's show that $G \bullet x_1 = G \bullet x_2$.
-Let $x_0 \in G \bullet x_1 \cap G \bullet x_2$ so there exists $g_1, g_2 \in G / x_0 = g_1 \bullet x_1 = g_2 \bullet x_2$ Let x be any element of $g \bullet x_2$ let's show that x is also in $\mathrm{Orb(x_1)}$. There exists $g \in G / x = g \bullet x_2$ But according to the equation above we have $x_2 = g_2^{-1}g_1 \bullet x_1$.
-So we have shown that $\mathrm{Orb(x_2)} \subset \mathrm{Orb(x_1)}}$ By symmetry we also have the opposite inclusion and the equality is proven.
+1. Is clear since x is always in $x \bullet G$
+2. We can show the 'contrapose'. Let $x_1 \bullet G, x_2 \bullet G$ such that
+their intersection is not empty. Let's show that $x_1 \bullet G = x_2 \bullet G$.
+Let $x_0 \in x_1 \bullet G \cap x_2 \bullet G$ so there exists $g_1, g_2 \in G / x_0 = x_1 \bullet g_1 = x_2 \bullet g_2$ Let x be any element of $x_2 \bullet G$ let's show that x is also in $\mathrm{Orb(x_1)}$. There exists $g \in G / x = x_2 \bullet g$ But according to the equation above we have $x_2 = x_1 \bullet g_1g_2^{-1}$ so $x = x_2 \bullet gg_1g_2^{-1}$.
+So we have shown that $\mathrm{Orb(x_2)} \subset \mathrm{Orb(x_1)}$ By symmetry we also have the opposite inclusion and the equality is proven.
 
 **Alternative definition**
 
-Let $\sim_G$ be the equivalence relation on S defined by $x_1 \sim_G x_2$ iff $\exists g \in G / g \bullet x_1 = x_2$
+Let $\sim_G$ be the equivalence relation on S defined by $x_1 \sim_G x_2$ iff $\exists g \in G / x_1 \bullet g = x_2$
 
 *Proof that it is an equivalence relationship*
 
-1. Symmetry: we have $x_1 \sim_G x_2$. Let $g \in G / g \bullet x_1 = x_2$ then $ x_1 = g^{-1} \bullet x_2$ and $x_2 \sim_G x_1$.
+1. Symmetry: we have $x_1 \sim_G x_2$. Let $g \in G / x_1 \bullet g = x_2$ then $ x_1 = x_2 \bullet g^{-1}$ and $x_2 \sim_G x_1$.
 2. $\forall x \in S, x~x$ Clearly lol
 3. Transitivity. $x_1, x_2, x_3 \in S / x_1 \sim x_2, x_2 \sim x_3$
 So $\exists g_1, g_2 \in G / x_1 = g_1 \bullet x_2, x_2 = g_2 \bullet x_3$ So $x_1 = g_1 \bullet g_2 \bullet x_3 = g_1 \cdot g_2 \bullet x_3 \implies x_1 \sim x_3$
@@ -101,18 +103,46 @@ We can define the orbits for an element g of G as being the orbits of the subgro
 
 ### Stabilizers
 
-**Definition** Let V be any subset of S. We write $\mathrm{Stab_G(V) = \{g \in G \ g \bullet V = V\}}$
+**Definition** Let V be any subset of S. We write $\mathrm{Stab_G(V)} = \{g \in G \ g \bullet V = V\}$
 
-$\mathrm{Stab_G(V)$ is a subgroup of G:
+$\mathrm{Stab_G(V)}$ is a subgroup of G:
 
 1. The identity is in in the stabilizer
 2. Stable by products: $g_1, g_2 \in \mathrm{Stab(V)}, g_1 \cdot g_2 \bullet V = g_1 \bullet (g_2 \bullet V) = g_2 \bullet V = V$
 3. Stable by inversion $g \in \mathrm{Stab(V)}, g^{-1} \bullet V = g^{-1} \bullet (g \bullet V)$ Clearly $V \subset g^{-1} \bullet (g \bullet V)$ and since $\phi(g^{-1})$ is a bijection we have $V = g^{-1} \bullet (g \bullet V) = g^{-1} \bullet V = V$
 
-Let $x \in \mathcal{S}$ then Stab(Orb(x)) = G since $\forall y \in Orb(x), g \bullet y \sim y \sim x \implies g \bullet y \sim x \implies g \bullet y \in Orb(x)$
+#### Property: Stab(Orb(x)) = G
+
+Let $x \in \mathcal{S}$ then Stab(Orb(x)) = G since $\forall y \in Orb(x), y \bullet g \sim y \sim x \implies y \bullet g \sim x \implies y \bullet g \in Orb(x)$
+
+#### Property: $Stab(x \bullet g) = Stab(x)^g$
+
+$$\mathrm{Stab(x \bullet g)} = \{h \in G/ x \bullet g \bullet h = x \bullet g\} = \{h \in G/ x \bullet ghg^{-1} = x\}$$
+
+Let $f: G \rightarrow G$ $f: h \mapsto ghg^{-1}$ f is a bijection and 
+$$\{h \in G/ x \bullet ghg^{-1} = x\} = \{h \in G/ x \bullet f(h) = x\} = \{h \in G/ f(h) \in \mathrm{Stab(x)}\} = f^{-1}\{Stab(x)\} = g^{-1}\mathrm{Stab(x)}g = \mathrm{Stab(x)}^g$$
+
+### Property: |Stab(R)|\*|Orb(R)| = |G|
+
+Where $R \subset S$
+
+Let G/(Stab(R)G) be the set of all classes of the form $\mathrm{Stab(R)}\cdot g$ for any g in G.
+
+All of this classes have the same cardinal since $h \mapsto h\cdot g$ is a bijection for all g. If we can prove that the number of classes is equal to Orb(R) then since G = |Stab(R)| \* |Orb(R)|. So we want to prove that.
+
+First let's consider the case where R has only one element x:
+Let's consider the application $f: G \rightarrow Orb(x)$ given by
+$$f(g) \mapsto x \bullet g$$
+
+By definition of the orbit of x this function is surjective. Let $y \in Orb(x), \exists g_0 \in G | y = g_0 \bullet x$ Let $g \in G | f(g) = y$ then
+$$f(g) = y \iff x \bullet g = x \bullet g_0 \iff x \bullet g \cdot g_0^{-1} = x \iff gg_0^{-1} \in Stab(x) \iff g \in Stab(x)g_0$$
+
+So all the equivalence classes by f have cardinal of Stab(x) and there are |Orb(x)| classes so we have shown |Stab(x)| |Orb(x)| = |G|
 
 ### Transitive actions
 
 A G-action is said to be **transitive** iff it has only one orbit by G.
 
 ### Faithful actions
+
+A G-action is said to be **faithful** iff the morphism $\phi: G \rightarrow \mathrm{Aut^{op}(S)}$ is injective.

@@ -126,41 +126,89 @@ $(document).ready(function () {
 <div id="a-set-action" class="section level2">
 <h2>A Set Action</h2>
 <p>In all this article <strong>G</strong> is a finite group and <span class="math inline">\(\mathcal{S}\)</span> is a finite set.</p>
-<p>A set <strong>action</strong> is a group morphism <span class="math inline">\(\phi: G \rightarrow \mathrm{Aut(S)}\)</span>.</p>
-<p><em>Equivalent definition</em>: A set action is an application <span class="math inline">\(\bullet: G \times \mathcal{S} \rightarrow S\)</span> such that:</p>
+<p>A set <strong>action</strong> is a group morphism <span class="math inline">\(\phi: G \rightarrow \mathrm{Aut^{op}(S)}\)</span>.</p>
+<p><em>Equivalent definition</em>: A set action is an application <span class="math inline">\(\bullet_{op}: \mathcal{S} \times G \rightarrow S\)</span> such that:</p>
 <ul>
-<li><span class="math inline">\(\forall x \in \mathcal{S}, e_G \bullet x = x\)</span></li>
-<li><span class="math inline">\(\forall x \in \mathcal{S}, \forall g_1, g_2 \in G, g_1 g_2 \bullet x = g_1 \bullet (g_2 \bullet x)\)</span></li>
+<li><span class="math inline">\(\forall x \in \mathcal{S}, x \bullet e_G = x\)</span></li>
+<li><span class="math inline">\(\forall x \in \mathcal{S}, \forall g_1, g_2 \in G, x \bullet g_1 g_2 = (x \bullet g_1) \bullet g_2\)</span></li>
 </ul>
 <p>Proof the equivalence</p>
 <p>1st direction: from <span class="math inline">\(\phi\)</span> construct <span class="math inline">\(\bullet\)</span></p>
 <blockquote>
-<p>We have <span class="math inline">\(\phi: G \rightarrow \mathrm{Aut(S)}\)</span> We define <span class="math inline">\(\forall g \in G, x \in \mathcal{S}, g \bullet x = \phi(g)(x)\)</span> We have <span class="math inline">\(\forall x, e \bullet x = \phi(e)(x) = id(x) = x\)</span> And <span class="math inline">\(g_1 g_2 \bullet x = \phi(g_1 \cdot g_2)(x) = \phi(g_1) \circ \phi(g_2) (x) =\phi(g_1)(\phi(g_2)(x)) = g_1 \bullet (g_2 \bullet x)\)</span></p>
+<p>We have <span class="math inline">\(\phi: G \rightarrow \mathrm{Aut^{op}(S)}\)</span> We define <span class="math inline">\(\forall g \in G, x \in \mathcal{S}, x \bullet g = \phi(g)(x)\)</span> We have <span class="math inline">\(\forall x, x \bullet e = \phi(e)(x) = id(x) = x\)</span> And <span class="math inline">\(x \bullet g_1 g_2 = \phi(g_1 \cdot g_2)(x) = \phi(g_1) \circ_{op} \phi(g_2) (x) = \phi(g_2)(\phi(g_1)(x)) = (x \bullet g_1) \bullet g_2)\)</span></p>
 </blockquote>
 <p>2nd direction: from <span class="math inline">\(\bullet\)</span> construct <span class="math inline">\(\phi\)</span></p>
 <blockquote>
-<p>We let <span class="math inline">\(\forall g \in G, \phi(g) : x \mapsto g \bullet x\)</span> Let’s show that is a group homomorphism First let’s show that <span class="math inline">\(\phi(g_1 \cdot g_2) = \phi(g_1) \circ \phi(g_2)\)</span> We have <span class="math inline">\(\forall x, \phi(g_1 \cdot g_2)(x) = g_1 \cdot g_2 \bullet x = g_1 \bullet g_2 \bullet x = \phi(g_1)(\phi(g_2)(x)) = \phi(g_1) \circ \phi(g_2) (x)\)</span> Second we have <span class="math inline">\(\phi(e)(x) = e \bullet x = x\)</span> so <span class="math inline">\(\phi(e) = id\)</span> Finally we need just show that <span class="math inline">\(\phi(g)\)</span> is a bijection. It is indeed because <span class="math inline">\(\phi(g \cdot g^{-1}) = \phi(g) \circ \phi(g^-1)\)</span> and <span class="math inline">\(\phi(g \cdot g^{-1}) = \phi(e) = id\)</span> And same for <span class="math inline">\(\phi(g^{-1} \cdot g)\)</span>. So (g) is in Aut(S)</p>
+<p>We let <span class="math inline">\(\forall g \in G, \phi(g) : x \mapsto x \bullet g\)</span> Let’s show that is a group homomorphism First let’s show that <span class="math inline">\(\phi(g_1 \cdot g_2) = \phi(g_1) \circ_{op} \phi(g_2)\)</span> We have <span class="math inline">\(\forall x, \phi(g_1 \cdot g_2)(x) = x \bullet g_1 \cdot g_2 = x \bullet g_1 \bullet g_2 = \phi(g_2)(\phi(g_1)(x)) = \phi(g_1) \circ_{op} \phi(g_2) (x)\)</span> Second we have <span class="math inline">\(\phi(e)(x) = x \bullet e = x\)</span> so <span class="math inline">\(\phi(e) = id\)</span> Finally we need just show that <span class="math inline">\(\phi(g)\)</span> is a bijection. It is indeed because <span class="math inline">\(\phi(g \cdot g^{-1}) = \phi(g) \circ_op \phi(g^-1)\)</span> and <span class="math inline">\(\phi(g \cdot g^{-1}) = \phi(e) = id\)</span> And same for <span class="math inline">\(\phi(g^{-1} \cdot g)\)</span>. So (g) is in Aut(S)</p>
 </blockquote>
 <div id="g-actions-morphisms" class="section level3">
 <h3>G-actions Morphisms</h3>
 <p>Let <span class="math inline">\(\phi, \gamma\)</span> be 2 G-actions on <span class="math inline">\(\mathcal{S_1}\)</span> and <span class="math inline">\(\mathcal{S_2}\)</span> respectively.</p>
 <p><span class="math inline">\(f: \mathcal{S1} \rightarrow \mathcal{S2}\)</span> is a G-action morphism iff</p>
-<p><span class="math inline">\(\forall g \in G, \forall x \in \mathcal{S1}, f(g\bullet_{\phi}x) = g \bullet_{\gamma}f(x)\)</span></p>
+<p><span class="math inline">\(\forall g \in G, \forall x \in \mathcal{S1}, f(x\bullet_{\phi}g) = f(x) \bullet_{\gamma}g\)</span></p>
 </div>
 <div id="sub-actions" class="section level3">
 <h3>Sub-actions</h3>
-<p>If H is a subgroup of G. Then H also act on S by <span class="math inline">\(h \bullet_H x = h \bullet_G x\)</span>.</p>
+<p>If H is a subgroup of G. Then H also act on S by <span class="math inline">\(x \bullet_H h = x \bullet_G h\)</span>.</p>
 </div>
 <div id="orbits" class="section level3">
 <h3>Orbits</h3>
 <p><strong>Definition</strong></p>
-<p>We define <span class="math inline">\(\mathrm{Orb_G(S)} = \{O \subset P(S) | \exists x \in S, O = G \bullet x\}\)</span> Where <span class="math inline">\(\forall H \subset G, H \bullet x = \{g \in H, g \bullet x\}\)</span> where H can be any subset of H not necessarily a subgroup. We can also write <span class="math inline">\(\mathrm{Orb_G(S)} = \{G \bullet x, \forall x \in \mathcal{S}\}\)</span></p>
-<p>The orbits form a partition of S.</p>
+<p>We define <span class="math inline">\(\mathrm{Orb_G(S)} = \{O \subset P(S) | \exists x \in S, O = x \bullet G\}\)</span> Where <span class="math inline">\(\forall H \subset G, x \bullet H = \{x \bullet g/ g \in H \}\)</span> where H can be any subset of H not necessarily a subgroup.</p>
+<p>We can also write <span class="math inline">\(\mathrm{Orb_G(S)} = \{x \bullet G / x \in \mathcal{S}\}\)</span></p>
+<p>The orbits form a partition of S. To show that the orbits form a partition of S we need to show that:</p>
+<ol style="list-style-type: decimal">
+<li>Their union covers S</li>
+<li>If 2 orbits are not the same then their intersection is empty.</li>
+</ol>
+<p><strong>Proof</strong></p>
+<ol style="list-style-type: decimal">
+<li>Is clear since x is always in <span class="math inline">\(x \bullet G\)</span></li>
+<li>We can show the ‘contrapose’. Let <span class="math inline">\(x_1 \bullet G, x_2 \bullet G\)</span> such that their intersection is not empty. Let’s show that <span class="math inline">\(x_1 \bullet G = x_2 \bullet G\)</span>. Let <span class="math inline">\(x_0 \in x_1 \bullet G \cap x_2 \bullet G\)</span> so there exists <span class="math inline">\(g_1, g_2 \in G / x_0 = x_1 \bullet g_1 = x_2 \bullet g_2\)</span> Let x be any element of <span class="math inline">\(x_2 \bullet G\)</span> let’s show that x is also in <span class="math inline">\(\mathrm{Orb(x_1)}\)</span>. There exists <span class="math inline">\(g \in G / x = x_2 \bullet g\)</span> But according to the equation above we have <span class="math inline">\(x_2 = x_1 \bullet g_1g_2^{-1}\)</span> so <span class="math inline">\(x = x_2 \bullet gg_1g_2^{-1}\)</span>. So we have shown that <span class="math inline">\(\mathrm{Orb(x_2)} \subset \mathrm{Orb(x_1)}\)</span> By symmetry we also have the opposite inclusion and the equality is proven.</li>
+</ol>
+<p><strong>Alternative definition</strong></p>
+<p>Let <span class="math inline">\(\sim_G\)</span> be the equivalence relation on S defined by <span class="math inline">\(x_1 \sim_G x_2\)</span> iff <span class="math inline">\(\exists g \in G / x_1 \bullet g = x_2\)</span></p>
+<p><em>Proof that it is an equivalence relationship</em></p>
+<ol style="list-style-type: decimal">
+<li>Symmetry: we have <span class="math inline">\(x_1 \sim_G x_2\)</span>. Let <span class="math inline">\(g \in G / x_1 \bullet g = x_2\)</span> then $ x_1 = x_2 g^{-1}$ and <span class="math inline">\(x_2 \sim_G x_1\)</span>.</li>
+<li><span class="math inline">\(\forall x \in S, x~x\)</span> Clearly lol</li>
+<li>Transitivity. <span class="math inline">\(x_1, x_2, x_3 \in S / x_1 \sim x_2, x_2 \sim x_3\)</span> So <span class="math inline">\(\exists g_1, g_2 \in G / x_1 = g_1 \bullet x_2, x_2 = g_2 \bullet x_3\)</span> So <span class="math inline">\(x_1 = g_1 \bullet g_2 \bullet x_3 = g_1 \cdot g_2 \bullet x_3 \implies x_1 \sim x_3\)</span></li>
+</ol>
+<p>We have <span class="math inline">\(\forall x \in \mathcal{S}, \mathrm{Orb(x)} = C_{\sim}(x)\)</span></p>
+<p><strong>Proof</strong></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(x_2 \in \mathcal{S} / x_2 \in \mathrm{Orb(x)} \implies x_2 = g \bullet x \implies x_2 \sim_G x\)</span> so $  C_{}(x)$</p></li>
+<li><p><span class="math inline">\(x_2 \sim x \implies x_2 = g \bullet x \implies x_2 \in \mathrm{Orb(x)}\)</span> and we have the second inclusion !! Win !</p></li>
+</ol>
 <p>We can define the orbits for any subgroup of G.</p>
 <p>We can define the orbits for an element g of G as being the orbits of the subgroup generated by g.</p>
 </div>
 <div id="stabilizers" class="section level3">
 <h3>Stabilizers</h3>
+<p><strong>Definition</strong> Let V be any subset of S. We write <span class="math inline">\(\mathrm{Stab_G(V)} = \{g \in G \ g \bullet V = V\}\)</span></p>
+<p><span class="math inline">\(\mathrm{Stab_G(V)}\)</span> is a subgroup of G:</p>
+<ol style="list-style-type: decimal">
+<li>The identity is in in the stabilizer</li>
+<li>Stable by products: <span class="math inline">\(g_1, g_2 \in \mathrm{Stab(V)}, g_1 \cdot g_2 \bullet V = g_1 \bullet (g_2 \bullet V) = g_2 \bullet V = V\)</span></li>
+<li>Stable by inversion <span class="math inline">\(g \in \mathrm{Stab(V)}, g^{-1} \bullet V = g^{-1} \bullet (g \bullet V)\)</span> Clearly <span class="math inline">\(V \subset g^{-1} \bullet (g \bullet V)\)</span> and since <span class="math inline">\(\phi(g^{-1})\)</span> is a bijection we have <span class="math inline">\(V = g^{-1} \bullet (g \bullet V) = g^{-1} \bullet V = V\)</span></li>
+</ol>
+<div id="property-staborbx-g" class="section level4">
+<h4>Property: Stab(Orb(x)) = G</h4>
+<p>Let <span class="math inline">\(x \in \mathcal{S}\)</span> then Stab(Orb(x)) = G since <span class="math inline">\(\forall y \in Orb(x), y \bullet g \sim y \sim x \implies y \bullet g \sim x \implies y \bullet g \in Orb(x)\)</span></p>
+</div>
+<div id="property-stabx-bullet-g-stabxg" class="section level4">
+<h4>Property: <span class="math inline">\(Stab(x \bullet g) = Stab(x)^g\)</span></h4>
+<p><span class="math display">\[\mathrm{Stab(x \bullet g)} = \{h \in G/ x \bullet g \bullet h = x \bullet g\} = \{h \in G/ x \bullet ghg^{-1} = x\}\]</span></p>
+<p>Let <span class="math inline">\(f: G \rightarrow G\)</span> <span class="math inline">\(f: h \mapsto ghg^{-1}\)</span> f is a bijection and <span class="math display">\[\{h \in G/ x \bullet ghg^{-1} = x\} = \{h \in G/ x \bullet f(h) = x\} = \{h \in G/ f(h) \in \mathrm{Stab(x)}\} = f^{-1}\{Stab(x)\} = g^{-1}\mathrm{Stab(x)}g = \mathrm{Stab(x)}^g\]</span></p>
+</div>
+</div>
+<div id="property-stabxorbx-g" class="section level3">
+<h3>Property: |Stab(x)|*|Orb(x)| = |G|</h3>
+<p>Let G div Stab(x) be the set of all classes of the form <span class="math inline">\(\mathrm{Stab(x)}\cdot g\)</span> for any g in G.</p>
+<ol style="list-style-type: decimal">
+<li>All of this classes have the same cardinal since <span class="math inline">\(h \mapsto h\cdot g\)</span> is a bijection for all g</li>
+<li>The number of all classes is equal to |Orb(x)|. Let’s construct a bijection from G div Stab(x) to Orb(x). Let k note the size of G div Stab(x) and <span class="math inline">\(x_1 \dots x_k \in G\)</span> such that G div Stab(x) =</li>
+</ol>
 </div>
 <div id="transitive-actions" class="section level3">
 <h3>Transitive actions</h3>
@@ -168,6 +216,7 @@ $(document).ready(function () {
 </div>
 <div id="faithful-actions" class="section level3">
 <h3>Faithful actions</h3>
+<p>A G-action is said to be <strong>faithful</strong> iff the morphism <span class="math inline">\(\phi: G \rightarrow \mathrm{Aut^{op}(S)}\)</span> is injective.</p>
 </div>
 </div>
 

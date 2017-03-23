@@ -129,6 +129,7 @@ We can add a few more classes:
 
 * ru \* \<uu, rr\>
 ```{r, echo = FALSE}
+ru <- r*u
 r*u * SQ2
 ```
 
@@ -368,6 +369,10 @@ R[c(2, 3, 4)]
 R[c(7, 8, 10, 12, 14, 15)]
 ```
 
+
+### Generator graph of R
+
+![](R_gen_graph.png)
 
 ### Other quotient of R
 

@@ -170,6 +170,24 @@ Similarly there is only one beat with 1-cardinal 3.
 
 And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we showed in the intuition part). We need to show that these 2 beats are not the same.
 
+### Orbit size & stabilizer analysis
+
+| Orbit size      | 1 | 2 | 4 |
+|-----------------|---|---|---|
+| Stabilizer size | 4 | 2 | 1 |
+| Number          | 2 | 1 | 3 |
+
+Comment pourrait-on retrouver ces resultat par un raisonemment ?
+
+* Let's count all the beats of **orbit size 1**: they have a stabilizer size of 4 that means that $\forall a \in C(4), f(1+a) = f(1)$ So those beats are entirely defined by f(1) so there are 2 of them: f(1) = 1 and f(1) = 0
+
+* Let's count all the beats of **orbit size 2**: they have a stabilizer size of 2.
+    1. Let $\phi: Rec(4) \rightarrow Rec(2)$ such that $$(a, b, c, d) \mapsto (a, b)$$. Then $\phi$ restricted to the beats of orbits 2 is an isomorphism into the beats of orbits 2 in Rec(2). We have $\phi(f+a) = \phi(f) + [a]_2$.
+    
+    Let f of orbit size 2. That means that $\forall a \in \{0, 2\}, f(3) = f(1), f(4) = f(2)$. But also they do not have a orbit size of 1 that means that they cannot have f(1) = f(2) otherwise we would have f(1) = f(2) = f(3) = f(4) and they would have stabilizer size equal to 4.          Reciprocally
+    
+    So we can write f = (a, b, a, b) where ab = 0. And $\phi(f) + 1 = (a, b) + 1 = (b, a) = \phi(f + 1)$ Since 1 generates C(4) we have proven that $\phi(f+a) = \phi(f) + [a]_2$ forall f of orbit 2. This show that on the recordings of orbit 2. $\phi$ maps beats to beats. Furthermore since a is not equal to b we can see that the image beat is also of orbit 2.
+
 ## Beats on 3 counts
 
 ![Recording space with the beats classes](beats_3_counts.png)
@@ -199,6 +217,19 @@ And finally we show that there are at most 2 beats with 1-cardinal 2 (the one we
 | f    | 1 | 1 | 1 |
 
 Total 4
+
+### Orbit and stabilizer analysis
+
+| Orbit size      | 1 | 3 |
+|-----------------|---|---|
+| Stabilizer size | 3 | 1 |
+| Number          | 2 | 2 |
+
+We can easily count the beats of orbit size 1.
+Let f be a recording of of orbit size 1. Then $\forall a, f(1+a) = f(1)$ so f is uniquely determined by f(1). So we have 2 recordings (1, 1, 1) and (0, 0, 0). They define different beats so we know they are all the beats of orbit 1.
+
+In total we have $2^3 = 8$ recordings. We have shown that 2 have orbit 1. That leaves 6 recording with orbit size = 3. And $6/3 = 2$ so we have 2 beats of orbit size 3.
+
 
 ## Beats on 2 counts
 
@@ -536,7 +567,7 @@ We have such a product for any k <= n.
 Let's see that such products are the same for 2 recordings of the same beat.
 
 > Let $g = b \bullet f$. Then
-> $$P_k(g) = \sum_{a \in Z/nZ}g(1+a) \times \dots \times g(k+a) = \sum_{a \in Z/nZ} f(1+a+b) \times \dot \times f(k+a+b) \\ = \sum_{c \in Z/nZ} f(1+c) \times \dot \times f(k+c) = P_k(f)$$
+> $$P_k(g) = \sum_{a \in Z/nZ}g(1+a) \times \dots \times g(k+a) = \sum_{a \in  Z/nZ} f(1+a+b) \times \dot \times f(k+a+b) = \sum_{c \in Z/nZ} f(1+c) \times \dot \times f(k+c) = P_k(f)$$
 
 ### Properties of products or moments
 
@@ -589,3 +620,37 @@ Stab(f) = {0, 2}, $|\mathrm{Orb(f)}| = 2$
 | 1 | 1 | 1 | 1 |
 
 Stab(f) = {0, 1, 2, 4}, $|\mathrm{Orb(f)}| = 1$
+
+
+### Number of beats in Rec(p) for p prime
+
+We know that the orbit size of any element divides p. Since p is prime the orbit size is either 1 or p.
+
+* Total number of orbit of *orbit size 1*. If the orbit size is 1 it means that $\forall a \in C(p), f(1+a) = f(1)$ so f is constant either 1 or 0. And these 2 recordings have different beat and both have orbit size of 1. Conclusion: 2 beats of orbit size 1
+* Total number of beats of *orbit size p*. The total number of recordings is $2^p$. Amongst those, 2 have orbit 1 and all the rest have orbit size p. So the total number of recordings of Orbit p is $2^p - 2$ and the total number of beats of orbit p is ${2^p - 2} \over p$.
+
+**Conclusion**
+The total number of beats in Rec(p) is: ${{2^p - 2} \over p} + 2$
+
+| Orbit size      | 1 | p                   |
+|-----------------|---|---------------------|
+| Number of beats | 2 | ${2^p - 2} \over p$ |
+
+**Bonus**
+
+We have proven that ${2^p - 2}$ divides p for all prime p.
+
+### Injection Rec(k) -> Rec(n) for k div n
+
+Let k divide n. We can construct a morphism $\mathrm{Rec(k)} \rightarrow \mathrm{Rec(n)}$ by the following:
+
+$$\gamma_{k\rightarrow n} (x_1, \dots x_k) = (x_1, \dots x_k, x_1 \dots x_k \dots \dots, x_1 \dots x_k)$$ (Where we repeat the recordings n/k times)
+
+Or we can write:
+
+$$\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_{((i-1) \mod k) + 1}$$
+
+
+Or again we can write
+
+$\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_i, i <= k$ and $\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_i, i <= k$
