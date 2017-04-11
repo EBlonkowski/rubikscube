@@ -148,6 +148,7 @@ $(document).ready(function () {
 <li><a href="#understanding-the-beats-of-1-cardinal-3">Understanding the beats of 1-cardinal 3</a></li>
 <li><a href="#fixed-group-of-a-recording-on-1-instrument">Fixed group of a recording on 1 instrument</a></li>
 <li><a href="#number-of-beats-in-recp-for-p-prime">Number of beats in Rec(p) for p prime</a></li>
+<li><a href="#injection-reck---recn-for-k-div-n">Injection Rec(k) -&gt; Rec(n) for k div n</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1859,6 +1860,16 @@ Furthermore, <span class="math inline">\(\phi\)</span> is an isomorphism on Rec.
 </table>
 <p><strong>Bonus</strong></p>
 <p>We have proven that <span class="math inline">\({2^p - 2}\)</span> divides p for all prime p.</p>
+</div>
+<div id="injection-reck---recn-for-k-div-n" class="section level3">
+<h3>Injection Rec(k) -&gt; Rec(n) for k div n</h3>
+<p>Let k divide n. We can construct a morphism <span class="math inline">\(\mathrm{Rec(k)} \rightarrow \mathrm{Rec(n)}\)</span> by the following:</p>
+<p><span class="math display">\[\gamma_{k\rightarrow n} (x_1, \dots x_k) = (x_1, \dots x_k, x_1 \dots x_k \dots \dots, x_1 \dots x_k)\]</span> (Where we repeat the recordings n/k times)</p>
+<p>Or we can write:</p>
+<p><span class="math display">\[\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_{((i-1) \mod k) + 1}\]</span></p>
+<p>Or again we can write the following recursive definition hehe:</p>
+<p><span class="math inline">\(\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_i, i &lt;= k\)</span> and <span class="math inline">\(\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = \gamma_{k\rightarrow n} (x_1, \dots x_k)(i-k), i &gt; k\)</span></p>
+<p><strong>Property</strong> <span class="math inline">\(\forall a \in C(n), \gamma(f \bullet [a]_k) = \gamma(f) \bullet a\)</span> Where <span class="math inline">\([a]_k\)</span> is defined by <span class="math inline">\([1_n]_k = 1_k\)</span> <span class="math inline">\([k*1_n]_k = k*1_k = 0_k\)</span></p>
 </div>
 </div>
 

@@ -651,6 +651,13 @@ Or we can write:
 $$\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_{((i-1) \mod k) + 1}$$
 
 
-Or again we can write
+Or again we can write the following recursive definition hehe:
 
-$\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_i, i <= k$ and $\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_i, i <= k$
+$\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = x_i, i <= k$ and $\gamma_{k\rightarrow n} (x_1, \dots x_k)(i) = \gamma_{k\rightarrow n} (x_1, \dots x_k)(i-k), i > k$
+
+**Property**
+Let $i_{k \rightarrow n}$ be the injection $C(k) \rightarrow C(n)$ that maps $[1]_k \mapsto [k]_n$
+
+$\forall a \in C(n), \gamma(f \bullet [a]_k) = \gamma(f) \bullet a$
+Where $[a]_k$ is defined by $[1_n]_k = 1_k$
+$[k*1_n]_k = k*1_k = 0_k$
