@@ -1,0 +1,541 @@
+---
+title: "Symmetric Groups"
+author: "Manu"
+date: "June 29, 2017"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+library(DiagrammeR)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition
+
+**Symmetric group**
+The Symmetric Group on a finite set A is defined as the set of all invertible functions $A \rightarrow A$ together with the opposite composition as the operation. To sets with the same number of elements will give isomorphic groups. We note Sn the symmetric gorup on n elements.
+
+
+**Cycle**
+A cycle c in Sn is a permutation such that the action of <c> on A has only one orbit of size > 1.
+
+**Functoriality**
+Let **Setinq** be the category of all finite sets, with only injective functions as the morphisms. This is a category because the identity is injective and the composition of 2 injections is itself an injection.
+
+Then Sym is a functor $\mathrm{Setinq} \rightarrow \mathrm{Group}$
+
+Indeed if $f: A \hookrightarrow B$ then we can define $Sym(f): Sym(A) \hookrightarrow Sym(B)$ by:
+
+$$\mathrm{Sym}(f)(g)(b) = \left \{ \begin{array}{ll} 
+  b, b \notin Im(f) \\
+  f(g(f^{-1}(b))), \mathrm{otherwise} 
+  \end{array} \right .$$
+
+## Examples
+
+### S4
+
+S4 has 24 elements
+
+| Order        | Number | Elements |
+|--------------|--------|----------|
+| 1            |   1    |   id     |
+| 2            |   9    | (1 2), (1 3), (1, 4), (2, 3), (2, 4), (3, 4), (1 2) (3 4), (1 3) (2 4), (1 4) (2 3) |
+| 3            |   8    | (1 2 3), (1 3 2), (1 2 4), (1 4 2), (1 3 4), (1 4 3), (2 3 4), (2 4 3) |
+| 4            |    6   | (1 2 3 4), (1 4 3 2), (1 2 4 3), (1 3 4 2), (1 3 2 4), (1 4 2 3) |
+
+```{r}
+grViz('
+graph S4 {
+  graph [layout = twopi, size="7.75,10.25", ranksep=3.0, nodesep=2.0]
+
+  e
+  p_1_2 [label = "(1 2)"]
+  p_1_3 [label = "(1 3)"]
+  p_1_4 [label = "(1 4)"]
+  p_2_3 [label = "(2 3)"]
+  p_2_4 [label = "(2 4)"]
+  p_3_4 [label = "(3 4)"]
+  
+  p_1_2_3 [label = "(1 2 3)"]
+  p_1_3_2 [label = "(1 3 2)"]
+  p_1_2_4 [label = "(1 2 4)"]
+  p_1_4_2 [label = "(1 4 2)"]
+  p_1_3_4 [label = "(1 3 4)"]
+  p_1_4_3 [label = "(1 4 3)"]
+  p_2_3_4 [label = "(2 3 4)"]
+  p_2_4_3 [label = "(2 4 3)"]
+
+  p_1_2_3_4 [label = "(1 2 3 4)"]
+  p_1_3_T_2_4 [label = "(1 3) (2 4)"]
+  p_1_4_3_2 [label = "(1 4 3 2)"]
+
+  p_1_2_4_3 [label = "(1 2 4 3)"]
+  p_1_4_T_2_3 [label = "(1 4) (2 3)"]
+  p_1_3_4_2 [label = "(1 3 4 2)"]
+
+  p_1_3_2_4 [label = "(1 3 2 4)"]
+  p_1_2_T_3_4 [label = "(1 2) (3 4)"]
+  p_1_4_2_3 [label = "(1 4 2 3)"]
+
+
+  e -- p_1_2
+  e -- p_1_3
+  e -- p_1_4
+  e -- p_2_3
+  e -- p_2_4
+  e -- p_3_4
+
+  e -- p_1_2_3
+  e -- p_1_3_2
+  e -- p_1_2_4
+  e -- p_1_4_2
+  e -- p_1_3_4
+  e -- p_1_4_3
+  e -- p_2_3_4
+  e -- p_2_4_3
+
+  p_1_2_3 -- p_1_3_2
+  p_1_2_4 -- p_1_4_2
+  p_1_3_4 -- p_1_4_3
+  p_2_3_4 -- p_2_4_3
+
+  e -- p_1_2_3_4
+  e -- p_1_4_3_2
+  e -- p_1_2_4_3
+  e -- p_1_3_4_2
+  e -- p_1_3_2_4
+  e -- p_1_4_2_3
+
+  p_1_2_3_4 -- p_1_3_T_2_4
+  p_1_4_3_2 -- p_1_3_T_2_4
+
+  p_1_2_4_3 -- p_1_4_T_2_3
+  p_1_3_4_2 -- p_1_4_T_2_3
+
+  p_1_3_2_4 -- p_1_2_T_3_4
+  p_1_4_2_3 -- p_1_2_T_3_4
+
+}
+')
+```
+
+
+### S5
+
+S5 has 120 elements. 
+It has 5\*4/2 = 10 permutations. 
+It has 5\*4\*3 / 3 = 20 3-cycles
+It has 5\*4\*3\*2 / 4 = 30 4-cycles
+4\*3*2 = 24 5-cycles
+
+| Order        | 1 | 2 | 3  | 4   | 5   | 6    | Total     |
+|--------------|---|---|----|-----|-----|------|-----------|
+| # elements   | 1 | ? | 20 | 30  | 24  | ?    | 75        |
+
+### S6
+
+S6 has 720 elements
+
+It has 6\*5/2 = 15 permutations. 
+It has 6\*5\*4 / 3 = 40 3-cycles
+It has 6\*5\*4\*3 / 4 = 90 4-cycles
+6\*5\*4\*3\*2 / 5 = 144 5-cycles
+6\*5\*4\*3\*2 / 6 = 120 6-cycles
+
+## Properties
+
+The symmetric group has n! elements.
+
+**proof**
+Let f be in Sn. There are n choices for f(1), n-1 choices for f(2) (because f(1) must be different to f(2)), n-3 choices for f(3)... all the way to 1. So there is a total of n(n-1)(n-2)...1 = n! choices for f.
+
+| n        | 2 | 3 | 4  | 5   | 6   | 7    | 8     | 9       | 10        |
+|----------|---|---|----|-----|-----|------|-------|---------|-----------|
+| Card(Sn) | 2 | 6 | 24 | 120 | 720 | 5040 | 40320 | 362,880 | 3,628,800 |
+
+Some elements of the symmetric group can have order >= n
+
+**example**
+In S5, (1 2 3)(4 5) has order 6.
+
+
+## Signature
+
+Let Cou be the set of all $(x, y) \in A^2 / x \neq y$. Then Cou is a C(2)-set together with the action $1+(x, y) = (y, x)$.
+
+Let P be the set of all unordered pairs $\{a, b\}, a,b \in A^2, a \neq b$.
+
+We call $\pi_P: \mathrm{Cou} \rightarrow P$ the natural projection on P that drops the order on the ordered pair.
+
+For example, if A = {1, 2, 3} then Cou = {(1, 2), (1, 3), (2, 3), (2, 1), (3, 1), (3, 2)}
+
+And P = {{1, 2}, {1, 3}, {2, 3}}
+
+In general
+
+| Size of A | Size Cou | Size P   |
+|-----------|----------|----------|
+| 3         | 6        | 3        |
+| 4         | 12       | 6        |
+| 5         | 20       | 10       |
+| 6         | 30       | 15       |
+| 7         | 42       | 21       |
+| 8         | 56       | 28       |
+| 9         | 72       | 36       |
+| n         | n(n-1)   | n(n-1)/2 |
+
+
+
+### Definition of the Signature
+
+Let $\pi_2: Cou \rightarrow C(2)$ be a C(2)-map and let $s \in S(A)$ we write $\sigma(s) = \sum_{(x, y) \in {\pi_2}^{-1}(0)} \pi_2(s(x), s(y))$. This quantity does not depend on $\pi_2$
+
+### Maps P -> Cou
+
+Let I be the set of all maps $i: P \rightarrow Cou$ such that $i \circ_{op} \pi_P = id_P$
+
+For all {x, y} in P, we have $\pi(i({x, y})) = \{x, y\}$ so $i(\{x, y\}) = \left [  \begin{array}{ll} (x, y) \\ or \\  (y, x) \end{array} \right .$
+
+We easily verify that any map verrifying this property is in I. There are $n(n-1) \over 2$ elements in P and for each we have 2 possibilities. So I contains $2^{n(n-1) \over 2}$ elements.
+
+For n=3 I contains 2^3 = 8 elements.
+
+| I | {1, 2} | {1, 3} | {2, 3} |
+|---|--------|--------|--------|
+| 1 | (1, 2) | (1, 3) | (2, 3) |
+| 2 | (1, 2) | (1, 3) | (3, 2) |
+| 3 | (1, 2) | (3, 1) | (2, 3) |
+| 4 | (1, 2) | (3, 1) | (3, 2) |
+| 5 | (2, 1) | (1, 3) | (2, 3) |
+| 6 | (2, 1) | (1, 3) | (3, 2) |
+| 7 | (2, 1) | (3, 1) | (2, 3) |
+| 8 | (2, 1) | (3, 1) | (3, 2) |
+
+We can also define an action of S(A) unto I by
+$$(\{x, y\})i \cdot g = \left \{ \begin{array}{ll}
+(x, y), \mathrm{if} (x, y) \in g(i(P)) \\
+(y, x), \mathrm{if} (y, x) \in g(i(P)) \end{array} \right .$$
+
+We can easily see that only one of the 2 conditions can be true at the same time, and that one always has to be true at anytime.
+
+We can also define $i \cdot g$ as the only application in I that has values in g(i(P)).
+
+Indeed g(i(P)) is a set a representative for the equivalence relation $(x,y) \sim (y, x)$. Because:
+
+1. For any element (x, y), we can find (a, b) in g(i(P)) such that g(a,b) = (x, y) or g(a, b) = (y, x)
+2. For any class {(x, y), (y, x)} there exist only one g(a, b) in g(i(P)) such that g(a, b) is in this class.
+
+**Example n=3**
+
+Action of a of S3 on $i_1$:
+
+| I                   | {1, 2} | {1, 3} | {2, 3} | Result  |
+|---------------------|--------|--------|--------|---------|
+| $i_1$               | (1, 2) | (1, 3) | (2, 3) |  $i_1$  |
+| $i_1 \cdot (1 2)$   | (2, 1) | (1, 3) | (2, 3) |  $i_5$  |
+| $i_1 \cdot (1 3)$   | (2, 1) | (3, 1) | (3, 2) |  $i_8$  |
+| $i_1 \cdot (2 3)$   | (1, 2) | (1, 3) | (3, 2) |  $i_2$  |
+| $i_1 \cdot (1 2 3)$ | (2, 1) | (3, 1) | (2, 3) |  $i_7$  |
+| $i_1 \cdot (1 3 2)$ | (1, 2) | (3, 1) | (3, 2) |  $i_4$  |
+
+$O(i_1) = \{i_1, i_2, i_4, i_5, i_7, i_8\}$
+$\mathrm{Stab}(i_1) = \{e\}$
+
+As we can se $i_3$ and $i_6$ are not there
+
+| I                   | {1, 2} | {1, 3} | {2, 3} | Result  |
+|---------------------|--------|--------|--------|---------|
+| $i_3$               | (1, 2) | (3, 1) | (2, 3) |  $i_3$  |
+| $i_3 \cdot (1 2)$   | (2, 1) | (1, 3) | (3, 2) |  $i_6$  |
+| $i_3 \cdot (1 3)$   | (2, 1) | (1, 3) | (3, 2) |  $i_6$  |
+| $i_3 \cdot (2 3)$   | (2, 1) | (1, 3) | (3, 2) |  $i_6$  |
+| $i_3 \cdot (1 2 3)$ | (1, 2) | (3, 1) | (2, 3) |  $i_3$  |
+| $i_3 \cdot (1 3 2)$ | (1, 2) | (3, 1) | (2, 3) |  $i_3$  |
+
+$O(i_3) = \{i_3 i_6\}$
+$\mathrm{Stab}(i_3) = \{e, (1 2 3), (1 3 2)\}$
+
+
+| I                   | {1, 2} | {1, 3} | {2, 3} | Result  |
+|---------------------|--------|--------|--------|---------|
+| $i_6$               | (2, 1) | (1, 3) | (3, 2) |  $i_6$  |
+| $i_6 \cdot (1 2)$   | (1, 2) | (3, 1) | (2, 3) |  $i_3$  |
+| $i_6 \cdot (1 3)$   | (1, 2) | (3, 1) | (2, 3) |  $i_3$  |
+| $i_6 \cdot (2 3)$   | (1, 2) | (3, 1) | (2, 3) |  $i_3$  |
+| $i_6 \cdot (1 2 3)$ | (2, 1) | (1, 3) | (3, 2) |  $i_6$  |
+| $i_6 \cdot (1 3 2)$ | (2, 1) | (1, 3) | (3, 2) |  $i_6$  |
+
+8 = 6/1 + 6/3
+
+**Example n=4**
+
+For n=4 I contains 2^6 = 64 elements.
+
+Each app i contains 6 pairs.
+Each action involves 24 elements
+
+Let's consider $O(i)$:
+
+|             | {1, 2} | {1, 3} | {1, 4} | {2,3}  | {2, 4} | {3, 4} |
+|-------------|--------|--------|--------|--------|--------|--------|
+| i           | (1, 2) | (1, 3) | (4, 1) | (2, 3) | (2, 4) | (3, 4) | 
+| i.(1 2)     | (2, 1) | (1, 3) | (1, 4) | (2, 3) | (4, 2) | (3, 4) |
+| i.(1 2 3 4) | (1, 2) | (3, 1) | (4, 1) | (2, 3) | (2, 4) | (3, 4) |
+...
+
+Let's consider
+
+|             | {1, 2} | {1, 3} | {1, 4} | {2,3}  | {2, 4} | {3, 4} |
+|-------------|--------|--------|--------|--------|--------|--------|
+| i           | (1, 2) | (3, 1) | (1, 4) | (2, 3) | (2, 4) | (3, 4) |
+| i.(1 2 3)   | (1, 2) | (3, 1) | (1, 4) | (2, 3) | (2, 4) | (3, 4) | 
+
+## Chains of couples
+
+Let g be any element in S(A) and (x, y) any pair we can define a chain:
+
+(x, y) -> (gx, gy) -> $(g^2 \cdot x, g^2 \cdot y)$ ->  ... -> (x, y)
+
+**Examples**
+
+Let A = {1, 2, 3} and g = (1 2 3)
+
+We have the following chains:
+
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2)
+(2, 1) -> (3, 2) -> (1, 3) -> (2, 1)
+
+We can see that up to a reordering of the chain, we only have 2 chains, and they are opposite by the action of C(2).
+
+We can also see that up to the action of C(2) we have 3 chains
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2)
+(2, 3) -> (3, 1) -> (1, 2) -> (2, 3)
+(3, 1) -> (1, 2) -> (2, 3) -> (3, 1)
+
+If we quotient by the 2 actions we get only 1 chain:
+
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2) 0
+
+
+---
+
+Now for g = (1 2)
+
+(1, 2) -> (2, 1) -> (1, 2)
+(1, 3) -> (2, 3) -> (1, 3)
+(3, 1) -> (3, 2) -> (3, 1)
+
+Here we have one chain symmetric to itself and a pair of opposite chains, up to reordering of the chain.
+We can also see that up to the action of C(2) we have 3 chains
+
+(1, 2) -> (2, 1) -> (1, 2)
+(1, 3) -> (2, 3) -> (1, 3)
+(2, 3) -> (1, 3) -> (2, 3)
+
+Now if we quotient by the 2 actions, we get only 2 chains:
+
+(1, 2) -> (2, 1) -> (1, 2) 1
+(1, 3) -> (2, 3) -> (1, 3) 0
+
+---
+
+Let A = {1, 2, 3, 4} and g = (1 2 3 4)
+
+(1, 2) -> (2, 3) -> (3, 4) -> (4, 1) -> (1, 2) = 0
+(1, 3) -> (2, 4) -> (3, 1) -> (4, 2) -> (1, 3) = 1
+(1, 4) -> (2, 1) -> (3, 2) -> (4, 3) -> (1, 4) = 0
+(2, 3) -> (3, 4) -> (4, 1) -> (1, 2) -> (2, 3) = 0
+(2, 4) -> (3, 1) -> (4, 2) -> (1, 3) -> (2, 4) = 1
+(3, 4) -> (4, 1) -> (1, 2) -> (2, 3) -> (3, 4) = 0
+
+Up to C(2)
+
+If we also quotient by the action of g:
+
+(1, 2) -> (2, 3) -> (3, 4) -> (4, 1) -> (1, 2) = 0
+(1, 3) -> (2, 4) -> (3, 1) -> (4, 2) -> (1, 3) = 1
+
+---
+
+Let A = {1, 2, 3, 4} and g = (1 2) (3 4)
+
+Quotient by the action of g:
+
+(1, 2) -> (2, 1) -> (1, 2)
+
+(1, 3) -> (2, 4) -> (1, 3)
+(3, 1) -> (4, 2) -> (3, 1)
+
+(1, 4) -> (2, 3) -> (1, 4)
+(4, 1) -> (3, 2) -> (4, 1)
+
+(3, 4) -> (4, 3) -> (3, 4)
+
+Now we quotient again by the action of C(2).
+
+(1, 2) -> (2, 1) -> (1, 2) 1
+(1, 3) -> (2, 4) -> (1, 3) 0
+(1, 4) -> (2, 3) -> (1, 4) 0
+(3, 4) -> (4, 3) -> (3, 4) 1
+
+---
+
+Let A = {1, 2, 3, 4} and g = (1 2 3)
+
+Quotient by the action of g
+
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2)
+(2, 1) -> (3, 2) -> (1, 3) -> (2, 1)
+
+(1, 4) -> (2, 4) -> (3, 4) -> (1, 4)
+(4, 1) -> (4, 2) -> (4, 3) -> (4, 1)
+
+If we quotient again by the action of C(2) we get 2 chains:
+
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2)
+(1, 4) -> (2, 4) -> (3, 4) -> (1, 4)
+
+---
+
+Let A = {1, 2, 3, 4, 5} and g = (1 2 3 4 5)
+
+If we don't quotient by any action we get 20 chains (too much)
+
+If we quotient by the action of g we get 4 chains
+
+(1, 2) -> (2, 3) -> (3, 4) -> (4, 5) -> (5, 1) -> (1, 2)
+(2, 1) -> (3, 2) -> (4, 3) -> (5, 4) -> (1, 5) -> (2, 1)
+
+(1, 3) -> (2, 4) -> (3, 5) -> (4, 1) -> (5, 2) -> (1, 3)
+(3, 1) -> (4, 2) -> (5, 3) -> (1, 4) -> (2, 5) -> (3, 1)
+
+If we quotient by C(2) we get 2 chains:
+
+(1, 2) -> (2, 3) -> (3, 4) -> (4, 5) -> (5, 1) -> (1, 2) 0
+(1, 3) -> (2, 4) -> (3, 5) -> (4, 1) -> (5, 2) -> (1, 3) 0
+
+---
+
+Let A = {1, 2, 3, 4, 5} and g = (1 2 3) (4 5)
+
+We quotient by C(2) first, so we get 10 chains:
+
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2)
+(1, 3) -> (2, 1) -> (3, 2) -> (1, 3)
+(1, 4) -> (2, 5) -> (3, 4) -> (1, 5) -> (2, 4) -> (3, 5) -> (1, 4)
+(1, 5) -> (2, 4) -> (3, 5) -> (1, 4) -> (2, 5) -> (3, 4) -> (1, 5)
+(2, 3) -> (3, 1) -> (1, 2) -> (2, 3)
+(2, 4) -> (3, 5) -> (1, 4) -> (2, 5) -> (3, 4) -> (1, 5) -> (2, 4)
+(2, 5) -> (3, 4) -> (1, 5) -> (2, 4) -> (3, 5) -> (1, 4) -> (2, 5)
+(3, 4) -> (1, 5) -> (2, 4) -> (3, 5) -> (1, 4) -> (2, 5) -> (3, 4)
+(3, 5) -> (1, 4) -> (2, 5) -> (3, 4) -> (1, 5) -> (2, 4) -> (3, 5)
+(4, 5) -> (5, 4) -> (4, 5)
+
+Now we quotient by g we get 3 chains:
+
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2) 0
+(1, 4) -> (2, 5) -> (3, 4) -> (1, 5) -> (2, 4) -> (3, 5) -> (1, 4) 0
+(4, 5) -> (5, 4) -> (4, 5) 1
+
+---
+
+Let A = {1, 2, 3, 4, 5} and g = (1 2 3) 
+
+Quotient by C(2) first:
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2)
+(1, 3) -> (2, 1) -> (3, 2) -> (1, 3)
+(1, 4) -> (2, 4) -> (3, 4) -> (1, 4)
+(1, 5) -> (2, 5) -> (3, 5) -> (1, 5)
+(2, 3) -> (3, 1) -> (1, 2) -> (2, 3)
+(2, 4) -> (3, 4) -> (1, 4) -> (2, 4)
+(2, 5) -> (3, 5) -> (1, 5) -> (2, 5)
+(3, 4) -> (1, 4) -> (2, 4) -> (3, 4)
+(3, 5) -> (1, 5) -> (2, 5) -> (3, 5)
+(4, 5) -> (4, 5)
+
+Quotient by <g>:
+(1, 2) -> (2, 3) -> (3, 1) -> (1, 2) 0
+(1, 4) -> (2, 4) -> (3, 4) -> (1, 4) 0
+(1, 5) -> (2, 5) -> (3, 5) -> (1, 5) 0
+(4, 5) -> (4, 5) 0
+
+
+---
+
+Let A = {1, 2, 3, 4, 5} and g = (4 5)
+
+Quotient by C(2):
+
+(1, 2) -> (1, 2) 
+(1, 3) -> (1, 3) 
+(1, 4) -> (1, 5) -> (1, 4) 
+(1, 5) -> (1, 4) -> (1, 5) 
+(2, 3) -> (2, 3) 
+(2, 4) -> (2, 5) -> (2, 4) 
+(2, 5) -> (2, 4) -> (2, 5) 
+(3, 4) -> (3, 5) -> (3, 4) 
+(3, 5) -> (3, 4) -> (3, 5) 
+(4, 5) -> (5, 4) -> (4, 5) 
+
+Quotient by <g>:
+
+(1, 2) -> (1, 2) 
+(1, 3) -> (1, 3) 
+(1, 4) -> (1, 5) -> (1, 4) 
+(2, 3) -> (2, 3) 
+(2, 4) -> (2, 5) -> (2, 4) 
+(3, 4) -> (3, 5) -> (3, 4) 
+(4, 5) -> (5, 4) -> (4, 5) 
+
+They all have signature 0 except the last one.
+
+### 3 Chains
+
+### Definition of 2-chains
+
+Let A be any finite set, g any element in S(A). Let $(x, y) \in Cou(A)$ we can define **chain((x,y), g)** as the serie $(g^n(x), g^n(y))_{n \in N}$
+
+**Properties**
+
+1. $\forall n \in N, (g^n(x), g^n(y)) \in Cou(A)$
+2. La serie est periodique: there exists n0 such that $(g^n(x), g^n(y)) = (g^{n_0+n}(x), g^{n_0 +n}(y))$
+3. A g-chain is uniquely defined by its first value, so we note it $(x, y)_g$
+**Definition**
+
+We define **Chain(g)** has the set of all chains {chain((x,y), g) / (x, y) in Cou}
+
+|Chain(g)| = n(n-1) where n = |A|
+
+We have one **action of C(2)** on Chain(g) defined by $1+(g^n(x), g^n(y))_{n \in N} = (g^n(y), g^n(x))_{n \in N}$. We easily verify that both are g-chains.
+
+We also have one **action of <g>** on Chain(g) defined by $1+(g^n(x), g^n(y))_{n \in N} = (g^n(g(x)), g^n(g(y)))_{n \in N}$
+
+Both actions commute: 1+(g.c) = g.(1+c)
+Because of that we can define a g action on the orbits by C(2).
+
+Let's call the reduced chains the following set:
+$RChain(g) = O(O(Chain(g), C(2)), <g>)$
+
+2 chains belong to the same reduced chain iff:
+  $(x, y)_g \sim (x', y')_g \iff \exists a \in C(2), h \in <g> / (x, y) = a+g\cdot (x', y')$
+  
+Let $(x, y)_g$ be a g-chain. We define a function $\sigma: Cou(A) \rightarrow C(2)$ by the following. $\sigma((x, y)_g) = 1 \iff \exists h \in <g> / h \cdot (x, y) = (y, x)$
+
+We have the following properties: $\sigma(1+(x,y)_g) = \sigma((x,y)_g)$ and $\sigma(g(x,y)_g) = \sigma((x,y)_g)$ 
+The first is obvious. For the second one, let h such that (hx, hy) = (y, x)
+then (hgx, hgy) = (gx, gy) because h and g commute.
+
+So $\sigma$ is well defined on RChain(g) and we can write $\sigma(g) = \sum_{c \in Rchain}\sigma(c)$
+
+Let $g_1, g_2 \in S(A), (x, y) \in Cou$
+Suppose that there exists h such that $(hg1x, hg1y) \cdot g_2 = (g1y, g1x)$ then $(x, y) \cdot{g_1g_2} = (g1y, g1x) \cdot g_2 = (hg1y, hg1x)$
+
+## Functions $G \times G \rightarrow C(2)$
+
+Let f, g in Hom(G2, C(2)) then we can define (f+g)(x, y) = f(x, y) + g(x, y)
+
+For $(x_0, y_0) \in P$ we define $\mathcal{I}_{x_0, y_0}$ in Hom(G2, C(2)) to be the function equal to 1 on $(x_0, y_0)$ and 0 everywhere else.
+
