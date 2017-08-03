@@ -56,6 +56,28 @@ The action of Z/3Z on SQ2 can be defined by the action of ru on uu and rr, since
 all(uu^(r*u) == rr, rr^(r*u) == cc)
 ```
 
+Decomposition into simple groups:
+
+$$ C(3) \lhd C(2) \lhd C(2) \lhd C3 $$
+
+## Graphs
+
+```{r}
+grViz('
+graph cycle {
+ graph[layout = neato]
+ node [shape = circle, style = filled, color = grey, label=""]
+
+ e [color = red]; a; b; c; p; p2
+
+  e -- a
+  e -- b
+  e -- c
+  e -- p -- p2 -- e
+}
+')
+```
+
 ## Other Semi-directs products $Z/3Z \rtimes (Z/2Z)^2$
 
 We know that $\mathrm{Aut((Z/2Z)^2)} \sim S3 \sim Z/2Z \rtimes Z/3Z$

@@ -4,16 +4,12 @@ output:
     toc: true
   pdf_document: default
 ---
-:---
-title: "S3"
-author: "Manu"
-date: "20 February 2017"
-output: html_document
----
+
 
 ```{r setup, include=FALSE}
 library(permutations)
 library(igraph)
+library(DiagrammeR)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -55,6 +51,45 @@ Table of S3:
 | c  | c  | a  | b  | p  | p2 | e  |
 
 
+Order of the elements:
+
+| S3 | Order  | Sign  | Inversions  |
+|----|--------|-------|-------------|
+| e  | 1      | +     | 0           |
+| p  | 3      | +     | 0           |
+| p2 | 3      | +     | 0           |
+| a  | 2      | -     | 1           |
+| b  | 2      | -     | 1           |
+| c  | 2      | -     | 1           |
+
+Unique normal chain decomposition of S3:
+
+$$ C(2) \lhd C(3) \lhd S_3$$
+
+And this decomposition is unique, the factors cannot be swapped.
+
+## Cycle graph
+
+```{r}
+grViz('
+graph cycle {
+ graph[layout = neato]
+ node [shape = circle, style = filled, color = grey, label=""]
+
+ e [color = red]; a; b; c; p; p2
+
+  e -- a
+  e -- b
+  e -- c
+  e -- p -- p2 -- e
+}
+')
+```
+
+## Subgroups of S3
+
+### <p> is a normal subgroup
+
 The group \<p\> = {e, p, p2} is normal in S3:
 
 ```{r normal}
@@ -78,7 +113,6 @@ More detailed action of the group on \<p\>:
 |p |{p, p2, e}|{c, a, b} |
 |p2|{p2, e, p}|{b, c, a} |
 
-## Subgroups of S3
 
 \<p\> is isomorphic to Z/3Z and it has no non-trivial subgroups.
 
@@ -190,6 +224,41 @@ Orbits
 |p2|{1_2, 2_3, 1_3}  |
 
 Stabilizers
+
+### Action on the elements of order 2
+
+The elements of order 2 are: a, b, c
+
+```{r}
+c(a^p == c, a^(p^2) == b)
+```
+
+So the action is transitive. And |O(a)|.|Stab(a)| = 6 => 3.|Stab| =  6
+So the stabilizer size is 2.
+
+And:
+
+|S3| Stab   |
+|--|--------|
+|a | e, a   |
+|b | e, b   |
+|c | e, c   |
+
+### Action on the elements of order 3
+
+The elements of order 3 are: p, p^2
+
+```{r}
+c(p^a == p^2)
+```
+
+So the action is transitive and: |O(p)|.|Stab(p)| = 6 so |Stab(p)| = 2
+
+|S3 | Stab      |
+|---|-----------|
+|p  | e, p, p2  |
+|p2 | e, p, p2  |
+
 
 ### Other actions
 

@@ -188,3 +188,66 @@ We can assume G to be non-Abelian. Then G must have an element of order 5 otherw
 $$0 \rightarrow <r> \rightarrow G \rightarrow G/<r> \rightarrow 0$$
 
 Hence $G = C(2) \rtimes C(5)$
+
+## All groups of order 12
+
+Let G be a group of order 12. Because it's prime factors are 2 and 3. Let H be a simple subgroup of G. Then |H| divide 12. So |H| = 1, 2, 3, 6, 12. According to the list of groups here we know that for H to be simple we need |H| = 2 and H = C(2) or |H| = 3 and H = C(3).
+
+These are all the possibilities for the normal decomposition of G:
+
+$$ C(3) \lhd C(2) \lhd C(2) \lhd G \\
+C(2) \lhd C(3) \lhd C(2) \lhd G \\
+C(2) \lhd C(2) \lhd C(3) \lhd G $$
+
+## All groups of order 14
+
+Example: 
+D7 is a group of order 14, its elements are:
+(0, 0) (0, 1) (0, 2) (0, 3) (0, 4) (0, 5) (0, 6)
+(1, 0) (1, 1) (1, 2) (1, 3) (1, 4) (1, 5) (1, 6)
+
+and 
+(0, 1) . (1, 0) = (0, 6)
+(0, 1) . (1, 1) = (0, 0)
+(1, 0) . (0, 1) = (1, 1)
+
+Let's show that all groups of order 14 are a semi-direct product. Let g be an element of G not equal to the identity.
+
+* if the order of g is 2
+  For example let's consider (1, 0) in D7 the left classes by (1, 0) are:
+  (0, 0) (1, 0)
+  (0, 1) (1, 6)
+  (0, 2) (1, 5)
+  (0, 3) (1, 4)
+  (0, 4) (1, 3)
+  (0, 5) (1, 2)
+  (0, 6) (1, 1)
+  There are 7 left classes
+  
+  Let's take any element of another class: (1, 3).
+  (1, 3) ^ (1, 3) = (0, 0) So it has order 2
+  But (0, 4) has order 7
+  
+  If now we consider (1, 3) the classes are:
+  (0, 0) (1, 3)
+  (0, 1) (1, 2)
+  (0, 2) (1, 1)
+  (0, 3) (1, 0)
+  (0, 4) (1, 6)
+  (0, 5) (1, 5)
+  (0, 6) (1, 4)
+  
+* if the order of g is 14 then we consider g^2 of order 7.
+
+Let A be the set of all element of order p. Conjugation sends all element of order p to an element of order p. So we have an action G -> Aut(A) 
+
+|A| . |Stabx| = pq
+
+The class of x under this action gives |Ox| . |Stabx| = pq
+|Ox| = pq is not possible because the identity is not of order p.
+So |Ox| = 1 or |Ox| = q, |Ox| = p 
+
+In a group of order pq we have
+
+|Ap| + |Aq| + 1 = pq
+
