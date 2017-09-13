@@ -1,0 +1,36 @@
+---
+title: "C(2)"
+author: "Paul, Shuya, Manu"
+date: "August 19, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## C(2)
+
+C(2) is the smallest non-trivial group, hence it is also the cutest.
+
+$\mathrm{Aut}(C(2)) = {e}$
+
+## Actions of C(2)
+
+### Action on a set of 2 elements
+
+The set is {1, 2}.
+
+The action $C(2) \rightarrow S2$ is given by $1 \mapsto (1 2)$
+
+This action has only one orbit so it is transitive. O(1) = {1, 2}, Stab(1) = {e}.
+
+The map $C(2) \rightarrow S2$ is injective so the action is faithfull.
+
+### Action on 
+### General action
+
+Let A be a set and $\phi: C(2) -> S(A)$ then the Kernel of $\phi$ is either {e} or C(2)
+If the Kernel is C(2) then the action is the trivial action. If the Kernel is {e} then the image of $\phi$ must be a subgroup of order 2 of S(A). Conversely, for any subgroup of order 2 of S(A) we get one action. So the total number of actions is the number of elements of order 2 in S(A).
+
+For example if A = {1, 2, 3}. The elements of S3 that have order 2 are permutations of 2 elements. There are 3*2/2 = 3 ways to choose a permutation in S3 so there are 3 non-trivial action of C(2) on A.
