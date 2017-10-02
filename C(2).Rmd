@@ -27,7 +27,89 @@ This action has only one orbit so it is transitive. O(1) = {1, 2}, Stab(1) = {e}
 
 The map $C(2) \rightarrow S2$ is injective so the action is faithfull.
 
-### Action on 
+### Beat action
+
+#### Definition
+
+We define the action on the indices by
+
+|Beat  | 1 | 2 |
+|------|---|---|
+|e     | 1 | 2 |
+|a     | 2 | 1 |
+
+#### Decomposition of the action into orbits
+
+If M = {0, 1} = C(2). Then the record space has 4 elements:
+
+| Beat | Beat size | Stabilizer | Full beat |
+|------|-----------|------------|-----------|
+| 0 0  | 1         | C(2)       | 00        |
+| 1 0  | 2         | 0          | 10, 01    |
+| 1 1  | 1         | C(2)       | 11        |
+
+
+#### Functions on recordings
+
+Let M be a value Abelian group. A recording is a function $\{1, 2\} \rightarrow M$ or a couple (M, M), a recording function is a function
+$M^2 \rightarrow M$
+So there are $|M|^{|M|^2}$ of such functions. If M = C(2), then there are 16 of those functions.
+
+A characteristic on recordings is called:
+* **Beat invariant** if L(g.x) = L(x)
+* **Beat covariant** if L(g.x) = g.L(x)
+* **M-Homomorphism** if L(x+y) = L(x)+L(y)
+* **Module homomorphism** if $L(g.x+h.y) = g.L(x) + h.L(y)$
+
+Some of these definitions only make sense if we have an action of C(2) on M.
+
+Let M = C(2). 
+
+There is only 1 non-trivial action of C(2) onto C(2), given by a.a = e. (The natural action)
+We write a.x = -x
+
+**L is beat invariant iff L(01) = L(10)**
+$L \textrm{ is a beat invariant} \implies L(01) = L(10)$
+If L(01) = L(10) we have L(a.00) = L(00), L(a.11) = L(11), L(a.01) = L(10) = L(01), L(a.10) = L(01) = L(10) So L is a beat invariant.
+So there are 8 beat invariants.
+
+**L is an M-homomorphism iff L(00) = 0 and L(11) = L(01) + L(10)**
+Because MxM is the direct product.
+So there are 4 homomorphism.
+
+**There are no beat covariant under the non-trivial action**
+L(a.00) = L(00) = a.L(00) but a.L(00) is necessarily different than L(00)
+
+**So there are no module homomorphism under the non-trivial action**
+Because a module homomorphism is also a covariant characteristic.
+
+
+| Char. | 00 | 01 | 10 | 11 | Properties | Inv. | Group hom | Formula | Sel    |
+|-------|----|----|----|----|------------|------|-----------|---------|--------|
+| 0     | 0  | 0  | 0  | 0  | Constant   | Yes  | Yes       | 0       | None   |
+| 1     | 1  | 1  | 1  | 1  | Constant   | Yes  | No        | 1       | All    |
+| L00   | 1  | 0  | 0  | 0  | Indicator  | Yes  | No        | -Px-S   | 00     |
+| L01   | 0  | 1  | 0  | 0  | Indicator  | No   | No        |         |        |
+| L10   | 0  | 0  | 1  | 0  | Indicator  | No   | No        |         |        |
+| L11   | 0  | 0  | 0  | 1  | Indicator  | Yes  | No        | Prod    | 11     |
+| -L00  | 0  | 1  | 1  | 1  | -Indicator | Yes  | No        | P+S     | 10, 11 |
+| -L01  | 1  | 0  | 1  | 1  | -Indicator | No   | No        |         |        |
+| -L10  | 1  | 1  | 0  | 1  | -Indicator | No   | No        |         |        |
+| -L11  | 1  | 1  | 1  | 0  | -Indicator | Yes  | No        | -Prod   | 00, 10 |
+| L1    | 1  | 1  | 0  | 0  | 2 valued   | No   | No        |         |        |
+| L2    | 1  | 0  | 1  | 0  | 2 valued   | No   | No        |         |        |
+| -S    | 1  | 0  | 0  | 1  | 2 valued   | Yes  | No        | -Sum    | 00, 11 |
+| -L1   | 0  | 0  | 1  | 1  | 2 valued   | No   | Yes       |         |        |
+| -L2   | 0  | 1  | 0  | 1  | 2 valued   | No   | Yes       |         |        |
+| S     | 0  | 1  | 1  | 0  | 2 valued   | Yes  | Yes       | Sum     | 10     |
+
+**Beat invariants from formulas**
+We can compute beat invariants from some formulas.
+- $f \mapsto \sum_g (g \cdot f)(1)  = f(1) + f(2)$
+- $f \mapsto \prod_g (g \cdot f)(1) = f(1) \times f(2)$
+
+As we can see we can compute all the beat invariants from the symmetric formulas, the action on M, the group operation on M and the ring product on M.
+
 ### General action
 
 Let A be a set and $\phi: C(2) -> S(A)$ then the Kernel of $\phi$ is either {e} or C(2)

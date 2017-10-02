@@ -2,7 +2,8 @@
 output:
   html_document:
     toc: true
-  pdf_document: default
+  pdf_document: 
+    default
 ---
 
 
@@ -185,9 +186,9 @@ We can also compute the stabilizers:
 
 |{1, 2, 3}|Stabilizer|
 |---------|----------|
-|1        |\<c\>       |
-|2        |\<b\>       |
-|3        |\<a\>       |
+|1        |\<c\>     |
+|2        |\<b\>     |
+|3        |\<a\>     |
 
 ### Action on the 'edges'
 
@@ -260,26 +261,81 @@ So the action is transitive and: |O(p)|.|Stab(p)| = 6 so |Stab(p)| = 2
 |p2 | e, p, p2  |
 
 
+
+
+
+
+
+
+
+
+
+
 ### Beat actions
+
+
+Let f be a recording, and g a permutation of the indices of the recording. fâ is the image of f by g if the index 2 of fâ is the index i of f such that g(i) = 2. So i=gâ1(2)
+i=gâ1(2)
+We define $g \bullet f = f' = f \circ g$
+Which means that $f'(1) = f(g(1))$
+Or more generally $f'(i) = f(g(i))$
+Letâs write a function that applies a permutation to a recording.
+
+```{r}
+apprec <- function(gp) {
+  function(...) {
+    f <- c(...)
+    f[as.word(gp) %>% unclass %>% c]
+  }
+}
+```
+
+Let's check the relationship $f'(1) = f(g(1))$ with $g = (123456)$, and f = 100000.
+We should have $f'(1) = f(g(1)) = f(2) = 0$ and $f'(6) = f(g(6)) = f(1) = 1$
+
+```{r}
+g <- as.cycle(1:6)
+all(
+  apprec(g)(1, 0, 0, 0, 0, 0) == c(0, 0, 0, 0, 0, 1))
+```
+
+
+#### Definition
+
 
 S3 has an action on
 
 |Beat  | 1 | 2 | 3 | 4 | 5 | 6 |
 |------|---|---|---|---|---|---|
-|1     | x | x | x | x | x | x |
-|2     | x | x | x | x | x | x |
-|p.1   | 1 | 2 | 3 | 4 | 5 | 6 |
-|p.2   | 3 | 1 | 2 | 6 | 4 | 5 |
-|a.1   | 4 | 5 | 6 | 1 | 2 | 3 |
-|a.2   | 1 | 2 | 3 | 4 | 6 | 5 |
-|p2.2  | 2 | 3 | 1 | 5 | 6 | 4 |
-|apa.2 | 3 | 1 | 2 | 5 | 6 | 4 |
+|p     | 3 | 1 | 2 | 6 | 4 | 5 |
+|a     | 1 | 2 | 3 | 4 | 6 | 5 |
+|p2    | 2 | 3 | 1 | 5 | 6 | 4 |
+|apa   | 3 | 1 | 2 | 5 | 6 | 4 |
 
-The action of p on the first layer is the trivial one.
-The action of a on the first layer just switches 2 the 2 3-blocks.
+This convention means that the action of p is given by 1->3, 2->1, 3->2...
+We can read the action directly from this table by interpreting in terms of indices: p(1) = 3 can be translated as: the value at index 1 is moved to index 3.
 
-The action of p on the second layer circulates the 2 3-blocks. It has 2 orbits.
-The action of a on the second layer first 3-block is the trivial one. On the second 3-block it switches 5 and 6.
+This is an action because:
+$$g \circ^{op} h \bullet f|_i = f_{gh(i)} = f_{h(g(i))} = g \bullet (h \bullet f)|_i$$
+This action can be written as a morphism $M: S(1 \dots 6)^{op} \rightarrow S(Rec)$
+
+And we have the following property: 
+$$ M(g \circ^{op} h)(f) = M(g \cdot h)(f) = M(g)(M(h)(f))$$
+So $M(g \cdot h) = M(g) \circ M(h)$
+
+We can check this relationship with gp = (123)(456), ga = (14)(26)(35) and 100000
+$M((123)(456) \cdot (14)(26)(35))(100000) = M((16)(25)(34))(100000) = 000001$
+$M((123)(456) \cdot (14)(26)(35))(100000) = M((123)(456)) \circ M((14)(26)(35))(100000) = M((123)(456))(000100) = 000001$
+
+```{r}
+gp <- as.cycle(1:3) * as.cycle(4:6)
+ga <- as.word(c(4, 6, 5, 1, 3, 2))
+all(
+  apprec(gp * ga)(1, 0, 0, 0, 0, 0) == apprec(gp)(apprec(ga)(1, 0, 0, 0, 0, 0)))
+```
+
+The action of p circulates the 2 3-blocks. It has 2 orbits.
+The action of a on the first 3-block is the trivial one. On the second 3-block it switches 5 and 6.
 
 In order to define the action we remember this following presentation of S3: $<a^2, p^3, apa = p^2>$
 
@@ -348,116 +404,208 @@ So it is an action of S3
 |e     | 1 | 2 | 3 | 4 | 5 | 6 |
 |a     | 4 | 6 | 5 | 1 | 3 | 2 |
 |p     | 2 | 3 | 1 | 5 | 6 | 4 |
-|p2    | 3 | 1 | 2 | 6 | 4 | 5 |
+|p2    | 4 | 6 | 5 | 1 | 3 | 2 |
 |ap    | 5 | 4 | 6 | 2 | 1 | 3 |
 |ap2   | 6 | 5 | 4 | 3 | 2 | 1 |
 
-Assuming each slot can be either 0 or 1 then we have 2^6 = 64 different records.
 
-We can classify the beats by the number of records they contain.
+
+#### Automorphism of the action
+
+Let $\eta:Rec \rightarrow Rec$ where Rec is the set of all recordings of this action. We let $\eta(f)_i=1+f_i$ That is if $f_i=1$ then $\eta(f)_i=0$ and if $f_i=0$ then $\eta(f)i=1$
+
+We can easily show that Î· is *injective*, *surjective* and itâs inverse is itself.
+
+Furthermore we can show that Î· is a group action morphism: 
+$\eta(g \bullet f)_i = 1 + (g \bullet f)_i = 1 + f_{g(i)}$ and
+$g \bullet \eta(f)|_i = \eta(f)_{g(i)} = 1 + f_{g(i)}$
+
+In particular Î· is a bijection between beats.
+
+
+
+#### Decomposition into orbits
+
+Assuming each slot can be 0 or 1 there are 2^6 = 64 sounds.
+
+**Beats** are orbits of recording under the previously defined action.
+
+We can differentiate beats according to how many sounds they contain.
+
+We can classify the beats by the number of records they contain which we call the beats **size**.
 
 |O|.|Stab| = 6 So the size of the beats is either 1, 2, 3 or 6.
 
-* Classification of the **beats of size 1**
+* Classification of the beats of size 1
 
-Let B be a bit of size 1 and f the only recording inside that beat.
-Then we have $$p.f = f \implies p.f(1) = f(1) \implies  f(2) = f(1)$$ Duplicating this with p2, a, ap, ap2 yields respectively f(3) = f(1), f(4) = f(1), f(5) = f(1),
-f(6) = f(1).
+Let B be a bit of size 1 and f the only recording inside that beat. Then we have: $p \bullet f = f \implies p \bullet f|_1 = f(1) \implies f_{p1} = f(1) \implies f_2 = f_1$
 
-In the end we have shown that f is constant which means f = 0 or f = 1. Both solution works so we have shown that there are exactly *2 beats of size 1*.
+Duplicating this with p2, a, ap, ap2 yields respectively f(3) = f(1), f(4) = f(1), f(5) = f(1), f(6) = f(1).
 
-0 0 0 0 0 0 and
+In the end we have shown that f is constant which means f = 0 or f = 1. Both solution works so we have shown that there are exactly 2 beats of size 1.
+
+0 0 0 0 0 0 and  
 1 1 1 1 1 1
 
-* Classification of the **beats of size 2**
+* Classification of the beats of size 2
 
-Let B be a bit of size 2. We can write B = {f, g}. We have |Stab(f)| = 3 so
-Stab(f) = {e, p, p2}. And similarly for g.
+Let B be a bit of size 2. We can write B = {f, g}. We have Stab(f) = Stab(g) = {e, p, p2}.
 
-$pf = f \textrm{ and } p^2f = f \implies \\f(1) = f(2) = f(3) \textrm{ and } f(4) = f(5) = f(6)$
+$$p \bullet f = f \textrm{ and } p^2 \bullet f = f \implies \\
+f(1) = f(2) = f(3) \textrm{ and } f(4) = f(5) = f(6)$$
 
 So f is of the form (x,x,x,y,y,y). Furthermore we must have $x \neq y$ because otherwise B would have size 1. So finally f is one of:
 
-0 0 0 1 1 1
-1 1 1 0 0 0
+0 0 0 1 1 1  
+1 1 1 0 0 0  
 
-Both of those have size 2, and they belong to the same beat. So there is exactly *1 beat of size 2*
+Both of those have size 2, and they belong to the same beat. So there is exactly 1 beat of size 2
 
-* Classification of the **beats of size 3**
 
-Let B be a bit of size 2.
+* Classification of the beats of size 3
 
-  1. First we will show that we can find a record in B of the form (x, y, z, x, z, y) where x, y, z are not all equal
+Let B be a bit of size 3.
 
+    1. First we will show that we can find a record in B of the form (x, y, z, x, z, y) where x, y, z are not all equal
+    
 f a record in B. We have |Stab(f)| = 2 so Stab(f) = {e, a} or {e, ap} or {e, ap2}.
 
-Let's assume Stab(f) = {e, a}. Then a.f = f. If we have also p.f = f Then B has size 1 which is absurd. So we have $p.f \neq f$ and $\phi(p)$ has order 3 which means B = {f, pf, p2.f}
+Let's assume Stab(f) = {e, a}. Then $a \bullet f = f$. If we have also p.f = f Then B has size 1 which is absurd. So we have $p \bullet f \neq f$ and $\phi(p)$ has order 3 which means B = {f, pf, p2.f}
 
 a.f = f implies (f(4), f(6), f(5), f(1), f(3), f(2)) = (f(1), f(2), f(3), f(4), f(5), f(6))
 
 So: f(4) = f(1), f(5) = f(3), f(6) = f(2)
 
-Furthermore we can't have f(1) = f(2) = f(3) otherwise f would be constant and the beat would have size 1.
+Furthermore we canno't have f(1) = f(2) = f(3) otherwise f would be constant and the beat would have size 1.
 
 So the analysis says that f is of the form (x, y, z, x, z, y) where x, y, z are not all equal.
 
 For example (1, 0, 0, 1, 0, 0) or (0, 1, 0, 0, 0, 0, 1) or (1, 1, 0, 1, 0, 1)
 
-  2. Here we will show that a function of the above indeed spans a beat of size 2
-  
-Let's assume that f is of this form.
-Then clearly $p.f \neq f$ and $a.f = f$ so Stab(f) = {e, a}.
-So the beat of f has size 3.
+    2. Here we will show that a function of the above form indeed spans a beat of size 3
 
-  3. Here we will show that 2 different function of the above form cannot share the same beat
-  
-Let g be another function of this form (x', y', z', x', z', y') and suppose g is in O(f). 
-Then g = pf or g = pf2. Let's assume g = pf. Then g = (z, x, y, y, x, z)
+Let's assume that f is of this form. Then clearly $p \bullet f \neq f$ and $a \bullet f = f$ so Stab(f) = {e, a}. So the beat of f has size 3.
 
-So we can deduce z = y: f = (x, y, y, x, y, y) and g = (y, x, y, y, x, y)
-Furthermore we still have a.g = g so in particular g(5) = g(3) which means x = y. So in the end x = y = z which is absurd. So that means g is not in O(f).
+    3. Here we will show that 2 different function of the above form cannot share the same beat
+Let g be another function of this form (x, y, z, x, z, y) and suppose g is in O(f). Then g = pf or g = pf2. Let's assume g = pf. Then g = (z, x, y, y, x, z)
 
-  4. Conclusion
-  
-  Total number of beats is the total number of triplets (x, y, z) minus the 2 constant triplets $2*2*2 - 2 = 6$. So there are *6 beats of size 2*. They are:
-  
-  1 0 0 1 0 0
-  0 1 0 0 0 1
-  0 0 1 0 1 0
-  0 1 1 0 1 1
-  1 0 1 1 1 0
-  1 1 0 1 0 1
-  
-* Beats of size 6.
+So we can deduce z = y: f = (x, y, y, x, y, y) and g = (y, x, y, y, x, y) Furthermore we still have a.g = g so in particular g(5) = g(3) which means x = y. So in the end x = y = z which is absurd. So that means g is not in O(f).
 
-Let n be the number of 6 beats. We have $64 = 2 + 1*2 + 6*3 + n*6$ so n = 7.
-We can see that the function $card : f \mapsto \sum_{1 \leq i \leq 6} f(i)$ is a beat invariant. $\forall g \in S3, f \in Rec, card(g \cdot f) = card(f)$
-So we can classify the beats of size 6 by their cardinal.
+    4. Conclusion on beats of size 3
+Total number of beats is the total number of triplets (x, y, z) minus the 2 constant triplets $2*2*2 - 2 = 6$. So there are 6 beats of size 2. They are:
 
-  1. If a beat has cardinal 0 then it is constant
-  So it cannot be of size 6
-  
-  2. If a beat has cardinal 1
-  Let B be a beat of cardinal size 1. Let f be a recording in B. There is a unique index i that gives the place of the unique 1 in f. We can find an element that acts on f that maps i to 1. For example if i = 4, a will do, if i = 5, ap will do... So we can assume f to be 1 0 0 0 0 0.
-  We can check that the beat of f is of size 6.
-  So there is only 1 beat of cardinal 1 of size 6.
-  
-  3. If a beat has cardinal 2
-  
-1 1 1 1 0 0
+1 0 0 1 0 0  
+0 1 0 0 0 1  
+0 0 1 0 1 0  
+0 1 1 0 1 1  
+1 0 1 1 1 0  
+1 1 0 1 0 1  
 
+
+
+* Classification of the beats of size 6
+
+Let n be the number of 6 beats. We have $64=2+1*2+6*3+n*6$ so n = 7. We can see that the function $card: f \mapsto \sum_{1 \leq i \leq 6}f(i)$ is a beat invariant.
+
+$\forall g \in S3, f \in \textrm{Rec}, card(g \bullet f) = card(f)$ So we can classify the beats of size 6 by their cardinal.
+
+    1. If a beat has cardinal 0 then it is constant So it cannot be of size 6
+
+asda
+
+    2. If a beat has cardinal 1 
+    
+    Let B be a beat of cardinal size 1, f be a recording in B. 
+ There is a unique index i that gives the place of the unique 1 in f. We can find an element that acts on f that maps i to 1. For example if i = 4, a will do, if i = 5, ap will do... So we can assume f to be 1 0 0 0 0 0. We can check that the beat of f is of size 6. So there is only 1 beat of cardinal 1 of size 6.  
+**1 0 0 0 0 0**
+
+    3. If a beat has cardinal 2
+    
+    Similar to the previous cardinal we can always find a beat representent which starts with a 1. That means that there are at most 5 beats:  
+1 1 0 0 0 0  
+1 0 1 0 0 0 = p . 1 1 0 0 0 0
+1 0 0 1 0 0 Orbit has size 3 (a is in stabilizer)  
+1 0 0 0 1 0 Orbit has size 3 (ap is in stabilizer)  
+1 0 0 0 0 1 Orbit has size 3 (ap2 is in stabilizer)
+
+
+```{r}
+all(apprec(gp)(1, 1, 0, 0, 0, 0) == c(1, 0, 1, 0, 0, 0)) 
+```
+
+So there is only 1 possible beat of cardinal 2 and size 6. which is: 1 1 0 0 0 0, 0 1 1 0 0 0, 1 0 1 0 0 0, 0 0 0 1 0 1, 0 0 0 0 1 1, 0 0 0 1 1 0
+
+    4. If a beat has cardinal 3.
+    
+    Let f be a recording. We can choose it such that it starts with a 1. So we have 10 possibilities
+    
+    1 1 1 0 0 0 Orbit has size 2  
+    1 1 0 1 0 0  
+    1 1 0 0 1 0  
+    1 1 0 0 0 1  
+    1 0 1 1 0 0 = p2 . 1 1 0 0 1 0  
+    1 0 1 0 1 0 = p2 . 1 1 0 0 0 1  
+    1 0 1 0 0 1 = p2 . 1 1 0 1 0 0  
+    1 0 0 1 1 0 = ap . 1 1 0 0 1 0  
+    1 0 0 1 0 1 = a . 1 1 0 1 0 0  
+    1 0 0 0 1 1 = ap2 . 1 1 0 0 0 1  
+
+```{r}
+all(apprec(gp)(1, 1, 0, 0, 1, 0) == c(1, 0, 1, 1, 0, 0),
+    apprec(gp)(1, 1, 0, 0, 0, 1) == c(1, 0, 1, 0, 1, 0),
+    apprec(gp)(1, 1, 0, 1, 0, 0) == c(1, 0, 1, 0, 0, 1),
+    apprec(ga*gp)(1, 1, 0, 0, 1, 0) == c(1, 0, 0, 1, 1, 0),
+    apprec(ga)(1, 1, 0, 1, 0, 0) == c(1, 0, 0, 1, 0, 1),
+    apprec(ga*gp^2)(1, 1, 0, 0, 0, 1) == c(1, 0, 0, 0, 1, 1))
+```
+
+So we have at most 3 beats of cardinal 3 and size 6. We verify that each of those 3 recording span distinct beats and that they each have size 6
+
+    5. If a beat has cardinal 4
+  
+  Let B be a beat of cardinal 4, we verify that $\eta(B)$ is a beat of cardinal 2. Since $\eta$ is a bijection preserving beats we know that it gives a correspondance between beats of cardinal 2 and beats of cardinal 4. So there is only one beat of cardinal 4. And it is given by:   
+  0 0 1 1 1 1
+  0 1 0 1 1 1    
+  1 0 0 1 1 1  
+  1 1 1 0 1 0 <- I like this one  
+  1 1 1 1 0 0  
+  1 1 1 0 0 1
+
+    6. Beat of cardinal 5
+    
+    Let B be a beat of cardinal 4, we verify that $\eta(B)$ is a beat of cardinal 2. Since $\eta$ is a bijection preserving beats we know that it gives a correspondance between beats of cardinal 1 and beats of cardinal 5. So there are only one beat of cardinal 5. And it is given by: **1 1 1 1 1 0**
+    
+    
 * Conclusion
 
-|Beat size  | Number  |
-|-----------|---------|
-| 1         | 2       |
-| 2         | 1       |
-| 3         | 6       |
-| 6         | 7       |
+| Beat size | Number |
+|-----------|--------|
+| 1         | 2      |
+| 2         | 1      |
+| 3         | 6      |
+| 6         | 7      |
 
+
+| Beat representant | Beat size |
+|-------------------|-----------|
+| 1 1 1 1 1 1       | 1         |
+| 0 0 0 0 0 0       | 1         |
+| 1 1 1 0 0 0       | 2         |
+| 1 0 0 1 0 0       | 3         |
+| 0 1 0 0 0 1       | 3         |
+| 0 0 1 0 1 0       | 3         |
+| 0 1 1 0 1 1       | 3         |
+| 1 0 1 1 1 0       | 3         |
+| 1 1 0 1 0 1       | 3         |
+| 1 0 0 0 0 0       | 6         |
+| 1 1 0 0 0 0       | 6         |
+| 1 1 0 1 0 0       | 6         |
+| 1 1 0 0 1 0       | 6         |
+| 1 1 0 0 0 1       | 6         |
+| 1 1 1 0 1 0       | 6         |
+| 1 1 1 1 1 0       | 6         |
 
 ### Other actions
-
 
 * The action of S3 on S3/\<p\> is not faithfull.
 S3/\<p\> = {{e, p, p2}, {a, b, c}}
