@@ -65,9 +65,9 @@ Order of the elements:
 
 Unique normal chain decomposition of S3:
 
-$$ C(2) \lhd C(3) \lhd S_3$$
+$$ C(1) \lhd C(3) \lhd S_3$$
 
-And this decomposition is unique, the factors cannot be swapped.
+With the composition factors $C(2)$ and $C(3)$
 
 ## Cycle graph
 
@@ -267,19 +267,14 @@ So the action is transitive and: |O(p)|.|Stab(p)| = 6 so |Stab(p)| = 2
 
 
 
-
-
-
-
 ### Beat actions
 
 
-Let f be a recording, and g a permutation of the indices of the recording. fâ is the image of f by g if the index 2 of fâ is the index i of f such that g(i) = 2. So i=gâ1(2)
-i=gâ1(2)
+Let f be a recording, and g a permutation of the indices of the recording. f'(2) is the image of f by g at 2 iff f'(2) = f(g(2))
 We define $g \bullet f = f' = f \circ g$
 Which means that $f'(1) = f(g(1))$
 Or more generally $f'(i) = f(g(i))$
-Letâs write a function that applies a permutation to a recording.
+Let's write a function that applies a permutation to a recording.
 
 ```{r}
 apprec <- function(gp) {
@@ -604,6 +599,8 @@ So we have at most 3 beats of cardinal 3 and size 6. We verify that each of thos
 | 1 1 0 0 0 1       | 6         |
 | 1 1 1 0 1 0       | 6         |
 | 1 1 1 1 1 0       | 6         |
+
+### Another Beat Action
 
 ### Other actions
 

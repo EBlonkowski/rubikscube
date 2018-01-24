@@ -1,0 +1,103 @@
+---
+title: "C(2)xC(2)xC(2)"
+author: "Manu"
+date: "January 16, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(permutations)
+source('utils.R')
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# C(2)xC(2)xC(2)
+
+THis group has 8 elements.
+It's normal decomposition is $C(1) \lhd C(2) \lhd C(2)^2 \lhd C(2)^3$
+
+The composition factors are 3 $C(2)$
+
+# Beat Action
+
+|Beat       | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|-----------|---|---|---|---|---|---|---|---|
+|e          | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|(1, 0, 0)  | 5 | 6 | 7 | 8 | 1 | 2 | 3 | 4 |
+|(0, 1, 0)  | 3 | 4 | 1 | 2 | 7 | 8 | 5 | 6 |
+|(0, 0, 1)  | 2 | 1 | 4 | 3 | 6 | 5 | 8 | 7 |
+|(1, 1, 0)  | 7 | 8 | 5 | 6 | 3 | 4 | 1 | 2 |
+|(1, 0, 1)  | 6 | 5 | 8 | 7 | 2 | 1 | 4 | 3 |
+|(0, 1, 1)  | 4 | 3 | 2 | 1 | 8 | 7 | 6 | 5 |
+|(1, 1, 1)  | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 |
+
+We check that it is indeed an action
+```{r}
+g100 <- as.word(c(5:8, 1:4))
+g010 <- as.word(c(3, 4, 1, 2, 7, 8, 5, 6))
+g001 <- as.word(c(2, 1, 4, 3, 6, 5, 8, 7))
+
+g100 * g010 == as.word(c(7, 8, 5, 6, 3, 4, 1, 2))
+g100 * g001 == as.word(c(6, 5, 8, 7, 2, 1, 4, 3))
+g001 * g010 == as.word(c(4, 3, 2, 1, 8, 7, 6, 5))
+g100 * g010 * g001 == as.word(c(8, 7, 6, 5, 4, 3, 2, 1))
+
+```
+
+The list of the action element is
+```{r}
+g100
+g010
+g001
+g100 * g010
+g100 * g001
+g001 * g010
+g100 * g010 * g001
+
+```
+
+In the table above we proceed with the replacement: 
+
+1 -> e
+2 -> 001
+3 -> 010
+4 -> 011
+5 -> 100
+6 -> 101
+7 -> 110
+8 -> 111
+
+|Beat  | e   | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+|------|-----|-----|-----|-----|-----|-----|-----|-----|
+|e     | e   | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+|100   | 100 | 101 | 110 | 111 | e   | 001 | 010 | 011 |
+|010   | 010 | 011 | e   | 001 | 110 | 111 | 100 | 101 |
+|001   | 001 | e   | 011 | 010 | 101 | 100 | 111 | 110 |
+|110   | 110 | 111 | 100 | 101 | 010 | 011 | e   | 001 |
+|101   | 101 | 100 | 111 | 110 | 001 | e   | 011 | 010 |
+|011   | 011 | 010 | 001 | e   | 111 | 110 | 101 | 100 |
+|111   | 111 | 110 | 101 | 100 | 011 | 010 | 001 | e   |
+
+Number of elements of S(8) that are composed of 4 2-cycles:
+$8*7*6*5*4*3*2*1 \over 2^4 \times 4*3*2 = 7*3*5 = 105$
+
+The recording space has 2^8 = 256 elements
+
+A beat is the orbit of an element, it has a size of 1, 2, 4 or 8
+
+    * If the beat size is 1
+    
+  Let f a recording of beat size 1. We have $\forall g \in C(2)^3 g \bullet f = f$
+  We deduce that $\forall i \leq 8, f(i) = f(1)$
+  So f is constant.
+  
+  So there are 2 beats of size 1
+  
+  1 1 1 1 1 1 1 1     
+  and 
+  0 0 0 0 0 0 0 0
+  
+  
+    * If the beat size is 2
+    
+  

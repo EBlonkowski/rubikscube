@@ -9,6 +9,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(permutations)
 ```
 
 ## Definition of a beat
@@ -20,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * A beat can play several instruments at once, or 0. But for simplification we consider that a beat can only play **one instrument at a time**. This is not a big restriction because we can alway consider that a combination of 2 instrument at the same time is a new instrument? This is still to explore.
 
 * We say that 2 beat are the same if they produce the same sound. That means that one beat and the same but shifted in time are considered the same (they sound the same).
+
 
 ## Strategy to understand beats
 
@@ -661,3 +663,138 @@ Let $i_{k \rightarrow n}$ be the injection $C(k) \rightarrow C(n)$ that maps $[1
 $\forall a \in C(n), \gamma(f \bullet [a]_k) = \gamma(f) \bullet a$
 Where $[a]_k$ is defined by $[1_n]_k = 1_k$
 $[k*1_n]_k = k*1_k = 0_k$
+
+# Canonical Beat Action
+
+Let G be a group of order n. Let *ord* be a bijection $\{1..n\} \rightarrow G$, ord is an ordering of G.
+We have a contravariant canonical Cayley injection $c: G \rightarrow S(G)^{op}$
+We write $M: G \rightarrow S(\{0, 1\}^n)^{op}$ the application defined by 
+1..n -> 0,1
+G -> 0, 1
+G -> 0, 1
+1..n -> 0, 1
+
+$$M(g)(f)(i) = f(ord^{-1}(c(g)(ord(i))))$$
+
+$$M(g)(f) = f \circ ord^{-1} \circ c(g) \circ ord $$
+
+$$M(g \cdot h)(f) = f \circ ord^{-1} \circ c(g \cdot h) \circ ord \\
+= f \circ ord^{-1} \circ c(g) \circ^{op} c(h) \circ ord \\
+= f \circ ord^{-1} \circ c(h) \circ c(g) \circ ord \\
+= f \circ ord^{-1} \circ c(h) \circ ord \circ ord^{-1} \circ c(g) \circ ord \\ 
+= M(h)(f) \circ ord^{-1} \circ c(g) \circ ord = M(g)(M(h)(f))$$
+
+
+So that 
+$$M(g \cdot h)(f) = M(g) \circ M(h)$$
+
+Which shows that M is contravariant: M(g then h) = M(h) then M(g)
+
+
+We note that each different application ord yields another contravariant action M. Let o and p be 2 ordering application, we get two corresponding actions $M_o$ and $M_p$.
+
+We will show that the orbits of M_o and M_p are not necessarilly the same. Let's take C(3)xC(2) as an example.
+
+For reference this is the left regular action of C(6)
+
+|Beat  | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+|0     | 1 | 2 | 3 | 4 | 5 | 6 |
+|1     | 2 | 3 | 4 | 5 | 6 | 1 |
+|2     | 3 | 4 | 5 | 6 | 1 | 2 |
+|3     | 4 | 5 | 6 | 1 | 2 | 3 |
+|4     | 5 | 6 | 1 | 2 | 3 | 4 |
+|5     | 6 | 1 | 2 | 3 | 4 | 5 |
+
+Action associated with $C(1) \lhd C(3) \lhd C(6)$
+
+|Beat  | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+|e     | 1 | 2 | 3 | 4 | 5 | 6 |
+|3     | 4 | 5 | 6 | 1 | 2 | 3 |
+|2     | 2 | 3 | 1 | 5 | 6 | 4 |
+|4     | 3 | 1 | 2 | 6 | 4 | 5 |
+|5     | 5 | 6 | 4 | 2 | 3 | 1 |
+|1     | 6 | 4 | 5 | 3 | 1 | 2 |
+
+This is indeed an action because
+
+```{r}
+g_3 <- as.word(c(4, 5, 6, 1, 2, 3))
+g_2 <- as.word(c(2, 3, 1, 5, 6, 4))
+g_2 * g_3 == as.word(c(5,6,4,2,3,1))
+g_2 * g_2 == as.word(c(3,1,2,6,4,5))
+g_2 * g_2 * g_3== as.word(c(6,4,5,3, 1, 2))
+```
+
+All the elements of this action are
+```{r}
+g_3
+g_2
+g_2*g_2
+g_2*g_3
+g_2*g_2*g_3
+```
+
+This action is equivalent to the left regular action
+```{r}
+ord <- as.word(c(1, 5, 3, 4, 2, 6))^-1
+(g_2*g_3)^ord
+```
+
+Action associated with $C(1) \lhd C(2) \lhd C(6)$
+
+|Beat  | 1 | 2 | 3 | 4 | 5 | 6 |
+|------|---|---|---|---|---|---|
+|e     | 1 | 2 | 3 | 4 | 5 | 6 |
+|2     | 3 | 4 | 5 | 6 | 1 | 2 |
+|3     | 2 | 1 | 4 | 3 | 6 | 5 |
+|4     | 5 | 6 | 1 | 2 | 3 | 4 |
+|5     | 4 | 3 | 6 | 5 | 2 | 1 |
+|1     | 6 | 5 | 2 | 1 | 4 | 3 |
+
+```{r}
+g2_3 <- as.word(c(2, 1, 4, 3, 6, 5))
+g2_2 <- as.word(c(3, 4, 5, 6, 1, 2))
+g2_2 * g2_3 == as.word(c(4,3,6,5,2,1))
+g2_2 * g2_2 == as.word(c(5,6,1,2,3,4))
+g2_2 * g2_2 * g2_3== as.word(c(6,5,2,1, 4, 3))
+```
+
+All the elements of this action are
+```{r}
+g2_2
+g2_3
+g2_2*g2_2
+g2_2*g2_3
+g2_2*g2_2*g2_3
+```
+
+This action is equivalent to the left regular action
+```{r}
+ord <- as.word(c(1, 4, 5, 2, 3, 6))^-1
+(g2_2*g2_3)^ord
+```
+
+Let's look at the orbit of 101010   
+Under the 1st regular left action it is: 101010, 010101   
+Under the 2nd regular action it is: 101010, 010101, 011100, 100011, 110001, 001110    
+Under the 3rd regular action it is: 101010, 010101    
+
+So we can see that 2 regular action can have different orbits. The beats are not group invariants. :(
+
+
+What is a condition on o and p for the beats to be the same? That is if f1 and f2 belong to Rec(n) we want to find a condition such that $f_1 \sim_{Mo} f_2 \iff f_1 \sim_{Mp} f_2 $ 
+
+$$ f_1 \sim_{Mo} f_2 \iff \exists g \in G / M_o(g)(f_1) = f_2 \iff \\
+\exists g / f_1 \circ o^{-1} \circ c(g) \circ o = f_2 \iff $$
+
+$$ f_1 \sim_{Mp} f_2 \iff \exists h \in G / M_p(h)(f_1) = f_2 \iff \\
+\exists h / f_1 \circ p^{-1} \circ c(h) \circ p = f_2 \iff$$
+
+
+$$o^{-1} \circ c(g) \circ o = p^{-1} \circ c(h) \circ p \iff \\
+(p \cdot o^{-1}) \circ c(g) \circ (o \cdot p^{-1}) = c(h)$$
+
+So they both have the same beat if $po^{-1} \in S(G)$ map c(G) to itself.
+

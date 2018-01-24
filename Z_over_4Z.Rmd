@@ -6,6 +6,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(permutations)
+library(DiagrammeR)
+source('utils.R')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -30,7 +33,8 @@ Putting the subgroup {0, 2} first:
 | 3    | 3 | 1 | 0 | 2 |
 
 
-
+$C(1) \lhd C(2) \lhd C(4)$ With two C(2) composition factors
+This decomposition is unique
 
 
 ## Subgroups
@@ -47,14 +51,6 @@ graph cycle {
 }
 ')
 ```
-
-
-
-
-
-
-
-
 
 
 
@@ -75,7 +71,7 @@ graph cycle {
 
 
 
-## Automorphism group
+## The Automorphism Group Is C(2)
 
 Since Z/4Z is abelian the inner automorphism are all trivial.
 
@@ -95,15 +91,6 @@ We show that $g \mapsto n \cdot g$ is a group morphism $Z \rightarrow \mathrm{A}
 For $\phi$ to be an automorphism, it musts map generators to generators so $\phi(1) \in \{1, 3\}$.
 
 We show that each of those define an automorphism so the automorphism group is isomorphic to Z/2Z.
-
-
-
-
-
-
-
-
-
 
 
 ## Beat action of C(4)
@@ -126,13 +113,13 @@ So we have $|B| \in \{1, 2, 4\}$
 
     * If size B is 1
     
-    Let f in B. Then all the elements of f are equal so f = 1111 or f = 0000.
+  Let f in B. Then all the elements of f are equal so f = 1111 or f = 0000.
     
     * If size B is 2 
     
-    Let f be an element of size B. Stab(f) is of order 2 so Stab(f) = {0, 2}.
-    That means $2 \bullet f = f$, which implies f(2) = f(0) and f(3) = f(1).
-    So f is uniquely determined by f(0) and f(1). But we cannot have f(0) = f(1) otherwise we also have f(3) = f(1) = f(0) = f(2) and f has size 1. So we have at most 4 - 2 = 2 choices for f: 1 0 1 0 and 0 1 0 1. Clearly they are in the same beat:
+  Let f be an element of size B. Stab(f) is of order 2 so Stab(f) = {0, 2}.
+  That means $2 \bullet f = f$, which implies f(2) = f(0) and f(3) = f(1).
+  So f is uniquely determined by f(0) and f(1). But we cannot have f(0) = f(1) otherwise we also have f(3) = f(1) = f(0) = f(2) and f has size 1. So we have at most 4 - 2 = 2 choices for f: 1 0 1 0 and 0 1 0 1. Clearly they are in the same beat:
     
 ```{r}
 all(apprec(g1)(1, 0, 1, 0) == c(0, 1, 0, 1))
@@ -145,13 +132,14 @@ So there is only one beat of size 2
   There are $16 - 2*1 - 1*2 = 12$ recordings of beats of size 4. So there are 3 beats of size 4.
   
     1. If cardinal of B is 1
-    Then we can find f in B of the form 1000. Clearly it is a beat of size 4 and cardinal 1, and it is the only 1.
+    
+  Then we can find f in B of the form 1000. Clearly it is a beat of size 4 and cardinal 1, and it is the only 1.
     
     2. If cardinal of B is 2
-    Let f in B. We can always find a representant of the same beat starting with a 1 so we can assume f is one of:
-    1 1 0 0  
-    1 0 1 0 of size 2  
-    1 0 0 1 = g3 . 1100
+  Let f in B. We can always find a representant of the same beat starting with a 1 so we can assume f is one of:
+  1 1 0 0  
+  1 0 1 0 of size 2  
+  1 0 0 1 = g3 . 1100
     
 ```{r}
 all(apprec(g1^3)(1, 1, 0, 0) == c(1, 0, 0, 1))
@@ -161,8 +149,8 @@ So B is the beat 1 1 0 0 and we verify by trying all the possibilities that it i
 
     3. If cardinal of B is 3
     
-    We have a bijection with Beats of size 4 and cardinal 3 and the beats of size 4 and cardinal 1, given by $\eta$. So there is only 1 beat of size 4 cardinal 3 given by
-    1110.
+  We have a bijection with Beats of size 4 and cardinal 3 and the beats of size 4 and cardinal 1, given by $\eta$. So there is only 1 beat of size 4 cardinal 3 given by
+  1110.
     
   * Conclusion
   
@@ -180,3 +168,73 @@ So B is the beat 1 1 0 0 and we verify by trying all the possibilities that it i
 | 1000 | 4    |
 | 1100 | 4    |
 | 1110 | 4    |
+
+## Other beat action of C(4)
+
+We have $C(1) \lhd C(2) \lhd C(4)$ With two C(2) composition factors
+
+|Beat  | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+|e     | 1 | 2 | 3 | 4 |
+|2     | 2 | 1 | 4 | 3 |
+|1     | 3 | 4 | 2 | 1 |
+|3     | 4 | 3 | 1 | 2 |
+
+
+This is an action because
+```{r}
+g <- as.word(c(3, 4, 2, 1))
+g^4 == as.word(c(1:4))
+g^2 == as.word(c(2, 1, 4, 3))
+g^3 == as.word(c(4, 3, 1, 2))
+```
+
+This action is equivalent to the left regular action
+```{r}
+ord <- as.word(c(1, 3, 4, 2))
+g^ord == as.word(c(4, 1, 2, 3))
+```
+
+| Beat | Size | Friends             |
+|------|------|---------------------|
+| 0000 | 1    | 0000                |
+| 1000 | 4    | 1000 0100 0001 0010 |
+| 1010 | 4    | 1010 0101 1001 0110 |
+| 1100 | 2    | 1100 0011           |
+| 1110 | 4    | 1110 1011 1101 0111 |
+| 1111 | 1    | 1111                |
+
+For comparison this is the beat table for C(2)xC(2)   
+
+| Beat | Size | Friends             |
+|------|------|---------------------|
+| 0000 | 1    | 0000                |
+| 1000 | 4    | 1000 0100 0010 0001 |
+| 1010 | 2    | 1010 0101           |
+| 1100 | 2    | 1100 0011           |
+| 1001 | 2    | 1001 0110           |
+| 1011 | 4    | 1011 0111 1110 1101 |
+| 1111 | 1    | 1111                |
+
+## Action on 2 bits
+
+Let A = {00, 01, 10, 11}
+
+We define an action
+
+|Beat  | 00 | 01 | 10 | 11 |
+|------|----|----|----|----|
+|0     | 00 | 01 | 10 | 11 |
+|1     | 01 | 10 | 11 | 00 |
+|2     | 10 | 11 | 00 | 01 |
+|3     | 11 | 00 | 01 | 10 |
+
+Projection on each sub
+Let's check that it is indeed an action
+```{r}
+g2b_1 <- as.word(c(2, 3, 4, 1))
+g2b_1^4 == as.word(1:4)
+g2b_1^2 == as.word(c(3, 4, 1, 2))
+g2b_1^3 == as.word(c(3, 4, 1, 2))
+```
+

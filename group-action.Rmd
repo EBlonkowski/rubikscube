@@ -2,7 +2,9 @@
 title: "Group actions"
 author: "Manu"
 date: "9 March 2017"
-output: html_document
+output: 
+  html_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -143,6 +145,39 @@ So all the equivalence classes by f have cardinal of Stab(x) and there are |Orb(
 
 A G-action is said to be **transitive** iff it has only one orbit by G.
 
+In particular the application $G \rightarrow A, g \mapsto g \bullet a_0$ is surjective and $|A| \leq |G|$
+
+    * Property: special case |A| = |G|
+    
+  Let's consider a G-action on A that is transitive and having $|A| = |G|$. We want to show that it is possible to endow A with a group structure isomorphic to G.
+  
+  Let $a_0$ in A be any element.
+  We construct an isomorphism $f: G \rightarrow A$ by $f(g) = a \iff g^{-1} \bullet a = a_0 \iff a = g \bullet a_0 \iff f(g) = g \bullet a_0$
+  
+  f is sujective because the action is transitive. Since $|A| = |G|$ the map is also injective. So it is a bijection.
+  
+  We write $a \star b = f(f^{-1}(a) \cdot f^{-1}(b))$.
+  
+  $a_0$ is the identity of $(A, \star)$: 
+  $$a_0 \star b = f(f^{-1}(a_0) \cdot f^{-1}(b)) = f(e \cdot  f^{-1}(b)) = b$$
+  Same thing $b \star a_0 = b$
+  
+  Associativity 
+  $$(a \star b) \star c = f(f^{-1}(a) \cdot f^{-1}(b)) \star c \\
+  = f(f^{-1}(f(f^{-1}(a) \cdot f^{-1}(b))) \cdot f^{-1}(c)) \\
+  = f(f^{-1}(a) \cdot f^{-1}(b) \cdot f^{-1}(c)) \\
+  = f(f^{-1}(a) \cdot f^{-1}(f(f^{-1}(b) \cdot f^{-1}(c)))) \\
+  = f(f^{-1}(a) \cdot f^{-1}(b \star c)) \\
+  = a \star (b \star c)$$
+  
+  Existence of inverses
+  we write $a^{-1} = f(f^{-1}(a)^{-1})$ and we have   
+  $$a^{-1} \star a = f(f^{-1}(f(f^{-1}(a)^{-1})) \cdot f^{-1}(a)) \\
+  = f(f^{-1}(a)^{-1} \cdot f^{-1}(a)) = f(e) = a_0 $$
+  Similarly we have $a \star a^{-1} = a_0$
+  
+  
 ### Faithful actions
 
 A G-action is said to be **faithful** iff the morphism $\phi: G \rightarrow \mathrm{Aut^{op}(S)}$ is injective.
+
