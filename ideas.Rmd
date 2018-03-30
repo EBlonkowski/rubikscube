@@ -1,0 +1,30 @@
+---
+title: "Ideas"
+author: "Manu"
+date: "February 28, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Snowflakes
+
+Snowflakes have symmetry. Their symmetry is interesting because it arises naturally from the simple natural phenomena. It is also very beautiful.
+
+How to explain the symmetry?
+
+How to explain the diversity of the patterns?
+
+Is there any links to group theory?
+
+It would be interesting to simulate a very simple snowflakes and trying to grow them in a simulation. The simulation might be oversimplified.
+
+Resources about the simulation:
+
+[Video of simulated snowflakes](https://www.youtube.com/watch?v=kEWYVCbOskQ)
+
+[Software that can simulate snowflakes](http://softology.com.au/voc.htm)
+
+[More information about simulating snowflakes](http://psoup.math.wisc.edu/Snowfakes.htm)

@@ -1,0 +1,16 @@
+---
+title: "Cubic curve group associativity"
+author: "Manu"
+date: "January 24, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We consider the following cubic $$x(x^2+y^2-1) = 0$$
+
+We can also write it as  $$x^3+xy^2-x = 0$$
+
+This cubic is the union of the line x=0 and the unit circle
