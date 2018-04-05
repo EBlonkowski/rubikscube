@@ -216,6 +216,111 @@ For comparison this is the beat table for C(2)xC(2)
 | 1011 | 4    | 1011 0111 1110 1101 |
 | 1111 | 1    | 1111                |
 
+### What are the C(2) invariants on this action?
+
+
+Here we are talking about the C(2) valued invariants. That is functions $Rec \rightarrow C(2)$ that are constant on beat actions. We call them Inv(Rec, C(2)).
+
+We have by definition 
+$$f \in Inv(Rec, C(2)) \iff \forall g \in C(4), r \in Rec, f(g \bullet r) = f(r)$$
+
+Inv(Rec, C(2)) is an Abelian Group, subgroup of Rec
+
+
+$(f_1+f_2)(g \bullet r) = f_1(g \bullet r) + f_2(g \bullet r) = f_1(r) + f_2(r) = (f_1+f_2)(r)$
+
+Rec has $2^4 = 16$ elements. So the set Hom(Rec, C(2)) has 2^16 = 65536 elements. We can deduce that Inv(Rec, C(2)) has dimension 1, 2, 4, 8, 2^4, ... 2^16.
+Inv(Rec, C(2)) cannot have 2^16 elements because the map $r \mapsto r_1$ is not a beat invariant.
+
+
+For $cons: r \mapsto 1$ called constant function is a beat invariant.
+
+The map $sum: r \mapsto \sum_{j \in 1...4} r_j$ is a beat invariant.
+
+The map $dif: r \mapsto r_1 \times r_2 + r_3 \times r_4$ is a beat invariant.
+Indeed $dif(1 \bullet r) = r_4 \times r_3 + r_1 \times r_2 = dif(r)$
+
+\<cons, sum, dif\> est un sous-group Abelien de Inv(Rec, C(2)) d'ordre 8. 
+
+
+| Beat | Size | Friends             | sum | dif |
+|------|------|---------------------|-----|-----|
+| 0000 | 1    | 0000                | 0   | 0   |
+| 1111 | 1    | 1111                | 0   | 0   |
+| 1000 | 4    | 1000 0100 0001 0010 | 1   | 0   |
+| 1010 | 4    | 1010 0101 1001 0110 | 0   | 0   |
+| 1100 | 2    | 1100 0011           | 0   | 1   |
+| 1110 | 4    | 1110 1011 1101 0111 | 1   | 1   |
+
+We notice that if we except the 2 constant beats, it is possible to decide to which beat belongs any recording just by computing this 2 C(2)-invariants.
+
+One question we might ask is: if I know the Inv(Rec, C(2), {0, 2}) can I deduce the invariants for C(4)? Especially since {0, 2} is normal in C(4).
+
+Any C(4) invariant is also a C(2) invariant
+
+$ Inv(C(2)^4, C(4))  \subset  Inv(C(2)^4, \{0, 2\}) $
+
+That means $Inv(C(2)^4, \{0, 2\})$ has dimension 8, 16, 2^5, ..., 2^15
+
+This is the sub-action of {0, 2}
+
+|Beat  | 1 | 2 | 3 | 4 |
+|------|---|---|---|---|
+|e     | 1 | 2 | 3 | 4 |
+|2     | 2 | 1 | 4 | 3 |
+
+We notice that this action of {0, 2} on C(2)^4 is isomorphic to the direct product of 2 actions of C(2) on C(2)^2 given by
+
+|Beat  | 1 | 2 |
+|------|---|---|
+|0     | 1 | 2 |
+|1     | 2 | 1 |
+
+This space C(2)^2 has 4 elements. So Hom(C(2)^2, C(2)) has 2^4 = 16 elements
+The invariants Inv(C(2)^2, C(2)) has dimension 1, 2, 4 or 8 because clearly not all the maps are invariants.
+
+The constant map is invariant. The sum map is an invariant. The product map is also an invariant.
+
+| Beat | Size | Full Orbit | sum | prod |
+|------|------|------------|-----|------|
+| 00   | 1    | 00         | 0   | 0    |
+| 11   | 1    | 11         | 0   | 1    |
+| 10   | 2    | 10 01      | 1   | 0    |
+
+So we notice that the maps sum, prod and cons are independant (they generate subgroups in internal direct product). So we have dim(\<sum, prod, cons\>) = 8 Since
+$$<sum, prod, cons> \subset Inv(C(2)^2, C(2))$$ and the invariants cannot have dimension 16 we have: 
+$$<sum, prod, cons> = Inv(C(2)^2, C(2))$$
+
+Now we want to find Inv(C(2)^4, {0, 2})
+
+We notice that for f1, f2 in Inv(C(2)^2, C(2)) and f any function $C(2)^2 \rightarrow C(2)$
+the map $(a, b, c, d) \mapsto f(f_1(a, b), f_2(c, d))$ is an invariant
+
+Let F be an invariant of Inv(C(2)^4, {0, 2}). Then for every $(c, d) \in C(2)^2$ the map $(a, b) \mapsto F(a,b,c,d)$ is a Inv(C(2)^2, {0, 2}) invariant.
+
+In other word there is mapping
+$$\mathrm{copy}: Inv(C_2^4, C_2) \rightarrow (C_2^2 \rightarrow Inv(C_2^2,C_2))$$
+
+This map is injective. Let $F_1, F_2 \in Inv(C_2^4, C_2)$ so that there exists a,b,c,d
+$F_1(a,b,c,d) \neq F_2(a,b,c,d)$ which means $copy(F_1)(c, d)(a,b) \neq copy(F_2)(c, d)(a, b)$
+which means $copy(F_1)(c, d) \neq copy(F_2)(c, d)$ and finally $copy(F_1) \neq copy(F_2)$
+
+
+Since $C_2^2 \rightarrow Inv(C_2^2,C_2)$ has dimension $8^4 = 2^{12} = 4096$
+We deduce that $|Inv(C_2^2,C_2)| \leq 2^{12}$
+
+In particular we have $$2^3 \leq |Inv(C_2^2,C_2)| \leq 2^{12}$$
+
+Is the copy map surjective?
+
+Let $T: C_2^2 \rightarrow Inv(C_2^2,C_2)$
+
+Let $G: C_2^4 \rightarrow C_2$ be defined by
+$$ G(a, b, c, d) = T(c, d)(a, b)$$
+
+G is not necessarily invariant by C(2) because nothing says that T has to be symmetric in (c, d).
+
+
 ## Action on 2 bits
 
 Let A = {00, 01, 10, 11}

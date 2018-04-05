@@ -124,6 +124,19 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#a-set-action">A Set Action</a><ul>
+<li><a href="#g-actions-morphisms">G-actions Morphisms</a></li>
+<li><a href="#sub-actions">Sub-actions</a></li>
+<li><a href="#orbits">Orbits</a></li>
+<li><a href="#stabilizers">Stabilizers</a></li>
+<li><a href="#property-stabrorbr-g">Property: |Stab(R)|*|Orb(R)| = |G|</a></li>
+<li><a href="#transitive-actions">Transitive actions</a></li>
+<li><a href="#faithful-actions">Faithful actions</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="a-set-action" class="section level2">
 <h2>A Set Action</h2>
@@ -218,7 +231,7 @@ $(document).ready(function () {
 <p>A G-action is said to be <strong>transitive</strong> iff it has only one orbit by G.</p>
 <p>In particular the application <span class="math inline">\(G \rightarrow A, g \mapsto g \bullet a_0\)</span> is surjective and <span class="math inline">\(|A| \leq |G|\)</span></p>
 <pre><code>* Property: special case |A| = |G|</code></pre>
-<p>Let’s consider a G-action on A that is transitive and having <span class="math inline">\(|A| \leq |G|\)</span>. We want to show that it is possible to endow A with a group structure isomorphic to G.</p>
+<p>Let’s consider a G-action on A that is transitive and having <span class="math inline">\(|A| = |G|\)</span>. We want to show that it is possible to endow A with a group structure isomorphic to G.</p>
 <p>Let <span class="math inline">\(a_0\)</span> in A be any element. We construct an isomorphism <span class="math inline">\(f: G \rightarrow A\)</span> by <span class="math inline">\(f(g) = a \iff g^{-1} \bullet a = a_0 \iff a = g \bullet a_0 \iff f(g) = g \bullet a_0\)</span></p>
 <p>f is sujective because the action is transitive. Since <span class="math inline">\(|A| = |G|\)</span> the map is also injective. So it is a bijection.</p>
 <p>We write <span class="math inline">\(a \star b = f(f^{-1}(a) \cdot f^{-1}(b))\)</span>.</p>

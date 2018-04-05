@@ -181,3 +181,33 @@ In particular the application $G \rightarrow A, g \mapsto g \bullet a_0$ is surj
 
 A G-action is said to be **faithful** iff the morphism $\phi: G \rightarrow \mathrm{Aut^{op}(S)}$ is injective.
 
+## Operations on Actions
+
+### Direct Sum of Actions
+
+Let A, B be any 2 G-actions.
+
+We can construct a G-action on the **disjoint** union: $A \cup B$ by letting:
+$$\forall a \in A, a \bullet_{A \cup B} g = a \bullet_A g$$
+and
+$$\forall b \in B, b \bullet_{A \cup B} g = b \bullet_B g$$
+
+We assume $A \inter B = \empty$ 
+
+The constructed action $A \directsum B$ is of size |A| + |B|
+
+### Direct Product of Actions
+
+Let A, B be any 2 G-actions.
+
+We can construct a G-action on the cartesian product: $A \times B$ by letting:
+$$\forall (a, b) \in A \times B, (a, b) \bullet_{A \times B} g = (a \bullet_A g, b \bullet_B g)$$
+
+It is an action because:
+
+1. $(a, b) \bullet_{A \times B} e = (a \bullet e, b \bullet e) = (a, b)$
+2. $(a, b) \bullet_{A \times B} g_1g_2 = (a \bullet g_1g_2, b \bullet g_1g_2) = (a \bullet g_1 \bullet g_2, b \bullet g_1 \bullet g_2) = (a, b) \bullet g_1 \bullet g_2$
+
+
+The constructed action $A \times B$ has cardinal |A| x |B|
+
