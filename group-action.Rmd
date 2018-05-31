@@ -203,14 +203,40 @@ A G-action is said to be **faithful** iff the morphism $\phi: G \rightarrow \mat
 
 Let A, B be any 2 G-actions.
 
-We can construct a G-action on the **disjoint** union: $A \cup B$ by letting:
-$$\forall a \in A, a \bullet_{A \cup B} g = a \bullet_A g$$
+We can construct a G-action on the **disjoint** union: $A \sqcup B$ by letting:
+$$\forall a \in A, a \bullet_{A \sqcup B} g = a \bullet_A g$$
 and
-$$\forall b \in B, b \bullet_{A \cup B} g = b \bullet_B g$$
+$$\forall b \in B, b \bullet_{A \sqcup B} g = b \bullet_B g$$
 
-We assume $A \inter B = \empty$ 
+    * Property: The constructed direct sum action is of size |A| + |B|.
 
-The constructed action $A \directsum B$ is of size |A| + |B|
+Let's call $\textbf{Orb}: \text{G-actions} \rightarrow \textbf{Set}$ the map that sends any set S with a G-action to the set of all its orbits, $\textbf{Orb}: S \mapsto S / G$
+
+
+    * Property: the orbits of the direct sum action is the disjoint sum of the orbits of the summands.
+    
+> Said differently: $\textbf{Orb}(A \oplus B) = \textbf{Orb}(A) \sqcup \textbf{Orb}(B)$
+>
+> Proof:    
+> 
+> First let's show that $\textbf{Orb}(A \oplus B) \subset \textbf{Orb}(A) \sqcup \textbf{Orb}(B)$   
+> Let O be an orbit in $\textbf{Orb}(A \oplus B)$ then there exists x in $A \sqcup B$ such that O = Orb(x)
+> Without loss of generality, let's assume that $x \in A$
+> Then $O = \text{Orb_{A \sqcup B}}(x) = \{x \bullet_{A \sqcup B} g,  g \in G} 
+> So $O = \{x \bullet_A g,  g \in G \} \in \textbf{Orb}(A) $ according to the definition
+> By symmetry the same is true if $x \in B$ 
+> So we have shown that $\textbf{Orb}(A \oplus B) \subset \textbf{Orb}(A) \sqcup \textbf{Orb}(B)$
+>
+>
+> Now let's show that $\textbf{Orb}(A) \subset \textbf{Orb}(A \oplus B)$ 
+> Let $S \in \textbf{Orb}(A)$, there exists $a \in A$ such that $S = Orb(a)_A = a \bullet_A G$
+> By definition of the G-action $A \oplus B$, we have $a \bullet_{A \sqcup B} G = a \bullet_A G$
+> So $S \in \textbf{Orb}(A \oplus B)$
+> 
+> By symmetry we also have $\textbf{Orb}(B) \subset \textbf{Orb}(A \oplus B)$ so that
+> $\textbf{Orb}(A) \sqcup \textbf{Orb}(B)  \subset \textbf{Orb}(A \oplus B)$
+> and finally $$\textbf{Orb}(A \oplus B) = \textbf{Orb}(A) \sqcup \textbf{Orb}(B)$$  
+
 
 ### Direct Product of Actions
 

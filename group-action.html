@@ -280,9 +280,18 @@ $(document).ready(function () {
 <div id="direct-sum-of-actions" class="section level3">
 <h3>Direct Sum of Actions</h3>
 <p>Let A, B be any 2 G-actions.</p>
-<p>We can construct a G-action on the <strong>disjoint</strong> union: <span class="math inline">\(A \cup B\)</span> by letting: <span class="math display">\[\forall a \in A, a \bullet_{A \cup B} g = a \bullet_A g\]</span> and <span class="math display">\[\forall b \in B, b \bullet_{A \cup B} g = b \bullet_B g\]</span></p>
-<p>We assume <span class="math inline">\(A \inter B = \empty\)</span></p>
-<p>The constructed action <span class="math inline">\(A \directsum B\)</span> is of size |A| + |B|</p>
+<p>We can construct a G-action on the <strong>disjoint</strong> union: <span class="math inline">\(A \sqcup B\)</span> by letting: <span class="math display">\[\forall a \in A, a \bullet_{A \sqcup B} g = a \bullet_A g\]</span> and <span class="math display">\[\forall b \in B, b \bullet_{A \sqcup B} g = b \bullet_B g\]</span></p>
+<pre><code>* Property: The constructed direct sum action is of size |A| + |B|</code></pre>
+<p>Let’s call <span class="math inline">\(\textbf{Orb}: \text{G-actions} \rightarrow \textbf{Set}\)</span> the map that sends any set S with a G-action to the set of all its orbits, <span class="math inline">\(\textbf{Orb}: S \mapsto S / G\)</span></p>
+<pre><code>* Property the orbits of the direct sum action is the disjoint sum of the orbits of the summands</code></pre>
+<blockquote>
+<p>Said differently: <span class="math inline">\(\textbf{Orb}(A \oplus B) = \textbf{Orb}(A) \sqcup \textbf{Orb}(B)\)</span></p>
+<p>Proof:</p>
+<p>First let’s show that <span class="math inline">\(\textbf{Orb}(A \oplus B) \subset \textbf{Orb}(A) \sqcup \textbf{Orb}(B)\)</span><br />
+Let O be an orbit in <span class="math inline">\(\textbf{Orb}(A \oplus B)\)</span> then there exists x in <span class="math inline">\(A \sqcup B\)</span> such that O = Orb(x) Without loss of generality, let’s assume that <span class="math inline">\(x \in A\)</span> Then $O = (x) = {x _{A B} g, g G} So $O = {x _A g, g G } (A) $ according to the definition By symmetry the same is true if <span class="math inline">\(x \in B\)</span> So we have shown that <span class="math inline">\(\textbf{Orb}(A \oplus B) \subset \textbf{Orb}(A) \sqcup \textbf{Orb}(B)\)</span></p>
+<p>Now let’s show that <span class="math inline">\(\textbf{Orb}(A) \subset \textbf{Orb}(A \oplus B)\)</span> Let <span class="math inline">\(S \in \textbf{Orb}(A)\)</span>, there exists <span class="math inline">\(a \in A\)</span> such that <span class="math inline">\(S = Orb(a)_A = a \bullet_A G\)</span> By definition of the G-action <span class="math inline">\(A \oplus B\)</span>, we have <span class="math inline">\(a \bullet_{A \sqcup B} G = a \bullet_A G\)</span> So <span class="math inline">\(S \in \textbf{Orb}(A \oplus B)\)</span></p>
+<p>By symmetry we also have <span class="math inline">\(\textbf{Orb}(B) \subset \textbf{Orb}(A \oplus B)\)</span> so that <span class="math inline">\(\textbf{Orb}(A) \sqcup \textbf{Orb}(B) \subset \textbf{Orb}(A \oplus B)\)</span> and finally <span class="math display">\[\textbf{Orb}(A \oplus B) = \textbf{Orb}(A) \sqcup \textbf{Orb}(B)\]</span></p>
+</blockquote>
 </div>
 <div id="direct-product-of-actions" class="section level3">
 <h3>Direct Product of Actions</h3>
