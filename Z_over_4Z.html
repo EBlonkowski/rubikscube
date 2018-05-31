@@ -39,7 +39,7 @@ if (window.hljs) {
   hljs.configure({languages: []});
   hljs.initHighlightingOnLoad();
   if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
   }
 }
 </script>
@@ -219,13 +219,13 @@ $(document).ready(function () {
 </div>
 <div id="subgroups" class="section level2">
 <h2>Subgroups</h2>
-<div id="htmlwidget-d9fcf12a6557baf09d3d" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d9fcf12a6557baf09d3d">{"x":{"diagram":"\ngraph cycle {\n graph[layout = neato]\n node [shape = circle, style = filled, color = grey]\n\n 0 [label = \"0\"]; C4 [label = \"C(4)\"]; 2 [label = \"{0, 2}\"];\n\n  0 -- 2 -- C4\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0859e2c9c1744177225d" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0859e2c9c1744177225d">{"x":{"diagram":"\ngraph cycle {\n graph[layout = neato]\n node [shape = circle, style = filled, color = grey]\n\n 0 [label = \"0\"]; C4 [label = \"C(4)\"]; 2 [label = \"{0, 2}\"];\n\n  0 -- 2 -- C4\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="graphs" class="section level2">
 <h2>Graphs</h2>
-<div id="htmlwidget-6b61f68729fcfc515282" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6b61f68729fcfc515282">{"x":{"diagram":"\ngraph cycle {\n graph[layout = neato]\n node [shape = circle, style = filled, color = grey, label=\"\"]\n\n 0 [color = red]; 1; 2; 3;\n\n  0 -- 1 -- 2 -- 3 -- 0\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d7efb9e72dca8a6b78c7" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d7efb9e72dca8a6b78c7">{"x":{"diagram":"\ngraph cycle {\n graph[layout = neato]\n node [shape = circle, style = filled, color = grey, label=\"\"]\n\n 0 [color = red]; 1; 2; 3;\n\n  0 -- 1 -- 2 -- 3 -- 0\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="the-automorphism-group-is-c2" class="section level2">
 <h2>The Automorphism Group Is C(2)</h2>
@@ -678,6 +678,10 @@ g^ord == as.word(c(4, 1, 2, 3))</code></pre>
 <p>This map is injective. Let <span class="math inline">\(F_1, F_2 \in Inv(C_2^4, C_2)\)</span> so that there exists a,b,c,d <span class="math inline">\(F_1(a,b,c,d) \neq F_2(a,b,c,d)\)</span> which means <span class="math inline">\(copy(F_1)(c, d)(a,b) \neq copy(F_2)(c, d)(a, b)\)</span> which means <span class="math inline">\(copy(F_1)(c, d) \neq copy(F_2)(c, d)\)</span> and finally <span class="math inline">\(copy(F_1) \neq copy(F_2)\)</span></p>
 <p>Since <span class="math inline">\(C_2^2 \rightarrow Inv(C_2^2,C_2)\)</span> has dimension <span class="math inline">\(8^4 = 2^{12} = 4096\)</span> We deduce that <span class="math inline">\(|Inv(C_2^2,C_2)| \leq 2^{12}\)</span></p>
 <p>In particular we have <span class="math display">\[2^3 \leq |Inv(C_2^2,C_2)| \leq 2^{12}\]</span></p>
+<p>Is the copy map surjective?</p>
+<p>Let <span class="math inline">\(T: C_2^2 \rightarrow Inv(C_2^2,C_2)\)</span></p>
+<p>Let <span class="math inline">\(G: C_2^4 \rightarrow C_2\)</span> be defined by <span class="math display">\[ G(a, b, c, d) = T(c, d)(a, b)\]</span></p>
+<p>G is not necessarily invariant by C(2) because nothing says that T has to be symmetric in (c, d).</p>
 </div>
 </div>
 <div id="action-on-2-bits" class="section level2">

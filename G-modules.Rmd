@@ -1,0 +1,65 @@
+---
+title: "G Modules"
+author: "Manu"
+date: "31 May 2018"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Defintion
+
+A contravariant **G-module** is a contravariant action of a group G into an abelian group M.
+
+More formally it is a map $\phi: G \rightarrow Aut(M)^{Op}$ where Aut(M) is the group of all group automorphisms on M.
+
+Alternally we can define the action as a binary operation $\bullet: M \times G \rightarrow M$ such that:
+
+1. $m \bullet e = m$
+2. $m \bullet g_1 \bullet g_2 = m \bullet g_1g_2$
+3. $(m_1 + m_2) \bullet g = m_1 \bullet g + m_2 \bullet g$
+4. $0 \bullet g = 0$
+
+## Invariants
+
+The **invariants** of the G-module M form the set $M^{G} = \{m \in M \mid \forall g \in G,  m \bullet g = m\}$.
+
+The invariants of a G-module are equivalent to the orbits that have only one element.
+
+The invariants form a subgroupo of M: 
+
+Stability by addition:
+$$m_1 , m_2 \in M^G, g \in G, (m_1+m_2) \bullet g = m_1 \bullet g + m_2 \bullet g = m_1 + m_2$$
+
+$0 \in M$ element is in $M^G$ because forall g $0 \bullet g = 0$
+
+## Sub G-module
+
+Let H be a subgroup of G then M is also a H-module.
+
+We would like to know if we can compute invariants using sub-groups.
+We have $M^G \subset M^H$ because if an element of M is invariant by all element of G then in particular it is invariant under all elements of H.
+
+Let $0 \rightarrow N \rightarrow G \rightarrow K \rightarrow 0$ be an exact sequence.
+
+Is there any exact sequence $0 \rightarrow N^G \rightarrow M^G \rightarrow K^G \rightarrow 0$
+
+## G-module from any action with coefficients in A
+
+Let S be a set, G be a group, and $\bullet$ a contravariant action of G onto S.
+Let $\mathcal{A}$ be any abelian group. The set of all functions from S to A $\mathcal{A}^S = \{f:S \rightarrow \mathcal{A}\}$ is an abelian group.
+
+There is a G-module stucture on $\mathcal{A}^S$ given by $\star: \mathcal{A}^S \times G \rightarrow \mathcal{A}^S$ with 
+$\forall s \in S, f \in \mathcal{A}^S, g \in G, f \star g (s) = f(s \bullet g)$
+
+THe invariants of this G-module are the functions f such that 
+$$\forall s \in S, g \in G, f(s \bullet g) = f(s)$$
+
+
+These are the functions that are constant on the orbits of the G-action on S.
+
+Let n be the number of G-orbits on S. For each of the n orbits an invariant function can take any value in $\mathcal{A}$, so there are $\mid \mathcal{A} \mid^n$ invariant functions.
