@@ -192,6 +192,10 @@ In particular the application $G \rightarrow A, g \mapsto g \bullet a_0$ is surj
 > And we have $f(g \dot h) = a_0 \bullet (g \dot h) = a_0 \bullet g \bullet h = f(g) \bullet h$
 
 
+    * Property: The stabilizer of any of the individual points in a transitive action are isomorphic.
+    
+> Said differently, $\forall x, y \in A, Stab(x) \sim Stab(y)$
+
 
 ### Faithful actions
 
