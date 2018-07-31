@@ -1,0 +1,7 @@
+/* Make sure the quoted text is not too big */
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}

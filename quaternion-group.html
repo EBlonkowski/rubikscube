@@ -40,7 +40,7 @@ if (window.hljs) {
   hljs.configure({languages: []});
   hljs.initHighlightingOnLoad();
   if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
   }
 }
 </script>
@@ -298,8 +298,8 @@ $(document).ready(function () {
 <div id="cycle-graph-of-qg" class="section level2">
 <h2>Cycle graph of QG</h2>
 <p>r is of order 4 s is of order 4 sr is of order 4 sr2 is of order 4 sr3 is of order 4</p>
-<div id="htmlwidget-35e444afb05ada54fb61" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-35e444afb05ada54fb61">{"x":{"diagram":"\ngraph cycle {\n graph[layout = neato]\n node [shape = circle, style = filled, color = grey, label=\"\"]\n\n e [color = red]; r; r2 [label = \"r2\"]; r3;\n\n  e -- r  -- r2 -- r3  -- e\n  edge [color = \"green\"]\n  e -- s  -- r2 -- sr2 -- e\n  edge [color = \"blue\"]\n  e -- sr -- r2 -- sr3 -- e\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b31dd5d869417b20f40e" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b31dd5d869417b20f40e">{"x":{"diagram":"\ngraph cycle {\n graph[layout = neato]\n node [shape = circle, style = filled, color = grey, label=\"\"]\n\n e [color = red]; r; r2 [label = \"r2\"]; r3;\n\n  e -- r  -- r2 -- r3  -- e\n  edge [color = \"green\"]\n  e -- s  -- r2 -- sr2 -- e\n  edge [color = \"blue\"]\n  e -- sr -- r2 -- sr3 -- e\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="subgroups-of-qg" class="section level2">
 <h2>Subgroups of QG</h2>
@@ -344,8 +344,8 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>Lattice graph of subgroups <div id="htmlwidget-ef312907c8e5484be573" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ef312907c8e5484be573">{"x":{"diagram":"\ngraph cycle {\n graph[layout = dot]\n node [shape = circle, style = filled, color = grey]\n\n e [color = red, label = \"{e}\"];\n r2 [label = \"<r2>\"];\n r [label = \"<r>\"];  sr [label = \"<sr>\"]; s [label = \"<s>\"];\n QG\n\n e -- r2\n r2 -- r\n r2 -- sr\n r2 -- s\n r -- QG\n sr -- QG\n s -- QG\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script></p>
+<p>Lattice graph of subgroups <div id="htmlwidget-362425c7e1dd43addbba" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-362425c7e1dd43addbba">{"x":{"diagram":"\ngraph cycle {\n graph[layout = dot]\n node [shape = circle, style = filled, color = grey]\n\n e [color = red, label = \"{e}\"];\n r2 [label = \"<r2>\"];\n r [label = \"<r>\"];  sr [label = \"<sr>\"]; s [label = \"<s>\"];\n QG\n\n e -- r2\n r2 -- r\n r2 -- sr\n r2 -- s\n r -- QG\n sr -- QG\n s -- QG\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script></p>
 </div>
 <div id="normal-subgroups-of-qg" class="section level2">
 <h2>Normal subgroups of QG</h2>
@@ -356,7 +356,8 @@ $(document).ready(function () {
 <li><p><span class="math inline">\(s^3srs = rs = sr^3 = (sr)^3 \in \langle sr \rangle\)</span></p></li>
 <li><p><span class="math inline">\(rsrr^3 = rs = sr^3 = (sr)^3 \in \langle sr \rangle\)</span></p></li>
 </ol>
-<p>So &lt;sr&gt; is also normal in QG. <span class="math inline">\(\langle r^2 \rangle \subset \langle r \rangle\)</span> so it &lt;r2&gt; is also normal in QG.</p>
+<p>So &lt;sr&gt; is also normal in QG.</p>
+<p><span class="math inline">\(\langle r^2 \rangle \subset \langle r \rangle\)</span> so it &lt;r2&gt; is also normal in QG.</p>
 <p>Conclusion all the subgroups of QG are normal. In particular its normal lattice iss the same as the subgroup lattice.</p>
 </div>
 

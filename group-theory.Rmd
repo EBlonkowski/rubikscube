@@ -409,3 +409,13 @@ We have 2 choices. Here is the example with S3
 * This is the straight edge way:
 
 ![](S3_gen_graph_2.png)
+
+
+
+# All Subgroups of a Group
+
+Let G be a group, let $0 \rightarrow N \rightarrow G \rightarrow Q \rightarrow 0$ be a decomposition.
+
+## Finding All the Normal Subgroups
+
+We assume that we know all the normal subgroups of N and Q.

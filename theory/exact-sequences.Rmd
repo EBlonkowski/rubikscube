@@ -1,0 +1,71 @@
+---
+title: "Exact Sequences"
+author: "Manu"
+date: "31 July 2018"
+output: 
+  html_document:
+    css: ../custom.css
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# General
+
+**Definition** Let N, Q, G be 3 groups, we say that the sequence 
+$$ 0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0 $$
+
+
+is exact iff
+
+1. i and $\pi$ are homomorphism
+2. i is injective and $\pi$ is surjective
+3. $\mathrm{Ker}(\pi) = \mathrm{Im}(i)$
+
+**Property** if $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0$ is exact then
+
+1. $\mathrm{Im}(i)$ is a normal subgroup of G isomorphic to N.
+2. Q is isomorphic to G/N
+
+## Sequence splitting
+
+
+**Definition** We say that the exact sequence $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0$ is **left split** if there is a homorphism $j: G \rightarrow N$ such that $j \circ i = \mathrm{id}_N$
+
+**Definition** We say that the exact sequence $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0$ is **right split** if there is a homomorphism $\iota: Q \rightarrow G$ such that $\pi \circ \iota = \mathrm{id}_Q$
+
+**Definition** We say that an exact sequence is **split** if it is both left-split and right-split.
+
+## Sequences Starting With the Same First Two Terms
+
+
+**Property** Let $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_P} P \rightarrow 0$ and $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0$ be two exact sequences. Then
+
+1. P and Q are isomorphic
+2. If one of the sequence is left split then the other is also left split
+3. If one of the sequence is right split then the other is also right split
+
+> *Proof of 1*: From the first isomorphism theorem and the surjectivity of the projection we have $P \sim G/N \sim Q$. So P and Q are isomorphic.
+>
+> *Proof of 2*. Let's suppose $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_P} P \rightarrow 0$ is left-split, so that there is a homorphism $j: G \rightarrow N$ such that $j \circ i = \mathrm{id}_N$. From this we deduce the second exact sequence is also left split.
+>
+> *Proof of 3*. Let's suppose $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0$ is right-split, so that there is a homomorphism $\iota_Q: Q \rightarrow G$ such that $\pi_Q \circ \iota_Q = \mathrm{id}_Q$.
+Let's write down $\phi: Q \rightarrow P \\ \phi = \pi_P \circ \iota_Q$ and let's show that it is an isomorphism. 
+$$x \in Q, x \in \mathrm{Ker}(\phi) \implies \pi_P \circ \iota_Q(x) = e_P \implies \\
+\iota_Q(x) \in \mathrm{Ker}(\pi_P) \implies \iota_Q(x) \in \mathrm{Im}(i) \implies \\ \iota_Q(x) \in \mathrm{Ker}(\pi_Q) \implies \pi_Q \circ \iota_Q(x) = e_Q \implies \\ \mathrm{id}_Q(x) = e_Q \implies x = e_Q$$ So $\phi$ is an injection. 
+>
+Let's show that $\phi$ is surjective. Let $p \in P$ we want to know if there exists $q \in Q$ such that $\phi(q) = p$. Since $\pi_P$ is surjective, there exists $g \in G$ such that $\pi_P(g) = p$. What's more: 
+$$\phi(q) = p \iff \pi_P \circ \iota_Q(q) = p \iff \pi_P[\iota_Q(q)] = \pi_P(g) \iff \\
+\pi_P[\iota_Q(q)g^{-1}] = e_P \iff \iota_Q(q)g^{-1} \in \mathrm{Ker}(\pi_P) \iff \\
+\iota_Q(q)g^{-1} \in \mathrm{Ker}(\pi_Q) \iff \pi_Q \circ [\iota_Q(q)g^{-1}] = e_G \iff \\
+\pi_Q \circ [\iota_Q(q)g^{-1}] = e_G \iff \pi_Q[\iota_Q(q)]\pi_Q[g^{-1}] = e_G \iff \\
+\mathrm{id}_Q(q)\pi_Q[g^{-1}] = e_G \iff q = \pi_Q[g]$$
+So $\phi$ is surjective. Conclusion $\phi$ is an isomorphism.
+>
+Let's write 
+$$\iota_P: P \rightarrow G \\ 
+\iota_Q \circ \phi^{-1}$$
+We have $\pi_P \circ \iota_P = \pi_P \circ \iota_Q \circ \phi^{-1} = \phi \circ \phi^{-1} = \mathrm{id}_P$. 
+Finally we have shown that the second exact sequence is also right-split.

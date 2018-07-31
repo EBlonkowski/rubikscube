@@ -369,8 +369,52 @@ R[c(2, 3, 4)]
 R[c(7, 8, 10, 12, 14, 15)]
 ```
 
+### Normal Decomposition of R
 
-### Generator graph of R
+$$ 0 \lhd <uu> \lhd SQ2 \lhd C3 \lhd R $$
+
+Which we can also write as
+
+$$ 0 \lhd <uu> \lhd <rr, uu> \lhd <rr, uu> \ltimes <ru> \lhd <rr, uu> \ltimes  <ru>  \ltimes <urr>$$
+
+Which is isomorphic to the following
+
+$$ 0 \lhd C(2) \lhd C(2)^2 \lhd C(3) \rtimes C(2)^2 \lhd C(2) \rtimes C(3) \rtimes C(2)^2 $$
+
+
+### Normal Lattice
+
+**Property** The only non-trivial normal subgroup of R/SQ2 is <ru*SQ2> 
+     
+     
+> R/SQ2 is a group of order 6 isomorphic to S3. We know S3 has only one proper normal subgroup, which is composed of the 2 elements of order 3 and the identity. So the only proper normal subgroup of R/SQ2 is $<ru \dot SQ2>$
+
+**Property** SQ2, <ru>\*SQ2 and R are the only normal subgroups of R that contain SQ2
+
+> Let's list the normal subgroups of R that contain SQ2. We know that they are in correspondance with the normal subgroups of R/SQ2 which are SQ2, <ru*SQ2>,  R/SQ2. So all the normal subgroups of R that contain SQ2 are SQ2, <ru>\*SQ2 and R. 
+
+> SQ2 is isomorphic to C(2) * C(2)
+
+<ru>*SQ2 is a group of size 12. SQ2 is a normal subgroup of <ru>\*SQ2 and the quotient <ru>\*SQ2/SQ2 is isomorphic to C(3). Thus it is an extension $0 \rightarrow SQ2 \rightarrow <ru>SQ2 \rightarrow C(3) \rightarrow 0$. This extension is right split with the morphism $C(3) \rightarrow <ru>SQ2$ that sends 1 to ru.
+So <ru>*SQ2 is a semi-direct product $<ru> \rtimes SQ2$ with the action of ru being non trivial.
+
+**Property**  All the non-trivial normal subgroups of R contain SQ2
+    
+> Let G be a non-trivial normal subgroups of R. Let's consider $G \cap SQ2$, it is a normal subgroup of R sitting inside SQ2. By checking the action of ru on SQ2 we can see that there is no proper subgroup of SQ2 that is normal in R. So we have $G \cap SQ2 = \emptyset$.
+
+Moreover both of them are normal so they commute.
+Moreover G*SQ2 is a subgroup of R:
+$\forall g, h \in G, \forall k, n \in SQ2, gk\times hn = gh \times kn \in G \mathrm{SQ2}$
+It is a normal subgroup of R because $\forall r \in R, g \in G, n \in \mathrm{SQ2}, r^{-1}gnr = r^{-1}grr^{-1}nr = (r^{-1}gr)(r^{-1}nr) \in G\mathrm{SQ2}$ by normality of both subgroups.
+So G*SQ2 is a normal subgroup containing R. It is either SQ2, C3 or R.
+
+If it is SQ2 then G contains just the identity so the result is proved.
+If GSQ2 is C3. Then we have the following extension for C3 $0 \rightarrow SQ2 \rightarrow C3 \rightarrow G \rightarrow 0$ and this sequence is both right and left split so that $C3 = G \times SQ2 \sim C(3) \times C(2)^2$ which is impossible since C3 is not commutative.
+
+Furthermore we have $ru = gh$ and $\forall s \in \mathrm{SQ2}, s^{ru} = h^{-1}g^{-1}sgh = h^{-1}sh$
+
+Let's say we have $0 \rightarrow X \rightarrow A \rightarrow Q \rightarrow 0$ and $0 \rightarrow Y \rightarrow A \rightarrow Q \rightarrow 0$
+### Cayley Graph of R
 
 ![](R_gen_graph.png)
 
