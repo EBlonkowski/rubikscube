@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# General
+# Exact Sequences
 
 **Definition** Let N, Q, G be 3 groups, we say that the sequence 
 $$ 0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0 $$
@@ -29,15 +29,194 @@ is exact iff
 1. $\mathrm{Im}(i)$ is a normal subgroup of G isomorphic to N.
 2. Q is isomorphic to G/N
 
-## Sequence splitting
+# Splitting of Exact Sequences
 
+
+## Definitions
 
 **Definition** We say that the exact sequence $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0$ is **left split** if there is a homorphism $j: G \rightarrow N$ such that $j \circ i = \mathrm{id}_N$
 
+**Property** If an exact sequence is left-split then the map j is surjective.
+
 **Definition** We say that the exact sequence $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0$ is **right split** if there is a homomorphism $\iota: Q \rightarrow G$ such that $\pi \circ \iota = \mathrm{id}_Q$
+
+**Property** If an exact sequence is right-split then the map $\iota$ is injective.
 
 **Definition** We say that an exact sequence is **split** if it is both left-split and right-split.
 
+
+## Examples
+
+### Decomposition of C(4)
+
+H = {0, 2} is normal in C(4) so we have the following exact sequence:
+
+$$0 \rightarrow \{0, 2\} \rightarrow C(4) \rightarrow C(4)/\{0, 2\} \rightarrow 0$$
+
+1. Let's check that this sequence doesn't split on the left
+2. Let's check that this sequence doesn't split on the right
+
+>**proof of 1**
+Let i be injection $\{0, 2\} \rightarrow C(4)$ and f be a group homomorphism $C(4) \rightarrow {0, 2}$
+>
+- if f(1) = 0 then f = 0 and if = 0
+- if f(1) = 2 then if(2) = f(i(2)) = f(2) = 2f(1) = 0 and if = 0
+>
+Conclusion we cannot find f such that $if = id_{\{0, 2\}}$ so the sequence doesn't split on the left.
+>
+**proof of 2**
+Let j be the natural projection on the quotient: $j(k) = k \cdot \{0, 2\}$ and let u be a group morphism $u: C(4)/\{0, 2\} \rightarrow C(4)$ such that $uj = id_{C(4)/H}$
+>
+So in particular we have: uj({1, 3}) = {1, 3}, meaning j(u({1, 3})) = {1, 3}
+Meaning $u\{1, 3\} \in \{1, 3\}$. Which cannot be since the image of u must be a subgroup of order at most 2 and both 1 and 3 generate subgroups of order 4.
+
+### Decomposition of S3
+
+We use the following representation of S3: $<r^3, s^2, srs = r^2>$
+
+$S3 \sim C(2) \rtimes C(3)$ via $S3 = <s> \rtimes <r>$
+
+\<r\> is normal in S3 and we get the following sequence:
+
+$$0 \rightarrow \langle r \rangle \rightarrow S3 \rightarrow S3/\langle r \rangle \rightarrow 0$$
+
+Let's show that this sequence is **not left-split** 
+
+>let f be such that $if = id_{r}$ Then we have:
+>
+f(i(r)) = r implies f(r) = r
+secondly f(s) = 0 because <r> is of order 3 and s is of order 2.
+>
+There cannot be any morphism verifying this! So the sequence is not left split
+
+Let's now show that this sequence is **not right split**
+
+> $S3/<r> = \{\{e, r, r^2\}, \{s, sr, sr^2\}\}$
+
+## Right Split Sequences
+
+**Property** If the following exact sequence:
+
+$$0 \rightarrow K \rightarrow G \rightarrow Q \rightarrow 0$$
+Is right-split, then G is isomorphic to $Q \rtimes K$
+
+Let u be the splitting application $u\pi = id_{Q}$
+
+The condition that this is sequence is right-split is kinda equivalent to saying that there is a copy of Q in G that is 'perpendicular' to K.
+
+Or it is like saying that I can quotient G by K and I can find a copy of the quotient in G. The application u is an application that takes one element from each class of the quotient. So it gives a system of representation of Q in G, that is also a group.
+
+We need to show that
+
+1. Every element in G can be written as a composition $i(k)u(q), k \in K, q \in Q$
+2. $i(K) \cap u(Q) = \emptyset$
+3. i(K) is normal in G
+
+> **proof of point 1**
+>
+Let g in G.
+>
+Let's show that $g \cdot u(\pi(g))^{-1} \in i(K)$
+>
+Indeed we have $\pi(g \cdot u(\pi(g))^{-1}) = \pi(g) \cdot \pi(u(\pi(g))^{-1})) \\
+= \pi(g) \cdot \pi(g)^{-1}) = e$
+>
+So $g \cdot u(\pi(g))^{-1} \in Ker(\pi) \implies g \cdot u(\pi(g))^{-1} \in Im(i)$
+>
+So there exists k in K such that $g \cdot u(\pi(g))^{-1} = i(k) \implies g = i(k)u(\pi(g))$
+>
+**proof of point 2**
+>
+Let $g \in i(K) \cap u(Q)$ so $g \in Ker(\pi) \cap u(Q)$
+>
+So there exists q such as: u(q) = g. And we have $u\pi(q) = q = \pi(u(q)) = \pi(g) = e$
+>
+So q = e, so g = u(q) = e
+>
+**proof of point 3**
+>
+According to the exactness of the sequence: $Im(i) = Ker(\pi)$ so $i(K) = Ker(\pi)$
+and i(K) is normal.
+
+
+So the proof is finished! What we learned from the proof is that when we have a semi-direct quotient then we can decompose each element of the group G. For that we use the quotient map to find out the class then we use the u function to give us a representative in G that we write q. The find the kernel part we use the equation g = qn which is solvable since we know both q and g.
+
+
+## Left Split Sequences
+
+If the sequence is left-split then it is like we project G unto K and unto Q. Then we can project G unto $K \times Q$ turns out that this map is an isomorphism. #lol
+
+Since we will show in this paragraph that left-split is equivalent to split, we rarely in the future refer to left-split sequences, calling them directly split.
+
+**Splitting Lemma** Let (E): $0 \rightarrow K \rightarrow G \rightarrow Q \rightarrow 0$ be an exact sequence. Then the following three statements are equivalent:
+
+1. The sequence (E) is left-split
+2. There exists an isomorphism $\phi: G \rightarrow K \oplus Q$ such that $\phi \circ i$ is the natural injection $K \rightarrow K \oplus Q$ and $\pi \circ \phi^{-1}$ is the natural projection onto Q.
+3. The sequence (E) is split
+
+>Proof of $(1) \implies (2)$:
+We write 
+$$\phi: G \rightarrow K \oplus Q \\
+g \mapsto (j(g), \pi(g))$$
+>
+$\phi$ is clearly a homomorphism, we want to show that it is also a isomorphism.
+>
+$$x \in \mathrm{Ker}(\phi) \iff j(x) = e_K \  \& \ \pi(x) = e_Q \iff \\
+j(x) = e_K \ \& \ x \in \mathrm{Im}(i) \iff \\
+\exists k \in K, j \circ i (k) = e_K \  \& \ x = j(k) \iff \\
+k = e_k \ \& \ x = e_Q$$
+>
+So $\phi$ is injective.
+>
+Proof that $\phi$ is surjective. In order to show that $\phi$ is surjective we only need to show that $(K, \{e_Q\}) \in \mathrm{Im}(\phi)$ and $(\{e_K\}, Q) \in \mathrm{Im}(\phi)$, because these two subgroups generate $K \oplus Q$.
+>
+Let $k \in K$, $\phi(i(k)) = (j \circ i(k), \pi \circ i(k)) = (k, e_Q)$ since $\mathrm{Ker}(\pi) = \mathrm{Im}(i)$.
+>
+Let $q \in Q$. Since $\pi$ is surjective, $\exists g \in g \ / \ \pi(g) = q$.
+We have 
+$$\phi(g \cdot [i \circ j](g^{-1})) = (j(g \cdot [i \circ j](g^{-1})), \pi(g \cdot [i \circ j](g^{-1}))) =\\
+ (j(g) \cdot [j \circ i \circ j](g^{-1})), \pi(g) \cdot [\pi \circ i \circ j](g^{-1}))) = \\
+ (j(g) \cdot j(g^{-1}), \pi(g)) = (e_K, q)$$
+>
+So that $\phi$ is also surjective, finally $\phi$ is an isomorphism.
+>
+Furthermore we have $\forall k \in K, \phi \circ i (k) = (ji(x), \pi i(x)) = (x, e_Q)$, so this composition is indeed the natural injection of K into the direct product.
+>
+$$\forall q \in Q, k \in K, \pi \circ \phi^{-1} (k, q) = q$$
+$\pi \circ \phi^{-1}$ is indeed the natural projection of the product onto Q. And we have shown that $\phi$ verifies all the properties of (2).
+>
+Proof of $(2) \implies (3)$:
+Let (E) be an exact sequence and $\phi: G \rightarrow K \times Q$ a group isomorphism that respects the properties of (2).
+We need to show that (E) is both right and left split.
+>
+We write $j: G \rightarrow K$ that is defined by $j = \Pi_K \circ \phi$, where $\Pi_K$ is the natural projection from the direct product onto K.
+We have $j \circ i = \Pi_K \circ \phi \circ i = \mathrm{id}_K$ since $\phi \circ i$ is the natural injection into the direct product.
+So that the sequence (E) is left split.
+>
+We write $\iota: Q \rightarrow G$ that is defined by $\iota = \phi^{-1} \circ I_Q$, where $I_Q$ is the natural injection of Q unto the direct product.
+We have $\pi \circ \iota = \pi \circ \phi^{-1} \circ I_Q = \mathrm{id}_Q$ since $\pi \circ \phi^{-1}$ is the natural projection from the product onto Q.
+>
+So we have proven that the sequence is split!
+>
+Proof of $(3) \implies (1)$ If (E) is split then clearly (E) is left-split.
+
+**Property** Let (E) be a split exact sequence and let $\iota: Q \rightarrow G$. Then the opposite sequence:
+$$0 \rightarrow Q \rightarrow^{\iota} G \rightarrow^j K \rightarrow 0$$
+is **not necessarily exact**.
+
+
+>Proof:
+$$0 \rightarrow C(2) \rightarrow C(2) \times C(2) \rightarrow C(2) \rightarrow 0$$
+ Where $i(1) = (1, 0)$, $j(1, 0) = 1$, $j(0, 1) = 0$,  $\pi(1, 0) = 0$, $\pi(0, 1) = 1$,
+ $\iota(1) = (1, 1)$
+ We note that i is injective and $\pi$ is surjective. And $\mathrm{Im}(i) = \{(0, 0), (1, 0)\}$, $\mathrm{Ker}(\pi) = \{(0, 0), (1, 0)\}$ so that $\mathrm{Ker}(\pi) = \mathrm{Im}(i)$. We have just shown that this sequence is exact.
+ >
+ We have $j \circ i(1) = 1$ so $j \circ i$ is the identity and the sequence is left split.
+ >
+ We have $\pi \circ \iota \ (1) = 1$ so that $\pi \circ \iota = \mathrm{id}$ and the sequence is right-split.
+ >
+ However the opposite sequence is not exact: $j \circ \iota (1) = 1$ so that $\mathrm{Ker}(j) \neq \mathrm{Im}(\iota)$.
+ 
 ## Sequences Starting With the Same First Two Terms
 
 
@@ -69,3 +248,36 @@ $$\iota_P: P \rightarrow G \\
 \iota_Q \circ \phi^{-1}$$
 We have $\pi_P \circ \iota_P = \pi_P \circ \iota_Q \circ \phi^{-1} = \phi \circ \phi^{-1} = \mathrm{id}_P$. 
 Finally we have shown that the second exact sequence is also right-split.
+
+## Showing That a Sequence Doesn't Split
+
+In this section $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0$ is an exact sequence.
+
+**Property** If a sequence is not right-split, then it is neither split or left-split.
+
+> Proof: By the contraposition of the splitting lemma.
+
+**Definition** If a sequence is right split, then we get a morphism $\Theta: Q \rightarrow \mathrm{Aut}^{Op}(i(N))$ defined by
+$$\Theta: q \mapsto [n \mapsto \iota_Q(q)^{-1} \cdot n \cdot \iota_Q(q)]$$
+
+> Proof that $\forall q \in Q, \Theta(q)$ is a group automorphism. Let q be an element of Q.
+$$\forall n_1, n_2 \in N, \Theta(q)(i(n_1) \cdot i(n_2)) =  \iota_Q(q)^{-1} \cdot i(n_1)i(n_2) \cdot \iota_Q(q) = \\
+\iota_Q(q)^{-1} \cdot i(n_1) \iota_Q(q) \cdot \iota_Q(q)^{-1}i(n_2) \cdot \iota_Q(q) = \\
+ \Theta(q)(i(n_1)) \cdot  \Theta(q)(i(n_2))
+$$
+>
+Proof that $\Theta$ is indeed a group homomorphism. 
+$$\forall q,r \in Q, \forall n \in i(N), \Theta(qr)(n) = \iota_Q(qr)^{-1} \cdot n \cdot \iota_Q(qr)= \\
+\iota_Q(r)^{-1} \iota_Q(q)^{-1} \cdot n \cdot \iota_Q(q) \iota_Q(r)= \\
+\iota_Q(r)^{-1} \Theta(q)(n) \iota_Q(r) = \\
+\Theta(r)[\Theta(q)(n)] = [\Theta(r) \circ \Theta(q)](n) = \\
+[\Theta(q) \circ^{Op} \Theta(r)](n)
+$$
+
+
+**Property** Let $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0$ be a right split exact sequence, so that we get a morphism $\Theta: Q \rightarrow  \mathrm{Aut}^{Op}(\mathrm{Im}(i))$. This sequence is left-split, if and only if $\Theta$ is the trivial morphism.
+
+Proof of $\implies$. Let's suppose that the sequence is left split, we want to show that $\Theta$ is the trivial morphism.
+According to the splitting lemma, we know that the sequence splits. We can deduce that i(N) and $\iota(Q)$ are in direct sum inside G [need to be proven]. So i(N) and $\iota(Q)$ commute and $\Theta$ is trivial.
+
+Proof of $\impliedby$. Let's suppose that $\Theta$ is the trivial morphism, ;e

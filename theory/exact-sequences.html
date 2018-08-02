@@ -128,15 +128,23 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#general">General</a><ul>
-<li><a href="#sequence-splitting">Sequence splitting</a></li>
+<li><a href="#exact-sequences">Exact Sequences</a></li>
+<li><a href="#splitting-of-exact-sequences">Splitting of Exact Sequences</a><ul>
+<li><a href="#definitions">Definitions</a></li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#decomposition-of-c4">Decomposition of C(4)</a></li>
+<li><a href="#decomposition-of-s3">Decomposition of S3</a></li>
+</ul></li>
+<li><a href="#right-split-sequences">Right Split Sequences</a></li>
+<li><a href="#left-split-sequences">Left Split Sequences</a></li>
 <li><a href="#sequences-starting-with-the-same-first-two-terms">Sequences Starting With the Same First Two Terms</a></li>
+<li><a href="#showing-that-a-sequence-doesnt-split">Showing That a Sequence Doesn’t Split</a></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="general" class="section level1">
-<h1>General</h1>
+<div id="exact-sequences" class="section level1">
+<h1>Exact Sequences</h1>
 <p><strong>Definition</strong> Let N, Q, G be 3 groups, we say that the sequence <span class="math display">\[ 0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0 \]</span></p>
 <p>is exact iff</p>
 <ol style="list-style-type: decimal">
@@ -149,11 +157,125 @@ $(document).ready(function () {
 <li><span class="math inline">\(\mathrm{Im}(i)\)</span> is a normal subgroup of G isomorphic to N.</li>
 <li>Q is isomorphic to G/N</li>
 </ol>
-<div id="sequence-splitting" class="section level2">
-<h2>Sequence splitting</h2>
+</div>
+<div id="splitting-of-exact-sequences" class="section level1">
+<h1>Splitting of Exact Sequences</h1>
+<div id="definitions" class="section level2">
+<h2>Definitions</h2>
 <p><strong>Definition</strong> We say that the exact sequence <span class="math inline">\(0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0\)</span> is <strong>left split</strong> if there is a homorphism <span class="math inline">\(j: G \rightarrow N\)</span> such that <span class="math inline">\(j \circ i = \mathrm{id}_N\)</span></p>
+<p><strong>Property</strong> If an exact sequence is left-split then the map j is surjective.</p>
 <p><strong>Definition</strong> We say that the exact sequence <span class="math inline">\(0 \rightarrow N \rightarrow^i G \rightarrow^{\pi} Q \rightarrow 0\)</span> is <strong>right split</strong> if there is a homomorphism <span class="math inline">\(\iota: Q \rightarrow G\)</span> such that <span class="math inline">\(\pi \circ \iota = \mathrm{id}_Q\)</span></p>
+<p><strong>Property</strong> If an exact sequence is right-split then the map <span class="math inline">\(\iota\)</span> is injective.</p>
 <p><strong>Definition</strong> We say that an exact sequence is <strong>split</strong> if it is both left-split and right-split.</p>
+</div>
+<div id="examples" class="section level2">
+<h2>Examples</h2>
+<div id="decomposition-of-c4" class="section level3">
+<h3>Decomposition of C(4)</h3>
+<p>H = {0, 2} is normal in C(4) so we have the following exact sequence:</p>
+<p><span class="math display">\[0 \rightarrow \{0, 2\} \rightarrow C(4) \rightarrow C(4)/\{0, 2\} \rightarrow 0\]</span></p>
+<ol style="list-style-type: decimal">
+<li>Let’s check that this sequence doesn’t split on the left</li>
+<li>Let’s check that this sequence doesn’t split on the right</li>
+</ol>
+<blockquote>
+<p><strong>proof of 1</strong> Let i be injection <span class="math inline">\(\{0, 2\} \rightarrow C(4)\)</span> and f be a group homomorphism <span class="math inline">\(C(4) \rightarrow {0, 2}\)</span></p>
+<ul>
+<li>if f(1) = 0 then f = 0 and if = 0</li>
+<li>if f(1) = 2 then if(2) = f(i(2)) = f(2) = 2f(1) = 0 and if = 0</li>
+</ul>
+<p>Conclusion we cannot find f such that <span class="math inline">\(if = id_{\{0, 2\}}\)</span> so the sequence doesn’t split on the left.</p>
+<p><strong>proof of 2</strong> Let j be the natural projection on the quotient: <span class="math inline">\(j(k) = k \cdot \{0, 2\}\)</span> and let u be a group morphism <span class="math inline">\(u: C(4)/\{0, 2\} \rightarrow C(4)\)</span> such that <span class="math inline">\(uj = id_{C(4)/H}\)</span></p>
+<p>So in particular we have: uj({1, 3}) = {1, 3}, meaning j(u({1, 3})) = {1, 3} Meaning <span class="math inline">\(u\{1, 3\} \in \{1, 3\}\)</span>. Which cannot be since the image of u must be a subgroup of order at most 2 and both 1 and 3 generate subgroups of order 4.</p>
+</blockquote>
+</div>
+<div id="decomposition-of-s3" class="section level3">
+<h3>Decomposition of S3</h3>
+<p>We use the following representation of S3: <span class="math inline">\(&lt;r^3, s^2, srs = r^2&gt;\)</span></p>
+<p><span class="math inline">\(S3 \sim C(2) \rtimes C(3)\)</span> via <span class="math inline">\(S3 = &lt;s&gt; \rtimes &lt;r&gt;\)</span></p>
+<p>&lt;r&gt; is normal in S3 and we get the following sequence:</p>
+<p><span class="math display">\[0 \rightarrow \langle r \rangle \rightarrow S3 \rightarrow S3/\langle r \rangle \rightarrow 0\]</span></p>
+<p>Let’s show that this sequence is <strong>not left-split</strong></p>
+<blockquote>
+<p>let f be such that <span class="math inline">\(if = id_{r}\)</span> Then we have:</p>
+<p>f(i(r)) = r implies f(r) = r secondly f(s) = 0 because <r> is of order 3 and s is of order 2.</p>
+<p>There cannot be any morphism verifying this! So the sequence is not left split</p>
+</blockquote>
+<p>Let’s now show that this sequence is <strong>not right split</strong></p>
+<blockquote>
+<p><span class="math inline">\(S3/&lt;r&gt; = \{\{e, r, r^2\}, \{s, sr, sr^2\}\}\)</span></p>
+</blockquote>
+</div>
+</div>
+<div id="right-split-sequences" class="section level2">
+<h2>Right Split Sequences</h2>
+<p><strong>Property</strong> If the following exact sequence:</p>
+<p><span class="math display">\[0 \rightarrow K \rightarrow G \rightarrow Q \rightarrow 0\]</span> Is right-split, then G is isomorphic to <span class="math inline">\(Q \rtimes K\)</span></p>
+<p>Let u be the splitting application <span class="math inline">\(u\pi = id_{Q}\)</span></p>
+<p>The condition that this is sequence is right-split is kinda equivalent to saying that there is a copy of Q in G that is ‘perpendicular’ to K.</p>
+<p>Or it is like saying that I can quotient G by K and I can find a copy of the quotient in G. The application u is an application that takes one element from each class of the quotient. So it gives a system of representation of Q in G, that is also a group.</p>
+<p>We need to show that</p>
+<ol style="list-style-type: decimal">
+<li>Every element in G can be written as a composition <span class="math inline">\(i(k)u(q), k \in K, q \in Q\)</span></li>
+<li><span class="math inline">\(i(K) \cap u(Q) = \emptyset\)</span></li>
+<li>i(K) is normal in G</li>
+</ol>
+<blockquote>
+<p><strong>proof of point 1</strong></p>
+<p>Let g in G.</p>
+<p>Let’s show that <span class="math inline">\(g \cdot u(\pi(g))^{-1} \in i(K)\)</span></p>
+<p>Indeed we have <span class="math inline">\(\pi(g \cdot u(\pi(g))^{-1}) = \pi(g) \cdot \pi(u(\pi(g))^{-1})) \\ = \pi(g) \cdot \pi(g)^{-1}) = e\)</span></p>
+<p>So <span class="math inline">\(g \cdot u(\pi(g))^{-1} \in Ker(\pi) \implies g \cdot u(\pi(g))^{-1} \in Im(i)\)</span></p>
+<p>So there exists k in K such that <span class="math inline">\(g \cdot u(\pi(g))^{-1} = i(k) \implies g = i(k)u(\pi(g))\)</span></p>
+<p><strong>proof of point 2</strong></p>
+<p>Let <span class="math inline">\(g \in i(K) \cap u(Q)\)</span> so <span class="math inline">\(g \in Ker(\pi) \cap u(Q)\)</span></p>
+<p>So there exists q such as: u(q) = g. And we have <span class="math inline">\(u\pi(q) = q = \pi(u(q)) = \pi(g) = e\)</span></p>
+<p>So q = e, so g = u(q) = e</p>
+<p><strong>proof of point 3</strong></p>
+<p>According to the exactness of the sequence: <span class="math inline">\(Im(i) = Ker(\pi)\)</span> so <span class="math inline">\(i(K) = Ker(\pi)\)</span> and i(K) is normal.</p>
+</blockquote>
+<p>So the proof is finished! What we learned from the proof is that when we have a semi-direct quotient then we can decompose each element of the group G. For that we use the quotient map to find out the class then we use the u function to give us a representative in G that we write q. The find the kernel part we use the equation g = qn which is solvable since we know both q and g.</p>
+</div>
+<div id="left-split-sequences" class="section level2">
+<h2>Left Split Sequences</h2>
+<p>If the sequence is left-split then it is like we project G unto K and unto Q. Then we can project G unto <span class="math inline">\(K \times Q\)</span> turns out that this map is an isomorphism. #lol</p>
+<p>Since we will show in this paragraph that left-split is equivalent to split, we rarely in the future refer to left-split sequences, calling them directly split.</p>
+<p><strong>Splitting Lemma</strong> Let (E): <span class="math inline">\(0 \rightarrow K \rightarrow G \rightarrow Q \rightarrow 0\)</span> be an exact sequence. Then the following three statements are equivalent:</p>
+<ol style="list-style-type: decimal">
+<li>The sequence (E) is left-split</li>
+<li>There exists an isomorphism <span class="math inline">\(\phi: G \rightarrow K \oplus Q\)</span> such that <span class="math inline">\(\phi \circ i\)</span> is the natural injection <span class="math inline">\(K \rightarrow K \oplus Q\)</span> and <span class="math inline">\(\pi \circ \phi^{-1}\)</span> is the natural projection onto Q.</li>
+<li>The sequence (E) is split</li>
+</ol>
+<blockquote>
+<p>Proof of <span class="math inline">\((1) \implies (2)\)</span>: We write <span class="math display">\[\phi: G \rightarrow K \oplus Q \\
+g \mapsto (j(g), \pi(g))\]</span></p>
+<p><span class="math inline">\(\phi\)</span> is clearly a homomorphism, we want to show that it is also a isomorphism.</p>
+<p><span class="math display">\[x \in \mathrm{Ker}(\phi) \iff j(x) = e_K \  \&amp; \ \pi(x) = e_Q \iff \\
+j(x) = e_K \ \&amp; \ x \in \mathrm{Im}(i) \iff \\
+\exists k \in K, j \circ i (k) = e_K \  \&amp; \ x = j(k) \iff \\
+k = e_k \ \&amp; \ x = e_Q\]</span></p>
+<p>So <span class="math inline">\(\phi\)</span> is injective.</p>
+<p>Proof that <span class="math inline">\(\phi\)</span> is surjective. In order to show that <span class="math inline">\(\phi\)</span> is surjective we only need to show that <span class="math inline">\((K, \{e_Q\}) \in \mathrm{Im}(\phi)\)</span> and <span class="math inline">\((\{e_K\}, Q) \in \mathrm{Im}(\phi)\)</span>, because these two subgroups generate <span class="math inline">\(K \oplus Q\)</span>.</p>
+<p>Let <span class="math inline">\(k \in K\)</span>, <span class="math inline">\(\phi(i(k)) = (j \circ i(k), \pi \circ i(k)) = (k, e_Q)\)</span> since <span class="math inline">\(\mathrm{Ker}(\pi) = \mathrm{Im}(i)\)</span>.</p>
+<p>Let <span class="math inline">\(q \in Q\)</span>. Since <span class="math inline">\(\pi\)</span> is surjective, <span class="math inline">\(\exists g \in g \ / \ \pi(g) = q\)</span>. We have <span class="math display">\[\phi(g \cdot [i \circ j](g^{-1})) = (j(g \cdot [i \circ j](g^{-1})), \pi(g \cdot [i \circ j](g^{-1}))) =\\
+(j(g) \cdot [j \circ i \circ j](g^{-1})), \pi(g) \cdot [\pi \circ i \circ j](g^{-1}))) = \\
+(j(g) \cdot j(g^{-1}), \pi(g)) = (e_K, q)\]</span></p>
+<p>So that <span class="math inline">\(\phi\)</span> is also surjective, finally <span class="math inline">\(\phi\)</span> is an isomorphism.</p>
+<p>Furthermore we have <span class="math inline">\(\forall k \in K, \phi \circ i (k) = (ji(x), \pi i(x)) = (x, e_Q)\)</span>, so this composition is indeed the natural injection of K into the direct product.</p>
+<p><span class="math display">\[\forall q \in Q, k \in K, \pi \circ \phi^{-1} (k, q) = q\]</span> <span class="math inline">\(\pi \circ \phi^{-1}\)</span> is indeed the natural projection of the product onto Q. And we have shown that <span class="math inline">\(\phi\)</span> verifies all the properties of (2).</p>
+<p>Proof of <span class="math inline">\((2) \implies (3)\)</span>: Let (E) be an exact sequence and <span class="math inline">\(\phi: G \rightarrow K \times Q\)</span> a group isomorphism that respects the properties of (2). We need to show that (E) is both right and left split.</p>
+<p>We write <span class="math inline">\(j: G \rightarrow K\)</span> that is defined by <span class="math inline">\(j = \Pi_K \circ \phi\)</span>, where <span class="math inline">\(\Pi_K\)</span> is the natural projection from the direct product onto K. We have <span class="math inline">\(j \circ i = \Pi_K \circ \phi \circ i = \mathrm{id}_K\)</span> since <span class="math inline">\(\phi \circ i\)</span> is the natural injection into the direct product. So that the sequence (E) is left split.</p>
+<p>We write <span class="math inline">\(\iota: Q \rightarrow G\)</span> that is defined by <span class="math inline">\(\iota = \phi^{-1} \circ I_Q\)</span>, where <span class="math inline">\(I_Q\)</span> is the natural injection of Q unto the direct product. We have <span class="math inline">\(\pi \circ \iota = \pi \circ \phi^{-1} \circ I_Q = \mathrm{id}_Q\)</span> since <span class="math inline">\(\pi \circ \phi^{-1}\)</span> is the natural projection from the product onto Q.</p>
+<p>So we have proven that the sequence is split!</p>
+<p>Proof of <span class="math inline">\((3) \implies (1)\)</span> If (E) is split then clearly (E) is left-split.</p>
+</blockquote>
+<p><strong>Property</strong> Let (E) be a split exact sequence and let <span class="math inline">\(\iota: Q \rightarrow G\)</span>. Then the opposite sequence: <span class="math display">\[0 \rightarrow Q \rightarrow^{\iota} G \rightarrow^j K \rightarrow 0\]</span> is <strong>not necessarily exact</strong>.</p>
+<blockquote>
+<p>Proof: <span class="math display">\[0 \rightarrow C(2) \rightarrow C(2) \times C(2) \rightarrow C(2) \rightarrow 0\]</span> Where <span class="math inline">\(i(1) = (1, 0)\)</span>, <span class="math inline">\(j(1, 0) = 1\)</span>, <span class="math inline">\(j(0, 1) = 0\)</span>, <span class="math inline">\(\pi(1, 0) = 0\)</span>, <span class="math inline">\(\pi(0, 1) = 1\)</span>, <span class="math inline">\(\iota(1) = (1, 1)\)</span> We note that i is injective and <span class="math inline">\(\pi\)</span> is surjective. And <span class="math inline">\(\mathrm{Im}(i) = \{(0, 0), (1, 0)\}\)</span>, <span class="math inline">\(\mathrm{Ker}(\pi) = \{(0, 0), (1, 0)\}\)</span> so that <span class="math inline">\(\mathrm{Ker}(\pi) = \mathrm{Im}(i)\)</span>. We have just shown that this sequence is exact.</p>
+<p>We have <span class="math inline">\(j \circ i(1) = 1\)</span> so <span class="math inline">\(j \circ i\)</span> is the identity and the sequence is left split.</p>
+<p>We have <span class="math inline">\(\pi \circ \iota \ (1) = 1\)</span> so that <span class="math inline">\(\pi \circ \iota = \mathrm{id}\)</span> and the sequence is right-split.</p>
+<p>However the opposite sequence is not exact: <span class="math inline">\(j \circ \iota (1) = 1\)</span> so that <span class="math inline">\(\mathrm{Ker}(j) \neq \mathrm{Im}(\iota)\)</span>.</p>
+</blockquote>
 </div>
 <div id="sequences-starting-with-the-same-first-two-terms" class="section level2">
 <h2>Sequences Starting With the Same First Two Terms</h2>
@@ -176,6 +298,30 @@ $(document).ready(function () {
 <p>Let’s write <span class="math display">\[\iota_P: P \rightarrow G \\ 
 \iota_Q \circ \phi^{-1}\]</span> We have <span class="math inline">\(\pi_P \circ \iota_P = \pi_P \circ \iota_Q \circ \phi^{-1} = \phi \circ \phi^{-1} = \mathrm{id}_P\)</span>. Finally we have shown that the second exact sequence is also right-split.</p>
 </blockquote>
+</div>
+<div id="showing-that-a-sequence-doesnt-split" class="section level2">
+<h2>Showing That a Sequence Doesn’t Split</h2>
+<p>In this section <span class="math inline">\(0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0\)</span> is an exact sequence.</p>
+<p><strong>Property</strong> If a sequence is not right-split, then it is neither split or left-split.</p>
+<blockquote>
+<p>Proof: By the contraposition of the splitting lemma.</p>
+</blockquote>
+<p><strong>Definition</strong> If a sequence is right split, then we get a morphism <span class="math inline">\(\Theta: Q \rightarrow \mathrm{Aut}^{Op}(i(N))\)</span> defined by <span class="math display">\[\Theta: q \mapsto [n \mapsto \iota_Q(q)^{-1} \cdot n \cdot \iota_Q(q)]\]</span></p>
+<blockquote>
+<p>Proof that <span class="math inline">\(\forall q \in Q, \Theta(q)\)</span> is a group automorphism. Let q be an element of Q. <span class="math display">\[\forall n_1, n_2 \in N, \Theta(q)(i(n_1) \cdot i(n_2)) =  \iota_Q(q)^{-1} \cdot i(n_1)i(n_2) \cdot \iota_Q(q) = \\
+\iota_Q(q)^{-1} \cdot i(n_1) \iota_Q(q) \cdot \iota_Q(q)^{-1}i(n_2) \cdot \iota_Q(q) = \\
+\Theta(q)(i(n_1)) \cdot  \Theta(q)(i(n_2))
+\]</span></p>
+<p>Proof that <span class="math inline">\(\Theta\)</span> is indeed a group homomorphism. <span class="math display">\[\forall q,r \in Q, \forall n \in i(N), \Theta(qr)(n) = \iota_Q(qr)^{-1} \cdot n \cdot \iota_Q(qr)= \\
+\iota_Q(r)^{-1} \iota_Q(q)^{-1} \cdot n \cdot \iota_Q(q) \iota_Q(r)= \\
+\iota_Q(r)^{-1} \Theta(q)(n) \iota_Q(r) = \\
+\Theta(r)[\Theta(q)(n)] = [\Theta(r) \circ \Theta(q)](n) = \\
+[\Theta(q) \circ^{Op} \Theta(r)](n)
+\]</span></p>
+</blockquote>
+<p><strong>Property</strong> Let <span class="math inline">\(0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0\)</span> be a right split exact sequence, so that we get a morphism <span class="math inline">\(\Theta: Q \rightarrow \mathrm{Aut}^{Op}(\mathrm{Im}(i))\)</span>. This sequence is left-split, if and only if <span class="math inline">\(\Theta\)</span> is the trivial morphism.</p>
+<p>Proof of <span class="math inline">\(\implies\)</span>. Let’s suppose that the sequence is left split, we want to show that <span class="math inline">\(\Theta\)</span> is the trivial morphism. According to the splitting lemma, we know that the sequence splits. We can deduce that i(N) and <span class="math inline">\(\iota(Q)\)</span> are in direct sum inside G [need to be proven]. So i(N) and <span class="math inline">\(\iota(Q)\)</span> commute and <span class="math inline">\(\Theta\)</span> is trivial.</p>
+<p>Proof of <span class="math inline">\(\impliedby\)</span>. Let’s suppose that <span class="math inline">\(\Theta\)</span> is the trivial morphism, ;e</p>
 </div>
 </div>
 
