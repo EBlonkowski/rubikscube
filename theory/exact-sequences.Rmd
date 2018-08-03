@@ -275,9 +275,12 @@ $$\forall q,r \in Q, \forall n \in i(N), \Theta(qr)(n) = \iota_Q(qr)^{-1} \cdot 
 $$
 
 
-**Property** Let $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0$ be a right split exact sequence, so that we get a morphism $\Theta: Q \rightarrow  \mathrm{Aut}^{Op}(\mathrm{Im}(i))$. This sequence is left-split, if and only if $\Theta$ is the trivial morphism.
+**Property** Let $0 \rightarrow N \rightarrow^i G \rightarrow^{\pi_Q} Q \rightarrow 0$ be a right split exact sequence, so that we get a morphism $\Theta: Q \rightarrow  \mathrm{Aut}^{Op}(\mathrm{Im}(i))$. If this sequence is also left-split, then $\mathrm{Im}(\Theta) \subset \mathrm{Inn}(i(N))$.
 
-Proof of $\implies$. Let's suppose that the sequence is left split, we want to show that $\Theta$ is the trivial morphism.
-According to the splitting lemma, we know that the sequence splits. We can deduce that i(N) and $\iota(Q)$ are in direct sum inside G [need to be proven]. So i(N) and $\iota(Q)$ commute and $\Theta$ is trivial.
+>Proof of $\implies$. Let's suppose that the sequence is left split, with j the left-splitting. We want to show that $\forall q \in Q, \exists n_q \in \mathrm{Im}(i), \forall g \in g, \Theta(q)(g) = n_q^{-1}gn_q$.
+Let $q \in Q$, there exists a unique decomposition $\iota(Q) = n_qp_q, n_q \in \mathrm{Ker}(\pi_Q), p_q \in \mathrm{Ker}(j)$ and we also have $n_qp_q = p_qn_q$.
+According to the definition of $\Theta$ we now have
+$$\forall n \in N, \Theta(q)(n) = \iota_Q(q)^{-1} \cdot n \cdot \iota_Q(q) = \\
+(n_qp_q)^{-1}nn_qp_q = n_q^{-1}nn_q$$
+Since $p_q$ commutes with all the other terms. And we have proved the property because we have shown $\Theta(q)$ is an inner autormophism of i(N).
 
-Proof of $\impliedby$. Let's suppose that $\Theta$ is the trivial morphism, ;e
