@@ -89,7 +89,7 @@ graph cycle {
 
 ## Subgroups of S3
 
-### <p> is a normal subgroup
+### \<p\> is a normal subgroup
 
 The group \<p\> = {e, p, p2} is normal in S3:
 
