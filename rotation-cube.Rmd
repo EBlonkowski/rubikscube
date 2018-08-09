@@ -481,6 +481,17 @@ digraph boxes_and_circles {
 ```
 
 
+### Presentations of R
+
+Using the composition sequence $$ 0 \lhd <uu> \lhd <rr, uu> \lhd <rr, uu> \ltimes <ru> \lhd <rr, uu> \ltimes  <ru>  \ltimes <urr>$$ and making profit that all the extensions are semi-direct products we get the following presentation:
+
+$$<(uu)^2, (rr)^2, (ur)^3, (urr)^2, uu \cdot rr = rr \cdot uu, rr \cdot ru = ru \cdot uu \cdot rr, uu \cdot ru = ru \cdot rr \\
+uu \cdot urr= urr \cdot uu, rr \cdot urr= urr \cdot uurr, ru \cdot urr = urr \cdot (ru)^2>$$
+
+Or again by writing i = uu, j = rr, k = ur, l = urr
+
+$$<i^2, j^2, k^3, l^2, ij=ji, ik = kj, jk = kij,  il=li, jl = lij, kl=lk^2>$$
+
 ### Cayley Graph of R
 
 ![](R_gen_graph.png)

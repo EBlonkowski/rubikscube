@@ -35,7 +35,7 @@ if (window.hljs) {
   hljs.configure({languages: []});
   hljs.initHighlightingOnLoad();
   if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
   }
 }
 </script>
@@ -211,6 +211,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+<p>This beat action corresponds to the identification: e = 1, (1, 0) = 3, (0, 1) = 2, (1, 1) = 4</p>
 <pre class="r"><code>g10 &lt;- as.cycle(c(1, 3)) * as.cycle(c(2, 4))
 g01 &lt;- as.cycle(c(1, 2)) * as.cycle(c(3, 4))
 g10 * g01</code></pre>
@@ -268,7 +269,7 @@ g10 * g01</code></pre>
 <tr class="odd">
 <td>1 0 0 1</td>
 <td>2</td>
-<td>1001, 1001</td>
+<td>1001, 0110</td>
 </tr>
 <tr class="even">
 <td>1 0 1 1</td>
@@ -283,6 +284,104 @@ g10 * g01</code></pre>
 </tbody>
 </table>
 </div>
+</div>
+<div id="another-beat-action" class="section level2">
+<h2>Another Beat Action</h2>
+<p>An ordering function is a function <span class="math inline">\(\{1 ... 4\} \rightarrow C(2)^2\)</span> There are 4x3x2x1 = 24 such functions</p>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>(1, 0)</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>(0, 1)</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>(1, 1)</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>This beat action corresponds to the identification: e = 1, (1, 0) = 2, (0, 1) = 3, (1, 1) = 4</p>
+<p>We verify that it is a group action</p>
+<pre class="r"><code>g2_10 &lt;- as.cycle(c(1, 2)) * as.cycle(c(3, 4))
+g2_01 &lt;- as.cycle(c(1, 3)) * as.cycle(c(2, 4))
+g2_10 * g2_01</code></pre>
+<pre><code>## [1] (14)(23)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>Beat size</th>
+<th>Full beat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0 0 0 0</td>
+<td>1</td>
+<td>0000</td>
+</tr>
+<tr class="even">
+<td>1 0 0 0</td>
+<td>4</td>
+<td>1000, 0100, 0010, 0001</td>
+</tr>
+<tr class="odd">
+<td>1 0 1 0</td>
+<td>2</td>
+<td>1010, 0101</td>
+</tr>
+<tr class="even">
+<td>1 1 0 0</td>
+<td>2</td>
+<td>1100, 0011</td>
+</tr>
+<tr class="odd">
+<td>1 0 0 1</td>
+<td>2</td>
+<td>1001, 0110</td>
+</tr>
+<tr class="even">
+<td>1 0 1 1</td>
+<td>4</td>
+<td>1011, 0111, 1110, 1101</td>
+</tr>
+<tr class="odd">
+<td>1 1 1 1</td>
+<td>1</td>
+<td>1111</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that this new beat action yields the same beats.</p>
 </div>
 
 
