@@ -39,7 +39,7 @@ The **playing group** is the group of operations that one can make on the record
 
 Here we consider the playing group as all the shifting of the recording and inverting of the recording. We do not consider yet change of the recording speed or inverting the instruments. We note $\forall t \in \mathbb{R}, D_t: F \rightarrow F$, the shift operations.  Finally, we write $I: F \rightarrow F \\ r(x) \mapsto r(-x)$, for the inversion operation that inverts the recording around the origin.
 
-**Inversion around c** where $c \in \mathbb{R}$. We check that $D_c \circ I \circ D_{-c}$ is the inversion around c. 
+**Inversion around c** where $c \in \mathbb{R}$. We check that $D_c \circ I \circ D_{-c} = D_{2c} \circ I$ is the inversion around c. 
 
 >Indeed $[D_c \circ I \circ D_{-c}] (r) (x) = r(-x+2c)$ So that $[D_c \circ I \circ D_{-c}] (r) (c) = r(c)$, so the center of inversion is preserved, and $[D_c \circ I \circ D_{-c}] (r) (c+a) = r(-(c+a)+2c) = r(c - a)$, so that we can see that points are inversed around c.
 
@@ -48,6 +48,12 @@ Here we consider the playing group as all the shifting of the recording and inve
 For any beat B, we can associate $Stab(B) \in \mathcal{P}$, the subgroup of P that maps B to itself. 
 
 **Definition** For any recording r, we write $\mathcal{P}(r)$ the subgroup of P that maps r to itself. In other words $\mathcal{P}(r)$ is the stabilizer of r in $\mathcal{P}$
+
+**Conjugacy classes** The conjugacy classes are:
+
+*   {Id}
+*   $\forall t \in \mathbb{R}^{+*}, \{D_t, D_{-t}\}$ 
+*   $\{D_{t} \circ I \ | \  \forall t \in \mathbb{R}\}$
 
 ### Normal Subgroups of Playing Group
 
@@ -81,7 +87,9 @@ digraph boxes_and_circles {
   
   node [width = 1.5]
   ID [width = 2, fontsize = 22] 
-  D->ID
+  D [width = 1.5]
+  e [width = 1]
+  e->D->ID
 }
 ')
 ```
@@ -143,7 +151,7 @@ It looks like this beat has a translation invariant pattern XYYX, that repeats e
   
 ## Examples
 
-### Constant Recordings
+### Constant Recording
 
 Constant recording $\forall x \in \mathbb{R}, 1_\mathbb{R}(x) = 1$.
 
@@ -152,27 +160,79 @@ The translation group is $D_{\mathbb{R}}$, the point group is $C(2)$.
 We have $\mathcal{P}(1_\mathbb{R}) = \mathcal{P}$, its playing group is the full playing group.
 
 
-### Alternating Recordings
+### Alternating Recording
 
 The alternated recording $\forall x \in (0, 1), al(x) = 1$ and $al(0) = 1/2$ and the following functional equation $\forall y \in \mathbb{R}, al(y+1) = 1 - al(y)$. 
 
-Let's note that $\forall y \in \mathbb{Z}, al(y) = {1 \over 2}$$
+**Property** We also have $\forall y \in \mathbb{R}, al(y-1) = 1 - al(y)$
 
-Its translation group is $D_{2 \mathbb{Z}}$ as al(y+2) = 1-al(y+1) = 1-(1-al(y)) = al(y).
+>Indeed $al(y) = al(y-1+1) = 1 - al(y-1)$ so that $al(y-1) = 1 - al(y)$
 
-It's point group at 0.5 is $D_{-0.5} \circ I \circ D_{o.5}$
-We want to show that
-$$\forall y \in \mathbb{R}, D_{-0.5} \circ^{\star} I \circ^\star D_{o.5} (al) (y) = al(-y+1) = al(y)$$
+**Property** Let's note that $\forall y \in \mathbb{Z}, al(y) = {1 \over 2}$
+
+**Property** $\forall y,  al(-y) = 1 - al(y)$.
+
+>In order to prove this we note that this is true for for $y \in [-1, 1]$.
+Let $n \in \mathbb{N}$ let's assume it is true for $y \in [-n, n]$. Let $y \in [n; n+1]$.
+We have $al(-y) = al(-(y-1+1)) = al(-(y-1)-1) = 1 - al(-(y-1)) = 1 - (1 - al(y-1)) = al(y-1) = 1-al(y)$
+Now let's assume $y \in [-n-1,-n]$. $al(-y) = al(-(y+1-1)) = al(-(y+1) + 1) = 1 - al(-(y+1)) = al(y)$
+So that by recurrence we have proved the property on $\mathbb{R}$
+
+**Property** Its lattice subgroup is $D_{2 \mathbb{Z}}$
+
+>Proof: al(y+2) = 1-al(y+1) = 1-(1-al(y)) = al(y).
+>
+So that $D_{2 \mathbb{Z}} \subset \mathcal{GT}(al)$
+>
+*Absurd Hypothesis* $D_{2 \mathbb{Z}} \neq \mathcal{GT}(al)$
+Then there must exists a $t \in \mathbb{R} - D_{2 \mathbb{Z}}$ such that $D_t(al) = al$. Furthermore we can choose this t in $]0; 2[$.
+Let's suppose t lies in $]0; 1[$, then $al(1- {t \over 2}) = 1$ we also have 
+$$al(1- {t \over 2}+t) = al(t+ {t \over 2}) = 0$$ 
+so that $D_t(al) \neq al$ and that means t must lie in $[1;2[$. 
+>
+We note that: 
+$$1 < t < 2 \\
+-2 < -t < -1 \\
+0 < 2 - t < 1 \\
+0 < {2-t \over 2} < {1 \over 2} \\
+0 < 1 - {t \over 2} < {1 \over 2}$$
+>
+So that $al(1 - {t \over 2}) = 1$
+>
+$$0 < 1 - {t \over 2} \implies \\
+t < 1 - {t \over 2} + t \implies \\
+1 < 1 + {t\over 2} < 2$$
+>
+So that $al(1 - {t \over 2}+t) = 0$ and $D_t(al) \neq al$ and we have a contradiction.
+>
+Finally: $D_{2 \mathbb{Z}} = \mathcal{GT}(al)$
+
+**Property** Its point group at 0.5 is $<D_{-0.5} \circ I \circ D_{0.5}>$
+
+> Proof: $$\forall y \in \mathbb{R}, D_{-0.5} \circ^{\star} I \circ^\star D_{o.5} (al) (y) = al(-y+1) = \\
+1 - al(-y) = al(y)$$
+
+**Property** Structure of $\mathcal{P}(al)$
+
+Let $F \in \mathcal{P}$ be a playing operator that leaves al fixed: $F(al) = al$.
+Since $\mathcal{P} = D_{\mathbb{R}} \rtimes <I>$ with $D_{\mathbb{R}}$ being a normal subgroup of order 2, we know that there exists a unique $t \in \mathbb{R}$ such that F can be written uniquely as $F = D_t \circ I$ or $F = D_t$.
 
 ```{r echo = FALSE}
 data = data.frame(x = c(-3, -2, -1, 0, 1, 2, 3, 4), y = c(0, 1, 0, 1, 0, 1, 0, 0))
-ggplot(data, aes(x = x, y=y)) + geom_step()
+ggplot(data, aes(x = x, y=y)) + geom_step() + labs(title = 'Alternating Beat Graph')
 ```
 
 ### Unsteady Alternating
 
 ```{r echo = FALSE}
 data = data.frame(x = c(-5, -3, -2, 0, 1, 3, 4, 6), y = c(0, 1, 0, 1, 0, 1, 0, 0))
+ggplot(data, aes(x = x, y=y)) + geom_step()
+```
+
+### Mirror Symmetry
+
+```{r echo = FALSE}
+data = data.frame(x = c(-10, -1, 0, 1, 4, 10), y = c(1,  0, 0, 1, 1, 1))
 ggplot(data, aes(x = x, y=y)) + geom_step()
 ```
 
