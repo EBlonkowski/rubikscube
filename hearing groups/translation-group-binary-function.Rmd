@@ -100,33 +100,35 @@ digraph boxes_and_circles {
 
 > Proof: Let $g \in \mathcal{P}(r), D_t \in \mathcal{GT}(r)$. We have $g^{-1}D_tg \in D_{\mathbb{R}}$ and $g^{-1}D_tg \in \mathcal{P}(r)$ so that $g^{-1}D_tg \in \mathcal{GT}(r)$
 
+**Definition** If the lattice subgroup of a recording is $D_{\mathbb{R}}$ we say that the recording has **continuous steps**, if the lattice subgroup is of the form $D_{a\mathbb{Z}}$ for $a \in \mathbb{R}^+$ we say the recording has **discrete steps** of size a. If the lattice subgroup if trivial, we say that the recording is time anchored.
+
 ### Point Group
 
-The **point group** at $c \in \mathbb{R}$ of a recording r is $\{p \in <D_c \circ I \circ D_{-c}> \mid p \bullet r = r\}$. We call it $\mathcal{GL}_c(r)$
+**Definition** The **point group** at $c \in \mathbb{R}$ of a recording r is $\{p \in <D_c \circ I \circ D_{-c}> \mid p \bullet r = r\}$. We call it $\mathcal{GL}_c(r)$
 
 The point group at c is always a subgroup of $<D_c \circ I \circ D_{-c}>$ which has only 2 elements.
 
 The goal of this part is to define the structure of the point groups of a recording r.
 The further goal is to associate to any beat B a point group.
 
-Let's assume that the point groups at c and d, two distinct points on the real line are both non trivial.
+**Property** Let's assume that r has discrete steps of pace a and that its point groups at c and d $\in \mathbb{R}$ are both non trivial. Then $a \over 2$ divides $|c-d|$ and in particular $|c-d| \geq {a \over 2}$.
 
-To understand the reasoning let's assume that the pattern between c and d is 12345, we write is c12345d. We can see that from this pattern and the information that the point groups at c and d are not trivial we can reconstruct the whole recording.
-
+> To understand the reasoning let's assume that the pattern between c and d is 12345, we write is c12345d. We can see that from this pattern and the information that the point groups at c and d are not trivial we can reconstruct the whole recording.
+>
 c12345d --Ic-> 54321c12345d -Id-> 54321c12345d54321_12345 -Ic-> 54321_12345_54321c12345d54321_12345 -Id-> 
 54321_12345_54321c12345d54321_12345_54321_12345
-
+>
 We observe the size of these:
-
+>
 1 --> 2 --> 4 --> 6 --> 8 --> ... 
-
+>
 Apart from the first step we can see that each step grows the sequence by 2 measures.
-
+>
 If we write 12345 as XY and 54321 as YX we can rewrite the sequence as:
-
+>
 cXYd --Ic-> YXcXYd -Id-> YXcXYdYX_XY -Ic-> YX_XY_YXcXYdYX_XY -Id-> 
 YX_XY_YXcXYdYX_XY_YX_XY
-
+>
 It looks like this beat has a translation invariant pattern XYYX, that repeats every $2|c-d|$. Which would mean that a, the minimum repeating distance must divide $2|c-d|$. Finally $\exists k \in \mathbb{N}, |c-d| = k{a \over 2}$, in particular, $|c-d| \geq {a \over 2}$.
 
   **Property** Let's assume that a recording r has a non-trivial point group at c. Then the point group at $c + {a \over 2}\mathbb{Z}$ is also not trivial.
@@ -146,8 +148,14 @@ It looks like this beat has a translation invariant pattern XYYX, that repeats e
   **Conclusion** The point group is a beat invariant. For each beat we can associate a subset of C(2), its point group.
   
   
-  **Property** Let r be a recording, we have $\mathcal{P}(r) = \mathcal{GT}(r) \rtimes \mathcal{GL}(r)$
-  
+  **Property** Let r be a recording with a non-trivial point group at c, then we have $\mathcal{P}(r) = \mathcal{GT}(r) \rtimes \mathcal{GL}_c(r)$ ???
+
+Since
+
+1. $\mathcal{GT}(r) \lhd \mathcal{P}(r)$
+2. $\mathcal{GT}(r) \cap \mathcal{GL}_{c}(r) = \varnothing$
+
+We have $\mathcal{GT}(r) \rtimes \mathcal{GL}_{c}(r) \subset \mathcal{P}(r)$.
   
 ## Examples
 
@@ -207,15 +215,36 @@ So that $al(1 - {t \over 2}+t) = 0$ and $D_t(al) \neq al$ and we have a contradi
 >
 Finally: $D_{2 \mathbb{Z}} = \mathcal{GT}(al)$
 
-**Property** Its point group at 0.5 is $<D_{-0.5} \circ I \circ D_{0.5}>$
+**Property** Its point group at 0.5 is $<D_{-0.5} \circ I \circ D_{0.5}>$ or $<D_{-1} \circ I>$
 
 > Proof: $$\forall y \in \mathbb{R}, D_{-0.5} \circ^{\star} I \circ^\star D_{o.5} (al) (y) = al(-y+1) = \\
 1 - al(-y) = al(y)$$
 
-**Property** Structure of $\mathcal{P}(al)$
+**Property** Its point group lattice is $0.5 + \mathbb{Z}$.
 
+**Property** Structure of the playing group: 
+$$\mathcal{P}(al) = \mathcal{GT}(al) \rtimes \mathcal{GL}_{0.5}(al) \sim \mathbb{Z} \rtimes C(2)$$
+
+>Since
+>
+1. $\mathcal{GT}(al) \lhd \mathcal{P}(al)$
+2. $\mathcal{GT}(al) \cap \mathcal{GL}_{0.5}(al) = \varnothing$
+>
+We have $\mathcal{GT}(al) \rtimes \mathcal{GL}_{0.5}(al) \subset \mathcal{P}(al)$. Now let's prove the opposite inclusion.
+>
 Let $F \in \mathcal{P}$ be a playing operator that leaves al fixed: $F(al) = al$.
 Since $\mathcal{P} = D_{\mathbb{R}} \rtimes <I>$ with $D_{\mathbb{R}}$ being a normal subgroup of order 2, we know that there exists a unique $t \in \mathbb{R}$ such that F can be written uniquely as $F = D_t \circ I$ or $F = D_t$.
+>
+If $F = D_t$ then clearly $F \in D_{\mathbb{R}} \cap \mathcal{P}(al)$ so that $F \in \mathcal{GT}(al) \subset \mathcal{GT}(al) \rtimes \mathcal{GL}(al)$.
+>
+Now let's assume $F = D_t \circ I$
+We write 
+$$G = F \circ D_{-0.5} \circ I \circ D_{0.5} = D_t \circ I \circ D_{-0.5} \circ I \circ D_{0.5}=\\
+D_t \circ D_{0.5} \circ D_{0.5}= D_{t+1}$$
+>
+Since $G \in \mathcal{P}(al)$, we must have $D_{t+1} \in D_{2\mathbb{Z}}$ or $2 \ | \ t+1$. So we can write $t+1 = 2k$ or $t = 2k-1$. So that F is written $F = D_{2k-1} \circ I = D_{2k} \circ (D_{-1} \circ I) \in \mathcal{GT}(al) \rtimes \mathcal{GL}_{0.5}(al)$
+>
+So $\mathcal{P}(al) \subset \mathcal{GT}(al) \rtimes \mathcal{GL}_{0.5}(al)$ and we have shown the result.
 
 ```{r echo = FALSE}
 data = data.frame(x = c(-3, -2, -1, 0, 1, 2, 3, 4), y = c(0, 1, 0, 1, 0, 1, 0, 0))
