@@ -1,0 +1,163 @@
+---
+title: "S4"
+author: "Manu"
+date: "9 November 2018"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+library(DiagrammeR)
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+S4 has 24 elements
+
+| Order        | Number | Elements |
+|--------------|--------|----------|
+| 1            |   1    |   id     |
+| 2            |   9    | (1 2), (1 3), (1, 4), (2, 3), (2, 4), (3, 4), (1 2) (3 4), (1 3) (2 4), (1 4) (2 3) |
+| 3            |   8    | (1 2 3), (1 3 2), (1 2 4), (1 4 2), (1 3 4), (1 4 3), (2 3 4), (2 4 3) |
+| 4            |    6   | (1 2 3 4), (1 4 3 2), (1 2 4 3), (1 3 4 2), (1 3 2 4), (1 4 2 3) |
+
+
+# Cycle Graph
+
+```{r cycle1, echo = FALSE, fig.width = 10}
+grViz('
+graph S4 {
+  graph [layout = dot]
+
+  {rank = same; 
+  p_1_2 [label = "(1 2)"]
+  p_1_3 [label = "(1 3)"]
+  p_1_4 [label = "(1 4)"]
+  p_2_3 [label = "(2 3)"]
+  p_2_4 [label = "(2 4)"]
+  p_3_4 [label = "(3 4)"]
+  }
+
+  e
+
+  p_1_2_3 [label = "(1 2 3)"]
+  p_1_3_2 [label = "(1 3 2)"]
+  p_1_2_4 [label = "(1 2 4)"]
+  p_1_4_2 [label = "(1 4 2)"]
+  p_1_3_4 [label = "(1 3 4)"]
+  p_1_4_3 [label = "(1 4 3)"]
+  p_2_3_4 [label = "(2 3 4)"]
+  p_2_4_3 [label = "(2 4 3)"]
+
+
+  p_1_2_3_4 [label = "(1 2 3 4)"]
+  p_1_4_3_2 [label = "(1 4 3 2)"]
+
+  p_1_2_4_3 [label = "(1 2 4 3)"]
+  p_1_3_4_2 [label = "(1 3 4 2)"]
+
+  p_1_3_2_4 [label = "(1 3 2 4)"]
+  p_1_4_2_3 [label = "(1 4 2 3)"]
+  {rank = min; 
+  p_1_3_T_2_4 [label = "(1 3) (2 4)"]
+  p_1_4_T_2_3 [label = "(1 4) (2 3)"]
+  p_1_2_T_3_4 [label = "(1 2) (3 4)"]
+
+  }
+
+  e -- p_1_2
+  e -- p_1_3
+  e -- p_1_4
+  e -- p_2_3
+  e -- p_2_4
+  e -- p_3_4
+
+  e -- p_1_2_3
+  e -- p_1_3_2
+  e -- p_1_2_4
+  e -- p_1_4_2
+  e -- p_1_3_4
+  e -- p_1_4_3
+  e -- p_2_3_4
+  e -- p_2_4_3
+
+  p_1_2_3 -- p_1_3_2
+  p_1_2_4 -- p_1_4_2
+  p_1_3_4 -- p_1_4_3
+  p_2_3_4 -- p_2_4_3
+
+  p_1_2_3_4 -- e
+  p_1_4_3_2 -- e
+  p_1_2_4_3 -- e
+  p_1_3_4_2 -- e
+  p_1_3_2_4 -- e
+  p_1_4_2_3 -- e
+
+  p_1_2_3_4 -- p_1_3_T_2_4
+  p_1_4_3_2 -- p_1_3_T_2_4
+
+  p_1_2_4_3 -- p_1_4_T_2_3
+  p_1_3_4_2 -- p_1_4_T_2_3
+
+  p_1_3_2_4 -- p_1_2_T_3_4
+  p_1_4_2_3 -- p_1_2_T_3_4
+
+}
+')
+```
+
+Another representation
+
+```{r cycle_graph, echo = FALSE, fig.width = 10}
+grViz('
+graph S4 {
+  graph [layout = neato, start = 4, overlap = false, splines = true]
+
+  node [label = "", width = 0.1, height = 0.1, color = black, style = filled]
+
+  e -- p_1_2_3
+  e -- p_1_3_2
+  e -- p_1_2_4
+  e -- p_1_4_2
+  e -- p_1_3_4
+  e -- p_1_4_3
+  e -- p_2_3_4
+  e -- p_2_4_3
+
+  edge [len=0.6];
+  p_1_2_3 -- p_1_3_2
+  p_1_2_4 -- p_1_4_2
+  p_1_3_4 -- p_1_4_3
+  p_2_3_4 -- p_2_4_3
+
+  edge [len=1.2];
+  e -- p_1_2_3_4
+  e -- p_1_4_3_2
+  e -- p_1_2_4_3
+  e -- p_1_3_4_2
+  e -- p_1_3_2_4
+  e -- p_1_4_2_3
+
+  edge [len=0.6];
+  p_1_2_3_4 -- p_1_3_T_2_4
+  p_1_4_3_2 -- p_1_3_T_2_4
+
+  p_1_2_4_3 -- p_1_4_T_2_3
+  p_1_3_4_2 -- p_1_4_T_2_3
+
+  p_1_3_2_4 -- p_1_2_T_3_4
+  p_1_4_2_3 -- p_1_2_T_3_4
+
+  edge [len=0.8];
+  e -- p_1_2
+  e -- p_1_3
+  e -- p_1_4
+  e -- p_2_3
+  e -- p_2_4
+  e -- p_3_4
+}
+')
+```
