@@ -143,7 +143,7 @@ $(document).ready(function () {
 <li><a href="#maps-p---cou">Maps P -&gt; Cou</a></li>
 </ul></li>
 <li><a href="#chains-of-couples">Chains of couples</a><ul>
-<li><a href="#chains">3 Chains</a></li>
+<li><a href="#examples-1">Examples</a></li>
 <li><a href="#definition-of-2-chains">Definition of 2-chains</a></li>
 </ul></li>
 <li><a href="#functions-g-times-g-rightarrow-c2">Functions <span class="math inline">\(G \times G \rightarrow C(2)\)</span></a></li>
@@ -203,8 +203,8 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<div id="htmlwidget-4f8b80adfca9a889ce9a" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4f8b80adfca9a889ce9a">{"x":{"diagram":"\ngraph S4 {\n  graph [layout = twopi, size=\"7.75,10.25\", ranksep=3.0, nodesep=2.0]\n\n  e\n  p_1_2 [label = \"(1 2)\"]\n  p_1_3 [label = \"(1 3)\"]\n  p_1_4 [label = \"(1 4)\"]\n  p_2_3 [label = \"(2 3)\"]\n  p_2_4 [label = \"(2 4)\"]\n  p_3_4 [label = \"(3 4)\"]\n  \n  p_1_2_3 [label = \"(1 2 3)\"]\n  p_1_3_2 [label = \"(1 3 2)\"]\n  p_1_2_4 [label = \"(1 2 4)\"]\n  p_1_4_2 [label = \"(1 4 2)\"]\n  p_1_3_4 [label = \"(1 3 4)\"]\n  p_1_4_3 [label = \"(1 4 3)\"]\n  p_2_3_4 [label = \"(2 3 4)\"]\n  p_2_4_3 [label = \"(2 4 3)\"]\n\n  p_1_2_3_4 [label = \"(1 2 3 4)\"]\n  p_1_3_T_2_4 [label = \"(1 3) (2 4)\"]\n  p_1_4_3_2 [label = \"(1 4 3 2)\"]\n\n  p_1_2_4_3 [label = \"(1 2 4 3)\"]\n  p_1_4_T_2_3 [label = \"(1 4) (2 3)\"]\n  p_1_3_4_2 [label = \"(1 3 4 2)\"]\n\n  p_1_3_2_4 [label = \"(1 3 2 4)\"]\n  p_1_2_T_3_4 [label = \"(1 2) (3 4)\"]\n  p_1_4_2_3 [label = \"(1 4 2 3)\"]\n\n\n  e -- p_1_2\n  e -- p_1_3\n  e -- p_1_4\n  e -- p_2_3\n  e -- p_2_4\n  e -- p_3_4\n\n  e -- p_1_2_3\n  e -- p_1_3_2\n  e -- p_1_2_4\n  e -- p_1_4_2\n  e -- p_1_3_4\n  e -- p_1_4_3\n  e -- p_2_3_4\n  e -- p_2_4_3\n\n  p_1_2_3 -- p_1_3_2\n  p_1_2_4 -- p_1_4_2\n  p_1_3_4 -- p_1_4_3\n  p_2_3_4 -- p_2_4_3\n\n  e -- p_1_2_3_4\n  e -- p_1_4_3_2\n  e -- p_1_2_4_3\n  e -- p_1_3_4_2\n  e -- p_1_3_2_4\n  e -- p_1_4_2_3\n\n  p_1_2_3_4 -- p_1_3_T_2_4\n  p_1_4_3_2 -- p_1_3_T_2_4\n\n  p_1_2_4_3 -- p_1_4_T_2_3\n  p_1_3_4_2 -- p_1_4_T_2_3\n\n  p_1_3_2_4 -- p_1_2_T_3_4\n  p_1_4_2_3 -- p_1_2_T_3_4\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-479d4d393967e4cb4065" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-479d4d393967e4cb4065">{"x":{"diagram":"\ngraph S4 {\n  graph [layout = twopi, size=\"7.75,10.25\", ranksep=3.0, nodesep=2.0]\n\n  e\n  p_1_2 [label = \"(1 2)\"]\n  p_1_3 [label = \"(1 3)\"]\n  p_1_4 [label = \"(1 4)\"]\n  p_2_3 [label = \"(2 3)\"]\n  p_2_4 [label = \"(2 4)\"]\n  p_3_4 [label = \"(3 4)\"]\n  \n  p_1_2_3 [label = \"(1 2 3)\"]\n  p_1_3_2 [label = \"(1 3 2)\"]\n  p_1_2_4 [label = \"(1 2 4)\"]\n  p_1_4_2 [label = \"(1 4 2)\"]\n  p_1_3_4 [label = \"(1 3 4)\"]\n  p_1_4_3 [label = \"(1 4 3)\"]\n  p_2_3_4 [label = \"(2 3 4)\"]\n  p_2_4_3 [label = \"(2 4 3)\"]\n\n  p_1_2_3_4 [label = \"(1 2 3 4)\"]\n  p_1_3_T_2_4 [label = \"(1 3) (2 4)\"]\n  p_1_4_3_2 [label = \"(1 4 3 2)\"]\n\n  p_1_2_4_3 [label = \"(1 2 4 3)\"]\n  p_1_4_T_2_3 [label = \"(1 4) (2 3)\"]\n  p_1_3_4_2 [label = \"(1 3 4 2)\"]\n\n  p_1_3_2_4 [label = \"(1 3 2 4)\"]\n  p_1_2_T_3_4 [label = \"(1 2) (3 4)\"]\n  p_1_4_2_3 [label = \"(1 4 2 3)\"]\n\n\n  e -- p_1_2\n  e -- p_1_3\n  e -- p_1_4\n  e -- p_2_3\n  e -- p_2_4\n  e -- p_3_4\n\n  e -- p_1_2_3\n  e -- p_1_3_2\n  e -- p_1_2_4\n  e -- p_1_4_2\n  e -- p_1_3_4\n  e -- p_1_4_3\n  e -- p_2_3_4\n  e -- p_2_4_3\n\n  p_1_2_3 -- p_1_3_2\n  p_1_2_4 -- p_1_4_2\n  p_1_3_4 -- p_1_4_3\n  p_2_3_4 -- p_2_4_3\n\n  e -- p_1_2_3_4\n  e -- p_1_4_3_2\n  e -- p_1_2_4_3\n  e -- p_1_3_4_2\n  e -- p_1_3_2_4\n  e -- p_1_4_2_3\n\n  p_1_2_3_4 -- p_1_3_T_2_4\n  p_1_4_3_2 -- p_1_3_T_2_4\n\n  p_1_2_4_3 -- p_1_4_T_2_3\n  p_1_3_4_2 -- p_1_4_T_2_3\n\n  p_1_3_2_4 -- p_1_2_T_3_4\n  p_1_4_2_3 -- p_1_2_T_3_4\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="s5" class="section level3">
 <h3>S5</h3>
@@ -676,70 +676,144 @@ $(document).ready(function () {
 <h2>Chains of couples</h2>
 <p>Let g be any element in S(A) and (x, y) any pair we can define a chain:</p>
 <p>(x, y) -&gt; (gx, gy) -&gt; <span class="math inline">\((g^2 \cdot x, g^2 \cdot y)\)</span> -&gt; … -&gt; (x, y)</p>
-<p><strong>Examples</strong></p>
+<p><strong>Definition</strong> The <strong>length</strong> of a g-chain <span class="math inline">\((x,y)_g\)</span> is the smallest <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(g^n \cdot (x,y) = (x, y)\)</span></p>
+<p>Example: Let A = {1, 2, 3} and g = (1 2 3)</p>
+<p>The following chain: (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+has length 3</p>
+<p><strong>Definition</strong> We say that a g-chain <span class="math inline">\((x,y)_g\)</span> <strong>twists</strong> if there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math display">\[g^n \cdot (x, y) = (y, x)\]</span></p>
+<p>Example: Let A = {1, 2, 3} and g = (1 2)</p>
+<p>The following chain: (1, 2) -&gt; (2, 1) -&gt; (1, 2)<br />
+twists</p>
+<p>Now using g = (1 2 3) The following chain: (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+doesn’t twist</p>
+<p><strong>Property</strong> If a chain twists then it has an even length</p>
+<div id="examples-1" class="section level3">
+<h3>Examples</h3>
 <p>Let A = {1, 2, 3} and g = (1 2 3)</p>
 <p>We have the following chains:</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) (2, 1) -&gt; (3, 2) -&gt; (1, 3) -&gt; (2, 1)</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+(2, 1) -&gt; (3, 2) -&gt; (1, 3) -&gt; (2, 1)</p>
 <p>We can see that up to a reordering of the chain, we only have 2 chains, and they are opposite by the action of C(2).</p>
-<p>We can also see that up to the action of C(2) we have 3 chains (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) (2, 3) -&gt; (3, 1) -&gt; (1, 2) -&gt; (2, 3) (3, 1) -&gt; (1, 2) -&gt; (2, 3) -&gt; (3, 1)</p>
+<p>We can also see that up to the action of C(2) we have 3 chains (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+(2, 3) -&gt; (3, 1) -&gt; (1, 2) -&gt; (2, 3)<br />
+(3, 1) -&gt; (1, 2) -&gt; (2, 3) -&gt; (3, 1)</p>
 <p>If we quotient by the 2 actions we get only 1 chain:</p>
 <p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) 0</p>
 <hr />
 <p>Now for g = (1 2)</p>
-<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) (1, 3) -&gt; (2, 3) -&gt; (1, 3) (3, 1) -&gt; (3, 2) -&gt; (3, 1)</p>
+<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2)<br />
+(1, 3) -&gt; (2, 3) -&gt; (1, 3)<br />
+(3, 1) -&gt; (3, 2) -&gt; (3, 1)</p>
 <p>Here we have one chain symmetric to itself and a pair of opposite chains, up to reordering of the chain. We can also see that up to the action of C(2) we have 3 chains</p>
-<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) (1, 3) -&gt; (2, 3) -&gt; (1, 3) (2, 3) -&gt; (1, 3) -&gt; (2, 3)</p>
+<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2)<br />
+(1, 3) -&gt; (2, 3) -&gt; (1, 3)<br />
+(2, 3) -&gt; (1, 3) -&gt; (2, 3)</p>
 <p>Now if we quotient by the 2 actions, we get only 2 chains:</p>
-<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) 1 (1, 3) -&gt; (2, 3) -&gt; (1, 3) 0</p>
+<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) 1<br />
+(1, 3) -&gt; (2, 3) -&gt; (1, 3) 0</p>
 <hr />
 <p>Let A = {1, 2, 3, 4} and g = (1 2 3 4)</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 1) -&gt; (1, 2) = 0 (1, 3) -&gt; (2, 4) -&gt; (3, 1) -&gt; (4, 2) -&gt; (1, 3) = 1 (1, 4) -&gt; (2, 1) -&gt; (3, 2) -&gt; (4, 3) -&gt; (1, 4) = 0 (2, 3) -&gt; (3, 4) -&gt; (4, 1) -&gt; (1, 2) -&gt; (2, 3) = 0 (2, 4) -&gt; (3, 1) -&gt; (4, 2) -&gt; (1, 3) -&gt; (2, 4) = 1 (3, 4) -&gt; (4, 1) -&gt; (1, 2) -&gt; (2, 3) -&gt; (3, 4) = 0</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 1) -&gt; (1, 2) = 0<br />
+(1, 3) -&gt; (2, 4) -&gt; (3, 1) -&gt; (4, 2) -&gt; (1, 3) = 1<br />
+(1, 4) -&gt; (2, 1) -&gt; (3, 2) -&gt; (4, 3) -&gt; (1, 4) = 0<br />
+(2, 3) -&gt; (3, 4) -&gt; (4, 1) -&gt; (1, 2) -&gt; (2, 3) = 0<br />
+(2, 4) -&gt; (3, 1) -&gt; (4, 2) -&gt; (1, 3) -&gt; (2, 4) = 1<br />
+(3, 4) -&gt; (4, 1) -&gt; (1, 2) -&gt; (2, 3) -&gt; (3, 4) = 0</p>
 <p>Up to C(2)</p>
 <p>If we also quotient by the action of g:</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 1) -&gt; (1, 2) = 0 (1, 3) -&gt; (2, 4) -&gt; (3, 1) -&gt; (4, 2) -&gt; (1, 3) = 1</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 1) -&gt; (1, 2) = 0<br />
+(1, 3) -&gt; (2, 4) -&gt; (3, 1) -&gt; (4, 2) -&gt; (1, 3) = 1</p>
 <hr />
 <p>Let A = {1, 2, 3, 4} and g = (1 2) (3 4)</p>
 <p>Quotient by the action of g:</p>
-<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2)</p>
-<p>(1, 3) -&gt; (2, 4) -&gt; (1, 3) (3, 1) -&gt; (4, 2) -&gt; (3, 1)</p>
-<p>(1, 4) -&gt; (2, 3) -&gt; (1, 4) (4, 1) -&gt; (3, 2) -&gt; (4, 1)</p>
-<p>(3, 4) -&gt; (4, 3) -&gt; (3, 4)</p>
+<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) 1</p>
+<p>(1, 3) -&gt; (2, 4) -&gt; (1, 3) 0<br />
+(3, 1) -&gt; (4, 2) -&gt; (3, 1) 0</p>
+<p>(1, 4) -&gt; (2, 3) -&gt; (1, 4) 0<br />
+(4, 1) -&gt; (3, 2) -&gt; (4, 1) 0</p>
+<p>(3, 4) -&gt; (4, 3) -&gt; (3, 4) 1</p>
 <p>Now we quotient again by the action of C(2).</p>
-<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) 1 (1, 3) -&gt; (2, 4) -&gt; (1, 3) 0 (1, 4) -&gt; (2, 3) -&gt; (1, 4) 0 (3, 4) -&gt; (4, 3) -&gt; (3, 4) 1</p>
+<p>(1, 2) -&gt; (2, 1) -&gt; (1, 2) 1<br />
+(1, 3) -&gt; (2, 4) -&gt; (1, 3) 0<br />
+(1, 4) -&gt; (2, 3) -&gt; (1, 4) 0<br />
+(3, 4) -&gt; (4, 3) -&gt; (3, 4) 1</p>
+<p>Total: 0</p>
 <hr />
 <p>Let A = {1, 2, 3, 4} and g = (1 2 3)</p>
 <p>Quotient by the action of g</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) (2, 1) -&gt; (3, 2) -&gt; (1, 3) -&gt; (2, 1)</p>
-<p>(1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4) (4, 1) -&gt; (4, 2) -&gt; (4, 3) -&gt; (4, 1)</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+(2, 1) -&gt; (3, 2) -&gt; (1, 3) -&gt; (2, 1)</p>
+<p>(1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4)<br />
+(4, 1) -&gt; (4, 2) -&gt; (4, 3) -&gt; (4, 1)</p>
 <p>If we quotient again by the action of C(2) we get 2 chains:</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) (1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4)</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+(1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4)</p>
 <hr />
 <p>Let A = {1, 2, 3, 4, 5} and g = (1 2 3 4 5)</p>
 <p>If we don’t quotient by any action we get 20 chains (too much)</p>
 <p>If we quotient by the action of g we get 4 chains</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 5) -&gt; (5, 1) -&gt; (1, 2) (2, 1) -&gt; (3, 2) -&gt; (4, 3) -&gt; (5, 4) -&gt; (1, 5) -&gt; (2, 1)</p>
-<p>(1, 3) -&gt; (2, 4) -&gt; (3, 5) -&gt; (4, 1) -&gt; (5, 2) -&gt; (1, 3) (3, 1) -&gt; (4, 2) -&gt; (5, 3) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 1)</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 5) -&gt; (5, 1) -&gt; (1, 2)<br />
+(2, 1) -&gt; (3, 2) -&gt; (4, 3) -&gt; (5, 4) -&gt; (1, 5) -&gt; (2, 1)</p>
+<p>(1, 3) -&gt; (2, 4) -&gt; (3, 5) -&gt; (4, 1) -&gt; (5, 2) -&gt; (1, 3)<br />
+(3, 1) -&gt; (4, 2) -&gt; (5, 3) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 1)</p>
 <p>If we quotient by C(2) we get 2 chains:</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 5) -&gt; (5, 1) -&gt; (1, 2) 0 (1, 3) -&gt; (2, 4) -&gt; (3, 5) -&gt; (4, 1) -&gt; (5, 2) -&gt; (1, 3) 0</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 4) -&gt; (4, 5) -&gt; (5, 1) -&gt; (1, 2) 0<br />
+(1, 3) -&gt; (2, 4) -&gt; (3, 5) -&gt; (4, 1) -&gt; (5, 2) -&gt; (1, 3) 0</p>
 <hr />
 <p>Let A = {1, 2, 3, 4, 5} and g = (1 2 3) (4 5)</p>
 <p>We quotient by C(2) first, so we get 10 chains:</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) (1, 3) -&gt; (2, 1) -&gt; (3, 2) -&gt; (1, 3) (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) (2, 3) -&gt; (3, 1) -&gt; (1, 2) -&gt; (2, 3) (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) (4, 5) -&gt; (5, 4) -&gt; (4, 5)</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+(1, 3) -&gt; (2, 1) -&gt; (3, 2) -&gt; (1, 3)<br />
+(1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4)<br />
+(1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5)<br />
+(2, 3) -&gt; (3, 1) -&gt; (1, 2) -&gt; (2, 3)<br />
+(2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4)<br />
+(2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5)<br />
+(3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4)<br />
+(3, 5) -&gt; (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5)<br />
+(4, 5) -&gt; (5, 4) -&gt; (4, 5)</p>
 <p>Now we quotient by g we get 3 chains:</p>
-<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) 0 (1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) 0 (4, 5) -&gt; (5, 4) -&gt; (4, 5) 1</p>
+<p>(1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) 0<br />
+(1, 4) -&gt; (2, 5) -&gt; (3, 4) -&gt; (1, 5) -&gt; (2, 4) -&gt; (3, 5) -&gt; (1, 4) 0<br />
+(4, 5) -&gt; (5, 4) -&gt; (4, 5) 1</p>
 <hr />
 <p>Let A = {1, 2, 3, 4, 5} and g = (1 2 3)</p>
-<p>Quotient by C(2) first: (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) (1, 3) -&gt; (2, 1) -&gt; (3, 2) -&gt; (1, 3) (1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4) (1, 5) -&gt; (2, 5) -&gt; (3, 5) -&gt; (1, 5) (2, 3) -&gt; (3, 1) -&gt; (1, 2) -&gt; (2, 3) (2, 4) -&gt; (3, 4) -&gt; (1, 4) -&gt; (2, 4) (2, 5) -&gt; (3, 5) -&gt; (1, 5) -&gt; (2, 5) (3, 4) -&gt; (1, 4) -&gt; (2, 4) -&gt; (3, 4) (3, 5) -&gt; (1, 5) -&gt; (2, 5) -&gt; (3, 5) (4, 5) -&gt; (4, 5)</p>
-<p>Quotient by <g>: (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) 0 (1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4) 0 (1, 5) -&gt; (2, 5) -&gt; (3, 5) -&gt; (1, 5) 0 (4, 5) -&gt; (4, 5) 0</p>
+<p>Quotient by C(2) first: (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2)<br />
+(1, 3) -&gt; (2, 1) -&gt; (3, 2) -&gt; (1, 3)<br />
+(1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4)<br />
+(1, 5) -&gt; (2, 5) -&gt; (3, 5) -&gt; (1, 5)<br />
+(2, 3) -&gt; (3, 1) -&gt; (1, 2) -&gt; (2, 3)<br />
+(2, 4) -&gt; (3, 4) -&gt; (1, 4) -&gt; (2, 4)<br />
+(2, 5) -&gt; (3, 5) -&gt; (1, 5) -&gt; (2, 5)<br />
+(3, 4) -&gt; (1, 4) -&gt; (2, 4) -&gt; (3, 4)<br />
+(3, 5) -&gt; (1, 5) -&gt; (2, 5) -&gt; (3, 5)<br />
+(4, 5) -&gt; (4, 5)</p>
+<p>Quotient by <g>: (1, 2) -&gt; (2, 3) -&gt; (3, 1) -&gt; (1, 2) 0<br />
+(1, 4) -&gt; (2, 4) -&gt; (3, 4) -&gt; (1, 4) 0<br />
+(1, 5) -&gt; (2, 5) -&gt; (3, 5) -&gt; (1, 5) 0<br />
+(4, 5) -&gt; (4, 5) 0</p>
 <hr />
 <p>Let A = {1, 2, 3, 4, 5} and g = (4 5)</p>
 <p>Quotient by C(2):</p>
-<p>(1, 2) -&gt; (1, 2) (1, 3) -&gt; (1, 3) (1, 4) -&gt; (1, 5) -&gt; (1, 4) (1, 5) -&gt; (1, 4) -&gt; (1, 5) (2, 3) -&gt; (2, 3) (2, 4) -&gt; (2, 5) -&gt; (2, 4) (2, 5) -&gt; (2, 4) -&gt; (2, 5) (3, 4) -&gt; (3, 5) -&gt; (3, 4) (3, 5) -&gt; (3, 4) -&gt; (3, 5) (4, 5) -&gt; (5, 4) -&gt; (4, 5)</p>
+<p>(1, 2) -&gt; (1, 2)<br />
+(1, 3) -&gt; (1, 3)<br />
+(1, 4) -&gt; (1, 5) -&gt; (1, 4)<br />
+(1, 5) -&gt; (1, 4) -&gt; (1, 5)<br />
+(2, 3) -&gt; (2, 3)<br />
+(2, 4) -&gt; (2, 5) -&gt; (2, 4)<br />
+(2, 5) -&gt; (2, 4) -&gt; (2, 5)<br />
+(3, 4) -&gt; (3, 5) -&gt; (3, 4)<br />
+(3, 5) -&gt; (3, 4) -&gt; (3, 5)<br />
+(4, 5) -&gt; (5, 4) -&gt; (4, 5)</p>
 <p>Quotient by <g>:</p>
-<p>(1, 2) -&gt; (1, 2) (1, 3) -&gt; (1, 3) (1, 4) -&gt; (1, 5) -&gt; (1, 4) (2, 3) -&gt; (2, 3) (2, 4) -&gt; (2, 5) -&gt; (2, 4) (3, 4) -&gt; (3, 5) -&gt; (3, 4) (4, 5) -&gt; (5, 4) -&gt; (4, 5)</p>
+<p>(1, 2) -&gt; (1, 2)<br />
+(1, 3) -&gt; (1, 3)<br />
+(1, 4) -&gt; (1, 5) -&gt; (1, 4)<br />
+(2, 3) -&gt; (2, 3)<br />
+(2, 4) -&gt; (2, 5) -&gt; (2, 4)<br />
+(3, 4) -&gt; (3, 5) -&gt; (3, 4)<br />
+(4, 5) -&gt; (5, 4) -&gt; (4, 5)</p>
 <p>They all have signature 0 except the last one.</p>
-<div id="chains" class="section level3">
-<h3>3 Chains</h3>
 </div>
 <div id="definition-of-2-chains" class="section level3">
 <h3>Definition of 2-chains</h3>
@@ -748,10 +822,10 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(\forall n \in N, (g^n(x), g^n(y)) \in Cou(A)\)</span></li>
 <li>La serie est periodique: there exists n0 such that <span class="math inline">\((g^n(x), g^n(y)) = (g^{n_0+n}(x), g^{n_0 +n}(y))\)</span></li>
-<li>A g-chain is uniquely defined by its first value, so we note it <span class="math inline">\((x, y)_g\)</span> <strong>Definition</strong></li>
+<li>A g-chain is uniquely defined by its first value, so we note it <span class="math inline">\((x, y)_g\)</span></li>
 </ol>
-<p>We define <strong>Chain(g)</strong> has the set of all chains {chain((x,y), g) / (x, y) in Cou}</p>
-<p>|Chain(g)| = n(n-1) where n = |A|</p>
+<p><strong>Definition</strong> We define <strong>Chain(g)</strong> has the set of all chains {chain((x,y), g) / (x, y) in Cou}</p>
+<p><strong>Property</strong> |Chain(g)| = n(n-1) where n = |A|</p>
 <p>We have one <strong>action of C(2)</strong> on Chain(g) defined by <span class="math inline">\(1+(g^n(x), g^n(y))_{n \in N} = (g^n(y), g^n(x))_{n \in N}\)</span>. We easily verify that both are g-chains.</p>
 <p>We also have one <strong>action of <g></strong> on Chain(g) defined by <span class="math inline">\(1+(g^n(x), g^n(y))_{n \in N} = (g^n(g(x)), g^n(g(y)))_{n \in N}\)</span></p>
 <p>Both actions commute: 1+(g.c) = g.(1+c) Because of that we can define a g action on the orbits by C(2).</p>
@@ -765,7 +839,7 @@ $(document).ready(function () {
 </div>
 <div id="functions-g-times-g-rightarrow-c2" class="section level2">
 <h2>Functions <span class="math inline">\(G \times G \rightarrow C(2)\)</span></h2>
-<p>Let f, g in Hom(G2, C(2)) then we can define (f+g)(x, y) = f(x, y) + g(x, y)</p>
+<p>Let f, g in <span class="math inline">\(\mathrm{Hom}(G^2, C(2))\)</span> then we can define (f+g)(x, y) = f(x, y) + g(x, y)</p>
 <p>For <span class="math inline">\((x_0, y_0) \in P\)</span> we define <span class="math inline">\(\mathcal{I}_{x_0, y_0}\)</span> in Hom(G2, C(2)) to be the function equal to 1 on <span class="math inline">\((x_0, y_0)\)</span> and 0 everywhere else.</p>
 </div>
 
