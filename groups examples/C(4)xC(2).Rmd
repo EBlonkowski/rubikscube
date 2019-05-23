@@ -1,0 +1,93 @@
+---
+title: "C(4)xC(2)"
+author: "Emmanuel Blonkowski"
+date: "23 May 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DiagrammeR)
+```
+
+## Definition
+
+We write it additively as the product $C(4) \times C(2)$.
+
+Example of element: (3, 1)
+
+It is a commutative group with 8 elements.
+
+Table of elements
+
+|Element | Order |
+|--------|-------|
+|(0,0)   |1      |
+|(1,0)   |4      |
+|(2,0)   |2      |
+|(3,0)   |4      |
+|(0,1)   |2      |
+|(1,1)   |4      |
+|(2,1)   |2      |
+|(3,1)   |4      |
+
+It has 4 elements of order 4, 3 elements of order 2.
+
+## Cycle Graph
+
+```{r echo = FALSE}
+grViz('
+graph cycle {
+ graph[layout = neato]
+ node [shape = circle, style = filled, color = grey, label=""]
+
+ 00 [color = red]
+
+  00 -- 10  -- 20 -- 30  -- 00
+  edge [color = "green"]
+  00 -- 11  -- 20 -- 31 -- 00
+  edge [color = "blue"]
+  00 -- 01
+  00 -- 21
+}
+')
+```
+
+## Subgroups
+
+It has 2 subgroups of order 4: \<10\> and \<11\>    
+It has 3 subgroups of order 2: \<01\>, \<20\> and \<21\>
+
+Lattice of subgroups:
+
+```{r echo = FALSE}
+grViz('
+graph cycle {
+ graph[layout = dot]
+ node [shape = circle, style = filled, color = grey]
+
+ 00 [color = red, label = "00"]; 10 [label = " 10 "]; 11 [label = " 11 "]
+ G [label = "C(4)xC(2)"]
+
+ 00 -- 01
+ 00 -- 20
+ 00 -- 21
+
+ 20 -- 10 -- G
+ 20 -- 11 -- G
+ 01 -- G
+ 21 -- G
+
+  {rank = same; 20; 01; 21;}
+}
+')
+```
+
+## Quotients
+
+Quotient by any subgroup of order 4 gives C(2).   
+Quotient by 01 yields a subgroup of order 4. We note that the class of 10 has order 4 in the quotient so $C(4) \times C(2) \ / <01> \  \sim C(4)$.   
+Quotient by 20 yields a subgroup of order 4. All elements of order 4 in G are mapped to elements of order 2 in 20. So $G / 20$ has no element of order 4 and $G / 20 \sim C(2)^2$
+Quotient by 21 yields a subgroup of order 4. We note that the class of 10 has order 4 in the quotient so $C(4) \times C(2) \ / <21> \  \sim C(4)$.     
+
+**Conclusion**: there are 3 different quotients $C(2), C(4), C(2)^2$.
