@@ -565,3 +565,30 @@ Let f, g in $\mathrm{Hom}(G^2, C(2))$ then we can define (f+g)(x, y) = f(x, y) +
 
 For $(x_0, y_0) \in P$ we define $\mathcal{I}_{x_0, y_0}$ in Hom(G2, C(2)) to be the function equal to 1 on $(x_0, y_0)$ and 0 everywhere else.
 
+
+## Link between permutations and anti-symmetric relation
+
+A relation R on {1,2,3} is anti-symmetric if either xRy or yRx
+So an anti-symmetric relation on {1, 2, 3} gives for every ordered pair whether it is
+still ordered in R. There are 3 ordered pairs, so there are $2^3 = 8$ anti-symmetric relations on {1, 2, 3}
+
+Let s be a permutation on {1, 2, 3}
+We write < the standard ordering relation: 1 < 2 < 3
+We define $<_s$ by:     
+$$x <_s y \iff s(x) < s(y)$$
+For example if s = (1 2)
+then $2 <_s 1, 1 <_s 3, 2 <_s 3$ so that $2 <_s 1 <_s 3$
+if s = (2 3)
+$1 <_s 2, 1 <_s 3, 3 <_s 2$ so that $1 <_s 3 <_s 2$
+if s = (1 3)
+$2 <_s 1, 3 <_s 1, 3 <_s 2$ so that $3 <_s 2 <_s 1$
+if s = (1 2 3)
+$1 <_s 2, 3 <_s 1, 3 <_s 2$ so that $3 <_s 1 <_s 2 $
+
+Here we see that the result is always a total order.
+
+Let's take another relation $1 < 2, 3 < 1, 2 < 3$ this is like a circular ordering.
+For example if s = (1 2)
+then $2 <_s 1, 1 <_s 3, 3 <_s 2$ so that $1 <_S 3 <_s 2 <_s 1$
+if s = (1 3)
+$2 <_s 1, 1 <_s 3, 3 <_s 2$ so that $1 <_s 3 <_s 2 <_s 1 ...$

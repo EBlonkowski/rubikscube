@@ -11,7 +11,7 @@ output:
 library(permutations)
 library(igraph)
 library(DiagrammeR)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## S3 Group
@@ -117,6 +117,28 @@ More detailed action of the group on \<p\>:
 
 \<p\> is isomorphic to Z/3Z and it has no non-trivial subgroups.
 
+### Center
+
+An element belongs to the center iff it commutes with all elements. In particular it must commute with a. The only element that ommutes with a is the identity. So the center of S3 is trivial.
+
+### Commutator Subgroup
+
+$aba^{-1}b^{-1} = p^2$
+
+So $<p> \subset [S3, S3]$
+
+If we compute the commutator [x, y] for x and y in S3 - \<p\> we must get an element of p since the multiplication by an element of S3 - \<p\> swaps the cosets \<p\> and S3 - \<p\>.
+
+If we compute the commutator [x, y] for x and y in \<p\> we get 0 because it is commutative.
+
+Also we have $[x,y]^{-1} = (xyx^{-1}y^{-1})^{-1} = yxy^{-1}x^{-1} = [y, x]$ so we need only test commutators of the form $[p^i, g]$ where g is in S3 - \<p\>.
+We have $[p^i, g] = p^igp^{-i}g^{-1} \in <p>$ by normality of $<p>$.
+
+Finally we have shown that 
+$$[S3, S3] = <p>$$
+
+### All Subgroups of S3
+
 If G is a subgroup of S3 containing \<p\> then G*\<p\> is a subgroup of S3/\<p\>. S3/\<p\> is a group of order 2 so it is isomorphic to Z/2Z and it has no non trivial subgroup. The only subgroups containing p are {e} and S3.
 
 If G is a sub-group not including \<p\>. Then inter(G, \<p\>) is {e}. because inter(G, \<p\>) is a subgroup of \<p\> and it cannot be \<p\> because G does no include \<p\>.
@@ -156,7 +178,6 @@ path('{e}', '<p>', 'S3')
 
 plot(g)
 ```
-
 
 ## Actions of the group
 

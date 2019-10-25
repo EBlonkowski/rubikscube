@@ -1,0 +1,46 @@
+---
+title: "T3"
+author: "Emmanuel Blonkowski"
+date: "11 July 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+T3 is the automorphism group of a binary tree of depth 4.
+
+We have:
+$T_3 = i_2(T_2) \ltimes L^3_3 \sim D_4 \ltimes C(2)^4$
+Which means $T_3$ has 128 elements.
+
+It acts on $C(2)^8$
+
+According to the Pólya enumeration theorem, the number of orbits is given by:
+$${1 \over 128} \times \sum_{g \in T_3} 2^{c(g)}$$
+
+Burnside's lemma gives for the number of orbits:
+$${1 \over 128} \times \sum_{g \in T_3} |X^g|$$
+
+
+
+Those are the representents of equivalence classes of T2: 0(00), 0(11), 0(10), 1(00), 1(10)
+
+$$Z(T_3) \subset \mathrm{Ker}(F_3) \subset \mathrm{Ker}(F_3^2) \subset T_3$$
+
+Which is a normal serie of T3.
+We would like to extend it to a full decomposition serie of T3.
+
+$\mathrm{Ker}(F_3^2)$ is isomorphic to $T_2^2$ and has index 2 in T3 so it is maximal in T3.
+Now we are looking for a maximal normal subgroup of $\mathrm{Ker}(F_3^2)$
+This group has order 64 so a maximal normal subgroup must have order 32.
+$L_2^2$ is maximal normal in $T_2$, so $L_2^2 \times L_2^2$ is also normal in $T2^2$
+This subgroup corresponds to all elements of T3 of the form
+
+$$Z(T_3) \subset \mathrm{Ker}(F_3) \subset F_3^{-1}\{Z(T_2)\} \subset \mathrm{Ker}(F_3^2) \subset T_3$$
+
+Since the center is normal in T3 we have a map:
+$T3 \rightarrow T3/Z_3$
+$T3/Z_3$ has order 64. Multiplication by an element of the center
+

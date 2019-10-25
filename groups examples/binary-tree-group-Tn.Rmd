@@ -1,0 +1,398 @@
+---
+title: "Binary Tree Group Tn"
+author: "Emmanuel Blonkowski"
+date: "23 May 2019"
+output: 
+    html_document:
+        toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DiagrammeR)
+```
+
+## Definition
+
+Tn is the automorphism group of a binary tree of depth n+1.
+Clearly, T0 = 0, T1 = C(2)
+
+Recursive extention definition:
+$$T_1 = C(2) \\ 
+T_{n+1} = C(2) \ltimes [T_n \times T_n]$$
+As a group structure on a balanced binary tree
+
+## Number of Elements
+
+The number of elements is given by:
+$$|T_1| = 2 \\ 
+|T_{n+1}| = 2*T_n^2$$
+
+Alternatively, from the binary tree representation we have that $T_n$ is represented by a binary tree of n levels with an element of C(2) at each node and leaf. 
+The number of nodes in a tree of depth n is $1 + 2 + 4 + ... + 2^{n-1} = 2^n-1$
+$$T_n = 2^{2^n-1}$$
+
+In particular T1 has 2 elements, T2 has 8, T3 has 128, T4 has 32768, T5 has about 2.1e9,
+T6 has about 9e18.
+
+The following table summarizes the information:
+
+|n|$T_n$ tree representation depth|number of nodes|cardinality|
+|--|--|--|--|
+|0|0|0|1|
+|1|1|1|2|
+|2|2|3|8|
+|3|3|7|128|
+|4|4|15|32768|
+|5|5|31|2.1e9|
+|6|6|63|9e18|
+|7|7|127|2e38|
+|8|8|255|6e76|
+|9|9|511|7e153|
+|10|10|1023|9e307|
+
+### Number of Elements of Order 2
+
+T1 has 1 element of order 2, T2 has 5.
+
+Let $g = \mathrm{Tree}(0, a, b)\in T_n$ of order 2.
+Then either:
+- a is identity and b has order 2 ($|T_{n-1}|_2$ elements)
+- a has order 2 and b has order 2 ($|T_{n-1}|_2^2$ elements)
+- a has order 2 and b is the identity ($|T_{n-1}|_2$ elements)
+
+So there are $|T_{n-1}|_2^2 + 2|T_{n-1}|_2$ such g.
+
+Now let's suppose:
+$g = \mathrm{Tree}(1, a, b)\in T_n$
+We have $g^2 = \mathrm{Tree}(0,0,0) = \mathrm{Tree}(0, ba, ab)$
+So that $ba = ab = 1_{T_{n-1}}$
+So the pair ab is uniquely defined by a in $T_{n-1}$ and there are $|T_{n-1}|$ elements of this type. Note that all this elements are conjugates.
+
+Finally we obtain the following recursive formula:
+$$|T_n|_2 = |T_{n-1}|_2^2 + 2|T_{n-1}|_2 + |T_{n-1}|$$
+
+In particular we have       
+$|T_2|_2 = 1^2 + 2\times 1 + 2 = 5$     
+$|T_3|_2 = 5^2 + 2\times 5 + 8 = 43$        
+$|T_4|_2 = 43^2 + 2\times 43 + 128 = 2063$      
+$|T_5|_2 = 2063^2 + 2\times 2063 + 32768 = 4e6$         
+
+### Number of Elements of Order 4
+
+**Property** The number of element of order 4 verifies the following recurrence relation:
+$$|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]$$
+
+>Let $g = \mathrm{Tree}(0, a, b)\in T_n$, g has order 4 iff at least one of a or b have order 4 and both a and b have an order that divides 4.
+>
+We get 3 possibilities:
+- a has order 4, b has order 1 or 2 ($|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1)$)
+- a has order 4, b has order 4 ($|T_{n-1}|_4^2$)
+- a has order 1,2, b has order 4 ($|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1)$)
+>
+Let $g = \mathrm{Tree}(1, a, b)\in T_n$, g has order 4 iff $g^2 = \mathrm{Tree}(0, ba, ab)$ has order 2 iff ba has order 2 (since ba and ab have same order).
+>
+So we have to count the set $P2 = \{(a,b) \in T_{n-1}^2 | ba\ \mathrm{has\ order\ 2}\}$
+>
+Let O2 be the subset of element of $T_{n-1}$ of order 2 and let's write:
+$$f: O2\times T_{n-1} \rightarrow P2\\
+(c, a) \mapsto (ca^{-1}, a)$$
+>
+This map is well defined since $ca^{-1} \times a = c$ has order 2. It is injective because
+>
+$$f(c,a) = f(c', a') \implies a=a', ca^{-1} = c'a'^{-1} \implies a = a', c = c' $$
+>
+f is also surjective because for (a,b) in P2 we have (a,b) = f(ab, b)
+>
+So f is a bijective map and we have an equality of cardinals: $|T_{n-1}|_2 \times |T_{n-1}| = |P2|$
+>
+Finally we have proven the result:
+$$|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4^2 + 2|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1) =\\
+|T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]$$
+
+
+We have:
+
+$$|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]$$
+
+
+
+$|T_1|_4 = 0$       
+$|T_2|_4 = 1\times2 + 0\times[0 + 2(1 + 1)] = 2$        
+$|T_3|_4 = 5\times8 + 2\times[2 + 2(5 + 1)] = 68$
+$|T_4|_4 = 43\times128 + 68\times[68 + 2(43 + 1)] = 16112$
+$|T_5|_4 = 2063\times32768 + 16112\times[16112 + 2(2063 + 1)] = 393707264 \approx 4e8$
+
+### Number of elements of order 8
+
+**Property** The number of elements of order 8 in $T_n$ is given by: 
+
+$$|T_n|_8 = |T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_4 \times |T_{n-1}|$$
+
+>Let $g = \mathrm{Tree}(0, a, b)\in T_n$, g has order 8 iff at least one of a or b have order 8 and both a and b have an order that divides 8.
+>
+We get 2 possibilities:
+- a has order 8, b has order 1, 2, 4 or 8 ($|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4 + |T_{n-1}|_8)$)
+- a has order 1,2,4 b has order 8 ($|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4)$)
+>
+Total for untwisted g:
+$$|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4) = \\
+|T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8)$$
+>
+Let $g = \mathrm{Tree}(1, a, b)\in T_n$, g has order 8 iff $g^2 = \mathrm{Tree}(0, ba, ab)$ has order 4 iff ba has order 4 (since ba and ab have same order).
+>
+So we have to count the set $P_4 = \{(a,b) \in T_{n-1}^2 | ba\ \mathrm{has\ order\ 4}\}$
+>
+Let $O_4$ be the subset of element of $T_{n-1}$ of order 4 and let's write:
+$$f: O_4 \times T_{n-1} \rightarrow P_4\\
+(c, a) \mapsto (ca^{-1}, a)$$
+>
+This map is well defined since $ca^{-1} \times a = c$ has order 4. It is injective because
+>
+$$f(c,a) = f(c', a') \implies a=a', ca^{-1} = c'a'^{-1} \implies a = a', c = c' $$
+>
+f is also surjective because for (a,b) in $P_4$ we have (a,b) = f(ab, b)
+>
+So f is a bijective map and we have an equality of cardinals: $|T_{n-1}|_4 \times |T_{n-1}| = |P_4|$
+>
+We sum the twisted and untwisted numbers to get the result:
+$$|T_n|_8 = |T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_4 \times |T_{n-1}|$$
+
+
+### Number of elements of order $2^k$
+
+**Property** The number of elements of order $2^k$ in $T_n$ is given by: 
+
+$$|T_n|_{2^{k-1}} = 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2 + |T_{n-1}|_{2^{k-1}} \times |T_{n-1}|$$
+
+>Let $g = \mathrm{Tree}(0, a, b)\in T_n$, g has order $2^k$ iff at least one of a or b have order $2^k$ and both a and b have an order that divides $2^k$.
+>
+We get 2 possibilities:
+- a has order $2^k$, b has order $2^l, 0 \leq l \leq k$ ($|T_{n-1}|_{2^k} \times \sum_{0 \leq l \leq k}|T_{n-1}|_{2^l}$)
+- a has order 1,2,4 b has order 8 ($|T_{n-1}|_{2^k} \times \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l}$)
+>
+Total for untwisted g:
+$$|T_{n-1}|_{2^k} \sum_{0 \leq l \leq k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l}= \\
+2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2$$
+>
+Let $g = \mathrm{Tree}(1, a, b)\in T_n$, g has order $2^k$ iff $g^2 = \mathrm{Tree}(0, ba, ab)$ has order $2^{k-1}$ iff ba has order $2^{k-1}$ (since ba and ab have same order).
+>
+So we have to count the set $P_{2^{k-1}} = \{(a,b) \in T_{n-1}^2 | ba\ \mathrm{has\ order\ 2^{k-1}}\}$
+>
+Let $O_{2^{k-1}}$ be the subset of element of $T_{n-1}$ of order $2^{k-1}$ and let's write:
+$$f: O_{2^{k-1}} \times T_{n-1} \rightarrow P_{2^{k-1}}\\
+(c, a) \mapsto (ca^{-1}, a)$$
+>
+This map is well defined since $ca^{-1} \times a = c$ has order $2^{k-1}$. It is injective because
+>
+$$f(c,a) = f(c', a') \implies a=a', ca^{-1} = c'a'^{-1} \implies a = a', c = c' $$
+>
+f is also surjective because for (a,b) in $P_{2^{k-1}}$ we have (a,b) = f(ab, b)
+>
+So f is a bijective map and we have an equality of cardinals: $|T_{n-1}|_{2^{k-1}} \times |T_{n-1}| = |P_{2^{k-1}}|$
+>
+We sum the numbers for twisted and untwisted g's to get the result:
+$$|T_n|_{2^{k-1}} = 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2 + |T_{n-1}|_{2^{k-1}} \times |T_{n-1}|$$
+
+## Morphisms
+
+### Forget Last Layer $F_n$
+
+There is a surjective morphism
+$$T_n \rightarrow T_{n-1} \rightarrow 0$$
+
+Which is given by dropping the last level of the tree.
+
+We can define it formally by:
+$$F_2: T_2 \rightarrow T_1 \\
+Tree(a, left, right) \mapsto Tree(a)$$
+
+And $\forall n > 2$:
+$$F_n: Tree(a, left, right) \mapsto Tree(a, F_{n-1}(left), F_{n-1}(right))$$
+
+We can extend it to a short exact sequence:
+$$0 \rightarrow L^n_n \rightarrow T_n \rightarrow T_{n-1} \rightarrow 0$$
+
+This sequence is right split by the morphism $i_{n-1}:T_{n-1} \rightarrow T_n$ which includes $T_{n-1}$ at the top of $T_n$.
+Precisely it is defined by 
+$$i_1: T_1 \rightarrow T_2 \\
+Tree(a) \mapsto Tree(a, 0, 0)$$
+
+$$i_2: T_2 \rightarrow T_3 \\
+Tree(a, L, R) \mapsto Tree(a, i_1(L), i_1(R))$$
+
+$$i_n: T_n \rightarrow T_{n+1} \\
+Tree(a, L, R) \mapsto Tree(a, i_{n-1}(L), i_{n-1}(R))$$
+
+And so $T_n = i_{n-1}(T_{n-1}) \ltimes L^n_n$
+
+We can form a kind of sequence:
+$$... \rightarrow T_3 \rightarrow T_2 \rightarrow T_1 \rightarrow 0$$
+This sequence is not exact, and is not a chain complex either since the composition of maps is not null. 
+
+However by composing the maps we get a familly of morphisms:
+$$F_n: T_n \rightarrow T_{n-1} \\
+F_n^2: T_n \rightarrow T_{n-2} \\
+F_n^3: T_n \rightarrow T_{n-3} \\
+... \\
+F_n^{n-1}: T_n \rightarrow T_{1}$$
+
+And a family of normal subgroups:
+$$\mathrm{Ker}(F_n) \subset \mathrm{Ker}(F_n^2) \subset \mathrm{Ker}(F_n^3) \subset ... \subset \mathrm{Ker}(F_n^{n-1}) \subset T_n$$
+  
+
+As well as a family of decomposition:
+$$0 \rightarrow L^n_n \rightarrow T_n \rightarrow T_{n-1} \rightarrow 0\\
+0 \rightarrow \mathrm{Ker}(F_n^2) \rightarrow T_n \rightarrow T_{n-2} \rightarrow 0 \\
+... \\
+0 \rightarrow \mathrm{Ker}(F_n^{n-1}) \rightarrow T_n \rightarrow T_1 \rightarrow 0$$
+
+
+## Center
+
+**Property** The center of $T_n$ has order 2 and is generated by the element, noted $z_n$, which has zeros on the levels 1,2, ..., n-1 and is full of ones on the level n.
+Equivalently we can use the following recursive definition of $z_n$:
+$$z_0 = 1 \mathrm{\ and\ \\
+z_{n+1} = \mathrm{Tree(0, z_n,z_n)}}$$
+
+
+> If n = 1, then T1 is commutative and $Z(T_1) = 1 = z_1$
+Let's take n \> 1. Since Tn is generated by r1, ..., rn a element z belongs
+to Z(Tn) if and only if $r_izr_i = z \ \ \forall i$
+We verify quickly that conjugation by r1 swaps the two subtree. Thus the equation
+$r_1zr_1 = z$ is verified if and only if $z = \mathrm{Tree}(v, a, a), a \in T_{n-1}, v \in C(2)$       
+Let's show that v must be 0 by letting z act on Tree(0, b, 0)
+Let's suppose v = 1, we have
+$z\mathrm{Tree}(0,b,0)z^{-1} = \mathrm{Tree}(1, ab, 0)z^{-1} = \mathrm{Tree}(0, a^{-1}, aba^{-1})$
+If we choose any b different than $a^-1$ we get a contradiction, so v = 0 and z can be
+written  $z = \mathrm{Tree}(0, a, a), a \in T_{n-1}$
+>
+Taking $\mathrm{Tree}(0, g, g), g \in T_{n-1}$ and letting z act on it by conjugation we get
+that $aga^{-1} = g$. Since this is true for all g we must then have $a \in Z(T_{n-1})$.
+>
+Now let us assume a z of this form, that is $z = \mathrm{Tree}(0, a, a), a \in Z(T_{n-1})$. It is easy to show that z indeed commutes with every other element.
+
+
+**Property** The effect of multiplication by $z_n$ is to invert the last level of the tree.
+
+>Multiplication via left or right is the same since it belongs to the center.
+First let's show that multiplication by $z_n$ does not alter the first n-1 rows.
+The first n-1 rows of an element $g \in T_n$ is given by $F_n(g)$.
+We have $F_n(z_ng) = F_n(z_n)F_n(g) = F_n(g)$
+>
+Let's write $L_n(g)$ the last row of g. We have 
+$$L_n(gz_n) = L_n(\mathrm{Tree}(F_n(g), g_L, g_R)) \times \mathrm{Tree}(0, z_{n-1}, z_{n-1}) =\\
+L_n(Tree(F_n(g), z_{n-1}g_L, z_{n-1}g_R)) = L_{n-1}(z_{n-1}g_L) | L_{n-1}(z_{n-1}g_R) = \\
+\bar{g_L} | \bar{g_R} = \bar{g_L|g_R} = \bar{L_n(g)}$$
+>
+Where we have written with a bar the inverted sequence of a sequence.
+
+
+**Property** Representants of the quotient group $T_n/Z_n$ are given by elements of a binary balanced tree where the first element of the last level is one. Multiplication is done with the same rule as for $T_n$ except that when the product gives a tree with a 0 in the first count of the last level, we multiply the whole tree by $z_n$, which means we invert the last level.
+
+
+## Action on Seq(n)
+
+We define Seq(n, C(2)) to be the set of sequences of C(2) indexed by $1..2^n$
+We define $\mathrm{Val}(\mathrm{Seq}(n, C(2)), \mathbb{Q}) = \mathrm{Val}(n)$ to be the set of function from
+Seq(n, C(2)) to $\mathbb{Q}$. This forms a vector space naturally isomorphic to formal linear combinations of individual sequences. The dimension of this vector space is:
+$$\mathrm{dim(Val_n)} = 2^{(2^n)}$$
+
+We have a map $Val(n-1) \rightarrow Val(n)$
+
+Let's define 
+$$s_1: Seq(1) \rightarrow Seq(0) \\
+(a,b) \mapsto (a+b)$$
+
+and 
+$$s_n: Seq(n) \rightarrow Seq(n-1)\\
+(o_1 | o_2) \mapsto (s_{n-1}(o_1) | s_{n-1}(o_2))$$
+
+Then we get a vector space map:
+$$\mathcal{L}_n: \mathrm{Val}(n-1) \rightarrow \mathrm{Val}(n) \\
+f \mapsto f \circ s_n$$
+
+This map has trivial kernel since $s_n$ is surjective:
+$$\mathrm{Ker}(\mathcal{L_n}) = 0$$
+
+The image of $\mathcal{L}_n$ is precisely those valuation function on $S_n$ that are leaf in variants. By leaf invariant we mean that swapping $s_i \mathrm{\ and\ } s_{i+1}$ for i even does not change the value of the valuation. We can also say it as:
+$$\mathrm{Im}(\mathcal{L_n}) = \mathrm{Val}_n^{L_n}$$
+Where $L_n^n$ is the subgroup of the leaves of $\mathrm{T}_n$ and the exponentiation denotes taking invariants.
+
+so we get a short exact sequence:
+$$0 \rightarrow \mathrm{Val}_{n-1} \rightarrow \mathrm{Val}_{n} \rightarrow \mathrm{Val}_n/\mathrm{Val}_n^{L_n} \rightarrow 0$$
+
+We look at $\mathrm{Val}_1/\mathrm{Val}_1^{L_1}$
+$\mathrm{Val}_1$ is given by a basis:
+$$\delta_{00}, \delta_{10}, \delta_{01}, \delta_{11}$$
+
+input: $\delta_{0}$ so $\mathcal{L}_1(\delta_{0}) = \delta_{00} + \delta_{11}$      
+$\mathcal{L}_1(\delta_{0})(00) = \delta_{0}(0+0) = 1$
+10, 01: 0
+11 : 1
+input: $\delta_{1}$ so $\mathcal{L}_1(\delta_{1}) = \delta_{10} + \delta_{01}$
+00 : 0
+10, 01: 1
+11 : 0
+
+So $\mathrm{Val}_1^{L_1}$ is given by a basis: 
+$$\delta_{00}, \delta_{11}, \delta_{01} + \delta_{10}$$
+
+$\mathrm{Val}_n/\mathrm{Val}_{n-1}$
+$$\delta_{01}$$
+
+$\mathrm{Val}_2$ is given by a basis:
+$$\delta_{0000}, \delta_{1000}, \delta_{0100}, \delta_{1100} \\
+\delta_{0010}, \delta_{1010}, \delta_{0110}, \delta_{1110} \\
+\delta_{0001}, \delta_{1001}, \delta_{0101}, \delta_{1101} \\ 
+\delta_{0011}, \delta_{1011}, \delta_{0111}, \delta_{1111}$$
+
+So $\mathrm{Val}_2^{L_2}$ is given by a basis: 
+$$\delta_{0000}, \delta_{1000} + \delta_{0100}, \delta_{1100} \\
+\delta_{0010} + \delta_{0001}, \\ 
+\delta_{1010} + \delta_{0110} + \delta_{1001} + \delta_{0101}, \delta_{1110} + \delta_{1101} \\
+\delta_{0011}, \delta_{1011} + \delta_{0111}, \delta_{1111}$$
+
+
+
+
+
+## Long exact sequence
+
+$$0 \rightarrow L^3_3 \rightarrow T_3 \rightarrow T_{2} \rightarrow 0$$
+
+$$0 \rightarrow T_2 \rightarrow T_2^5 \rightarrow T_{2}^4 \rightarrow 0$$
+
+$$0 \rightarrow T_2^4 \rightarrow T_4 \rightarrow T_{2} \rightarrow 0$$
+
+$$0 \rightarrow T_2 \rightarrow T_2^5 \rightarrow T_{2}^4 \rightarrow 0$$
+
+
+$$0 \rightarrow T_2^4 \rightarrow T_4 \rightarrow T_{2} \rightarrow 0$$
+
+
+## Another long exact sequence
+
+$$0 \rightarrow T_1 \rightarrow T_1^3 \rightarrow T_{1}^2 \rightarrow 0$$
+
+$$0 \rightarrow T_1^2 \rightarrow T_2 \rightarrow T_1 \rightarrow 0$$
+
+$$0 \rightarrow T_1 \rightarrow T_1^5 \rightarrow T_{1}^4 \rightarrow 0$$
+
+$$0 \rightarrow T_1^4 \rightarrow T_3 \rightarrow T_2 \rightarrow 0$$
+
+
+$$0 \rightarrow T_2 \rightarrow T_2^5 \rightarrow T_{2}^4 \rightarrow 0$$
+
+$$0 \rightarrow T_2^4 \rightarrow T_4 \rightarrow T_2 \rightarrow 0$$
+
+Yields the long exact sequence:
+$$0 \rightarrow T_1 \rightarrow T_1^3 \rightarrow T_2 \rightarrow T_1^5 \rightarrow T_3 \rightarrow T_2^5 \rightarrow T_4$$
+
+## Inclusions
+
+There is also a morphism:
+$$\Delta_n : T_n \rightarrow T_{n+1} \\
+g \mapsto Tree(0, g, g)$$
+
+This morphism is not normal
