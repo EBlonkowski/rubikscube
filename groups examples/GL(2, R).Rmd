@@ -1,0 +1,29 @@
+---
+title: "GL(2, R)"
+author: "Emmanuel Blonkowski"
+date: "14 June 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition GL(2, R)
+
+All the invertible 2x2 matrices.
+
+
+## Determinant
+
+$$\mathrm{det}: \mathrm{GL}(2, \mathbb{R}) \rightarrow \mathbb{R}^*\\
+\begin{bmatrix} a & b \\ c & d \end{bmatrix} \mapsto ad - bc$$
+
+
+det is a group homomorphism. It induces a short exact sequence:
+
+$$0 \rightarrow SL(2) \rightarrow GL(2) \rightarrow \mathbb{R}^* \rightarrow 0$$
+
+We have a map:
+$$a \mapsto \begin{bmatrix} a & 0 \\ 0 & 1 \end{bmatrix}$$
+Which right-splits the above exact sequence. So that $GL(2) = \mathbb{R}^* \ltimes SL(2)$

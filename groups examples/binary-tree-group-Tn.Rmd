@@ -14,13 +14,22 @@ library(DiagrammeR)
 
 ## Definition
 
+**Definition - group structure on a balanced binary tree**
+
+ - We define $T_0 = 0$, $T_1 = C(2)$
+ - $\forall n > 1, T_n = \{(v, l, r) | v \in C(2), a,b \in T_{n-1}\}$
+    With the multiplication defined as:
+    $(v, l_1, r_1) \cdot (0, l_2, r_2) = (v, l_1 \cdot l_2, r_1 \cdot r_2)$ and    
+    $(v, l_1, r_1) \cdot (1, l_2, r_2) = (1+v, r_1\cdot l_2, l_1 \cdot r2)$
+
+In that definition we assume the operations to be done "from left to right".
+
 Tn is the automorphism group of a binary tree of depth n+1.
 Clearly, T0 = 0, T1 = C(2)
 
 Recursive extention definition:
 $$T_1 = C(2) \\ 
 T_{n+1} = C(2) \ltimes [T_n \times T_n]$$
-As a group structure on a balanced binary tree
 
 ## Number of Elements
 
