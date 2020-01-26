@@ -371,43 +371,52 @@ summary {
 
 <div id="TOC">
 <ul>
-<li><a href="#definition">Definition</a></li>
-<li><a href="#number-of-elements">Number of Elements</a><ul>
-<li><a href="#number-of-elements-of-order-2">Number of Elements of Order 2</a></li>
-<li><a href="#number-of-elements-of-order-4">Number of Elements of Order 4</a></li>
-<li><a href="#number-of-elements-of-order-8">Number of elements of order 8</a></li>
-<li><a href="#number-of-elements-of-order-2k">Number of elements of order <span class="math inline">\(2^k\)</span></a></li>
+<li><a href="#definition"><span class="toc-section-number">0.1</span> Definition</a></li>
+<li><a href="#number-of-elements"><span class="toc-section-number">0.2</span> Number of Elements</a><ul>
+<li><a href="#number-of-elements-of-order-2"><span class="toc-section-number">0.2.1</span> Number of Elements of Order 2</a></li>
+<li><a href="#number-of-elements-of-order-4"><span class="toc-section-number">0.2.2</span> Number of Elements of Order 4</a></li>
+<li><a href="#number-of-elements-of-order-8"><span class="toc-section-number">0.2.3</span> Number of elements of order 8</a></li>
+<li><a href="#number-of-elements-of-order-2k"><span class="toc-section-number">0.2.4</span> Number of elements of order <span class="math inline">\(2^k\)</span></a></li>
 </ul></li>
-<li><a href="#morphisms">Morphisms</a><ul>
-<li><a href="#forget-last-layer-f_n">Forget Last Layer <span class="math inline">\(F_n\)</span></a></li>
+<li><a href="#conjugacy-classes"><span class="toc-section-number">0.3</span> Conjugacy Classes</a></li>
+<li><a href="#morphisms"><span class="toc-section-number">0.4</span> Morphisms</a><ul>
+<li><a href="#forget-last-layer-f_n"><span class="toc-section-number">0.4.1</span> Forget Last Layer <span class="math inline">\(F_n\)</span></a></li>
 </ul></li>
-<li><a href="#center">Center</a></li>
-<li><a href="#action-on-seqn">Action on Seq(n)</a></li>
-<li><a href="#long-exact-sequence">Long exact sequence</a></li>
-<li><a href="#another-long-exact-sequence">Another long exact sequence</a></li>
-<li><a href="#inclusions">Inclusions</a></li>
+<li><a href="#center"><span class="toc-section-number">0.5</span> Center</a></li>
+<li><a href="#action-on-seqn"><span class="toc-section-number">0.6</span> Action on Seq(n)</a></li>
+<li><a href="#long-exact-sequence"><span class="toc-section-number">0.7</span> Long exact sequence</a></li>
+<li><a href="#another-long-exact-sequence"><span class="toc-section-number">0.8</span> Another long exact sequence</a></li>
+<li><a href="#inclusions"><span class="toc-section-number">0.9</span> Inclusions</a></li>
 </ul>
 </div>
 
 <div id="definition" class="section level2">
-<h2>Definition</h2>
+<h2><span class="header-section-number">0.1</span> Definition</h2>
 <p><strong>Definition - group structure on a balanced binary tree</strong></p>
 <ul>
 <li>We define <span class="math inline">\(T_0 = 0\)</span>, <span class="math inline">\(T_1 = C(2)\)</span></li>
-<li><span class="math inline">\(\forall n &gt; 1, T_n = \{(v, l, r) | v \in C(2), a,b \in T_{n-1}\}\)</span> With the multiplication defined as: <span class="math inline">\((v, l_1, r_1) \cdot (0, l_2, r_2) = (v, l_1 \cdot l_2, r_1 \cdot r_2)\)</span> and<br />
+<li><span class="math inline">\(\forall n &gt; 1, T_n = \{(v, l, r) | v \in C(2), a,b \in T_{n-1}\}\)</span>
+With the multiplication defined as:
+<span class="math inline">\((v, l_1, r_1) \cdot (0, l_2, r_2) = (v, l_1 \cdot l_2, r_1 \cdot r_2)\)</span> and<br />
 <span class="math inline">\((v, l_1, r_1) \cdot (1, l_2, r_2) = (1+v, r_1\cdot l_2, l_1 \cdot r2)\)</span></li>
 </ul>
 <p>In that definition we assume the operations to be done “from left to right”.</p>
-<p>Tn is the automorphism group of a binary tree of depth n+1. Clearly, T0 = 0, T1 = C(2)</p>
-<p>Recursive extention definition: <span class="math display">\[T_1 = C(2) \\ 
+<p>Tn is the automorphism group of a binary tree of depth n+1.
+Clearly, T0 = 0, T1 = C(2)</p>
+<p>Recursive extention definition:
+<span class="math display">\[T_1 = C(2) \\ 
 T_{n+1} = C(2) \ltimes [T_n \times T_n]\]</span></p>
 </div>
 <div id="number-of-elements" class="section level2">
-<h2>Number of Elements</h2>
-<p>The number of elements is given by: <span class="math display">\[|T_1| = 2 \\ 
+<h2><span class="header-section-number">0.2</span> Number of Elements</h2>
+<p>The number of elements is given by:
+<span class="math display">\[|T_1| = 2 \\ 
 |T_{n+1}| = 2*T_n^2\]</span></p>
-<p>Alternatively, from the binary tree representation we have that <span class="math inline">\(T_n\)</span> is represented by a binary tree of n levels with an element of C(2) at each node and leaf. The number of nodes in a tree of depth n is <span class="math inline">\(1 + 2 + 4 + ... + 2^{n-1} = 2^n-1\)</span> <span class="math display">\[T_n = 2^{2^n-1}\]</span></p>
-<p>In particular T1 has 2 elements, T2 has 8, T3 has 128, T4 has 32768, T5 has about 2.1e9, T6 has about 9e18.</p>
+<p>Alternatively, from the binary tree representation we have that <span class="math inline">\(T_n\)</span> is represented by a binary tree of n levels with an element of C(2) at each node and leaf.
+The number of nodes in a tree of depth n is <span class="math inline">\(1 + 2 + 4 + ... + 2^{n-1} = 2^n-1\)</span>
+<span class="math display">\[T_n = 2^{2^n-1}\]</span></p>
+<p>In particular T1 has 2 elements, T2 has 8, T3 has 128, T4 has 32768, T5 has about 2.1e9,
+T6 has about 9e18.</p>
 <p>The following table summarizes the information:</p>
 <table>
 <thead>
@@ -488,12 +497,21 @@ T_{n+1} = C(2) \ltimes [T_n \times T_n]\]</span></p>
 </tbody>
 </table>
 <div id="number-of-elements-of-order-2" class="section level3">
-<h3>Number of Elements of Order 2</h3>
+<h3><span class="header-section-number">0.2.1</span> Number of Elements of Order 2</h3>
 <p>T1 has 1 element of order 2, T2 has 5.</p>
-<p>Let <span class="math inline">\(g = \mathrm{Tree}(0, a, b)\in T_n\)</span> of order 2. Then either: - a is identity and b has order 2 (<span class="math inline">\(|T_{n-1}|_2\)</span> elements) - a has order 2 and b has order 2 (<span class="math inline">\(|T_{n-1}|_2^2\)</span> elements) - a has order 2 and b is the identity (<span class="math inline">\(|T_{n-1}|_2\)</span> elements)</p>
+<p>Let <span class="math inline">\(g = \mathrm{Tree}(0, a, b)\in T_n\)</span> of order 2.
+Then either:
+- a is identity and b has order 2 (<span class="math inline">\(|T_{n-1}|_2\)</span> elements)
+- a has order 2 and b has order 2 (<span class="math inline">\(|T_{n-1}|_2^2\)</span> elements)
+- a has order 2 and b is the identity (<span class="math inline">\(|T_{n-1}|_2\)</span> elements)</p>
 <p>So there are <span class="math inline">\(|T_{n-1}|_2^2 + 2|T_{n-1}|_2\)</span> such g.</p>
-<p>Now let’s suppose: <span class="math inline">\(g = \mathrm{Tree}(1, a, b)\in T_n\)</span> We have <span class="math inline">\(g^2 = \mathrm{Tree}(0,0,0) = \mathrm{Tree}(0, ba, ab)\)</span> So that <span class="math inline">\(ba = ab = 1_{T_{n-1}}\)</span> So the pair ab is uniquely defined by a in <span class="math inline">\(T_{n-1}\)</span> and there are <span class="math inline">\(|T_{n-1}|\)</span> elements of this type. Note that all this elements are conjugates.</p>
-<p>Finally we obtain the following recursive formula: <span class="math display">\[|T_n|_2 = |T_{n-1}|_2^2 + 2|T_{n-1}|_2 + |T_{n-1}|\]</span></p>
+<p>Now let’s suppose:
+<span class="math inline">\(g = \mathrm{Tree}(1, a, b)\in T_n\)</span>
+We have <span class="math inline">\(g^2 = \mathrm{Tree}(0,0,0) = \mathrm{Tree}(0, ba, ab)\)</span>
+So that <span class="math inline">\(ba = ab = 1_{T_{n-1}}\)</span>
+So the pair ab is uniquely defined by a in <span class="math inline">\(T_{n-1}\)</span> and there are <span class="math inline">\(|T_{n-1}|\)</span> elements of this type. Note that all this elements are conjugates.</p>
+<p>Finally we obtain the following recursive formula:
+<span class="math display">\[|T_n|_2 = |T_{n-1}|_2^2 + 2|T_{n-1}|_2 + |T_{n-1}|\]</span></p>
 <p>In particular we have<br />
 <span class="math inline">\(|T_2|_2 = 1^2 + 2\times 1 + 2 = 5\)</span><br />
 <span class="math inline">\(|T_3|_2 = 5^2 + 2\times 5 + 8 = 43\)</span><br />
@@ -501,113 +519,221 @@ T_{n+1} = C(2) \ltimes [T_n \times T_n]\]</span></p>
 <span class="math inline">\(|T_5|_2 = 2063^2 + 2\times 2063 + 32768 = 4e6\)</span></p>
 </div>
 <div id="number-of-elements-of-order-4" class="section level3">
-<h3>Number of Elements of Order 4</h3>
-<p><strong>Property</strong> The number of element of order 4 verifies the following recurrence relation: <span class="math display">\[|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]\]</span></p>
+<h3><span class="header-section-number">0.2.2</span> Number of Elements of Order 4</h3>
+<p><strong>Property</strong> The number of element of order 4 verifies the following recurrence relation:
+<span class="math display">\[|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]\]</span></p>
 <blockquote>
 <p>Let <span class="math inline">\(g = \mathrm{Tree}(0, a, b)\in T_n\)</span>, g has order 4 iff at least one of a or b have order 4 and both a and b have an order that divides 4.</p>
-<p>We get 3 possibilities: - a has order 4, b has order 1 or 2 (<span class="math inline">\(|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1)\)</span>) - a has order 4, b has order 4 (<span class="math inline">\(|T_{n-1}|_4^2\)</span>) - a has order 1,2, b has order 4 (<span class="math inline">\(|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1)\)</span>)</p>
+<p>We get 3 possibilities:
+- a has order 4, b has order 1 or 2 (<span class="math inline">\(|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1)\)</span>)
+- a has order 4, b has order 4 (<span class="math inline">\(|T_{n-1}|_4^2\)</span>)
+- a has order 1,2, b has order 4 (<span class="math inline">\(|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1)\)</span>)</p>
 <p>Let <span class="math inline">\(g = \mathrm{Tree}(1, a, b)\in T_n\)</span>, g has order 4 iff <span class="math inline">\(g^2 = \mathrm{Tree}(0, ba, ab)\)</span> has order 2 iff ba has order 2 (since ba and ab have same order).</p>
 <p>So we have to count the set <span class="math inline">\(P2 = \{(a,b) \in T_{n-1}^2 | ba\ \mathrm{has\ order\ 2}\}\)</span></p>
-<p>Let O2 be the subset of element of <span class="math inline">\(T_{n-1}\)</span> of order 2 and let’s write: <span class="math display">\[f: O2\times T_{n-1} \rightarrow P2\\
+<p>Let O2 be the subset of element of <span class="math inline">\(T_{n-1}\)</span> of order 2 and let’s write:
+<span class="math display">\[f: O2\times T_{n-1} \rightarrow P2\\
 (c, a) \mapsto (ca^{-1}, a)\]</span></p>
 <p>This map is well defined since <span class="math inline">\(ca^{-1} \times a = c\)</span> has order 2. It is injective because</p>
 <p><span class="math display">\[f(c,a) = f(c&#39;, a&#39;) \implies a=a&#39;, ca^{-1} = c&#39;a&#39;^{-1} \implies a = a&#39;, c = c&#39; \]</span></p>
 <p>f is also surjective because for (a,b) in P2 we have (a,b) = f(ab, b)</p>
 <p>So f is a bijective map and we have an equality of cardinals: <span class="math inline">\(|T_{n-1}|_2 \times |T_{n-1}| = |P2|\)</span></p>
-<p>Finally we have proven the result: <span class="math display">\[|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4^2 + 2|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1) =\\
+<p>Finally we have proven the result:
+<span class="math display">\[|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4^2 + 2|T_{n-1}|_4 \times (|T_{n-1}|_2 + 1) =\\
 |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]\]</span></p>
 </blockquote>
 <p>We have:</p>
 <p><span class="math display">\[|T_n|_4 = |T_{n-1}|_2 \times |T_{n-1}| + |T_{n-1}|_4[|T_{n-1}|_4 + 2(|T_{n-1}|_2 + 1)]\]</span></p>
 <p><span class="math inline">\(|T_1|_4 = 0\)</span><br />
 <span class="math inline">\(|T_2|_4 = 1\times2 + 0\times[0 + 2(1 + 1)] = 2\)</span><br />
-<span class="math inline">\(|T_3|_4 = 5\times8 + 2\times[2 + 2(5 + 1)] = 68\)</span> <span class="math inline">\(|T_4|_4 = 43\times128 + 68\times[68 + 2(43 + 1)] = 16112\)</span> <span class="math inline">\(|T_5|_4 = 2063\times32768 + 16112\times[16112 + 2(2063 + 1)] = 393707264 \approx 4e8\)</span></p>
+<span class="math inline">\(|T_3|_4 = 5\times8 + 2\times[2 + 2(5 + 1)] = 68\)</span>
+<span class="math inline">\(|T_4|_4 = 43\times128 + 68\times[68 + 2(43 + 1)] = 16112\)</span>
+<span class="math inline">\(|T_5|_4 = 2063\times32768 + 16112\times[16112 + 2(2063 + 1)] = 393707264 \approx 4e8\)</span></p>
 </div>
 <div id="number-of-elements-of-order-8" class="section level3">
-<h3>Number of elements of order 8</h3>
+<h3><span class="header-section-number">0.2.3</span> Number of elements of order 8</h3>
 <p><strong>Property</strong> The number of elements of order 8 in <span class="math inline">\(T_n\)</span> is given by:</p>
 <p><span class="math display">\[|T_n|_8 = |T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_4 \times |T_{n-1}|\]</span></p>
 <blockquote>
 <p>Let <span class="math inline">\(g = \mathrm{Tree}(0, a, b)\in T_n\)</span>, g has order 8 iff at least one of a or b have order 8 and both a and b have an order that divides 8.</p>
-<p>We get 2 possibilities: - a has order 8, b has order 1, 2, 4 or 8 (<span class="math inline">\(|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4 + |T_{n-1}|_8)\)</span>) - a has order 1,2,4 b has order 8 (<span class="math inline">\(|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4)\)</span>)</p>
-<p>Total for untwisted g: <span class="math display">\[|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4) = \\
+<p>We get 2 possibilities:
+- a has order 8, b has order 1, 2, 4 or 8 (<span class="math inline">\(|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4 + |T_{n-1}|_8)\)</span>)
+- a has order 1,2,4 b has order 8 (<span class="math inline">\(|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4)\)</span>)</p>
+<p>Total for untwisted g:
+<span class="math display">\[|T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_8 \times (1 + |T_{n-1}|_2 + |T_{n-1}|_4) = \\
 |T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8)\]</span></p>
 <p>Let <span class="math inline">\(g = \mathrm{Tree}(1, a, b)\in T_n\)</span>, g has order 8 iff <span class="math inline">\(g^2 = \mathrm{Tree}(0, ba, ab)\)</span> has order 4 iff ba has order 4 (since ba and ab have same order).</p>
 <p>So we have to count the set <span class="math inline">\(P_4 = \{(a,b) \in T_{n-1}^2 | ba\ \mathrm{has\ order\ 4}\}\)</span></p>
-<p>Let <span class="math inline">\(O_4\)</span> be the subset of element of <span class="math inline">\(T_{n-1}\)</span> of order 4 and let’s write: <span class="math display">\[f: O_4 \times T_{n-1} \rightarrow P_4\\
+<p>Let <span class="math inline">\(O_4\)</span> be the subset of element of <span class="math inline">\(T_{n-1}\)</span> of order 4 and let’s write:
+<span class="math display">\[f: O_4 \times T_{n-1} \rightarrow P_4\\
 (c, a) \mapsto (ca^{-1}, a)\]</span></p>
 <p>This map is well defined since <span class="math inline">\(ca^{-1} \times a = c\)</span> has order 4. It is injective because</p>
 <p><span class="math display">\[f(c,a) = f(c&#39;, a&#39;) \implies a=a&#39;, ca^{-1} = c&#39;a&#39;^{-1} \implies a = a&#39;, c = c&#39; \]</span></p>
 <p>f is also surjective because for (a,b) in <span class="math inline">\(P_4\)</span> we have (a,b) = f(ab, b)</p>
 <p>So f is a bijective map and we have an equality of cardinals: <span class="math inline">\(|T_{n-1}|_4 \times |T_{n-1}| = |P_4|\)</span></p>
-<p>We sum the twisted and untwisted numbers to get the result: <span class="math display">\[|T_n|_8 = |T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_4 \times |T_{n-1}|\]</span></p>
+<p>We sum the twisted and untwisted numbers to get the result:
+<span class="math display">\[|T_n|_8 = |T_{n-1}|_8 \times (2 + 2|T_{n-1}|_2 + 2|T_{n-1}|_4 + |T_{n-1}|_8) + |T_{n-1}|_4 \times |T_{n-1}|\]</span></p>
 </blockquote>
 </div>
 <div id="number-of-elements-of-order-2k" class="section level3">
-<h3>Number of elements of order <span class="math inline">\(2^k\)</span></h3>
+<h3><span class="header-section-number">0.2.4</span> Number of elements of order <span class="math inline">\(2^k\)</span></h3>
 <p><strong>Property</strong> The number of elements of order <span class="math inline">\(2^k\)</span> in <span class="math inline">\(T_n\)</span> is given by:</p>
 <p><span class="math display">\[|T_n|_{2^{k-1}} = 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2 + |T_{n-1}|_{2^{k-1}} \times |T_{n-1}|\]</span></p>
 <blockquote>
 <p>Let <span class="math inline">\(g = \mathrm{Tree}(0, a, b)\in T_n\)</span>, g has order <span class="math inline">\(2^k\)</span> iff at least one of a or b have order <span class="math inline">\(2^k\)</span> and both a and b have an order that divides <span class="math inline">\(2^k\)</span>.</p>
-<p>We get 2 possibilities: - a has order <span class="math inline">\(2^k\)</span>, b has order <span class="math inline">\(2^l, 0 \leq l \leq k\)</span> (<span class="math inline">\(|T_{n-1}|_{2^k} \times \sum_{0 \leq l \leq k}|T_{n-1}|_{2^l}\)</span>) - a has order 1,2,4 b has order 8 (<span class="math inline">\(|T_{n-1}|_{2^k} \times \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l}\)</span>)</p>
-<p>Total for untwisted g: <span class="math display">\[|T_{n-1}|_{2^k} \sum_{0 \leq l \leq k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l}= \\
+<p>We get 2 possibilities:
+- a has order <span class="math inline">\(2^k\)</span>, b has order <span class="math inline">\(2^l, 0 \leq l \leq k\)</span> (<span class="math inline">\(|T_{n-1}|_{2^k} \times \sum_{0 \leq l \leq k}|T_{n-1}|_{2^l}\)</span>)
+- a has order 1,2,4 b has order 8 (<span class="math inline">\(|T_{n-1}|_{2^k} \times \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l}\)</span>)</p>
+<p>Total for untwisted g:
+<span class="math display">\[|T_{n-1}|_{2^k} \sum_{0 \leq l \leq k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l}= \\
 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2\]</span></p>
 <p>Let <span class="math inline">\(g = \mathrm{Tree}(1, a, b)\in T_n\)</span>, g has order <span class="math inline">\(2^k\)</span> iff <span class="math inline">\(g^2 = \mathrm{Tree}(0, ba, ab)\)</span> has order <span class="math inline">\(2^{k-1}\)</span> iff ba has order <span class="math inline">\(2^{k-1}\)</span> (since ba and ab have same order).</p>
 <p>So we have to count the set <span class="math inline">\(P_{2^{k-1}} = \{(a,b) \in T_{n-1}^2 | ba\ \mathrm{has\ order\ 2^{k-1}}\}\)</span></p>
-<p>Let <span class="math inline">\(O_{2^{k-1}}\)</span> be the subset of element of <span class="math inline">\(T_{n-1}\)</span> of order <span class="math inline">\(2^{k-1}\)</span> and let’s write: <span class="math display">\[f: O_{2^{k-1}} \times T_{n-1} \rightarrow P_{2^{k-1}}\\
+<p>Let <span class="math inline">\(O_{2^{k-1}}\)</span> be the subset of element of <span class="math inline">\(T_{n-1}\)</span> of order <span class="math inline">\(2^{k-1}\)</span> and let’s write:
+<span class="math display">\[f: O_{2^{k-1}} \times T_{n-1} \rightarrow P_{2^{k-1}}\\
 (c, a) \mapsto (ca^{-1}, a)\]</span></p>
 <p>This map is well defined since <span class="math inline">\(ca^{-1} \times a = c\)</span> has order <span class="math inline">\(2^{k-1}\)</span>. It is injective because</p>
 <p><span class="math display">\[f(c,a) = f(c&#39;, a&#39;) \implies a=a&#39;, ca^{-1} = c&#39;a&#39;^{-1} \implies a = a&#39;, c = c&#39; \]</span></p>
 <p>f is also surjective because for (a,b) in <span class="math inline">\(P_{2^{k-1}}\)</span> we have (a,b) = f(ab, b)</p>
 <p>So f is a bijective map and we have an equality of cardinals: <span class="math inline">\(|T_{n-1}|_{2^{k-1}} \times |T_{n-1}| = |P_{2^{k-1}}|\)</span></p>
-<p>We sum the numbers for twisted and untwisted g’s to get the result: <span class="math display">\[|T_n|_{2^{k-1}} = 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2 + |T_{n-1}|_{2^{k-1}} \times |T_{n-1}|\]</span></p>
+<p>We sum the numbers for twisted and untwisted g’s to get the result:
+<span class="math display">\[|T_n|_{2^{k-1}} = 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2 + |T_{n-1}|_{2^{k-1}} \times |T_{n-1}|\]</span></p>
 </blockquote>
 </div>
 </div>
+<div id="conjugacy-classes" class="section level2">
+<h2><span class="header-section-number">0.3</span> Conjugacy Classes</h2>
+
+<div class="definition">
+<span id="def:unnamed-chunk-1" class="definition"><strong>Definition 1  </strong></span>Let <span class="math inline">\(G, D \subset T_{n-1}\)</span>, we define <span class="math inline">\(\mathrm{Tree}(v, G, D) \subset T_n\)</span> to be
+<span class="math inline">\(\{\mathrm{Tree}(v, g, d) | g \in G, d \in D\}\)</span>
+</div>
+
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-2" class="lemma"><strong>Lemma 1  </strong></span><span class="math inline">\(\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathbf{Cl}(\mathrm{Tree}(0, d, g))\)</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> Use conjugation by <span class="math inline">\(\mathrm{Tree}(1, 0, 0)\)</span>
+</div>
+
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-4" class="lemma"><strong>Lemma 2  </strong></span><span class="math inline">\(\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \cup \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\)</span>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> </p>
+<ul>
+<li><p><span class="math inline">\(\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \subset \mathbf{Cl}(\mathrm{Tree}(0, g, d))\)</span>
+Let <span class="math inline">\(\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\)</span>
+We have <span class="math display">\[\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) =\\
+\mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\]</span></p>
+<p>Furthermore using the previous lemma we have <span class="math inline">\(\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \sim \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\)</span></p></li>
+<li><p>Let’s show the other inclusion:
+<span class="math display">\[\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) = \mathrm{T}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\]</span>
+Now if the tree is twisted:
+<span class="math display">\[\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(1, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+  \mathrm{Tree}(1, a_2^{-1}, a_1^{-1}) \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+  \mathrm{Tree}(1, a_2^{-1}g, a_1^{-1}d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+  \mathrm{T}(0, a_1^{-1}da_1, a_2^{-1}ga_2) \in \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\]</span></p>
+</div></li>
+</ul>
+
+<div class="lemma">
+<p><span id="lem:unnamed-chunk-6" class="lemma"><strong>Lemma 3  </strong></span><span class="math inline">\(f: G \rightarrow H\)</span> a group homomorphism then:</p>
+<ul>
+<li>if a,b are conjugates in G then f(a) and f(b) are conjugates in H</li>
+<li>Equivalently: if f(a) and f(b) are not conjugates then a and b are not conjugates.
+</div></li>
+</ul>
+
+<div class="corollary">
+<span id="cor:unnamed-chunk-7" class="corollary"><strong>Corollary 1  </strong></span>Tree(0, g, d) and Tree(1, g’‘, d’’) are never conjugates
+</div>
+
+<p><strong>Property</strong></p>
+<p><span class="math inline">\(T_0\)</span> has 2 conjugacy class: 0, 1</p>
+<p>Let <span class="math inline">\(a_1, ..., a_L \in T_n\)</span> be distinct representants of all the conjugacy classes.
+We construct the following elements of <span class="math inline">\(T_{n+1}\)</span>:
+- <span class="math inline">\(\mathrm{Tree}(0, a_i, a_i), \forall i\leq L\)</span>
+- <span class="math inline">\(\mathrm{Tree}(0, a_i, a_j), \forall i&lt;j \leq L\)</span>
+- <span class="math inline">\(\mathrm{Tree}(1, 0, a_i), \forall i \leq L\)</span></p>
+<p>Part 1: Let’s show that those elements are not conjugates to each other.</p>
+<p>Part 2: Let’s take a random element of <span class="math inline">\(T_{n+1}\)</span> and show that it is conjugate to one of the above.</p>
+</div>
 <div id="morphisms" class="section level2">
-<h2>Morphisms</h2>
+<h2><span class="header-section-number">0.4</span> Morphisms</h2>
 <div id="forget-last-layer-f_n" class="section level3">
-<h3>Forget Last Layer <span class="math inline">\(F_n\)</span></h3>
-<p>There is a surjective morphism <span class="math display">\[T_n \rightarrow T_{n-1} \rightarrow 0\]</span></p>
+<h3><span class="header-section-number">0.4.1</span> Forget Last Layer <span class="math inline">\(F_n\)</span></h3>
+<p>There is a surjective morphism
+<span class="math display">\[T_n \rightarrow T_{n-1} \rightarrow 0\]</span></p>
 <p>Which is given by dropping the last level of the tree.</p>
-<p>We can define it formally by: <span class="math display">\[F_2: T_2 \rightarrow T_1 \\
+<p>We can define it formally by:
+<span class="math display">\[F_2: T_2 \rightarrow T_1 \\
 Tree(a, left, right) \mapsto Tree(a)\]</span></p>
-<p>And <span class="math inline">\(\forall n &gt; 2\)</span>: <span class="math display">\[F_n: Tree(a, left, right) \mapsto Tree(a, F_{n-1}(left), F_{n-1}(right))\]</span></p>
-<p>We can extend it to a short exact sequence: <span class="math display">\[0 \rightarrow L^n_n \rightarrow T_n \rightarrow T_{n-1} \rightarrow 0\]</span></p>
-<p>This sequence is right split by the morphism <span class="math inline">\(i_{n-1}:T_{n-1} \rightarrow T_n\)</span> which includes <span class="math inline">\(T_{n-1}\)</span> at the top of <span class="math inline">\(T_n\)</span>. Precisely it is defined by <span class="math display">\[i_1: T_1 \rightarrow T_2 \\
+<p>And <span class="math inline">\(\forall n &gt; 2\)</span>:
+<span class="math display">\[F_n: Tree(a, left, right) \mapsto Tree(a, F_{n-1}(left), F_{n-1}(right))\]</span></p>
+<p>We can extend it to a short exact sequence:
+<span class="math display">\[0 \rightarrow L^n_n \rightarrow T_n \rightarrow T_{n-1} \rightarrow 0\]</span></p>
+<p>This sequence is right split by the morphism <span class="math inline">\(i_{n-1}:T_{n-1} \rightarrow T_n\)</span> which includes <span class="math inline">\(T_{n-1}\)</span> at the top of <span class="math inline">\(T_n\)</span>.
+Precisely it is defined by
+<span class="math display">\[i_1: T_1 \rightarrow T_2 \\
 Tree(a) \mapsto Tree(a, 0, 0)\]</span></p>
 <p><span class="math display">\[i_2: T_2 \rightarrow T_3 \\
 Tree(a, L, R) \mapsto Tree(a, i_1(L), i_1(R))\]</span></p>
 <p><span class="math display">\[i_n: T_n \rightarrow T_{n+1} \\
 Tree(a, L, R) \mapsto Tree(a, i_{n-1}(L), i_{n-1}(R))\]</span></p>
 <p>And so <span class="math inline">\(T_n = i_{n-1}(T_{n-1}) \ltimes L^n_n\)</span></p>
-<p>We can form a kind of sequence: <span class="math display">\[... \rightarrow T_3 \rightarrow T_2 \rightarrow T_1 \rightarrow 0\]</span> This sequence is not exact, and is not a chain complex either since the composition of maps is not null.</p>
-<p>However by composing the maps we get a familly of morphisms: <span class="math display">\[F_n: T_n \rightarrow T_{n-1} \\
+<p>We can form a kind of sequence:
+<span class="math display">\[... \rightarrow T_3 \rightarrow T_2 \rightarrow T_1 \rightarrow 0\]</span>
+This sequence is not exact, and is not a chain complex either since the composition of maps is not null.</p>
+<p>However by composing the maps we get a familly of morphisms:
+<span class="math display">\[F_n: T_n \rightarrow T_{n-1} \\
 F_n^2: T_n \rightarrow T_{n-2} \\
 F_n^3: T_n \rightarrow T_{n-3} \\
 ... \\
 F_n^{n-1}: T_n \rightarrow T_{1}\]</span></p>
-<p>And a family of normal subgroups: <span class="math display">\[\mathrm{Ker}(F_n) \subset \mathrm{Ker}(F_n^2) \subset \mathrm{Ker}(F_n^3) \subset ... \subset \mathrm{Ker}(F_n^{n-1}) \subset T_n\]</span></p>
-<p>As well as a family of decomposition: <span class="math display">\[0 \rightarrow L^n_n \rightarrow T_n \rightarrow T_{n-1} \rightarrow 0\\
+<p>And a family of normal subgroups:
+<span class="math display">\[\mathrm{Ker}(F_n) \subset \mathrm{Ker}(F_n^2) \subset \mathrm{Ker}(F_n^3) \subset ... \subset \mathrm{Ker}(F_n^{n-1}) \subset T_n\]</span></p>
+<p>As well as a family of decomposition:
+<span class="math display">\[0 \rightarrow L^n_n \rightarrow T_n \rightarrow T_{n-1} \rightarrow 0\\
 0 \rightarrow \mathrm{Ker}(F_n^2) \rightarrow T_n \rightarrow T_{n-2} \rightarrow 0 \\
 ... \\
 0 \rightarrow \mathrm{Ker}(F_n^{n-1}) \rightarrow T_n \rightarrow T_1 \rightarrow 0\]</span></p>
 </div>
 </div>
 <div id="center" class="section level2">
-<h2>Center</h2>
-<p><strong>Property</strong> The center of <span class="math inline">\(T_n\)</span> has order 2 and is generated by the element, noted <span class="math inline">\(z_n\)</span>, which has zeros on the levels 1,2, …, n-1 and is full of ones on the level n. Equivalently we can use the following recursive definition of <span class="math inline">\(z_n\)</span>: <span class="math display">\[z_0 = 1 \mathrm{\ and\ \\
+<h2><span class="header-section-number">0.5</span> Center</h2>
+<p><strong>Property</strong> The center of <span class="math inline">\(T_n\)</span> has order 2 and is generated by the element, noted <span class="math inline">\(z_n\)</span>, which has zeros on the levels 1,2, …, n-1 and is full of ones on the level n.
+Equivalently we can use the following recursive definition of <span class="math inline">\(z_n\)</span>:
+<span class="math display">\[z_0 = 1 \mathrm{\ and\ \\
 z_{n+1} = \mathrm{Tree(0, z_n,z_n)}}\]</span></p>
 <blockquote>
-<p>If n = 1, then T1 is commutative and <span class="math inline">\(Z(T_1) = 1 = z_1\)</span> Let’s take n &gt; 1. Since Tn is generated by r1, …, rn a element z belongs to Z(Tn) if and only if <span class="math inline">\(r_izr_i = z \ \ \forall i\)</span> We verify quickly that conjugation by r1 swaps the two subtree. Thus the equation <span class="math inline">\(r_1zr_1 = z\)</span> is verified if and only if <span class="math inline">\(z = \mathrm{Tree}(v, a, a), a \in T_{n-1}, v \in C(2)\)</span><br />
-Let’s show that v must be 0 by letting z act on Tree(0, b, 0) Let’s suppose v = 1, we have <span class="math inline">\(z\mathrm{Tree}(0,b,0)z^{-1} = \mathrm{Tree}(1, ab, 0)z^{-1} = \mathrm{Tree}(0, a^{-1}, aba^{-1})\)</span> If we choose any b different than <span class="math inline">\(a^-1\)</span> we get a contradiction, so v = 0 and z can be written <span class="math inline">\(z = \mathrm{Tree}(0, a, a), a \in T_{n-1}\)</span></p>
-<p>Taking <span class="math inline">\(\mathrm{Tree}(0, g, g), g \in T_{n-1}\)</span> and letting z act on it by conjugation we get that <span class="math inline">\(aga^{-1} = g\)</span>. Since this is true for all g we must then have <span class="math inline">\(a \in Z(T_{n-1})\)</span>.</p>
+<p>If n = 1, then T1 is commutative and <span class="math inline">\(Z(T_1) = 1 = z_1\)</span>
+Let’s take n &gt; 1. Since Tn is generated by r1, …, rn a element z belongs
+to Z(Tn) if and only if <span class="math inline">\(r_izr_i = z \ \ \forall i\)</span>
+We verify quickly that conjugation by r1 swaps the two subtree. Thus the equation
+<span class="math inline">\(r_1zr_1 = z\)</span> is verified if and only if <span class="math inline">\(z = \mathrm{Tree}(v, a, a), a \in T_{n-1}, v \in C(2)\)</span><br />
+Let’s show that v must be 0 by letting z act on Tree(0, b, 0)
+Let’s suppose v = 1, we have
+<span class="math inline">\(z\mathrm{Tree}(0,b,0)z^{-1} = \mathrm{Tree}(1, ab, 0)z^{-1} = \mathrm{Tree}(0, a^{-1}, aba^{-1})\)</span>
+If we choose any b different than <span class="math inline">\(a^-1\)</span> we get a contradiction, so v = 0 and z can be
+written <span class="math inline">\(z = \mathrm{Tree}(0, a, a), a \in T_{n-1}\)</span></p>
+<p>Taking <span class="math inline">\(\mathrm{Tree}(0, g, g), g \in T_{n-1}\)</span> and letting z act on it by conjugation we get
+that <span class="math inline">\(aga^{-1} = g\)</span>. Since this is true for all g we must then have <span class="math inline">\(a \in Z(T_{n-1})\)</span>.</p>
 <p>Now let us assume a z of this form, that is <span class="math inline">\(z = \mathrm{Tree}(0, a, a), a \in Z(T_{n-1})\)</span>. It is easy to show that z indeed commutes with every other element.</p>
 </blockquote>
 <p><strong>Property</strong> The effect of multiplication by <span class="math inline">\(z_n\)</span> is to invert the last level of the tree.</p>
 <blockquote>
-<p>Multiplication via left or right is the same since it belongs to the center. First let’s show that multiplication by <span class="math inline">\(z_n\)</span> does not alter the first n-1 rows. The first n-1 rows of an element <span class="math inline">\(g \in T_n\)</span> is given by <span class="math inline">\(F_n(g)\)</span>. We have <span class="math inline">\(F_n(z_ng) = F_n(z_n)F_n(g) = F_n(g)\)</span></p>
-<p>Let’s write <span class="math inline">\(L_n(g)\)</span> the last row of g. We have <span class="math display">\[L_n(gz_n) = L_n(\mathrm{Tree}(F_n(g), g_L, g_R)) \times \mathrm{Tree}(0, z_{n-1}, z_{n-1}) =\\
+<p>Multiplication via left or right is the same since it belongs to the center.
+First let’s show that multiplication by <span class="math inline">\(z_n\)</span> does not alter the first n-1 rows.
+The first n-1 rows of an element <span class="math inline">\(g \in T_n\)</span> is given by <span class="math inline">\(F_n(g)\)</span>.
+We have <span class="math inline">\(F_n(z_ng) = F_n(z_n)F_n(g) = F_n(g)\)</span></p>
+<p>Let’s write <span class="math inline">\(L_n(g)\)</span> the last row of g. We have
+<span class="math display">\[L_n(gz_n) = L_n(\mathrm{Tree}(F_n(g), g_L, g_R)) \times \mathrm{Tree}(0, z_{n-1}, z_{n-1}) =\\
 L_n(Tree(F_n(g), z_{n-1}g_L, z_{n-1}g_R)) = L_{n-1}(z_{n-1}g_L) | L_{n-1}(z_{n-1}g_R) = \\
 \bar{g_L} | \bar{g_R} = \bar{g_L|g_R} = \bar{L_n(g)}\]</span></p>
 <p>Where we have written with a bar the inverted sequence of a sequence.</p>
@@ -615,34 +741,56 @@ L_n(Tree(F_n(g), z_{n-1}g_L, z_{n-1}g_R)) = L_{n-1}(z_{n-1}g_L) | L_{n-1}(z_{n-1
 <p><strong>Property</strong> Representants of the quotient group <span class="math inline">\(T_n/Z_n\)</span> are given by elements of a binary balanced tree where the first element of the last level is one. Multiplication is done with the same rule as for <span class="math inline">\(T_n\)</span> except that when the product gives a tree with a 0 in the first count of the last level, we multiply the whole tree by <span class="math inline">\(z_n\)</span>, which means we invert the last level.</p>
 </div>
 <div id="action-on-seqn" class="section level2">
-<h2>Action on Seq(n)</h2>
-<p>We define Seq(n, C(2)) to be the set of sequences of C(2) indexed by <span class="math inline">\(1..2^n\)</span> We define <span class="math inline">\(\mathrm{Val}(\mathrm{Seq}(n, C(2)), \mathbb{Q}) = \mathrm{Val}(n)\)</span> to be the set of function from Seq(n, C(2)) to <span class="math inline">\(\mathbb{Q}\)</span>. This forms a vector space naturally isomorphic to formal linear combinations of individual sequences. The dimension of this vector space is: <span class="math display">\[\mathrm{dim(Val_n)} = 2^{(2^n)}\]</span></p>
+<h2><span class="header-section-number">0.6</span> Action on Seq(n)</h2>
+<p>We define Seq(n, C(2)) to be the set of sequences of C(2) indexed by <span class="math inline">\(1..2^n\)</span>
+We define <span class="math inline">\(\mathrm{Val}(\mathrm{Seq}(n, C(2)), \mathbb{Q}) = \mathrm{Val}(n)\)</span> to be the set of function from
+Seq(n, C(2)) to <span class="math inline">\(\mathbb{Q}\)</span>. This forms a vector space naturally isomorphic to formal linear combinations of individual sequences. The dimension of this vector space is:
+<span class="math display">\[\mathrm{dim(Val_n)} = 2^{(2^n)}\]</span></p>
 <p>We have a map <span class="math inline">\(Val(n-1) \rightarrow Val(n)\)</span></p>
-<p>Let’s define <span class="math display">\[s_1: Seq(1) \rightarrow Seq(0) \\
+<p>Let’s define
+<span class="math display">\[s_1: Seq(1) \rightarrow Seq(0) \\
 (a,b) \mapsto (a+b)\]</span></p>
-<p>and <span class="math display">\[s_n: Seq(n) \rightarrow Seq(n-1)\\
+<p>and
+<span class="math display">\[s_n: Seq(n) \rightarrow Seq(n-1)\\
 (o_1 | o_2) \mapsto (s_{n-1}(o_1) | s_{n-1}(o_2))\]</span></p>
-<p>Then we get a vector space map: <span class="math display">\[\mathcal{L}_n: \mathrm{Val}(n-1) \rightarrow \mathrm{Val}(n) \\
+<p>Then we get a vector space map:
+<span class="math display">\[\mathcal{L}_n: \mathrm{Val}(n-1) \rightarrow \mathrm{Val}(n) \\
 f \mapsto f \circ s_n\]</span></p>
-<p>This map has trivial kernel since <span class="math inline">\(s_n\)</span> is surjective: <span class="math display">\[\mathrm{Ker}(\mathcal{L_n}) = 0\]</span></p>
-<p>The image of <span class="math inline">\(\mathcal{L}_n\)</span> is precisely those valuation function on <span class="math inline">\(S_n\)</span> that are leaf in variants. By leaf invariant we mean that swapping <span class="math inline">\(s_i \mathrm{\ and\ } s_{i+1}\)</span> for i even does not change the value of the valuation. We can also say it as: <span class="math display">\[\mathrm{Im}(\mathcal{L_n}) = \mathrm{Val}_n^{L_n}\]</span> Where <span class="math inline">\(L_n^n\)</span> is the subgroup of the leaves of <span class="math inline">\(\mathrm{T}_n\)</span> and the exponentiation denotes taking invariants.</p>
-<p>so we get a short exact sequence: <span class="math display">\[0 \rightarrow \mathrm{Val}_{n-1} \rightarrow \mathrm{Val}_{n} \rightarrow \mathrm{Val}_n/\mathrm{Val}_n^{L_n} \rightarrow 0\]</span></p>
-<p>We look at <span class="math inline">\(\mathrm{Val}_1/\mathrm{Val}_1^{L_1}\)</span> <span class="math inline">\(\mathrm{Val}_1\)</span> is given by a basis: <span class="math display">\[\delta_{00}, \delta_{10}, \delta_{01}, \delta_{11}\]</span></p>
+<p>This map has trivial kernel since <span class="math inline">\(s_n\)</span> is surjective:
+<span class="math display">\[\mathrm{Ker}(\mathcal{L_n}) = 0\]</span></p>
+<p>The image of <span class="math inline">\(\mathcal{L}_n\)</span> is precisely those valuation function on <span class="math inline">\(S_n\)</span> that are leaf in variants. By leaf invariant we mean that swapping <span class="math inline">\(s_i \mathrm{\ and\ } s_{i+1}\)</span> for i even does not change the value of the valuation. We can also say it as:
+<span class="math display">\[\mathrm{Im}(\mathcal{L_n}) = \mathrm{Val}_n^{L_n}\]</span>
+Where <span class="math inline">\(L_n^n\)</span> is the subgroup of the leaves of <span class="math inline">\(\mathrm{T}_n\)</span> and the exponentiation denotes taking invariants.</p>
+<p>so we get a short exact sequence:
+<span class="math display">\[0 \rightarrow \mathrm{Val}_{n-1} \rightarrow \mathrm{Val}_{n} \rightarrow \mathrm{Val}_n/\mathrm{Val}_n^{L_n} \rightarrow 0\]</span></p>
+<p>We look at <span class="math inline">\(\mathrm{Val}_1/\mathrm{Val}_1^{L_1}\)</span>
+<span class="math inline">\(\mathrm{Val}_1\)</span> is given by a basis:
+<span class="math display">\[\delta_{00}, \delta_{10}, \delta_{01}, \delta_{11}\]</span></p>
 <p>input: <span class="math inline">\(\delta_{0}\)</span> so <span class="math inline">\(\mathcal{L}_1(\delta_{0}) = \delta_{00} + \delta_{11}\)</span><br />
-<span class="math inline">\(\mathcal{L}_1(\delta_{0})(00) = \delta_{0}(0+0) = 1\)</span> 10, 01: 0 11 : 1 input: <span class="math inline">\(\delta_{1}\)</span> so <span class="math inline">\(\mathcal{L}_1(\delta_{1}) = \delta_{10} + \delta_{01}\)</span> 00 : 0 10, 01: 1 11 : 0</p>
-<p>So <span class="math inline">\(\mathrm{Val}_1^{L_1}\)</span> is given by a basis: <span class="math display">\[\delta_{00}, \delta_{11}, \delta_{01} + \delta_{10}\]</span></p>
-<p><span class="math inline">\(\mathrm{Val}_n/\mathrm{Val}_{n-1}\)</span> <span class="math display">\[\delta_{01}\]</span></p>
-<p><span class="math inline">\(\mathrm{Val}_2\)</span> is given by a basis: <span class="math display">\[\delta_{0000}, \delta_{1000}, \delta_{0100}, \delta_{1100} \\
+<span class="math inline">\(\mathcal{L}_1(\delta_{0})(00) = \delta_{0}(0+0) = 1\)</span>
+10, 01: 0
+11 : 1
+input: <span class="math inline">\(\delta_{1}\)</span> so <span class="math inline">\(\mathcal{L}_1(\delta_{1}) = \delta_{10} + \delta_{01}\)</span>
+00 : 0
+10, 01: 1
+11 : 0</p>
+<p>So <span class="math inline">\(\mathrm{Val}_1^{L_1}\)</span> is given by a basis:
+<span class="math display">\[\delta_{00}, \delta_{11}, \delta_{01} + \delta_{10}\]</span></p>
+<p><span class="math inline">\(\mathrm{Val}_n/\mathrm{Val}_{n-1}\)</span>
+<span class="math display">\[\delta_{01}\]</span></p>
+<p><span class="math inline">\(\mathrm{Val}_2\)</span> is given by a basis:
+<span class="math display">\[\delta_{0000}, \delta_{1000}, \delta_{0100}, \delta_{1100} \\
 \delta_{0010}, \delta_{1010}, \delta_{0110}, \delta_{1110} \\
 \delta_{0001}, \delta_{1001}, \delta_{0101}, \delta_{1101} \\ 
 \delta_{0011}, \delta_{1011}, \delta_{0111}, \delta_{1111}\]</span></p>
-<p>So <span class="math inline">\(\mathrm{Val}_2^{L_2}\)</span> is given by a basis: <span class="math display">\[\delta_{0000}, \delta_{1000} + \delta_{0100}, \delta_{1100} \\
+<p>So <span class="math inline">\(\mathrm{Val}_2^{L_2}\)</span> is given by a basis:
+<span class="math display">\[\delta_{0000}, \delta_{1000} + \delta_{0100}, \delta_{1100} \\
 \delta_{0010} + \delta_{0001}, \\ 
 \delta_{1010} + \delta_{0110} + \delta_{1001} + \delta_{0101}, \delta_{1110} + \delta_{1101} \\
 \delta_{0011}, \delta_{1011} + \delta_{0111}, \delta_{1111}\]</span></p>
 </div>
 <div id="long-exact-sequence" class="section level2">
-<h2>Long exact sequence</h2>
+<h2><span class="header-section-number">0.7</span> Long exact sequence</h2>
 <p><span class="math display">\[0 \rightarrow L^3_3 \rightarrow T_3 \rightarrow T_{2} \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_2 \rightarrow T_2^5 \rightarrow T_{2}^4 \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_2^4 \rightarrow T_4 \rightarrow T_{2} \rightarrow 0\]</span></p>
@@ -650,18 +798,20 @@ f \mapsto f \circ s_n\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_2^4 \rightarrow T_4 \rightarrow T_{2} \rightarrow 0\]</span></p>
 </div>
 <div id="another-long-exact-sequence" class="section level2">
-<h2>Another long exact sequence</h2>
+<h2><span class="header-section-number">0.8</span> Another long exact sequence</h2>
 <p><span class="math display">\[0 \rightarrow T_1 \rightarrow T_1^3 \rightarrow T_{1}^2 \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_1^2 \rightarrow T_2 \rightarrow T_1 \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_1 \rightarrow T_1^5 \rightarrow T_{1}^4 \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_1^4 \rightarrow T_3 \rightarrow T_2 \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_2 \rightarrow T_2^5 \rightarrow T_{2}^4 \rightarrow 0\]</span></p>
 <p><span class="math display">\[0 \rightarrow T_2^4 \rightarrow T_4 \rightarrow T_2 \rightarrow 0\]</span></p>
-<p>Yields the long exact sequence: <span class="math display">\[0 \rightarrow T_1 \rightarrow T_1^3 \rightarrow T_2 \rightarrow T_1^5 \rightarrow T_3 \rightarrow T_2^5 \rightarrow T_4\]</span></p>
+<p>Yields the long exact sequence:
+<span class="math display">\[0 \rightarrow T_1 \rightarrow T_1^3 \rightarrow T_2 \rightarrow T_1^5 \rightarrow T_3 \rightarrow T_2^5 \rightarrow T_4\]</span></p>
 </div>
 <div id="inclusions" class="section level2">
-<h2>Inclusions</h2>
-<p>There is also a morphism: <span class="math display">\[\Delta_n : T_n \rightarrow T_{n+1} \\
+<h2><span class="header-section-number">0.9</span> Inclusions</h2>
+<p>There is also a morphism:
+<span class="math display">\[\Delta_n : T_n \rightarrow T_{n+1} \\
 g \mapsto Tree(0, g, g)\]</span></p>
 <p>This morphism is not normal</p>
 </div>

@@ -3,8 +3,8 @@ title: "Binary Tree Group Tn"
 author: "Emmanuel Blonkowski"
 date: "23 May 2019"
 output: 
-    html_document:
-        toc: true
+    bookdown::html_document2:
+      toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -202,6 +202,71 @@ So f is a bijective map and we have an equality of cardinals: $|T_{n-1}|_{2^{k-1
 >
 We sum the numbers for twisted and untwisted g's to get the result:
 $$|T_n|_{2^{k-1}} = 2|T_{n-1}|_{2^k} \sum_{0 \leq l \lt k}|T_{n-1}|_{2^l} + |T_{n-1}|_{2^k}^2 + |T_{n-1}|_{2^{k-1}} \times |T_{n-1}|$$
+
+## Conjugacy Classes
+
+```{definition}
+Let $G, D \subset T_{n-1}$, we define $\mathrm{Tree}(v, G, D) \subset T_n$ to be
+$\{\mathrm{Tree}(v, g, d) | g \in G, d \in D\}$
+```
+
+```{lemma}
+$\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathbf{Cl}(\mathrm{Tree}(0, d, g))$
+```
+
+```{proof}
+Use conjugation by $\mathrm{Tree}(1, 0, 0)$
+```
+
+
+```{property name="Conjugacy class of untwisted tree"}
+$\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \cup \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$
+```
+
+```{proof}
+
+
+- $\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \subset \mathbf{Cl}(\mathrm{Tree}(0, g, d))$
+     Let $\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$
+We have $$\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) =\\
+\mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$$
+    
+  Furthermore using the previous lemma we have $\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \sim \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$
+  
+- Let's show the other inclusion:
+    $$\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) = \mathrm{T}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$$
+    Now if the tree is twisted:
+    $$\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(1, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+    \mathrm{Tree}(1, a_2^{-1}, a_1^{-1}) \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+    \mathrm{Tree}(1, a_2^{-1}g, a_1^{-1}d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+    \mathrm{T}(0, a_1^{-1}da_1, a_2^{-1}ga_2) \in \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$$
+```
+    
+```{lemma}
+$f: G \rightarrow H$ a group homomorphism then:
+  
+- if a,b are conjugates in G then f(a) and f(b) are conjugates in H
+- Equivalently: if f(a) and f(b) are not conjugates then a and b are not conjugates.
+```
+
+```{corollary}
+Tree(0, g, d) and Tree(1, g'', d'') are never conjugates
+```
+
+**Property**
+
+$T_0$ has 2 conjugacy class: 0, 1
+
+
+Let $a_1, ..., a_L \in T_n$ be distinct representants of all the conjugacy classes.
+We construct the following elements of $T_{n+1}$:
+- $\mathrm{Tree}(0, a_i, a_i), \forall i\leq L$
+- $\mathrm{Tree}(0, a_i, a_j), \forall i<j \leq L$
+- $\mathrm{Tree}(1, 0, a_i), \forall i \leq L$
+
+Part 1: Let's show that those elements are not conjugates to each other.
+
+Part 2: Let's take a random element of $T_{n+1}$ and show that it is conjugate to one of the above.
 
 ## Morphisms
 
