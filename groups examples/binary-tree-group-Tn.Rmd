@@ -216,32 +216,78 @@ $\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathbf{Cl}(\mathrm{Tree}(0, d, g))$
 
 ```{proof}
 Use conjugation by $\mathrm{Tree}(1, 0, 0)$
+
 ```
 
 
-```{property name="Conjugacy class of untwisted tree"}
-$\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \cup \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$
+```{proposition, name="Conjugacy class of untwisted tree"}
+We have
+$$\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \cup \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$$
 ```
 
 ```{proof}
+We prove via double inclusion:
+  
+- First inclusion: $\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \subset \mathbf{Cl}(\mathrm{Tree}(0, g, d))$
 
-
-- $\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \subset \mathbf{Cl}(\mathrm{Tree}(0, g, d))$
-     Let $\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$
+  Let $\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$
 We have $$\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) =\\
 \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$$
     
   Furthermore using the previous lemma we have $\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \sim \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$
   
-- Let's show the other inclusion:
-    $$\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) = \mathrm{T}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$$
-    Now if the tree is twisted:
-    $$\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(1, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+- Let s show the other inclusion:
+
+  $$\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) = \mathrm{T}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))$$
+    
+  Now if the tree is twisted:
+    
+  $$\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(1, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
     \mathrm{Tree}(1, a_2^{-1}, a_1^{-1}) \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
     \mathrm{Tree}(1, a_2^{-1}g, a_1^{-1}d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
     \mathrm{T}(0, a_1^{-1}da_1, a_2^{-1}ga_2) \in \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))$$
+  
 ```
+
+```{proposition, name="Conjugacy class of twisted tree"}
+Let $g,d,l,r \in T_{n-1}$
+We have ${}_{g}1_{d} \sim {}_{l}1_{r} \iff gd \sim lr$
+```
+
+
+```{proof}
+We check each implication:
+	
+1. ($\implies$): Assume ${}_{g}1_{d} \sim {}_{l}1_{r}$
+
+    There is ${}_{a}v_{b}$ such that $({}_{a}v_{b})^{-1}\cdot{}_{g}1_{d}\cdot{}_{a}v_{b}$
+  
+    - If v=0
+  
+      ${}_{a^{-1}}0_{b^{-1}}\cdot{}_{g}1_{d}\cdot{}_{a}0_{b} = {}_{b^{-1}ga}1_{a^{-1}db} = {}_{l}1_{r}$
+And so we have 
+$$\left\{
+            \begin{array}{ll}
+              l = b^{-1}ga \\
+               r = a^{-1}db 
+            \end{array}
+          \right. \implies lr \sim gd$$
     
+    - If v=1
+    
+      $${}_{b^{-1}}1_{a^{-1}}\cdot{}_{g}1_{d}\cdot{}_{a}1_{b}={}_{b^{-1}da}1_{a^{-1}gb}={}_{l}1_{r}$$
+$$ \implies \left\{
+                \begin{array}{ll}
+                  l = b^{-1}da \\
+                   r = a^{-1}gb 
+                \end{array}
+              \right. \implies lr \sim dg \implies lr \sim gd$$
+Where we've used the fact that for $\forall g,h \in G, gh\sim hg$ where G is any group.
+```
+
+
+    
+  
 ```{lemma}
 $f: G \rightarrow H$ a group homomorphism then:
   

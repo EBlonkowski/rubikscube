@@ -615,35 +615,70 @@ So the pair ab is uniquely defined by a in <span class="math inline">\(T_{n-1}\)
 
 
 <div class="proof">
- <span class="proof"><em>Proof. </em></span> Use conjugation by <span class="math inline">\(\mathrm{Tree}(1, 0, 0)\)</span>
+<p> <span class="proof"><em>Proof. </em></span> Use conjugation by <span class="math inline">\(\mathrm{Tree}(1, 0, 0)\)</span></p>
 </div>
 
 
-<div class="lemma">
-<span id="lem:unnamed-chunk-4" class="lemma"><strong>Lemma 2  </strong></span><span class="math inline">\(\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \cup \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\)</span>
+<div class="proposition">
+<span id="prp:unnamed-chunk-4" class="proposition"><strong>Proposition 1  (Conjugacy class of untwisted tree)  </strong></span>We have
+<span class="math display">\[\mathbf{Cl}(\mathrm{Tree}(0, g, d)) = \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \cup \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\]</span>
 </div>
 
 
 <div class="proof">
-<p> <span class="proof"><em>Proof. </em></span> </p>
+<p> <span class="proof"><em>Proof. </em></span> We prove via double inclusion:</p>
 <ul>
-<li><p><span class="math inline">\(\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \subset \mathbf{Cl}(\mathrm{Tree}(0, g, d))\)</span>
-Let <span class="math inline">\(\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\)</span>
+<li><p>First inclusion: <span class="math inline">\(\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \subset \mathbf{Cl}(\mathrm{Tree}(0, g, d))\)</span></p>
+<p>Let <span class="math inline">\(\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\)</span>
 We have <span class="math display">\[\mathrm{Tree}(0, a_1^{-1}ga_1, a_2^{-1}da_2) =\\
 \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\]</span></p>
 <p>Furthermore using the previous lemma we have <span class="math inline">\(\mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d)) \sim \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\)</span></p></li>
-<li><p>Let’s show the other inclusion:
-<span class="math display">\[\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) = \mathrm{T}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\]</span>
-Now if the tree is twisted:
-<span class="math display">\[\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(1, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
+<li><p>Let s show the other inclusion:</p>
+<p><span class="math display">\[\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(0, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(0, a_1, a_2) = \mathrm{T}(0, a_1^{-1}ga_1, a_2^{-1}da_2) \in \mathrm{Tree}(0, \mathbf{Cl}(g), \mathbf{Cl}(d))\]</span></p>
+<p>Now if the tree is twisted:</p>
+<p><span class="math display">\[\forall a_1, a_2 \in T_{n-1}, \mathrm{Tree}(1, a_1, a_2)^{-1} \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
   \mathrm{Tree}(1, a_2^{-1}, a_1^{-1}) \cdot \mathrm{Tree}(0, g, d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
   \mathrm{Tree}(1, a_2^{-1}g, a_1^{-1}d) \cdot \mathrm{Tree}(1, a_1, a_2) =\\
   \mathrm{T}(0, a_1^{-1}da_1, a_2^{-1}ga_2) \in \mathrm{Tree}(0, \mathbf{Cl}(d), \mathbf{Cl}(g))\]</span></p>
 </div></li>
 </ul>
 
+<div class="proposition">
+<span id="prp:unnamed-chunk-6" class="proposition"><strong>Proposition 2  (Conjugacy class of twisted tree)  </strong></span>Let <span class="math inline">\(g,d,l,r \in T_{n-1}\)</span>
+We have <span class="math inline">\({}_{g}1_{d} \sim {}_{l}1_{r} \iff gd \sim lr\)</span>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> We check each implication:</p>
+<ol style="list-style-type: decimal">
+<li><p>(<span class="math inline">\(\implies\)</span>): Assume <span class="math inline">\({}_{g}1_{d} \sim {}_{l}1_{r}\)</span></p>
+<p>There is <span class="math inline">\({}_{a}v_{b}\)</span> such that <span class="math inline">\(({}_{a}v_{b})^{-1}\cdot{}_{g}1_{d}\cdot{}_{a}v_{b}\)</span></p>
+<ul>
+<li><p>If v=0</p>
+<p><span class="math inline">\({}_{a^{-1}}0_{b^{-1}}\cdot{}_{g}1_{d}\cdot{}_{a}0_{b} = {}_{b^{-1}ga}1_{a^{-1}db} = {}_{l}1_{r}\)</span>
+And so we have
+<span class="math display">\[\left\{
+      \begin{array}{ll}
+        l = b^{-1}ga \\
+         r = a^{-1}db 
+      \end{array}
+    \right. \implies lr \sim gd\]</span></p></li>
+<li><p>If v=1**</p>
+<p><span class="math display">\[{}_{b^{-1}}1_{a^{-1}}\cdot{}_{g}1_{d}\cdot{}_{a}1_{b}={}_{b^{-1}da}1_{a^{-1}gb}={}_{l}1_{r}\]</span>
+<span class="math display">\[ \implies \left\{
+          \begin{array}{ll}
+            l = b^{-1}da \\
+             r = a^{-1}gb 
+          \end{array}
+        \right. \implies lr \sim dg \implies lr \sim gd\]</span>
+Where we’ve used the fact that for <span class="math inline">\(\forall g,h \in G, gh\sim hg\)</span> where G is any group.</p>
+</div></li>
+</ul></li>
+</ol>
+
 <div class="lemma">
-<p><span id="lem:unnamed-chunk-6" class="lemma"><strong>Lemma 3  </strong></span><span class="math inline">\(f: G \rightarrow H\)</span> a group homomorphism then:</p>
+<p><span id="lem:unnamed-chunk-8" class="lemma"><strong>Lemma 2  </strong></span><span class="math inline">\(f: G \rightarrow H\)</span> a group homomorphism then:</p>
 <ul>
 <li>if a,b are conjugates in G then f(a) and f(b) are conjugates in H</li>
 <li>Equivalently: if f(a) and f(b) are not conjugates then a and b are not conjugates.
@@ -651,7 +686,7 @@ Now if the tree is twisted:
 </ul>
 
 <div class="corollary">
-<span id="cor:unnamed-chunk-7" class="corollary"><strong>Corollary 1  </strong></span>Tree(0, g, d) and Tree(1, g’‘, d’’) are never conjugates
+<span id="cor:unnamed-chunk-9" class="corollary"><strong>Corollary 1  </strong></span>Tree(0, g, d) and Tree(1, g’‘, d’’) are never conjugates
 </div>
 
 <p><strong>Property</strong></p>
