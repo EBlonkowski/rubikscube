@@ -283,11 +283,29 @@ $$ \implies \left\{
                 \end{array}
               \right. \implies lr \sim dg \implies lr \sim gd$$
 Where we've used the fact that for $\forall g,h \in G, gh\sim hg$ where G is any group.
+
+2. Assume $gd \sim lr$
+
+    We are going to show that ${}_{g}1_{d} \sim {}_{e}1_{gd}$
+  
+    We use conjugation by ${}_{g^{-1}}0_{e}$
+  
+    $${}_{g}0_{e} \cdot {}_{g}1_{d} \cdot {}_{g^{-1}}0_{e} = {}_{e}1_{gd}$$
+    
+    This also shows that ${}_{l}1_{r} \sim {}_{e}1_{lr}$
+    
+    We have $lr = h^{-1}gdh$ for some $h \ \in T_{n-1}$. We do convolution by ${}_{h}0_{h}$:
+
+    $${}_{h^{-1}}0_{h^{-1}} \cdot {}_{e}1_{gd} \cdot {}_{h}0_{h} = {}_{\mathit{e}}1_{lr}$$
+
+    Finally we have shown that:
+    	$${}_{g}1_{d} \sim {}_{e}1_{gd} \sim {}_{e}1_{lr} \sim {}_{l}1_{r}$$
+
+Which completes the demonstration.
 ```
 
 
-    
-  
+
 ```{lemma}
 $f: G \rightarrow H$ a group homomorphism then:
   

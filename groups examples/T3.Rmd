@@ -2,7 +2,9 @@
 title: "T3"
 author: "Emmanuel Blonkowski"
 date: "11 July 2019"
-output: html_document
+output:
+    html_document:
+        toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +20,12 @@ $T_3 = i_2(T_2) \ltimes L^3_3 \sim D_4 \ltimes C(2)^4$
 Which means $T_3$ has 128 elements.
 
 ## Centers
+
+### Strategy to compute the centers
+
+* Compute the central series of L2, show that it is part of the decomposition serie of T3.
+* Compute the central series of $L_1 \sim C(2)^4$, show that it is part of the decomposition series of L2
+
 
 ### 1st Center
 

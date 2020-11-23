@@ -2,12 +2,34 @@
 title: "Ideas"
 author: "Manu"
 date: "February 28, 2018"
-output: html_document
+output:
+    html_document:
+        toc: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## [23/11/2020] Focus of L1 in T3 for rythm representations
+
+Until now, when I worked on representing tree groups as rythm, I was mostly focusing on the quaternion group, because it had 4-cycles and a cool structure.
+
+I was able to generate some beats, however they don't seem to reflect the group structure that well.
+
+It is very hard to use the quaternion group to count.
+
+Maybe the issue is that the group is too complicated, or maybe it is not a natural group in this circumstance.
+
+It would be interesting to focus of L1 inside of T3. The reason is that this group is very natural, it sits in the central series of T3. It is also abelian, so its central series is not too complicated.
+
+
+What I could do:
+
+1. Using the step as the identity beat, get a beat representation of L1.
+2. Find all the iterated centers of T3 that are in L1.
+3. Look at what this representation looks like modulo different centers of T3 contained in L1.
+
 
 ## Snowflakes
 
