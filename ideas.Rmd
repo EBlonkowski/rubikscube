@@ -11,6 +11,28 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## [25/11/2020] Thinking about natural words on S3
+
+Found a few natural words to talk about triplets of numbers.
+
+Besides the average, there is also a 2-dimensional triangle which is a covariant linear word. Here it is:
+
+$$\begin{pmatrix}
+    2x_1 - x_2 - x_3 \\
+    \sqrt{3}(x_2-x_3)
+    \end{pmatrix}
+$$
+
+It would be interesting to work more on this and try to see how we can use the natural language the retrieve the values of the triplets.
+
+Since the two-dimensional word and the triangle are enough to recover the individual values of the triplets.
+We could express a polynomial of order 3 as a function from triplets to triplets.
+For most triangles, the polynomial cannot be expressed as a function of the words, because it breaks the symmetry?
+Actually it does not break the symmetry. So it should be possible to express the polynomial operating on triangles as a function of the natural language.
+Using this expression, is it easier to find the roots?
+
+I could try it on the order 2 first.
+
 ## [23/11/2020] Focus of L1 in T3 for rythm representations
 
 Until now, when I worked on representing tree groups as rythm, I was mostly focusing on the quaternion group, because it had 4-cycles and a cool structure.

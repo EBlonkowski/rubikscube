@@ -793,3 +793,52 @@ inv(g1) \* (g2, n2) \* g1 = inv(g1) \* (g2*g1, n2^g1) = (g2^g1, n2^g1)
 conj(g1) = 
 g1      e
 e       g1
+
+
+# Group Representations
+
+## Character table
+
+| Character     | identity | 3-cycles | 2-cycles |
+|---------------|----------|----------|----------|
+| Trivial rep   | 1        | 1        | 1        |
+| Signature rep | 1        | 1        | -1       |
+| Triangle rep  | 2        | -1       | 0        |
+
+We assume S3 is presented by $<p, a | p^3, a^2, apa=p^2>$.
+
+The triangle representation is given by mapping p to the rotation matrix $R_{2\pi\over 3}$ given by:
+
+$$\begin{pmatrix} 
+-{1 \over 2} & -\sqrt3 \over 2 \\
+\sqrt{3} \over 2 &-1 \over 2
+\end{pmatrix}$$
+
+And by mapping a to the reflection of the x axis given by:
+
+$$
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+$$
+
+
+## Natural words
+
+A natural word on triplets of numbers is an application $\mathbb{R}^3 \rightarrow E$ that is a S3-morphism. Here E is a real vector space.
+
+Some natural words on triplets $x_1, x_2, x_3$.
+
+*   An invariant, the average: $x_1+x_2+x_3$
+*   A couple (C2 covariant), the charge: $(x_1-x_2)(x_1-x_3)(x_2-x_3)$
+*   A triangle, two-dimensional S3-covariant word, given by:
+
+    $$\begin{pmatrix}
+    2x_1 - x_2 - x_3 \\
+    \sqrt{3}(x_2-x_3)
+    \end{pmatrix}
+    $$
+
+    This word can be found by using the 2 dimensional irrep: $x_1 \cdot I+ x_2 \cdot p + x_3 \cdot p^2$ (here p stands for the 2 dim representation of p). This is a matrix which is S3 covariant. Taking the first column of this matrix gives the above covariant triangle, up to a constant factor.
+    
