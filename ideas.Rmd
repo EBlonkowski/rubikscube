@@ -11,6 +11,21 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## [28/11/2020] Invariants and covariants of T2
+
+Suggested program:
+
+1. Revise the character orthonomality formula
+2. Find all the characters and irreducible representations of $T_2 \sim D_4$
+3. Using the average projector, find all the invariants of small degree.
+4. Using the other projectors, find other co-variants of small degree.
+5. Can these "natural words" be used in any meanigful way to describe the beats?
+
+In order to find all the representations of T3 I can use the forget last layer morphism, which maps to T2. So that will give me 5 representations "for free". Forgetting the two last layer I get one for representation from T2. I still need a lot of representations to get up to 25.
+
+
+
+
 ## [25/11/2020] Thinking about natural words on S3
 
 Found a few natural words to talk about triplets of numbers.
@@ -32,6 +47,8 @@ Actually it does not break the symmetry. So it should be possible to express the
 Using this expression, is it easier to find the roots?
 
 I could try it on the order 2 first.
+
+
 
 ## [23/11/2020] Focus of L1 in T3 for rythm representations
 
