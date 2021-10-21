@@ -1,0 +1,31 @@
+---
+title: "Some tests for bookdown"
+author: "Emmanuel Blonkowski"
+date: "11 July 2019"
+output: 
+  bookdown::html_document2
+---
+
+# Bookdown test
+
+```{proposition}
+Hi
+```
+
+```{proof}
+Hi
+```
+
+
+```{r}
+m <- matrix(c(1, 0, 1, 0, 1, 0, 1, 0,
+         0, 1, 0, 1, 0, 1, 0, 1,
+         1, 0, 0, 1, 1, 0, 0, 1,
+         0, 1, 1, 0, 0, 1, 1, 0,
+         1, 0, 0, 1, 0, 1, 1, 0,
+         0, 1, 1, 0, 1, 0, 0, 1,
+         1, 0, 1, 0, 0, 1, 0, 1,
+         0, 1, 0, 1, 1, 0, 1, 0
+         ), nrow=8)
+```
+
